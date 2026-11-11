@@ -11,9 +11,9 @@ export function SiteFooter({ locale, dict, series }: { locale: Locale; dict: Dic
   const p = (path: string) => localePath(locale, path);
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-24 bg-ink text-white/80">
-      <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
-        <div className="space-y-5">
+    <footer className="mt-16 bg-ink text-white/80 sm:mt-24">
+      <div className="container-x grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:py-16 md:gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
+        <div className="col-span-2 space-y-5 md:col-span-1">
           <div className="inline-flex rounded-2xl bg-white px-4 py-3">
             <Image src="/brand/logo.webp" alt="Tung Lam" width={299} height={171} className="h-12 w-auto" />
           </div>
@@ -49,7 +49,7 @@ export function SiteFooter({ locale, dict, series }: { locale: Locale; dict: Dic
           </ul>
         </div>
 
-        <div>
+        <div className="col-span-2 md:col-span-1">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-white">{dict.footer.getInTouch}</h2>
           <address className="space-y-3.5 text-sm not-italic">
             <a href={SITE.mapsUrl} target="_blank" rel="noopener" className="flex gap-3 hover:text-white">
@@ -68,7 +68,7 @@ export function SiteFooter({ locale, dict, series }: { locale: Locale; dict: Dic
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-x flex flex-col gap-2 py-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-x flex flex-col gap-2 py-6 pb-20 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between sm:pb-6">
           <p>
             © {SITE.foundingYear}–{year} {SITE.legalName} · {SITE.registrationNo}. {dict.footer.rights}
           </p>

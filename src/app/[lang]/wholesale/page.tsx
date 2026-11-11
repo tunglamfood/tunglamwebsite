@@ -42,7 +42,7 @@ export default async function WholesalePage({ params }: PageProps<"/[lang]/whole
         lead={d.wholesale.lead}
       />
 
-      <section className="container-x grid gap-12 py-16 lg:grid-cols-2 lg:items-center">
+      <section className="container-x grid gap-12 py-10 sm:py-16 lg:grid-cols-2 lg:items-center">
         <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] shadow-[var(--shadow-lift)]">
           <Image src="/images/wholesale.webp" alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
         </div>
@@ -59,9 +59,9 @@ export default async function WholesalePage({ params }: PageProps<"/[lang]/whole
         </div>
       </section>
 
-      <section className="bg-sand/60 py-20">
+      <section className="bg-sand/60 py-12 sm:py-20">
         <div className="container-x">
-          <h2 className="mb-10 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{d.wholesale.whyTitle}</h2>
+          <h2 className="mb-6 font-display text-[1.75rem] font-semibold tracking-tight sm:mb-10 sm:text-4xl">{d.wholesale.whyTitle}</h2>
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {d.wholesale.why.map((w, i) => {
               const Icon = WHY_ICONS[i % WHY_ICONS.length];
@@ -80,14 +80,14 @@ export default async function WholesalePage({ params }: PageProps<"/[lang]/whole
       </section>
 
       {fsProducts.length > 0 && foodService && (
-        <section className="container-x py-20">
+        <section className="container-x py-12 sm:py-20">
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{t(foodService.name, lang)}</h2>
           <ProductGrid products={fsProducts} />
         </section>
       )}
 
       <section id="quote" className="container-x">
-        <div className="grid gap-10 rounded-[2rem] border border-line bg-white p-6 sm:p-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid gap-10 rounded-[1.5rem] border border-line bg-white p-5 sm:rounded-[2rem] sm:p-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <h2 className="font-display text-3xl font-semibold tracking-tight">{d.wholesale.formTitle}</h2>
             <p className="mt-3 text-ink-soft">{d.wholesale.formText}</p>

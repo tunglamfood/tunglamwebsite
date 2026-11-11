@@ -28,11 +28,11 @@ export default async function CareersPage({ params }: PageProps<"/[lang]/careers
         title={d.careers.title}
         lead={d.careers.lead}
       />
-      <section className="container-x grid gap-10 py-16 lg:grid-cols-[0.8fr_1.2fr]">
+      <section className="container-x grid gap-10 py-10 sm:py-16 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <p className="prose-tl text-lg">{d.careers.body}</p>
         </div>
-        <div className="rounded-[2rem] border border-line bg-white p-6 sm:p-10">
+        <div className="rounded-[1.5rem] border border-line bg-white p-5 sm:rounded-[2rem] sm:p-10">
           <h2 className="mb-6 font-display text-2xl font-semibold">{d.careers.formTitle}</h2>
           <InquiryForm labels={d.form} locale={lang} defaultKind="career" kinds={["career"]} whatsappHref={whatsappLink()} />
         </div>

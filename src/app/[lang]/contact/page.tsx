@@ -38,7 +38,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
         title={d.contact.title}
         lead={d.contact.lead}
       />
-      <section className="container-x grid gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="container-x grid gap-10 py-10 sm:py-16 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-6">
           <ul className="space-y-3">
             {rows.map((r) => {
@@ -70,7 +70,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
             <WhatsAppIcon /> {d.cta.whatsapp} · {SITE.phoneDisplay}
           </a>
         </div>
-        <div className="rounded-[2rem] border border-line bg-white p-6 sm:p-10">
+        <div className="rounded-[1.5rem] border border-line bg-white p-5 sm:rounded-[2rem] sm:p-10">
           <InquiryForm labels={d.form} locale={lang} kinds={["general", "wholesale", "product"]} whatsappHref={whatsappLink()} />
         </div>
       </section>
@@ -81,7 +81,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
           src={`https://maps.google.com/maps?q=${SITE.geo.lat},${SITE.geo.lng}&z=15&output=embed`}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          className="h-[26rem] w-full rounded-[2rem] border-0 shadow-[var(--shadow-card)]"
+          className="h-72 w-full rounded-[1.5rem] border-0 sm:h-[26rem] sm:rounded-[2rem] shadow-[var(--shadow-card)]"
         />
       </section>
     </>

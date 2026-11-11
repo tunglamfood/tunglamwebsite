@@ -43,14 +43,14 @@ export default async function FaqPage({ params }: PageProps<"/[lang]/faq">) {
         ]}
         title={d.faq.title}
       />
-      <section className="container-x max-w-4xl space-y-12 py-16">
+      <section className="container-x max-w-4xl space-y-12 py-10 sm:py-16">
         {groups.map((g) => (
           <div key={g.key}>
             <h2 className="mb-5 font-display text-2xl font-semibold">{g.title}</h2>
             <FaqList items={g.items} withSchema={false} />
           </div>
         ))}
-        <div className="rounded-[2rem] bg-ink p-8 text-white sm:p-10">
+        <div className="rounded-[1.5rem] bg-ink p-6 text-white sm:rounded-[2rem] sm:p-10">
           <h2 className="font-display text-2xl font-semibold">{d.faq.stillTitle}</h2>
           <p className="mt-2 text-white/75">{d.faq.stillText}</p>
           <div className="mt-6 flex flex-wrap gap-3">

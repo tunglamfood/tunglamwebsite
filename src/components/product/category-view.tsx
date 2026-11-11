@@ -34,11 +34,11 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
   return (
     <>
       <PageHeader crumbs={crumbs} title={name} lead={t(category.tagline, locale)} eyebrow={parent ? t(parent.name, locale) : undefined}>
-        <nav aria-label={d.products.inRange} className="mt-8 flex flex-wrap gap-2">
+        <nav aria-label={d.products.inRange} className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:mt-8 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
           <Link
             href={p(`/products/${series.slug}`)}
             className={clsx(
-              "rounded-full px-4 py-2 text-sm font-medium transition",
+              "shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition",
               category.id === series.id ? "bg-ink text-white" : "bg-white text-ink-soft ring-1 ring-line hover:ring-ink/30",
             )}
           >
@@ -50,7 +50,7 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
               href={p(`/products/${c.slug}`)}
               aria-current={c.id === category.id ? "page" : undefined}
               className={clsx(
-                "rounded-full px-4 py-2 text-sm font-medium transition",
+                "shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition",
                 c.id === category.id ? "bg-ink text-white" : "bg-white text-ink-soft ring-1 ring-line hover:ring-ink/30",
               )}
             >
@@ -60,8 +60,8 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
         </nav>
       </PageHeader>
 
-      <section className="container-x py-12">
-        <p className="mb-5 text-sm text-muted">{fmt(d.products.count, { n: products.length })}</p>
+      <section className="container-x py-8 sm:py-12">
+        <p className="mb-4 sm:mb-5 text-sm text-muted">{fmt(d.products.count, { n: products.length })}</p>
         <ProductGrid products={products} priorityCount={4} />
       </section>
 

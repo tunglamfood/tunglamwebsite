@@ -69,9 +69,9 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
         <Breadcrumbs items={crumbs} />
       </div>
 
-      <section className="container-x grid gap-10 py-10 lg:grid-cols-2 lg:gap-16">
+      <section className="container-x grid gap-7 py-6 sm:gap-10 sm:py-10 lg:grid-cols-2 lg:gap-16">
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-line bg-white shadow-[var(--shadow-card)]">
+          <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-[1.5rem] border border-line bg-white shadow-[var(--shadow-card)] sm:aspect-[4/5] sm:rounded-[2rem] lg:max-w-none">
             {imgUrl && (
               <Image
                 src={imgUrl}
@@ -79,7 +79,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
                 fill
                 priority
                 sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-contain p-8 sm:p-12"
+                className="object-contain p-6 sm:p-12"
               />
             )}
           </div>
@@ -91,10 +91,10 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
               {brand.name}
             </Link>
           )}
-          <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">{name}</h1>
-          <p className="mt-4 text-lg leading-relaxed text-ink-soft">{t(product.short, locale)}</p>
+          <h1 className="font-display text-[2rem] font-semibold leading-tight tracking-tight text-ink sm:text-5xl">{name}</h1>
+          <p className="mt-3 text-base leading-relaxed text-ink-soft sm:mt-4 sm:text-lg">{t(product.short, locale)}</p>
 
-          <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
+          <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
             {product.net_weight && (
               <div className="bg-white p-4">
                 <dt className="text-xs font-semibold uppercase tracking-wider text-muted">{d.products.netWeight}</dt>
@@ -117,14 +117,14 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
             )}
           </dl>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href={whatsappLink(waText)} target="_blank" rel="noopener" className={buttonClass("whatsapp", "lg")}>
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
+            <a href={whatsappLink(waText)} target="_blank" rel="noopener" className={buttonClass("whatsapp", "lg", "px-4")}>
               <WhatsAppIcon /> {d.cta.whatsapp}
             </a>
-            <a href="#enquire" className={buttonClass("ghost", "lg")}>{d.cta.enquire}</a>
+            <a href="#enquire" className={buttonClass("ghost", "lg", "px-4")}>{d.cta.enquire}</a>
           </div>
 
-          <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-soft">
+          <ul className="mt-5 flex flex-col gap-2 text-sm text-ink-soft sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-x-6">
             <li className="inline-flex items-center gap-2"><ShieldCheck className="size-4 text-leaf" aria-hidden />{d.products.halal}</li>
             <li className="inline-flex items-center gap-2"><Snowflake className="size-4 text-sky-600" aria-hidden />{d.products.storageText}</li>
           </ul>
@@ -171,9 +171,9 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
       )}
 
       <section id="enquire" className="container-x py-12">
-        <div className="grid gap-10 rounded-[2rem] border border-line bg-white p-6 sm:p-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid gap-6 rounded-[1.5rem] border border-line bg-white p-5 sm:gap-10 sm:rounded-[2rem] sm:p-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <h2 className="font-display text-3xl font-semibold tracking-tight">{d.products.enquireTitle}</h2>
+            <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">{d.products.enquireTitle}</h2>
             <p className="mt-3 text-ink-soft">{d.products.enquireText}</p>
           </div>
           <InquiryForm

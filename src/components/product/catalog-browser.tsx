@@ -34,16 +34,20 @@ export function CatalogBrowser({
 
   const chip = (active: boolean) =>
     clsx(
-      "h-9 rounded-full px-4 text-sm font-medium transition",
+      "h-9 shrink-0 whitespace-nowrap rounded-full px-4 text-sm font-medium transition",
       active ? "bg-ink text-white" : "bg-white text-ink-soft ring-1 ring-line hover:ring-ink/30",
     );
 
+  // Mobile: each chip row scrolls sideways instead of wrapping into a tall block.
+  const rowClass =
+    "-mx-4 flex items-center gap-2 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden";
+
   return (
     <div>
-      <div className="mb-8 flex flex-col gap-4 rounded-[var(--radius-card)] border border-line bg-white/70 p-4 backdrop-blur lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
-          <div className="flex flex-wrap items-center gap-2" role="group" aria-label={labels.series}>
-            <span className="mr-1 text-xs font-semibold uppercase tracking-wider text-muted">{labels.series}</span>
+      <div className="mb-6 flex flex-col gap-3 rounded-[var(--radius-card)] border border-line bg-white/70 p-4 sm:mb-8 sm:gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
+          <div className={rowClass} role="group" aria-label={labels.series}>
+            <span className="mr-1 shrink-0 text-xs font-semibold uppercase tracking-wider text-muted">{labels.series}</span>
             <button type="button" className={chip(!s)} onClick={() => setS("")} aria-pressed={!s}>
               {labels.all}
             </button>
@@ -53,8 +57,8 @@ export function CatalogBrowser({
               </button>
             ))}
           </div>
-          <div className="flex flex-wrap items-center gap-2" role="group" aria-label={labels.brand}>
-            <span className="mr-1 text-xs font-semibold uppercase tracking-wider text-muted">{labels.brand}</span>
+          <div className={rowClass} role="group" aria-label={labels.brand}>
+            <span className="mr-1 shrink-0 text-xs font-semibold uppercase tracking-wider text-muted">{labels.brand}</span>
             <button type="button" className={chip(!b)} onClick={() => setB("")} aria-pressed={!b}>
               {labels.all}
             </button>
@@ -65,7 +69,7 @@ export function CatalogBrowser({
             ))}
           </div>
         </div>
-        <label className="relative block lg:w-72">
+        <label className="relative order-first block lg:order-none lg:w-72">
           <span className="sr-only">{labels.search}</span>
           <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted" aria-hidden />
           <input

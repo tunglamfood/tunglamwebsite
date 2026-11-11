@@ -44,7 +44,7 @@ export default async function ProductsPage({ params }: PageProps<"/[lang]/produc
         title={d.products.title}
         lead={d.products.intro}
       />
-      <section className="container-x py-12">
+      <section className="container-x py-8 sm:py-12">
         <CatalogBrowser
           products={cards}
           series={series.map((s) => ({ value: s.slug, label: t(s.name, lang) ?? s.slug }))}

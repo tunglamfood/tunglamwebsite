@@ -38,7 +38,7 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
       href={product.href}
       className="group card flex h-full flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
     >
-      <div className="relative aspect-[4/5] overflow-hidden border-b border-line/60 bg-white">
+      <div className="relative aspect-square overflow-hidden border-b border-line/60 bg-white sm:aspect-[4/5]">
         {product.image && (
           <Image
             src={product.image}
@@ -46,25 +46,25 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
             fill
             priority={priority}
             sizes="(min-width: 1280px) 280px, (min-width: 768px) 30vw, 50vw"
-            className="object-contain p-5 transition duration-500 group-hover:scale-[1.04]"
+            className="object-contain p-3 transition duration-500 group-hover:scale-[1.04] sm:p-5"
           />
         )}
         {product.brand && (
-          <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-wider text-ink-soft backdrop-blur">
+          <span className="absolute left-2 top-2 rounded-full bg-cream px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-ink-soft sm:left-3 sm:top-3 sm:px-2.5 sm:py-1 sm:text-[0.7rem]">
             {product.brand}
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-1.5 p-4 sm:p-5">
-        <h3 className="font-semibold leading-snug text-ink group-hover:text-brand">{product.name}</h3>
-        {product.short && <p className="line-clamp-2 text-sm text-muted">{product.short}</p>}
-        <div className="mt-auto flex items-center justify-between pt-3 text-sm">
+      <div className="flex flex-1 flex-col gap-1.5 p-3 sm:p-5">
+        <h3 className="line-clamp-3 text-[0.9rem] font-semibold leading-snug text-ink group-hover:text-brand sm:text-base">{product.name}</h3>
+        {product.short && <p className="hidden text-sm text-muted sm:line-clamp-2">{product.short}</p>}
+        <div className="mt-auto flex items-center justify-between pt-2 text-xs sm:pt-3 sm:text-sm">
           {product.netWeight ? (
-            <span className="rounded-full bg-cream px-2.5 py-1 font-medium text-ink-soft">{product.netWeight}</span>
+            <span className="rounded-full bg-cream px-2 py-0.5 font-medium text-ink-soft sm:px-2.5 sm:py-1">{product.netWeight}</span>
           ) : (
             <span />
           )}
-          <ArrowUpRight className="size-5 text-muted transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" aria-hidden />
+          <ArrowUpRight className="size-4 text-muted sm:size-5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" aria-hidden />
         </div>
       </div>
     </Link>

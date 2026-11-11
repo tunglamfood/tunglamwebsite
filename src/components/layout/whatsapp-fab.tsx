@@ -1,6 +1,7 @@
 import { whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
+/** Plain floating WhatsApp button — no animation. */
 export function WhatsAppFab({ label }: { label: string }) {
   return (
     <a
@@ -8,12 +9,10 @@ export function WhatsAppFab({ label }: { label: string }) {
       target="_blank"
       rel="noopener"
       aria-label={label}
-      className="group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-[#1fa855] p-3.5 text-white shadow-[0_12px_30px_-10px_rgb(31_168_85/0.8)] transition hover:bg-[#178f47] sm:bottom-6 sm:right-6"
+      title={label}
+      className="fixed bottom-4 right-4 z-40 grid size-12 place-items-center rounded-full bg-[#25d366] text-white shadow-md sm:bottom-6 sm:right-6 sm:size-14"
     >
-      <WhatsAppIcon className="size-6" />
-      <span className="hidden max-w-0 overflow-hidden text-sm font-semibold transition-all duration-300 group-hover:max-w-40 group-hover:pr-1 sm:inline">
-        {label}
-      </span>
+      <WhatsAppIcon className="size-6 shrink-0 sm:size-7" />
     </a>
   );
 }

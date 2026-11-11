@@ -32,7 +32,7 @@ export default async function RecipesPage({ params }: PageProps<"/[lang]/recipes
         title={d.recipes.title}
         lead={d.recipes.intro}
       />
-      <section className="container-x grid gap-5 py-12 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="container-x grid gap-5 py-8 sm:py-12 sm:grid-cols-2 lg:grid-cols-3">
         {recipes.map((r) => (
           <RecipeCard key={r.slug} recipe={r} locale={lang} dict={d} />
         ))}

@@ -66,7 +66,7 @@ export default async function BrandPage({ params }: PageProps<"/[lang]/brands/[s
           <div className="prose-tl max-w-2xl">{description.map((x, i) => <p key={i}>{x}</p>)}</div>
         </div>
       </PageHeader>
-      <section className="container-x py-12">
+      <section className="container-x py-8 sm:py-12">
         <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{fmt(d.brands.productsBy, { brand: brand.name })}</h2>
         <ProductGrid products={cards} priorityCount={4} />
       </section>

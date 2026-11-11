@@ -7,16 +7,17 @@ import { localePath, type Locale } from "@/lib/i18n";
 import { buttonClass } from "@/components/ui/button";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
+import { LogoLink } from "./logo-link";
 import { buildNav } from "./nav";
 
 export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dictionary; series: Category[] }) {
   const nav = buildNav(locale, dict, series);
   return (
     <header className="sticky top-0 z-50 border-b border-line/70 bg-cream/85 backdrop-blur-xl supports-[backdrop-filter]:bg-cream/70">
-      <div className="container-x flex h-[4.5rem] items-center gap-6">
-        <Link href={localePath(locale)} className="shrink-0" aria-label="Tung Lam Food — home">
-          <Image src="/brand/logo.webp" alt="Tung Lam" width={299} height={171} priority className="h-11 w-auto" />
-        </Link>
+      <div className="container-x flex h-16 items-center gap-6 sm:h-[4.5rem]">
+        <LogoLink href={localePath(locale)} label="Tung Lam Food — home" className="shrink-0">
+          <Image src="/brand/logo.webp" alt="Tung Lam" width={299} height={171} priority className="h-10 w-auto sm:h-11" />
+        </LogoLink>
 
         <nav aria-label="Main" className="hidden flex-1 items-center justify-center lg:flex">
           <ul className="flex items-center gap-1">
@@ -64,7 +65,7 @@ export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dic
               {dict.cta.wholesale}
             </Link>
           </div>
-          <MobileNav items={nav} locale={locale} menuLabel={dict.nav.menu} closeLabel={dict.nav.close} ctaLabel={dict.cta.wholesale} />
+          <MobileNav items={nav} locale={locale} menuLabel={dict.nav.menu} closeLabel={dict.nav.close} ctaLabel={dict.cta.wholesale} whatsappLabel={dict.cta.whatsapp} languageLabel={dict.nav.language} />
         </div>
       </div>
     </header>

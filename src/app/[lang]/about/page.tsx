@@ -39,7 +39,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         lead={d.about.lead}
       />
 
-      <section className="container-x grid items-center gap-12 py-16 lg:grid-cols-2 lg:gap-20">
+      <section className="container-x grid items-center gap-12 py-10 sm:py-16 lg:grid-cols-2 lg:gap-20">
         <div className="prose-tl text-lg">
           {d.about.body.map((x, i) => (
             <p key={i}>{x}</p>
@@ -50,9 +50,9 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </div>
       </section>
 
-      <section className="bg-sand/60 py-20">
+      <section className="bg-sand/60 py-12 sm:py-20">
         <div className="container-x">
-          <h2 className="mb-10 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{d.about.valuesTitle}</h2>
+          <h2 className="mb-6 font-display text-[1.75rem] font-semibold tracking-tight sm:mb-10 sm:text-4xl">{d.about.valuesTitle}</h2>
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {d.about.values.map((v, i) => {
               const Icon = VALUE_ICONS[i % VALUE_ICONS.length];
@@ -70,7 +70,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </div>
       </section>
 
-      <section className="container-x grid gap-10 py-20 lg:grid-cols-2">
+      <section className="container-x grid gap-10 py-12 sm:py-20 lg:grid-cols-2">
         <div>
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.about.factsTitle}</h2>
           <dl className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">
