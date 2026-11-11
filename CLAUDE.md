@@ -35,3 +35,6 @@ docs/                   SEO strategy, deployment, content review
 - Secrets live in `.env` (gitignored; the GitHub repo is public). Only `.env.example` is committed.
 - Service-role key is server-only (`src/lib/supabase/admin.ts`). `inquiries` has no anon RLS policies — keep it that way.
 - Every UI string goes into all three dictionaries.
+- Git: after committing, always push to `origin` (`git@github-tunglamfood:tunglamfood/tunglamwebsite.git`, branch `main`).
+  The `github-tunglamfood` SSH host alias uses `~/.ssh/tunglamfood_ed25519` (tunglamfood account). Don't use `gh` to push —
+  it's logged in as an account with read-only access.
