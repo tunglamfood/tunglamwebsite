@@ -85,12 +85,13 @@ for (const [name, opts] of [
   page.on("response", (r) => r.status() >= 400 && errors.push(`${r.status()} ${r.url()}`));
   for (const p of pages) {
     errors.length = 0;
-    await page.goto(BASE + p, { waitUntil: "networkidle" });
+    await page.goto(BASE + p, { waitUntil: "load" });
     await page.evaluate(async () => {
       for (let y = 0; y < document.body.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 120)); }
       window.scrollTo(0, 0);
     });
-    await page.waitForLoadState("networkidle");
+    // Embedded maps keep the network busy, so do not insist on full idle.
+    await page.waitForLoadState("networkidle", { timeout: 6000 }).catch(() => {});
     const { sw, vw } = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, vw: document.documentElement.clientWidth }));
     // Vercel Analytics scripts only exist on Vercel; ignore them locally.
     const real = errors.filter((e) => !/_vercel\/(insights|speed-insights)|MIME type|Failed to load resource/.test(e));
