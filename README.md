@@ -20,12 +20,27 @@ npm run dev             # http://localhost:3000
 | --- | --- |
 | `npm run dev` / `build` / `start` | Run the Next.js dev server, production build or production server |
 | `npm run typecheck` / `lint` | Run the TypeScript and ESLint checks |
-| `npm run db:seed` | Upload images and upsert all content from `supabase/seed/` into Supabase, then regenerate the legacy redirects |
+| `npm run db:seed` | First-time setup only. Loads the content in `supabase/seed/` into Supabase and refuses to run if products already exist (`--force` overrides this and **overwrites edits made in the admin**) |
 | `npm run db:seed:data` | Same as `db:seed`, but skips the image upload |
 | `npm run image:generate -- --out x.png --aspect 16:9 --prompt "..."` | Generate an image with Kie.ai (GPT Image 2.6, 1K) |
 | `npm run qa -- --base http://localhost:3100` | Check status codes, redirects, SEO tags and mobile layout |
 
-## Updating content
+## Admin panel (CMS)
+
+Go to **`/admin`** (for example `https://tunglamfood.my/admin`) and sign in with `ADMIN_PASSWORD`.
+
+From there you can manage:
+
+- products, including images, translations, publishing, featured status and SEO fields
+- categories (series and product lines) and their FAQs
+- brands and logos
+- recipes and articles
+- site FAQs
+- enquiries from the website forms
+
+Saving a change publishes it to the website immediately.
+
+## Updating content outside the admin
 
 1. Edit the files in `supabase/seed/data/` (each text field holds `en`, `ms` and `zh`).
 2. Run `npm run db:seed`.

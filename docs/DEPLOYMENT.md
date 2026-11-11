@@ -16,6 +16,8 @@ The repository already contains `vercel.json`, which sets `"regions": ["sin1"]`.
 | `SUPABASE_SERVICE_ROLE_KEY` | Secret, used on the server only |
 | `NEXT_PUBLIC_SITE_URL` | `https://tunglamfood.my` |
 | `REVALIDATE_SECRET` | A long random string |
+| `ADMIN_PASSWORD` | Password for `/admin` (currently `12341234` — **change before launch**) |
+| `ADMIN_SESSION_SECRET` | 64-char random hex (copy from `.env`); changing it signs everyone out |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Optional |
 
 3. Check that **Settings → Functions → Region** shows Singapore (`sin1`).

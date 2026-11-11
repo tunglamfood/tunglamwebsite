@@ -5,9 +5,11 @@ description: Add, edit or remove Tung Lam Food website content — products, cat
 
 # Tung Lam content workflow
 
-Content lives in **Supabase** (project in `ap-southeast-1` Singapore). Seed source files live in
-`supabase/seed/` and are the canonical, version-controlled copy — **edit the seed files first, then seed**,
-so the repo and the database never drift.
+Content lives in **Supabase** (project in `ap-southeast-1` Singapore) and is edited by the client in the
+**admin panel at `/admin`** — that is now the source of truth. Prefer telling the user how to do it in the admin.
+If you must change data programmatically, update rows directly (service role) and call `POST /api/revalidate`.
+**Never re-run `npm run db:seed` on the live DB** — it overwrites admin edits and replaces all FAQs (it refuses without `--force`).
+`supabase/seed/` is only the initial import.
 
 ## Data model (see `supabase/migrations/*_init.sql`)
 - Every user-facing text field is `jsonb` `{ "en": "...", "ms": "...", "zh": "..." }`. List fields (highlights,

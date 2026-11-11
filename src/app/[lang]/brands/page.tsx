@@ -7,7 +7,7 @@ import { hasLocale, localePath, t } from "@/lib/i18n";
 import { getCatalog } from "@/lib/data";
 import { pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/page-header";
-import { BRAND_LOGOS } from "@/components/brand/brand-logos";
+import { brandLogoSrc } from "@/components/brand/brand-logos";
 
 export const revalidate = 3600;
 
@@ -37,7 +37,7 @@ export default async function BrandsPage({ params }: PageProps<"/[lang]/brands">
       />
       <section className="container-x grid gap-6 py-12 md:grid-cols-2">
         {brands.map((b) => {
-          const logo = BRAND_LOGOS[b.slug];
+          const logo = brandLogoSrc(b);
           const count = products.filter((x) => x.brand_id === b.id).length;
           return (
             <Link
@@ -46,7 +46,7 @@ export default async function BrandsPage({ params }: PageProps<"/[lang]/brands">
               className="group card flex flex-col gap-6 p-8 transition hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] sm:flex-row sm:items-center"
             >
               <div className="relative h-28 w-40 shrink-0">
-                {logo && <Image src={logo.src} alt={`${b.name} logo`} fill sizes="160px" className="object-contain" />}
+                {logo && <Image src={logo} alt={`${b.name} logo`} fill sizes="160px" className="object-contain" />}
               </div>
               <div>
                 <h2 className="font-display text-2xl font-semibold group-hover:text-brand">{b.name}</h2>

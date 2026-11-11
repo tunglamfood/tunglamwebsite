@@ -25,6 +25,12 @@ scripts/                seed.mjs, kie-image.mjs, qa.mjs
 docs/                   SEO strategy, deployment, content review
 ```
 
+## Admin panel
+`/admin` — password-only (`ADMIN_PASSWORD`), HMAC-signed httpOnly session cookie (`src/lib/admin/session.ts`),
+checked in `src/proxy.ts`, every admin page (`requireAdmin`) and every server action (`src/lib/admin/actions.ts`).
+Separate root layout `src/app/admin/layout.tsx` (neutral `.admin-theme`, noindex). Saves call `updateTag("content")`.
+**The admin is now the source of truth for content** — don't re-run `db:seed` (it refuses without `--force`).
+
 ## Commands
 `npm run dev` · `npm run build` · `npm run typecheck` · `npm run lint` · `npm run qa` · `npm run db:seed` · `npm run image:generate`
 

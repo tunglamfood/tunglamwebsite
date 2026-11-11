@@ -9,7 +9,7 @@ import { FaqList } from "@/components/ui/faq-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ProductGrid, toCardData } from "./product-card";
 import clsx from "clsx";
-import { SERIES_IMAGES } from "@/components/brand/brand-logos";
+import { seriesImageSrc } from "@/components/brand/brand-logos";
 
 
 export function CategoryView({ category, catalog, locale, dict: d }: { category: Category; catalog: Catalog; locale: Locale; dict: Dictionary }) {
@@ -22,7 +22,7 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
   const name = t(category.name, locale) ?? category.slug;
   const intro = (t(category.intro, locale) ?? "").split(/\n\n+/).filter(Boolean);
   const faqs = (category.faqs ?? []).map((f) => ({ q: t(f.q, locale) ?? "", a: t(f.a, locale) ?? "" })).filter((f) => f.q && f.a);
-  const heroImage = SERIES_IMAGES[series.slug];
+  const heroImage = seriesImageSrc(series);
 
   const crumbs = [
     { name: d.common.breadcrumbHome, href: p("/") },

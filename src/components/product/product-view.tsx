@@ -83,6 +83,15 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
               />
             )}
           </div>
+          {product.images.length > 1 && (
+            <ul className="mx-auto mt-3 grid max-w-md grid-cols-4 gap-2 lg:max-w-none">
+              {product.images.slice(1, 9).map((im) => (
+                <li key={im.path} className="relative aspect-square overflow-hidden rounded-xl border border-line bg-white">
+                  <Image src={mediaUrl(im.path)!} alt={name} fill sizes="120px" className="object-contain p-2" />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div>

@@ -5,6 +5,10 @@
  *
  *   node --env-file=.env scripts/seed.mjs            # everything
  *   node --env-file=.env scripts/seed.mjs --no-media # skip storage upload
+ *
+ * ⚠ Content is now managed in the admin panel (/admin). Re-seeding OVERWRITES admin edits
+ *   (products/categories/brands/recipes by slug) and REPLACES all FAQs, so it refuses to run
+ *   against a database that already has products unless you pass --force.
  */
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -13,6 +17,7 @@ import { createClient } from "@supabase/supabase-js";
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
 const SEED = join(ROOT, "supabase/seed");
 const skipMedia = process.argv.includes("--no-media");
+const force = process.argv.includes("--force");
 
 const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
   auth: { persistSession: false },
@@ -60,6 +65,14 @@ const [base, content, taxonomy, recipesBase, recipes, faqs] = await Promise.all(
   json("recipes.content.json"),
   json("faqs.content.json"),
 ]);
+
+{
+  const { count } = await sb.from("products").select("id", { count: "exact", head: true });
+  if (count && !force) {
+    throw new Error(`Database already has ${count} products. Seeding would overwrite edits made in /admin.
+Re-run with --force if you really want to reset content from supabase/seed/.`);
+  }
+}
 
 if (!skipMedia) {
   await uploadDir("products");

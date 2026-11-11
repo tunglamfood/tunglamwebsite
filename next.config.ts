@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   // Classic static generation + ISR (see src/lib/data.ts for revalidation tags).
   cacheComponents: false,
   poweredByHeader: false,
+  experimental: {
+    // Admin image uploads (already resized to WebP in the browser; Vercel caps bodies at 4.5 MB).
+    serverActions: { bodySizeLimit: "4.5mb" },
+  },
   turbopack: {
     rules: {
       "*.css": {

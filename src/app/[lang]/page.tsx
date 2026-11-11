@@ -13,7 +13,7 @@ import { CertBadges } from "@/components/ui/cert-badges";
 import { ProductGrid, toCardData } from "@/components/product/product-card";
 import { RecipeCard } from "@/components/recipe/recipe-card";
 import { WhatsAppIcon } from "@/components/ui/icons";
-import { BRAND_LOGOS, SERIES_IMAGES } from "@/components/brand/brand-logos";
+import { brandLogoSrc, seriesImageSrc } from "@/components/brand/brand-logos";
 
 export const revalidate = 3600;
 
@@ -111,7 +111,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                 className="group relative isolate flex aspect-[4/5] w-[80%] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-[1.5rem] p-5 text-white shadow-[var(--shadow-card)] sm:w-[55%] sm:p-7 md:w-auto md:rounded-[1.75rem]"
               >
                 <Image
-                  src={SERIES_IMAGES[s.slug] ?? "/images/hero.webp"}
+                  src={seriesImageSrc(s)}
                   alt=""
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
@@ -176,7 +176,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <SectionHeading title={d.home.brandsTitle} text={d.home.brandsText} align="center" />
         <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
           {brands.map((b) => {
-            const logo = BRAND_LOGOS[b.slug];
+            const logo = brandLogoSrc(b);
             return (
               <li key={b.slug}>
                 <Link
@@ -184,7 +184,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                   className="group card flex h-full flex-col items-center gap-3 p-4 text-center transition hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] sm:gap-4 sm:p-6"
                 >
                   <div className="relative h-16 w-full sm:h-24">
-                    {logo && <Image src={logo.src} alt={`${b.name} logo`} fill sizes="200px" className="object-contain" />}
+                    {logo && <Image src={logo} alt={`${b.name} logo`} fill sizes="200px" className="object-contain" />}
                   </div>
                   <p className="text-xs leading-snug text-muted sm:text-sm">{t(b.tagline, lang)}</p>
                 </Link>

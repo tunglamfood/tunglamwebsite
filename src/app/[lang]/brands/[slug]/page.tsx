@@ -8,7 +8,7 @@ import { ORG_ID, absoluteUrl, itemListJsonLd, pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/page-header";
 import { ProductGrid, toCardData } from "@/components/product/product-card";
 import { JsonLd } from "@/components/seo/json-ld";
-import { BRAND_LOGOS } from "@/components/brand/brand-logos";
+import { brandLogoSrc } from "@/components/brand/brand-logos";
 
 export const revalidate = 3600;
 
@@ -43,7 +43,7 @@ export default async function BrandPage({ params }: PageProps<"/[lang]/brands/[s
   const cards = products
     .filter((x) => x.brand_id === brand.id)
     .map((x) => toCardData(x, lang, brand, seriesOf(categoryById.get(x.category_id ?? ""))?.slug));
-  const logo = BRAND_LOGOS[brand.slug];
+  const logo = brandLogoSrc(brand);
   const description = (t(brand.description, lang) ?? "").split(/\n\n+/).filter(Boolean);
 
   return (
@@ -60,7 +60,7 @@ export default async function BrandPage({ params }: PageProps<"/[lang]/brands/[s
         <div className="mt-8 grid items-center gap-8 md:grid-cols-[auto_1fr]">
           {logo && (
             <div className="relative h-32 w-48 rounded-2xl bg-white p-4 shadow-[var(--shadow-card)]">
-              <Image src={logo.src} alt={`${brand.name} logo`} fill sizes="192px" className="object-contain p-4" />
+              <Image src={logo} alt={`${brand.name} logo`} fill sizes="192px" className="object-contain p-4" />
             </div>
           )}
           <div className="prose-tl max-w-2xl">{description.map((x, i) => <p key={i}>{x}</p>)}</div>
@@ -77,7 +77,7 @@ export default async function BrandPage({ params }: PageProps<"/[lang]/brands/[s
             "@type": "Brand",
             name: brand.name,
             url: absoluteUrl(p(`/brands/${brand.slug}`)),
-            ...(logo ? { logo: absoluteUrl(logo.src) } : {}),
+            ...(logo ? { logo: logo.startsWith("http") ? logo : absoluteUrl(logo) } : {}),
             description: t(brand.description, lang),
             parentOrganization: { "@id": ORG_ID },
           },
