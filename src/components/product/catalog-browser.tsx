@@ -38,14 +38,35 @@ export function CatalogBrowser({
       active ? "bg-ink text-white" : "bg-white text-ink-soft ring-1 ring-line hover:ring-ink/30",
     );
 
-  // Mobile: each chip row scrolls sideways instead of wrapping into a tall block.
-  const rowClass =
-    "-mx-4 flex items-center gap-2 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden";
+  const rowClass = "flex flex-wrap items-center gap-2";
+  const selectClass = "h-10 w-full min-w-0 rounded-full border border-line bg-white px-3 text-sm font-medium text-ink outline-none focus:border-brand";
 
   return (
     <div>
       <div className="mb-6 flex flex-col gap-3 rounded-[var(--radius-card)] border border-line bg-white/70 p-4 sm:mb-8 sm:gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:hidden">
+          <select value={s} onChange={(e) => setS(e.target.value)} aria-label={labels.series} className={selectClass}>
+            <option value="">
+              {labels.series}: {labels.all}
+            </option>
+            {series.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+          <select value={b} onChange={(e) => setB(e.target.value)} aria-label={labels.brand} className={selectClass}>
+            <option value="">
+              {labels.brand}: {labels.all}
+            </option>
+            {brands.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="hidden min-w-0 sm:flex sm:flex-wrap sm:items-center sm:gap-6">
           <div className={rowClass} role="group" aria-label={labels.series}>
             <span className="mr-1 shrink-0 text-xs font-semibold uppercase tracking-wider text-muted">{labels.series}</span>
             <button type="button" className={chip(!s)} onClick={() => setS("")} aria-pressed={!s}>

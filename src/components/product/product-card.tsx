@@ -55,8 +55,8 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-1.5 p-3 sm:p-5">
-        <h3 className="line-clamp-3 text-[0.9rem] font-semibold leading-snug text-ink group-hover:text-brand sm:text-base">{product.name}</h3>
+      <div className="flex flex-1 flex-col gap-1 p-3 sm:gap-1.5 sm:p-5">
+        <h3 className="line-clamp-2 min-h-[2.5rem] text-[0.9rem] font-semibold leading-snug text-ink group-hover:text-brand sm:min-h-0 sm:text-base">{product.name}</h3>
         {product.short && <p className="hidden text-sm text-muted sm:line-clamp-2">{product.short}</p>}
         <div className="mt-auto flex items-center justify-between pt-2 text-xs sm:pt-3 sm:text-sm">
           {product.netWeight ? (
@@ -73,18 +73,12 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
   );
 }
 
-/** `carousel`: on phones, show a swipeable row instead of a long 2-column stack. */
-export function ProductGrid({ products, priorityCount = 0, carousel }: { products: ProductCardData[]; priorityCount?: number; carousel?: boolean }) {
+/** `mobileLimit`: on phones show only the first N products (the rest appear from tablet width up). */
+export function ProductGrid({ products, priorityCount = 0, mobileLimit }: { products: ProductCardData[]; priorityCount?: number; mobileLimit?: number }) {
   return (
-    <ul
-      className={
-        carousel
-          ? "-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 md:grid-cols-3 xl:grid-cols-4 [&::-webkit-scrollbar]:hidden"
-          : "grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4"
-      }
-    >
+    <ul className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4">
       {products.map((p, i) => (
-        <li key={p.slug} className={carousel ? "w-[47%] shrink-0 snap-start sm:w-auto" : undefined}>
+        <li key={p.slug} className={mobileLimit && i >= mobileLimit ? "hidden sm:block" : undefined}>
           <ProductCard product={p} priority={i < priorityCount} />
         </li>
       ))}

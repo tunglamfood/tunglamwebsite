@@ -188,16 +188,16 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
       {used.length > 0 && (
         <section className="container-x py-12">
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.recipes.productsUsed}</h2>
-          <ProductGrid products={used} carousel />
+          <ProductGrid products={used} mobileLimit={4} />
         </section>
       )}
 
       {more.length > 0 && (
         <section className="container-x py-12">
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.recipes.more}</h2>
-          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {more.map((x) => (
-              <div key={x.slug} className="w-[80%] shrink-0 snap-start sm:w-auto">
+              <div key={x.slug}>
                 <RecipeCard recipe={x} locale={lang} dict={d} />
               </div>
             ))}

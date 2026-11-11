@@ -34,7 +34,7 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
   return (
     <>
       <PageHeader crumbs={crumbs} title={name} lead={t(category.tagline, locale)} eyebrow={parent ? t(parent.name, locale) : undefined}>
-        <nav aria-label={d.products.inRange} className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:mt-8 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
+        <nav aria-label={d.products.inRange} className="mt-6 flex flex-wrap gap-2 sm:mt-8">
           <Link
             href={p(`/products/${series.slug}`)}
             className={clsx(

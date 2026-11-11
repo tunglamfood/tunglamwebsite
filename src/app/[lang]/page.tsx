@@ -22,8 +22,6 @@ export const revalidate = 3600;
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 const H2 = "font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-ink sm:text-4xl";
 const LEAD = "mt-2 text-base text-ink-soft sm:mt-3 sm:text-lg";
-const CAROUSEL =
-  "-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -72,7 +70,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               {titleB}
             </h1>
             <p className="order-5 mt-6 max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg lg:mt-6">{d.home.heroText}</p>
-            <div className="order-4 mt-6 grid grid-cols-2 gap-3 max-sm:[&>a]:px-2 max-sm:[&>a]:text-[0.9rem] sm:flex sm:flex-wrap lg:mt-8">
+            <div className="order-4 mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:mt-8">
               <Link href={p("/products")} className={buttonClass("primary", "lg")}>
                 {d.cta.explore} <ArrowRight className="size-4" aria-hidden />
               </Link>
@@ -87,14 +85,14 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           </div>
 
           {/* Food collage */}
-          <div className="relative order-3 mx-auto mt-4 aspect-square w-full max-w-[19.5rem] sm:max-w-[30rem] lg:order-none lg:mt-0 lg:max-w-none">
-            <div aria-hidden className="absolute inset-[8%] rounded-full bg-gradient-to-br from-sun-soft to-sand" />
-            <div className="absolute inset-[11%] animate-pop">
+          <div className="relative order-3 mx-auto mt-6 aspect-square w-full max-w-[16rem] sm:max-w-[26rem] lg:order-none lg:mt-0 lg:max-w-none">
+            <div aria-hidden className="absolute inset-0 rounded-full bg-gradient-to-br from-sun-soft to-sand lg:inset-[8%]" />
+            <div className="absolute inset-[5%] animate-pop lg:inset-[11%]">
               <Image src="/images/cut/hotpot.webp" alt="" fill priority sizes="(min-width: 1024px) 40vw, 80vw" className="object-contain drop-shadow-[0_30px_30px_rgb(31_27_23/0.22)]" />
             </div>
-            <Floaty name="tofu-puffs" className="left-0 top-[3%] w-[27%]" size={170} rotate={-12} priority />
-            <Floaty name="fish-balls" className="right-0 top-[12%] w-[25%]" size={170} rotate={14} delay={1.2} slow priority />
-            <Floaty name="egg-tofu" className="-left-[1%] bottom-[4%] w-[27%]" size={170} rotate={8} delay={0.6} slow />
+            <Floaty name="tofu-puffs" className="left-0 top-[3%] hidden w-[27%] lg:block" size={170} rotate={-12} priority />
+            <Floaty name="fish-balls" className="right-0 top-[12%] hidden w-[25%] lg:block" size={170} rotate={14} delay={1.2} slow priority />
+            <Floaty name="egg-tofu" className="-left-[1%] bottom-[4%] hidden w-[27%] lg:block" size={170} rotate={8} delay={0.6} slow />
           </div>
         </div>
       </section>
@@ -125,24 +123,24 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           <h2 className={H2}>{d.home.seriesTitle}</h2>
           <p className={LEAD}>{d.home.seriesText}</p>
         </div>
-        <div className={`${CAROUSEL} md:grid-cols-3`}>
+        <div className="grid gap-4 md:grid-cols-3 md:gap-6">
           {series.map((s, i) => (
             <Link
               key={s.slug}
               href={p(`/products/${s.slug}`)}
-              className="reveal group flex w-[80%] shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-white shadow-[var(--shadow-card)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] sm:w-auto"
+              className="reveal group flex overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-card)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] md:flex-col md:rounded-3xl"
               style={delay(i * 100)}
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image src={seriesImageSrc(s)} alt="" fill sizes="(min-width: 768px) 33vw, 80vw" className="object-cover transition duration-700 group-hover:scale-105" />
+              <div className="relative w-[36%] shrink-0 overflow-hidden md:aspect-[4/3] md:w-auto">
+                <Image src={seriesImageSrc(s)} alt="" fill sizes="(min-width: 768px) 33vw, 40vw" className="object-cover transition duration-700 group-hover:scale-105" />
               </div>
-              <div className="flex flex-1 flex-col p-5 sm:p-7">
+              <div className="flex min-w-0 flex-1 flex-col p-4 md:p-7">
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted">
                   {productsIn(s).length} {d.home.stats.products.toLowerCase()}
                 </p>
-                <h3 className="mt-1.5 font-display text-2xl font-semibold text-ink">{t(s.name, lang)}</h3>
-                <p className="mt-2 text-sm text-ink-soft sm:text-base">{t(s.tagline, lang)}</p>
-                <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-brand">
+                <h3 className="mt-1 font-display text-xl font-semibold text-ink md:mt-1.5 md:text-2xl">{t(s.name, lang)}</h3>
+                <p className="mt-1 line-clamp-2 text-sm text-ink-soft md:mt-2 md:line-clamp-none md:text-base">{t(s.tagline, lang)}</p>
+                <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm font-semibold text-brand md:pt-5">
                   {d.cta.viewAll} <ArrowRight className="size-4 transition group-hover:translate-x-1" aria-hidden />
                 </span>
               </div>
@@ -160,13 +158,18 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               <h2 className={H2}>{d.home.featuredTitle}</h2>
               <p className={LEAD}>{d.home.featuredText}</p>
             </div>
-            <Link href={p("/products")} className={buttonClass("ghost", "md", "self-start md:self-auto")}>
-              {d.nav.allProducts} <ArrowRight className="size-4" aria-hidden />
-            </Link>
+            <div className="hidden md:block">
+              <Link href={p("/products")} className={buttonClass("ghost", "md")}>
+                {d.nav.allProducts} <ArrowRight className="size-4" aria-hidden />
+              </Link>
+            </div>
           </div>
           <div className="reveal">
-            <ProductGrid products={featured} carousel />
+            <ProductGrid products={featured} mobileLimit={4} />
           </div>
+          <Link href={p("/products")} className={buttonClass("ghost", "md", "mt-6 w-full md:!hidden")}>
+            {d.nav.allProducts} <ArrowRight className="size-4" aria-hidden />
+          </Link>
         </div>
       </section>
 
@@ -250,17 +253,22 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               <h2 className={H2}>{d.home.recipesTitle}</h2>
               <p className={LEAD}>{d.home.recipesText}</p>
             </div>
-            <Link href={p("/recipes")} className={buttonClass("ghost", "md", "self-start md:self-auto")}>
-              {d.cta.viewAll} <ArrowRight className="size-4" aria-hidden />
-            </Link>
+            <div className="hidden md:block">
+              <Link href={p("/recipes")} className={buttonClass("ghost", "md")}>
+                {d.cta.viewAll} <ArrowRight className="size-4" aria-hidden />
+              </Link>
+            </div>
           </div>
-          <div className={`${CAROUSEL} sm:grid-cols-2 lg:grid-cols-3`}>
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {recipes.slice(0, 3).map((r, i) => (
-              <div key={r.slug} className="reveal w-[80%] shrink-0 snap-start sm:w-auto" style={delay(i * 100)}>
+              <div key={r.slug} className="reveal" style={delay(i * 100)}>
                 <RecipeCard recipe={r} locale={lang} dict={d} />
               </div>
             ))}
           </div>
+          <Link href={p("/recipes")} className={buttonClass("ghost", "md", "mt-6 w-full md:!hidden")}>
+            {d.cta.viewAll} <ArrowRight className="size-4" aria-hidden />
+          </Link>
         </section>
       )}
 
@@ -299,7 +307,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             src={`https://maps.google.com/maps?q=${SITE.geo.lat},${SITE.geo.lng}&z=15&output=embed`}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="min-h-80 w-full border-0"
+            className="min-h-60 w-full border-0 sm:min-h-80"
           />
         </div>
       </section>
