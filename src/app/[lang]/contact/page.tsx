@@ -31,8 +31,6 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
   return (
     <>
       <PageHeader
-        cut="cincau"
-        cut2="chili"
         crumbs={[
           { name: d.common.breadcrumbHome, href: p("/") },
           { name: d.nav.contact, href: p("/contact") },
@@ -46,7 +44,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
             {rows.map((r) => {
               const inner = (
                 <>
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl border-2 border-ink bg-sun text-ink">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand">
                     <r.icon className="size-5" aria-hidden />
                   </span>
                   <span>
@@ -58,11 +56,11 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
               return (
                 <li key={r.label}>
                   {r.href ? (
-                    <a href={r.href} {...(r.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})} className="pop-shadow flex gap-4 rounded-2xl bg-white p-5">
+                    <a href={r.href} {...(r.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})} className="border border-line shadow-[var(--shadow-card)] flex gap-4 rounded-2xl bg-white p-5">
                       {inner}
                     </a>
                   ) : (
-                    <div className="flex gap-4 rounded-2xl border-2 border-ink bg-white p-5">{inner}</div>
+                    <div className="flex gap-4 rounded-2xl border border-line bg-white p-5">{inner}</div>
                   )}
                 </li>
               );
@@ -72,7 +70,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
             <WhatsAppIcon /> {d.cta.whatsapp} · {SITE.phoneDisplay}
           </a>
         </div>
-        <div className="reveal rounded-[1.5rem] border-2 border-ink bg-white p-5 shadow-[6px_6px_0_var(--color-ink)] sm:rounded-[2rem] sm:p-10" data-dir="right">
+        <div className="reveal rounded-[1.5rem] border border-line bg-white p-5 shadow-[var(--shadow-card)] sm:rounded-[2rem] sm:p-10" data-dir="right">
           <InquiryForm labels={d.form} locale={lang} kinds={["general", "wholesale", "product"]} whatsappHref={whatsappLink()} />
         </div>
       </section>

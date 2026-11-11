@@ -25,8 +25,6 @@ export default async function RecipesPage({ params }: PageProps<"/[lang]/recipes
   return (
     <>
       <PageHeader
-        cut="cendol"
-        cut2="chili"
         crumbs={[
           { name: d.common.breadcrumbHome, href: localePath(lang) },
           { name: d.recipes.title, href: localePath(lang, "/recipes") },

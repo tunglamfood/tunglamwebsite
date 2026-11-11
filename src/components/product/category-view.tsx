@@ -9,11 +9,8 @@ import { FaqList } from "@/components/ui/faq-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ProductGrid, toCardData } from "./product-card";
 import clsx from "clsx";
-import type { Cutout } from "@/components/ui/lively";
 import { seriesImageSrc } from "@/components/brand/brand-logos";
 
-
-const SERIES_CUT: Record<string, Cutout> = { "tofu-series": "tofu-puffs", "steamboat-series": "fish-balls", "dessert-series": "cendol" };
 
 export function CategoryView({ category, catalog, locale, dict: d }: { category: Category; catalog: Catalog; locale: Locale; dict: Dictionary }) {
   const p = (path: string) => localePath(locale, path);
@@ -36,13 +33,13 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
 
   return (
     <>
-      <PageHeader cut={SERIES_CUT[series.slug] ?? "hotpot"} crumbs={crumbs} title={name} lead={t(category.tagline, locale)} eyebrow={parent ? t(parent.name, locale) : undefined}>
+      <PageHeader crumbs={crumbs} title={name} lead={t(category.tagline, locale)} eyebrow={parent ? t(parent.name, locale) : undefined}>
         <nav aria-label={d.products.inRange} className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:mt-8 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
           <Link
             href={p(`/products/${series.slug}`)}
             className={clsx(
               "shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition",
-              category.id === series.id ? "border-2 border-ink bg-ink text-white" : "border-2 border-ink/15 bg-white text-ink-soft hover:border-ink",
+              category.id === series.id ? "border border-line bg-ink text-white" : "border border-line bg-white text-ink-soft hover:border-ink/30",
             )}
           >
             {d.products.filterAll}
@@ -54,7 +51,7 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
               aria-current={c.id === category.id ? "page" : undefined}
               className={clsx(
                 "shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition",
-                c.id === category.id ? "border-2 border-ink bg-ink text-white" : "border-2 border-ink/15 bg-white text-ink-soft hover:border-ink",
+                c.id === category.id ? "border border-line bg-ink text-white" : "border border-line bg-white text-ink-soft hover:border-ink/30",
               )}
             >
               {t(c.name, locale)}
@@ -77,7 +74,7 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
             ))}
           </div>
           {heroImage && (
-            <div className="reveal pop-shadow relative aspect-[4/3] rotate-1 overflow-hidden rounded-[1.75rem] lg:aspect-[4/5]" data-dir="right">
+            <div className="reveal border border-line shadow-[var(--shadow-card)] relative aspect-[4/3] overflow-hidden rounded-[1.75rem] lg:aspect-[4/5]" data-dir="right">
               <Image src={heroImage} alt="" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
             </div>
           )}

@@ -71,7 +71,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
 
       <section className="container-x grid gap-7 py-6 sm:gap-10 sm:py-10 lg:grid-cols-2 lg:gap-16">
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <div className="relative mx-auto aspect-[5/4] max-w-md overflow-hidden rounded-[1.5rem] border-2 border-ink bg-white shadow-[6px_6px_0_var(--color-ink)] sm:aspect-[4/5] sm:rounded-[2rem] lg:max-w-none">
+          <div className="relative mx-auto aspect-[5/4] max-w-md overflow-hidden rounded-[1.5rem] border border-line bg-white shadow-[var(--shadow-card)] sm:aspect-[4/5] sm:rounded-[2rem] lg:max-w-none">
             {imgUrl && (
               <Image
                 src={imgUrl}
@@ -160,7 +160,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
           )}
 
           {ideas.length > 0 && (
-            <div className="mt-10 rounded-2xl border-2 border-ink bg-sun-soft p-6">
+            <div className="mt-10 rounded-2xl border border-line bg-sand/50 p-6">
               <h2 className="mb-4 inline-flex items-center gap-2 font-display text-2xl font-semibold"><Utensils className="size-5 text-gold" aria-hidden />{d.products.servingIdeas}</h2>
               <ul className="flex flex-wrap gap-2">
                 {ideas.map((x, i) => <li key={i} className="rounded-full bg-white px-3.5 py-1.5 text-sm font-medium text-ink-soft">{x}</li>)}
@@ -184,7 +184,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
       )}
 
       <section id="enquire" className="container-x py-12">
-        <div className="reveal pop-shadow grid gap-6 rounded-[1.5rem] bg-white p-5 sm:gap-10 sm:rounded-[2rem] sm:p-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="reveal border border-line shadow-[var(--shadow-card)] grid gap-6 rounded-[1.5rem] bg-white p-5 sm:gap-10 sm:rounded-[2rem] sm:p-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">{d.products.enquireTitle}</h2>
             <p className="mt-3 text-ink-soft">{d.products.enquireText}</p>
@@ -209,7 +209,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
       )}
 
       {/* Phones/tablets: actions stay reachable at the bottom of the screen (replaces the floating WhatsApp button). */}
-      <div data-sticky-cta className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-ink bg-cream/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur lg:hidden">
+      <div data-sticky-cta className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-cream/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur lg:hidden">
         <div className="mx-auto grid max-w-md grid-cols-2 gap-3">
           <a href={whatsappLink(waText)} target="_blank" rel="noopener" className={buttonClass("whatsapp", "md", "px-3")}>
             <WhatsAppIcon /> {d.cta.whatsapp}

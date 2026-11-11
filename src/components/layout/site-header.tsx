@@ -25,7 +25,7 @@ export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dic
         </a>
       </div>
     </div>
-    <header className="sticky top-0 z-50 border-b-2 border-ink bg-cream/90 backdrop-blur-xl supports-[backdrop-filter]:bg-cream/80">
+    <header className="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-xl supports-[backdrop-filter]:bg-cream/80">
       <div className="container-x flex h-16 items-center gap-6 sm:h-[4.5rem]">
         <LogoLink href={localePath(locale)} label="Tung Lam Food — home" className="shrink-0">
           <Image src="/brand/logo.webp" alt="Tung Lam" width={299} height={171} priority className="h-10 w-auto sm:h-11" />
@@ -41,7 +41,7 @@ export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dic
                     className="inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[0.95rem] font-medium text-ink-soft transition hover:bg-sand hover:text-ink"
                   >
                     {item.label}
-                    <ChevronDown className="size-4 transition group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden />
+                    <ChevronDown className="size-4 transition group-focus-within:rotate-180" aria-hidden />
                   </Link>
                   <div className="invisible absolute left-1/2 top-full w-[22rem] -translate-x-1/2 pt-3 opacity-0 transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                     <ul className="card overflow-hidden p-2">

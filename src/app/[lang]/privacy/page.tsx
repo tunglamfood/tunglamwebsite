@@ -21,8 +21,6 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
   return (
     <>
       <PageHeader
-        cut="cincau"
-        cut2="chili"
         crumbs={[
           { name: d.common.breadcrumbHome, href: p("/") },
           { name: d.privacy.title, href: p("/privacy") },

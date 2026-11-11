@@ -117,7 +117,7 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
           <p className="mt-4 text-base leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">{t(r.intro, lang) ?? t(r.excerpt, lang)}</p>
           <ul className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
             {meta.map((m, i) => (
-              <li key={i} className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-white px-3.5 py-1.5 text-sm">
+              <li key={i} className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm">
                 <m.icon className="size-4 text-brand" aria-hidden />
                 {m.label && <span className="text-muted">{m.label}</span>}
                 <span className="font-semibold">{m.value}</span>
@@ -129,7 +129,7 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
           </p>
         </div>
         {img && (
-          <div className="relative order-first aspect-[4/3] overflow-hidden rounded-[1.5rem] border-2 border-ink bg-sand shadow-[6px_6px_0_var(--color-ink)] sm:rounded-[2rem] lg:order-none lg:rotate-1">
+          <div className="relative order-first aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-line bg-sand shadow-[var(--shadow-card)] sm:rounded-[2rem] lg:order-none">
             <Image src={img} alt={title} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
         )}
@@ -137,7 +137,7 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
 
       <div className="container-x grid gap-10 py-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-2xl border-2 border-ink bg-sun-soft p-5 sm:p-8">
+          <div className="rounded-2xl border border-line bg-sand/50 p-5 sm:p-8">
             <h2 className="mb-5 font-display text-2xl font-semibold">{d.recipes.ingredients}</h2>
             <div className="space-y-6">
               {r.ingredients.map((g, gi) => (

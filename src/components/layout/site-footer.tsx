@@ -6,14 +6,12 @@ import type { Category } from "@/lib/data";
 import { localePath, t, type Locale } from "@/lib/i18n";
 import { SITE, fullAddress, whatsappLink } from "@/lib/site";
 import { CertBadges } from "@/components/ui/cert-badges";
-import { Wave } from "@/components/ui/lively";
 
 export function SiteFooter({ locale, dict, series }: { locale: Locale; dict: Dictionary; series: Category[] }) {
   const p = (path: string) => localePath(locale, path);
   const year = new Date().getFullYear();
   return (
     <footer className="mt-16 sm:mt-24">
-      <Wave className="-mb-px text-ink" />
       <div className="bg-ink text-white/80">
       <div className="container-x grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:py-16 md:gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
         <div className="col-span-2 space-y-5 md:col-span-1">

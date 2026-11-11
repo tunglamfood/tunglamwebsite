@@ -36,7 +36,7 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
   return (
     <Link
       href={product.href}
-      className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border-2 border-ink/10 bg-white transition duration-200 hover:-translate-x-0.5 hover:-translate-y-1 hover:border-ink hover:shadow-[5px_5px_0_var(--color-ink)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-white shadow-[var(--shadow-card)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
     >
       <div className="relative aspect-square overflow-hidden border-b border-line/60 bg-white sm:aspect-[4/5]">
         {product.image && (
@@ -46,11 +46,11 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
             fill
             priority={priority}
             sizes="(min-width: 1280px) 280px, (min-width: 768px) 30vw, 50vw"
-            className="object-contain p-1.5 transition duration-500 group-hover:-rotate-3 group-hover:scale-110 sm:p-5"
+            className="object-contain p-1.5 transition duration-500 group-hover:scale-105 sm:p-5"
           />
         )}
         {product.brand && (
-          <span className="absolute left-2 top-2 rounded-full bg-sun px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-ink sm:left-3 sm:top-3 sm:px-2.5 sm:py-1 sm:text-[0.7rem]">
+          <span className="absolute left-2 top-2 rounded-full bg-cream px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-ink-soft sm:left-3 sm:top-3 sm:px-2.5 sm:py-1 sm:text-[0.7rem]">
             {product.brand}
           </span>
         )}

@@ -15,7 +15,7 @@
   --color-ink-soft: #4a423b;
   --color-muted: #7a6f65;
 
-  --color-cream: #fbf7f0;
+  --color-cream: #fcfaf6;
   --color-sand: #f3ebdf;
   --color-sand-deep: #e8dccb;
   --color-line: #e6dccd;
@@ -108,7 +108,7 @@
   --color-sakura: #e6297f;
   --color-sakura-soft: #fde7f1;
 
-  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee: marquee 55s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 9s ease-in-out infinite;
   --animate-spin-slow: spin 22s linear infinite;
@@ -135,28 +135,6 @@
   .js .reveal[data-dir="zoom"] { transform: scale(0.92); }
   .js .reveal.in { opacity: 1; transform: none; }
 
-  /* Yellow marker highlight behind a word */
-  .marker { position: relative; white-space: nowrap; z-index: 0; }
-  .marker::after {
-    content: ""; position: absolute; left: -0.08em; right: -0.08em; bottom: 0.06em; height: 0.42em; z-index: -1;
-    background: var(--color-sun); border-radius: 0.3em 0.9em 0.4em 0.8em; transform: rotate(-1.2deg);
-  }
-
-  /* Dotted pattern overlay */
-  .dots { background-image: radial-gradient(currentColor 1.5px, transparent 1.6px); background-size: 18px 18px; }
-
-  /* Sticker-style pill */
-  .sticker {
-    display: inline-flex; align-items: center; gap: .4rem; border-radius: 999px; padding: .35rem .85rem;
-    font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-    border: 2px solid var(--color-ink); background: var(--color-sun); color: var(--color-ink);
-    box-shadow: 3px 3px 0 var(--color-ink);
-  }
-
-  /* Chunky "pressable" card shadow */
-  .pop-shadow { box-shadow: 5px 5px 0 var(--color-ink); border: 2px solid var(--color-ink); transition: transform .2s ease, box-shadow .2s ease; }
-  a.pop-shadow:hover, .group:hover > .pop-shadow { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--color-ink); }
-
   .marquee-mask { mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
 }
 
@@ -166,11 +144,4 @@
   body:has([data-sticky-cta]) footer { padding-bottom: 4.5rem; }
 }
 
-/* Highlight that can wrap across lines (page titles) */
-.marker-wrap {
-  background-image: linear-gradient(transparent 60%, var(--color-sun) 60%, var(--color-sun) 94%, transparent 94%);
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  padding-inline: 0.12em;
-  margin-inline: -0.12em;
-}
+
