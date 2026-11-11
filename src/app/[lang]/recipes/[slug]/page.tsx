@@ -108,16 +108,16 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
         />
       </div>
 
-      <header className="container-x grid items-center gap-10 py-10 lg:grid-cols-2 lg:gap-14">
+      <header className="container-x grid items-center gap-6 py-6 sm:gap-10 sm:py-10 lg:grid-cols-2 lg:gap-14">
         <div>
           <p className="eyebrow mb-4">
             {t(r.cuisine, lang)} · {t(r.course, lang)}
           </p>
-          <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">{title}</h1>
-          <p className="mt-5 text-lg leading-relaxed text-ink-soft">{t(r.intro, lang) ?? t(r.excerpt, lang)}</p>
-          <ul className="mt-8 flex flex-wrap gap-3">
+          <h1 className="font-display text-[2rem] font-bold leading-tight tracking-tight sm:text-5xl">{title}</h1>
+          <p className="mt-4 text-base leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">{t(r.intro, lang) ?? t(r.excerpt, lang)}</p>
+          <ul className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
             {meta.map((m, i) => (
-              <li key={i} className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm shadow-[var(--shadow-card)]">
+              <li key={i} className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-white px-3.5 py-1.5 text-sm">
                 <m.icon className="size-4 text-brand" aria-hidden />
                 {m.label && <span className="text-muted">{m.label}</span>}
                 <span className="font-semibold">{m.value}</span>
@@ -129,7 +129,7 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
           </p>
         </div>
         {img && (
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-sand shadow-[var(--shadow-lift)]">
+          <div className="relative order-first aspect-[4/3] overflow-hidden rounded-[1.5rem] border-2 border-ink bg-sand shadow-[6px_6px_0_var(--color-ink)] sm:rounded-[2rem] lg:order-none lg:rotate-1">
             <Image src={img} alt={title} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
         )}
@@ -137,7 +137,7 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
 
       <div className="container-x grid gap-10 py-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="card p-6 sm:p-8">
+          <div className="rounded-2xl border-2 border-ink bg-sun-soft p-5 sm:p-8">
             <h2 className="mb-5 font-display text-2xl font-semibold">{d.recipes.ingredients}</h2>
             <div className="space-y-6">
               {r.ingredients.map((g, gi) => (
@@ -188,15 +188,19 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
       {used.length > 0 && (
         <section className="container-x py-12">
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.recipes.productsUsed}</h2>
-          <ProductGrid products={used} />
+          <ProductGrid products={used} carousel />
         </section>
       )}
 
       {more.length > 0 && (
         <section className="container-x py-12">
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.recipes.more}</h2>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {more.map((x) => <RecipeCard key={x.slug} recipe={x} locale={lang} dict={d} />)}
+          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:grid-cols-3">
+            {more.map((x) => (
+              <div key={x.slug} className="w-[80%] shrink-0 snap-start sm:w-auto">
+                <RecipeCard recipe={x} locale={lang} dict={d} />
+              </div>
+            ))}
           </div>
         </section>
       )}

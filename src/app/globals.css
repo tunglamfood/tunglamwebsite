@@ -159,3 +159,18 @@
 
   .marquee-mask { mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
 }
+
+/* Pages with a sticky bottom action bar (product pages on phones) hide the floating WhatsApp button and keep the footer clear. */
+@media (max-width: 1023px) {
+  body:has([data-sticky-cta]) .wa-fab { display: none; }
+  body:has([data-sticky-cta]) footer { padding-bottom: 4.5rem; }
+}
+
+/* Highlight that can wrap across lines (page titles) */
+.marker-wrap {
+  background-image: linear-gradient(transparent 60%, var(--color-sun) 60%, var(--color-sun) 94%, transparent 94%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-inline: 0.12em;
+  margin-inline: -0.12em;
+}

@@ -71,7 +71,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
 
       <section className="container-x grid gap-7 py-6 sm:gap-10 sm:py-10 lg:grid-cols-2 lg:gap-16">
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-[1.5rem] border-2 border-ink bg-white shadow-[6px_6px_0_var(--color-ink)] sm:aspect-[4/5] sm:rounded-[2rem] lg:max-w-none">
+          <div className="relative mx-auto aspect-[5/4] max-w-md overflow-hidden rounded-[1.5rem] border-2 border-ink bg-white shadow-[6px_6px_0_var(--color-ink)] sm:aspect-[4/5] sm:rounded-[2rem] lg:max-w-none">
             {imgUrl && (
               <Image
                 src={imgUrl}
@@ -79,7 +79,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
                 fill
                 priority
                 sizes="(min-width: 1024px) 45vw, 100vw"
-                className="animate-pop object-contain p-6 sm:p-12"
+                className="animate-pop object-contain p-4 sm:p-12"
               />
             )}
           </div>
@@ -126,7 +126,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
             )}
           </dl>
 
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
+          <div className="mt-8 hidden flex-wrap gap-3 lg:flex">
             <a href={whatsappLink(waText)} target="_blank" rel="noopener" className={buttonClass("whatsapp", "lg", "px-4")}>
               <WhatsAppIcon /> {d.cta.whatsapp}
             </a>
@@ -173,8 +173,12 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
       {recipes.length > 0 && (
         <section className="container-x py-12">
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.products.usedIn}</h2>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {recipes.map((r) => <RecipeCard key={r.slug} recipe={r} locale={locale} dict={d} />)}
+          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:grid-cols-3">
+            {recipes.map((r) => (
+              <div key={r.slug} className="w-[80%] shrink-0 snap-start sm:w-auto">
+                <RecipeCard recipe={r} locale={locale} dict={d} />
+              </div>
+            ))}
           </div>
         </section>
       )}
@@ -200,9 +204,21 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
       {related.length > 0 && (
         <section className="container-x py-12">
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.products.related}</h2>
-          <ProductGrid products={related} />
+          <ProductGrid products={related} carousel />
         </section>
       )}
+
+      {/* Phones/tablets: actions stay reachable at the bottom of the screen (replaces the floating WhatsApp button). */}
+      <div data-sticky-cta className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-ink bg-cream/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur lg:hidden">
+        <div className="mx-auto grid max-w-md grid-cols-2 gap-3">
+          <a href={whatsappLink(waText)} target="_blank" rel="noopener" className={buttonClass("whatsapp", "md", "px-3")}>
+            <WhatsAppIcon /> {d.cta.whatsapp}
+          </a>
+          <a href="#enquire" className={buttonClass("primary", "md", "px-3")}>
+            {d.cta.enquire}
+          </a>
+        </div>
+      </div>
 
       <JsonLd data={jsonLd} />
     </>

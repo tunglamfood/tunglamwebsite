@@ -68,12 +68,14 @@ export default async function WholesalePage({ params }: PageProps<"/[lang]/whole
             {d.wholesale.why.map((w, i) => {
               const Icon = WHY_ICONS[i % WHY_ICONS.length];
               return (
-                <li key={w.title} className="reveal pop-shadow rounded-2xl bg-white p-6" data-dir="zoom">
-                  <span className="grid size-12 -rotate-6 place-items-center rounded-2xl border-2 border-ink bg-brand text-white">
+                <li key={w.title} className="reveal pop-shadow flex items-start gap-4 rounded-2xl bg-white p-4 sm:block sm:p-6" data-dir="zoom">
+                  <span className="grid size-12 shrink-0 -rotate-6 place-items-center rounded-2xl border-2 border-ink bg-brand text-white">
                     <Icon className="size-6" aria-hidden />
                   </span>
-                  <h3 className="mt-5 text-lg font-semibold">{w.title}</h3>
-                  <p className="mt-2 text-ink-soft">{w.text}</p>
+                  <div>
+                    <h3 className="text-lg font-semibold sm:mt-5">{w.title}</h3>
+                    <p className="mt-1 text-ink-soft sm:mt-2">{w.text}</p>
+                  </div>
                 </li>
               );
             })}

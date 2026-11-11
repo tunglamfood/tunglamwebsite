@@ -69,16 +69,17 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <section className="relative isolate overflow-hidden">
         <div aria-hidden className="absolute -left-32 -top-32 -z-10 size-[26rem] rounded-full bg-sun/40 blur-3xl" />
         <div aria-hidden className="absolute -right-24 top-1/3 -z-10 size-[30rem] rounded-full bg-brand/10 blur-3xl" />
-        <div className="container-x grid items-center gap-10 pb-14 pt-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:pb-20 lg:pt-14">
-          <div className="animate-fade-up">
-            <p className="sticker -rotate-2">{d.home.eyebrow}</p>
-            <h1 className="mt-5 font-display text-[2.5rem] font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl xl:text-7xl">
+        {/* Mobile: one column ordered sticker → headline → food → buttons → text (food + buttons on the first screen). */}
+        <div className="container-x flex flex-col pb-12 pt-6 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-6 lg:pb-20 lg:pt-14">
+          <div className="contents lg:block lg:animate-fade-up">
+            <p className="sticker order-1 -rotate-2 self-start">{d.home.eyebrow}</p>
+            <h1 className="order-2 mt-4 font-display text-[2.35rem] lg:mt-5 font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl xl:text-7xl">
               {titleA}
               {hasHighlight && <span className="marker text-brand">{d.home.heroHighlight}</span>}
               {titleB}
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-soft sm:text-xl">{d.home.heroText}</p>
-            <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap">
+            <p className="order-5 mt-6 max-w-xl text-base leading-relaxed text-ink-soft sm:text-xl lg:mt-5">{d.home.heroText}</p>
+            <div className="order-4 mt-5 grid grid-cols-2 gap-3 max-sm:[&>a]:px-2 max-sm:[&>a]:text-[0.9rem] sm:flex sm:flex-wrap lg:mt-7">
               <Link href={p("/products")} className={buttonClass("primary", "lg", "border-2 border-ink !shadow-[4px_4px_0_var(--color-ink)]")}>
                 {d.cta.explore} <ArrowRight className="size-4" aria-hidden />
               </Link>
@@ -86,14 +87,14 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                 {d.cta.wholesale}
               </Link>
             </div>
-            <div className="mt-8 flex items-center gap-3 sm:gap-4">
+            <div className="order-6 mt-6 flex items-center gap-3 sm:gap-4 lg:mt-8">
               <CertBadges size={48} className="gap-2" />
               <span className="hidden text-sm font-semibold text-ink-soft sm:block">Halal · HACCP · GMP · MeSTI</span>
             </div>
           </div>
 
           {/* Food collage */}
-          <div className="relative mx-auto aspect-square w-full max-w-[24rem] sm:max-w-[32rem] lg:max-w-none">
+          <div className="relative order-3 mx-auto mt-3 aspect-square w-full max-w-[19.5rem] sm:max-w-[30rem] lg:order-none lg:mt-0 lg:max-w-none">
             <div aria-hidden className="absolute inset-[7%] rounded-full border-2 border-ink bg-sun" />
             <div aria-hidden className="dots absolute inset-[7%] rounded-full text-ink/10" />
             <div className="absolute inset-[10%] animate-pop">
@@ -182,7 +183,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             </Link>
           </div>
           <div className="reveal">
-            <ProductGrid products={featured} />
+            <ProductGrid products={featured} carousel />
           </div>
         </div>
       </section>
@@ -276,9 +277,9 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               {d.cta.viewAll} <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:grid-cols-3">
             {recipes.slice(0, 3).map((r, i) => (
-              <div key={r.slug} className="reveal" style={delay(i * 110)}>
+              <div key={r.slug} className="reveal w-[80%] shrink-0 snap-start sm:w-auto" style={delay(i * 110)}>
                 <RecipeCard recipe={r} locale={lang} dict={d} />
               </div>
             ))}

@@ -46,7 +46,7 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
             fill
             priority={priority}
             sizes="(min-width: 1280px) 280px, (min-width: 768px) 30vw, 50vw"
-            className="object-contain p-3 transition duration-500 group-hover:-rotate-3 group-hover:scale-110 sm:p-5"
+            className="object-contain p-1.5 transition duration-500 group-hover:-rotate-3 group-hover:scale-110 sm:p-5"
           />
         )}
         {product.brand && (
@@ -73,11 +73,18 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
   );
 }
 
-export function ProductGrid({ products, priorityCount = 0 }: { products: ProductCardData[]; priorityCount?: number }) {
+/** `carousel`: on phones, show a swipeable row instead of a long 2-column stack. */
+export function ProductGrid({ products, priorityCount = 0, carousel }: { products: ProductCardData[]; priorityCount?: number; carousel?: boolean }) {
   return (
-    <ul className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4">
+    <ul
+      className={
+        carousel
+          ? "-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 md:grid-cols-3 xl:grid-cols-4 [&::-webkit-scrollbar]:hidden"
+          : "grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4"
+      }
+    >
       {products.map((p, i) => (
-        <li key={p.slug}>
+        <li key={p.slug} className={carousel ? "w-[47%] shrink-0 snap-start sm:w-auto" : undefined}>
           <ProductCard product={p} priority={i < priorityCount} />
         </li>
       ))}

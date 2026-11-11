@@ -59,12 +59,14 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
             {d.about.values.map((v, i) => {
               const Icon = VALUE_ICONS[i % VALUE_ICONS.length];
               return (
-                <li key={v.title} className="reveal pop-shadow rounded-2xl bg-white p-6" data-dir="zoom">
-                  <span className="grid size-12 -rotate-6 place-items-center rounded-2xl border-2 border-ink bg-sun text-ink">
+                <li key={v.title} className="reveal pop-shadow flex items-start gap-4 rounded-2xl bg-white p-4 sm:block sm:p-6" data-dir="zoom">
+                  <span className="grid size-12 shrink-0 -rotate-6 place-items-center rounded-2xl border-2 border-ink bg-sun text-ink">
                     <Icon className="size-6" aria-hidden />
                   </span>
-                  <h3 className="mt-5 text-lg font-semibold">{v.title}</h3>
-                  <p className="mt-2 text-ink-soft">{v.text}</p>
+                  <div>
+                    <h3 className="text-lg font-semibold sm:mt-5">{v.title}</h3>
+                    <p className="mt-1 text-ink-soft sm:mt-2">{v.text}</p>
+                  </div>
                 </li>
               );
             })}

@@ -18,7 +18,8 @@ export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dic
     <>
     <div className="bg-ink text-white">
       <div className="container-x flex h-9 items-center justify-center gap-6 text-xs font-medium sm:justify-between">
-        <p className="truncate">{dict.home.announce}</p>
+        <p className="truncate sm:hidden">{dict.products.halal} · {dict.home.eyebrow}</p>
+        <p className="hidden truncate sm:block">{dict.home.announce}</p>
         <a href={whatsappLink()} target="_blank" rel="noopener" className="hidden shrink-0 items-center gap-1.5 font-semibold text-sun hover:underline sm:inline-flex">
           <WhatsAppIcon className="size-3.5 shrink-0" /> {SITE.phoneDisplay}
         </a>
