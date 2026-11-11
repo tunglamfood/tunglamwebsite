@@ -26,7 +26,7 @@
   --color-leaf-soft: #e6f1e3;
 
   --font-sans: var(--font-body), "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
-  --font-display: var(--font-display-face), Georgia, "Songti SC", "Noto Serif SC", serif;
+  --font-display: var(--font-display-face), "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
 
   --radius-card: 1.25rem;
   --shadow-card: 0 1px 2px rgb(31 27 23 / 0.04), 0 8px 24px -12px rgb(31 27 23 / 0.18);
