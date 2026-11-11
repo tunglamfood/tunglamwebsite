@@ -21,6 +21,7 @@ const { values } = parseArgs({
     quality: { type: 'string', default: 'high' },
     format: { type: 'string', default: 'png' },
     ref: { type: 'string', multiple: true },
+    background: { type: 'string' }, // 'transparent' | 'opaque' | 'auto' (1K only)
   },
 })
 
@@ -41,6 +42,7 @@ const body = {
     resolution: '1K',
     quality: values.quality,
     output_format: values.format,
+    ...(values.background ? { background: values.background } : {}),
     ...(refs.length ? { input_urls: refs } : {}),
   },
 }

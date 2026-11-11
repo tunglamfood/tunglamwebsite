@@ -9,11 +9,22 @@ import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
 import { LogoLink } from "./logo-link";
 import { buildNav } from "./nav";
+import { SITE, whatsappLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/ui/icons";
 
 export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dictionary; series: Category[] }) {
   const nav = buildNav(locale, dict, series);
   return (
-    <header className="sticky top-0 z-50 border-b border-line/70 bg-cream/85 backdrop-blur-xl supports-[backdrop-filter]:bg-cream/70">
+    <>
+    <div className="bg-ink text-white">
+      <div className="container-x flex h-9 items-center justify-center gap-6 text-xs font-medium sm:justify-between">
+        <p className="truncate">{dict.home.announce}</p>
+        <a href={whatsappLink()} target="_blank" rel="noopener" className="hidden shrink-0 items-center gap-1.5 font-semibold text-sun hover:underline sm:inline-flex">
+          <WhatsAppIcon className="size-3.5 shrink-0" /> {SITE.phoneDisplay}
+        </a>
+      </div>
+    </div>
+    <header className="sticky top-0 z-50 border-b-2 border-ink bg-cream/90 backdrop-blur-xl supports-[backdrop-filter]:bg-cream/80">
       <div className="container-x flex h-16 items-center gap-6 sm:h-[4.5rem]">
         <LogoLink href={localePath(locale)} label="Tung Lam Food — home" className="shrink-0">
           <Image src="/brand/logo.webp" alt="Tung Lam" width={299} height={171} priority className="h-10 w-auto sm:h-11" />
@@ -69,5 +80,6 @@ export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dic
         </div>
       </div>
     </header>
+    </>
   );
 }

@@ -11,7 +11,7 @@ export function RecipeCard({ recipe, locale, dict }: { recipe: Recipe; locale: L
   const total = (recipe.prep_minutes ?? 0) + (recipe.cook_minutes ?? 0);
   const title = t(recipe.title, locale) ?? recipe.slug;
   return (
-    <Link href={localePath(locale, `/recipes/${recipe.slug}`)} className="group card flex h-full flex-col overflow-hidden">
+    <Link href={localePath(locale, `/recipes/${recipe.slug}`)} className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border-2 border-ink/10 bg-white transition duration-200 hover:-translate-x-0.5 hover:-translate-y-1 hover:border-ink hover:shadow-[5px_5px_0_var(--color-ink)]">
       <div className="relative aspect-[4/3] overflow-hidden bg-sand">
         {img && (
           <Image
@@ -19,7 +19,7 @@ export function RecipeCard({ recipe, locale, dict }: { recipe: Recipe; locale: L
             alt={title}
             fill
             sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="object-cover transition duration-700 group-hover:rotate-1 group-hover:scale-110"
           />
         )}
       </div>

@@ -31,6 +31,8 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
   return (
     <>
       <PageHeader
+        cut="hotpot"
+        cut2="chili"
         crumbs={[
           { name: d.common.breadcrumbHome, href: p("/") },
           { name: d.nav.about, href: p("/about") },
@@ -45,20 +47,20 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
             <p key={i}>{x}</p>
           ))}
         </div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-[var(--shadow-lift)]">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border-2 border-ink shadow-[6px_6px_0_var(--color-ink)] -rotate-1">
           <Image src="/images/craft.webp" alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
         </div>
       </section>
 
-      <section className="bg-sand/60 py-12 sm:py-20">
+      <section className="bg-sun-soft py-12 sm:py-20">
         <div className="container-x">
           <h2 className="mb-6 font-display text-[1.75rem] font-semibold tracking-tight sm:mb-10 sm:text-4xl">{d.about.valuesTitle}</h2>
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {d.about.values.map((v, i) => {
               const Icon = VALUE_ICONS[i % VALUE_ICONS.length];
               return (
-                <li key={v.title} className="card p-6">
-                  <span className="grid size-12 place-items-center rounded-2xl bg-brand-50 text-brand">
+                <li key={v.title} className="reveal pop-shadow rounded-2xl bg-white p-6" data-dir="zoom">
+                  <span className="grid size-12 -rotate-6 place-items-center rounded-2xl border-2 border-ink bg-sun text-ink">
                     <Icon className="size-6" aria-hidden />
                   </span>
                   <h3 className="mt-5 text-lg font-semibold">{v.title}</h3>

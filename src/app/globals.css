@@ -96,3 +96,66 @@
   background: var(--color-cream);
   font-size: 0.9375rem;
 }
+
+/* ---------------------------------------------------------------------------
+   Lively layer: brighter accents, motion, decorative shapes
+--------------------------------------------------------------------------- */
+@theme {
+  --color-sun: #ffc83d;
+  --color-sun-soft: #fff4d1;
+  --color-sun-deep: #f5a800;
+  --color-leaf-bright: #3fa34d;
+  --color-sakura: #e6297f;
+  --color-sakura-soft: #fde7f1;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-spin-slow: spin 22s linear infinite;
+  --animate-pop: pop 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+    50% { transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 4deg)); }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@layer components {
+  /* Scroll reveal (see components/ui/reveal.tsx). Hidden only once JS has marked <html class="js">. */
+  .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--d, 0ms); }
+  .js .reveal[data-dir="left"] { transform: translateX(-36px); }
+  .js .reveal[data-dir="right"] { transform: translateX(36px); }
+  .js .reveal[data-dir="zoom"] { transform: scale(0.92); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  /* Yellow marker highlight behind a word */
+  .marker { position: relative; white-space: nowrap; z-index: 0; }
+  .marker::after {
+    content: ""; position: absolute; left: -0.08em; right: -0.08em; bottom: 0.06em; height: 0.42em; z-index: -1;
+    background: var(--color-sun); border-radius: 0.3em 0.9em 0.4em 0.8em; transform: rotate(-1.2deg);
+  }
+
+  /* Dotted pattern overlay */
+  .dots { background-image: radial-gradient(currentColor 1.5px, transparent 1.6px); background-size: 18px 18px; }
+
+  /* Sticker-style pill */
+  .sticker {
+    display: inline-flex; align-items: center; gap: .4rem; border-radius: 999px; padding: .35rem .85rem;
+    font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    border: 2px solid var(--color-ink); background: var(--color-sun); color: var(--color-ink);
+    box-shadow: 3px 3px 0 var(--color-ink);
+  }
+
+  /* Chunky "pressable" card shadow */
+  .pop-shadow { box-shadow: 5px 5px 0 var(--color-ink); border: 2px solid var(--color-ink); transition: transform .2s ease, box-shadow .2s ease; }
+  a.pop-shadow:hover, .group:hover > .pop-shadow { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--color-ink); }
+
+  .marquee-mask { mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+}

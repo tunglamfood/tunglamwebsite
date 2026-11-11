@@ -40,6 +40,8 @@ const zh: Dictionary = {
   },
   home: {
     eyebrow: "1999年起 · 霹雳制造",
+    announce: "清真认证制造商 · 1999年起霹雳制造 · 欢迎批发询价",
+    heroHighlight: "好味道",
     heroTitle: "冷藏与冷冻好味道，为马来西亚厨房新鲜制作",
     heroText: "嫩滑鸡蛋豆腐、金黄豆卜、弹牙鱼丸与经典甜品——在万里望生产，供应全国家庭、小贩、餐馆与巴刹。",
     stats: { since: "成立于", products: "款产品", brands: "个品牌", series: "大系列" },

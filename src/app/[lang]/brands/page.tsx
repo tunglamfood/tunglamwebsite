@@ -28,6 +28,8 @@ export default async function BrandsPage({ params }: PageProps<"/[lang]/brands">
   return (
     <>
       <PageHeader
+        cut="egg-tofu"
+        cut2="chili"
         crumbs={[
           { name: d.common.breadcrumbHome, href: p("/") },
           { name: d.brands.title, href: p("/brands") },

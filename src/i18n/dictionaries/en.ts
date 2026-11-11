@@ -38,6 +38,8 @@ const en = {
   },
   home: {
     eyebrow: "Made in Perak since 1999",
+    announce: "Halal-certified manufacturer · Made in Perak since 1999 · Wholesale enquiries welcome",
+    heroHighlight: "favourites",
     heroTitle: "Chilled & frozen favourites, made fresh for Malaysian kitchens",
     heroText:
       "Silky egg tofu, golden tofu puffs, bouncy fish balls and classic desserts — produced in Menglembu for families, hawkers, restaurants and wet markets nationwide.",

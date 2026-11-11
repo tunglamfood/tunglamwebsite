@@ -18,6 +18,8 @@ Script: `scripts/kie-image.mjs` → `POST https://api.kie.ai/api/v1/jobs/createT
 then polls `GET /api/v1/jobs/recordInfo?taskId=` until `state === "success"` and downloads `resultJson.resultUrls[0]`.
 A task usually takes 1–9 minutes and costs ~6–9 credits. Run several in parallel in the background.
 
+Transparent cut-outs (floating food decorations in `public/images/cut/`): add `--background transparent` and prompt for an isolated single subject; trim + save as 640px WebP.
+
 Aspect ratios: `1:1, 3:2, 2:3, 4:3, 3:4, 4:5, 5:4, 16:9, 9:16, 21:9, ...`. Hero = 16:9, series cards = 4:5,
 story/about = 3:2.
 

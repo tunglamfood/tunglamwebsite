@@ -21,6 +21,8 @@ export default async function CareersPage({ params }: PageProps<"/[lang]/careers
   return (
     <>
       <PageHeader
+        cut="tofu-puffs"
+        cut2="chili"
         crumbs={[
           { name: d.common.breadcrumbHome, href: p("/") },
           { name: d.nav.careers, href: p("/careers") },

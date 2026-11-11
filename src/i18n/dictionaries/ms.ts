@@ -40,6 +40,8 @@ const ms: Dictionary = {
   },
   home: {
     eyebrow: "Dibuat di Perak sejak 1999",
+    announce: "Pengeluar diperakui Halal · Dibuat di Perak sejak 1999 · Pertanyaan borong dialu-alukan",
+    heroHighlight: "kegemaran",
     heroTitle: "Makanan sejuk & sejuk beku kegemaran, segar untuk dapur Malaysia",
     heroText:
       "Tauhu telur yang lembut, tauhu goreng keemasan, bebola ikan yang kenyal dan pencuci mulut klasik — dihasilkan di Menglembu untuk keluarga, penjaja, restoran dan pasar basah di seluruh negara.",

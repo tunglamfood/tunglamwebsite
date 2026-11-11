@@ -37,6 +37,8 @@ export default async function FaqPage({ params }: PageProps<"/[lang]/faq">) {
   return (
     <>
       <PageHeader
+        cut="egg-tofu"
+        cut2="chili"
         crumbs={[
           { name: d.common.breadcrumbHome, href: p("/") },
           { name: d.nav.faq, href: p("/faq") },

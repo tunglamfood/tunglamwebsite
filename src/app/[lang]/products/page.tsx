@@ -37,6 +37,8 @@ export default async function ProductsPage({ params }: PageProps<"/[lang]/produc
   return (
     <>
       <PageHeader
+        cut="tofu-puffs"
+        cut2="chili"
         crumbs={[
           { name: d.common.breadcrumbHome, href: localePath(lang) },
           { name: d.products.title, href: localePath(lang, "/products") },
