@@ -1,0 +1,158 @@
+[
+  {
+    "group": "products",
+    "q": {
+      "en": "What products does Tung Lam Food make?",
+      "ms": "Apakah produk yang dihasilkan oleh Tung Lam Food?",
+      "zh": "Tung Lam Food生产哪些产品？"
+    },
+    "a": {
+      "en": "We manufacture chilled and frozen foods, including egg tofu, silken tofu (box and tube), tofu puffs (Tofu Goreng), firm tofu (Taufu Keras), Teochew tau kwa, fish balls, fish cakes, fish paste, peeled quail eggs (Telur Puyuh Kupas), cincau (grass jelly) and Warisan Cendol. See our Products page for the full range and pack sizes.",
+      "ms": "Kami mengeluarkan makanan sejuk dan sejuk beku, termasuk tauhu telur, tauhu sutera (kotak dan tiub), tauhu pok (Tofu Goreng), tauhu keras (Taufu Keras), tau kwa Teochew, bebola ikan, kek ikan, isi ikan (fish paste), telur puyuh kupas, cincau dan Warisan Cendol. Lihat halaman Produk kami untuk rangkaian penuh dan saiz pek.",
+      "zh": "我们生产冷藏及冷冻食品，包括鸡蛋豆腐、嫩豆腐（盒装与条装）、豆卜（Tofu Goreng）、硬豆腐（Taufu Keras）、潮州豆干、鱼丸、鱼饼、鱼浆、去壳鹌鹑蛋（Telur Puyuh Kupas）、仙草（Cincau）以及Warisan Cendol煎蕊。完整产品系列和包装规格请浏览产品页面。"
+    }
+  },
+  {
+    "group": "products",
+    "q": {
+      "en": "Which brands do you produce?",
+      "ms": "Apakah jenama yang anda keluarkan?",
+      "zh": "你们有哪些品牌？"
+    },
+    "a": {
+      "en": "Our products are sold under four brands: Tung Lam, Sakura, Cili and AD. Each brand covers different products and pack sizes — check the individual product pages for details.",
+      "ms": "Produk kami dijual di bawah empat jenama: Tung Lam, Sakura, Cili dan AD. Setiap jenama merangkumi produk dan saiz pek yang berbeza — sila rujuk halaman produk masing-masing untuk butiran.",
+      "zh": "我们的产品以四个品牌销售：Tung Lam、Sakura、Cili和AD。各品牌涵盖不同的产品和包装规格，详情请查看各产品页面。"
+    }
+  },
+  {
+    "group": "products",
+    "q": {
+      "en": "Are your products Halal?",
+      "ms": "Adakah produk anda Halal?",
+      "zh": "你们的产品是清真（Halal）的吗？"
+    },
+    "a": {
+      "en": "Yes. Our products are produced by a Halal-certified manufacturer. You can look for the Halal logo on the product packaging.",
+      "ms": "Ya. Produk kami dihasilkan oleh pengilang yang mempunyai pensijilan Halal. Anda boleh melihat logo Halal pada bungkusan produk.",
+      "zh": "是的。我们的产品由获得清真（Halal）认证的制造商生产，您可在产品包装上查看清真标志。"
+    }
+  },
+  {
+    "group": "company",
+    "q": {
+      "en": "What food safety standards do you follow?",
+      "ms": "Apakah piawaian keselamatan makanan yang anda amalkan?",
+      "zh": "你们遵循哪些食品安全标准？"
+    },
+    "a": {
+      "en": "Alongside our Halal certification, our manufacturing is certified under HACCP, GMP and MeSTI. These cover food safety, hygiene and good manufacturing practices in our production.",
+      "ms": "Selain pensijilan Halal, pengeluaran kami turut diperakui di bawah HACCP, GMP dan MeSTI. Pensijilan ini merangkumi keselamatan makanan, kebersihan dan amalan pengilangan yang baik dalam proses pengeluaran kami.",
+      "zh": "除了清真认证，我们的生产也获得HACCP、GMP和MeSTI认证，涵盖生产过程中的食品安全、卫生及良好生产规范。"
+    }
+  },
+  {
+    "group": "ordering",
+    "q": {
+      "en": "How can I buy wholesale, become a distributor or supply my restaurant?",
+      "ms": "Bagaimana saya boleh membeli secara borong, menjadi pengedar atau mendapatkan bekalan untuk restoran saya?",
+      "zh": "如何批发采购、成为经销商或为餐厅供货？"
+    },
+    "a": {
+      "en": "We work with distributors, restaurants, hawkers and wet-market traders. Contact our sales team on WhatsApp at +60 16-524 0268 or email sales@tunglamfood.com with your location, type of business, the products you're interested in and your estimated volumes, and we'll get back to you. Besides retail packs, we also have larger packs such as 1kg fish balls and fish cakes, which you can ask about.",
+      "ms": "Kami bekerjasama dengan pengedar, restoran, peniaga gerai dan peniaga pasar basah. Hubungi pasukan jualan kami melalui WhatsApp di +60 16-524 0268 atau e-mel sales@tunglamfood.com dengan menyatakan lokasi, jenis perniagaan, produk yang diminati dan anggaran kuantiti anda, dan kami akan menghubungi anda semula. Selain pek runcit, kami juga ada pek yang lebih besar seperti bebola ikan dan kek ikan 1kg yang boleh anda tanyakan.",
+      "zh": "我们与经销商、餐厅、小贩及巴刹商家合作。请通过WhatsApp +60 16-524 0268 或电邮 sales@tunglamfood.com 联系我们的销售团队，并注明您的所在地、业务类型、感兴趣的产品及预计用量，我们会尽快回复您。除了零售装，我们也有较大包装，例如1公斤装鱼丸和鱼饼，欢迎询问。"
+    }
+  },
+  {
+    "group": "ordering",
+    "q": {
+      "en": "Where can I buy your products?",
+      "ms": "Di manakah saya boleh membeli produk anda?",
+      "zh": "在哪里可以买到你们的产品？"
+    },
+    "a": {
+      "en": "Our products are available through retailers and wet markets. To find the stockist nearest you, message us on WhatsApp at +60 16-524 0268 or email sales@tunglamfood.com.",
+      "ms": "Produk kami boleh didapati di kedai runcit dan pasar basah. Untuk mengetahui penjual yang terdekat dengan anda, hubungi kami melalui WhatsApp di +60 16-524 0268 atau e-mel sales@tunglamfood.com.",
+      "zh": "我们的产品通过零售商及巴刹销售。想知道离您最近的售卖点，请通过WhatsApp +60 16-524 0268 或电邮 sales@tunglamfood.com 联系我们。"
+    }
+  },
+  {
+    "group": "products",
+    "q": {
+      "en": "How should I store your products?",
+      "ms": "Bagaimanakah cara menyimpan produk anda?",
+      "zh": "产品应该如何储存？"
+    },
+    "a": {
+      "en": "Please follow the storage instructions printed on each pack. Our products are chilled or frozen foods, so keep chilled items in the refrigerator and frozen items in the freezer, and use them by the date shown on the pack.",
+      "ms": "Sila ikut arahan penyimpanan yang tertera pada setiap pek. Produk kami ialah makanan sejuk atau sejuk beku, jadi simpan produk sejuk di dalam peti sejuk dan produk sejuk beku di dalam penyejuk beku, serta gunakan sebelum tarikh yang dinyatakan pada pek.",
+      "zh": "请依照各包装上的储存说明。我们的产品属于冷藏或冷冻食品，冷藏产品请放入冰箱冷藏格，冷冻产品请放入冷冻格，并在包装标示的日期前食用。"
+    }
+  },
+  {
+    "group": "products",
+    "q": {
+      "en": "How do I cook egg tofu without it breaking?",
+      "ms": "Bagaimana memasak tauhu telur supaya tidak hancur?",
+      "zh": "鸡蛋豆腐怎么煮才不会碎？"
+    },
+    "a": {
+      "en": "Egg tofu is soft, so handle it gently. Open the pack carefully and ease the tofu out, then cut it into thick rounds. For a crisp finish, dust the slices lightly with cornstarch and pan-fry until golden, turning them with a thin spatula. It's also lovely steamed and topped with minced meat or a light soy-based sauce.",
+      "ms": "Tauhu telur bertekstur lembut, jadi kendalikannya dengan cermat. Buka pek dengan berhati-hati dan keluarkan tauhu perlahan-lahan, kemudian potong bulat dan tebal. Untuk hasil rangup, salut nipis dengan tepung jagung dan goreng hingga keemasan, balikkan menggunakan sudip nipis. Ia juga sedap dikukus dan ditabur daging cincang atau disiram sos berasaskan kicap.",
+      "zh": "鸡蛋豆腐质地柔软，处理时要轻手。小心打开包装，慢慢取出豆腐，切成厚圆片。想要外脆，可薄薄裹一层粟粉，煎至金黄，用薄锅铲翻面。也可以清蒸，再铺上肉碎或淋上清淡的酱油汁。"
+    }
+  },
+  {
+    "group": "products",
+    "q": {
+      "en": "What's the best way to use tofu puffs?",
+      "ms": "Apakah cara terbaik menggunakan tauhu pok?",
+      "zh": "豆卜怎么煮最好吃？"
+    },
+    "a": {
+      "en": "Tofu puffs soak up sauces and broths, so they're great in curries, laksa, soups, braises and stir-fries. Add them towards the end of cooking and let them simmer for a few minutes to absorb the flavour, or stuff and fry them for a crispy snack. See our Recipes page for ideas such as curry noodles and tofu bergedil.",
+      "ms": "Tauhu pok menyerap kuah dan sos, jadi ia sangat sesuai untuk kari, laksa, sup, masakan masak kicap dan goreng. Masukkan menjelang akhir masakan dan biarkan mereneh beberapa minit supaya menyerap rasa, atau sumbat dan goreng sebagai snek rangup. Lihat halaman Resipi kami untuk idea seperti mi kari dan tauhu bergedil.",
+      "zh": "豆卜很能吸收汤汁和酱料，非常适合咖喱、叻沙、汤、焖煮和快炒。在烹煮后段加入，再煮几分钟让它入味；也可以酿入馅料后油炸，做成酥脆小吃。更多做法，例如咖喱面和酿豆卜，请参考我们的食谱页面。"
+    }
+  },
+  {
+    "group": "ordering",
+    "q": {
+      "en": "Do you offer custom or private-label products?",
+      "ms": "Adakah anda menawarkan produk khas atau label persendirian?",
+      "zh": "你们提供定制或贴牌（自有品牌）生产吗？"
+    },
+    "a": {
+      "en": "Please contact our sales team to discuss your requirements. Reach us on WhatsApp at +60 16-524 0268 or email sales@tunglamfood.com with details of what you have in mind.",
+      "ms": "Sila hubungi pasukan jualan kami untuk membincangkan keperluan anda. Hubungi kami melalui WhatsApp di +60 16-524 0268 atau e-mel sales@tunglamfood.com bersama butiran yang anda rancangkan.",
+      "zh": "请联系我们的销售团队洽谈您的需求。欢迎通过WhatsApp +60 16-524 0268 或电邮 sales@tunglamfood.com 告诉我们您的具体想法。"
+    }
+  },
+  {
+    "group": "company",
+    "q": {
+      "en": "Where are you located, and can I visit?",
+      "ms": "Di manakah lokasi anda, dan bolehkah saya melawat?",
+      "zh": "你们位于哪里？可以参观吗？"
+    },
+    "a": {
+      "en": "Tung Lam Food Industries Sdn Bhd has been based in Menglembu, Perak since 1999. Our address is 3, Persiaran Perusahaan Kledang Utara 1/1, Kawasan Perindustrian Chandan Raya, 31450 Menglembu, Perak. If you'd like to visit, please contact us first on WhatsApp at +60 16-524 0268 or email sales@tunglamfood.com to arrange a suitable time.",
+      "ms": "Tung Lam Food Industries Sdn Bhd beroperasi di Menglembu, Perak sejak 1999. Alamat kami ialah 3, Persiaran Perusahaan Kledang Utara 1/1, Kawasan Perindustrian Chandan Raya, 31450 Menglembu, Perak. Jika ingin melawat, sila hubungi kami terlebih dahulu melalui WhatsApp di +60 16-524 0268 atau e-mel sales@tunglamfood.com untuk menetapkan masa yang sesuai.",
+      "zh": "Tung Lam Food Industries Sdn Bhd自1999年起扎根霹雳州万里望。地址：3, Persiaran Perusahaan Kledang Utara 1/1, Kawasan Perindustrian Chandan Raya, 31450 Menglembu, Perak。如欲到访，请先通过WhatsApp +60 16-524 0268 或电邮 sales@tunglamfood.com 联系我们，以安排合适的时间。"
+    }
+  },
+  {
+    "group": "company",
+    "q": {
+      "en": "Are you hiring?",
+      "ms": "Adakah anda mengambil pekerja?",
+      "zh": "你们有招聘吗？"
+    },
+    "a": {
+      "en": "We're happy to hear from people interested in joining our team. Send your CV and the type of role you're looking for to sales@tunglamfood.com, or contact us on WhatsApp at +60 16-524 0268.",
+      "ms": "Kami mengalu-alukan individu yang berminat untuk menyertai pasukan kami. Hantarkan resume anda beserta jenis jawatan yang diminati ke sales@tunglamfood.com, atau hubungi kami melalui WhatsApp di +60 16-524 0268.",
+      "zh": "欢迎有意加入我们团队的朋友与我们联系。请将履历及希望应征的职位类型发送至 sales@tunglamfood.com，或通过WhatsApp +60 16-524 0268 联系我们。"
+    }
+  }
+]

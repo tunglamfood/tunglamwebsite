@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Tung Lam design tokens
+   Warm cream canvas, brand red from the TL logo, golden tofu-puff accent,
+   pandan green for the dessert line. Light theme only (food brand).
+--------------------------------------------------------------------------- */
+@theme {
+  --color-brand: #d71920;
+  --color-brand-600: #c0151b;
+  --color-brand-700: #9f1117;
+  --color-brand-50: #fdf0ef;
+
+  --color-ink: #1f1b17;
+  --color-ink-soft: #4a423b;
+  --color-muted: #7a6f65;
+
+  --color-cream: #fbf7f0;
+  --color-sand: #f3ebdf;
+  --color-sand-deep: #e8dccb;
+  --color-line: #e6dccd;
+
+  --color-gold: #e3a13b;
+  --color-gold-soft: #fbefd9;
+  --color-leaf: #2f7a3e;
+  --color-leaf-soft: #e6f1e3;
+
+  --font-sans: var(--font-body), "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --font-display: var(--font-display-face), Georgia, "Songti SC", "Noto Serif SC", serif;
+
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px rgb(31 27 23 / 0.04), 0 8px 24px -12px rgb(31 27 23 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(31 27 23 / 0.05), 0 18px 40px -16px rgb(31 27 23 / 0.28);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :lang(zh-Hans-MY) body, :lang(zh-Hans-MY) .font-display {
+    letter-spacing: 0.01em;
+  }
+  ::selection { background: var(--color-brand); color: white; }
+  :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; border-radius: 6px; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@layer components {
+  .container-x { margin-inline: auto; width: 100%; max-width: 80rem; padding-inline: 1rem; }
+  @media (min-width: 640px) { .container-x { padding-inline: 1.5rem; } }
+  @media (min-width: 1024px) { .container-x { padding-inline: 2rem; } }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--color-brand);
+  }
+  .eyebrow::before { content: ""; width: 1.5rem; height: 2px; border-radius: 2px; background: currentColor; }
+
+  .prose-tl { color: var(--color-ink-soft); line-height: 1.75; }
+  .prose-tl p + p { margin-top: 1rem; }
+
+  .card { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

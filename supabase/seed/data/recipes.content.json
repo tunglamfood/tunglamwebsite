@@ -1,0 +1,2535 @@
+[
+  {
+    "legacy_id": 129625,
+    "slug": "cendol-dessert",
+    "published_at": "2023-12-07",
+    "title": {
+      "en": "Easy Homemade Cendol with Palm Sugar and Coconut Milk",
+      "ms": "Cendol Mudah di Rumah dengan Gula Melaka dan Santan",
+      "zh": "简易自制煎蕊：椰糖浆配椰浆"
+    },
+    "excerpt": {
+      "en": "A quick, no-fuss cendol with gula Melaka syrup, lightly salted coconut milk and crushed ice. Ready in about 20 minutes with Warisan Cendol.",
+      "ms": "Cendol ringkas dengan sirap gula Melaka, santan bergaram sedikit dan ais kisar. Siap dalam kira-kira 20 minit dengan Warisan Cendol.",
+      "zh": "用椰糖浆、微咸椰浆和刨冰做成的简易煎蕊，搭配Warisan Cendol，大约20分钟就能上桌。"
+    },
+    "intro": {
+      "en": "Cendol is one of Malaysia's best-loved desserts, and you don't need a hawker stall to enjoy it. This simplified version layers green cendol strands with a rich gula Melaka syrup, creamy coconut milk and crushed ice — perfect for a hot afternoon.",
+      "ms": "Cendol antara pencuci mulut paling digemari di Malaysia, dan anda tak perlu ke gerai untuk menikmatinya. Versi ringkas ini menggabungkan cendol hijau dengan sirap gula Melaka yang pekat, santan berlemak dan ais kisar — sesuai untuk petang yang panas.",
+      "zh": "煎蕊是马来西亚人最爱的甜品之一，在家也能轻松做。这个简易版本把绿色煎蕊配上浓郁的椰糖浆、香滑椰浆和刨冰，炎热的午后来一碗最消暑。"
+    },
+    "prep_minutes": 10,
+    "cook_minutes": 10,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": {
+      "en": "Malaysian",
+      "ms": "Malaysia",
+      "zh": "马来西亚"
+    },
+    "course": {
+      "en": "Dessert",
+      "ms": "Pencuci Mulut",
+      "zh": "甜品"
+    },
+    "ingredients": [
+      {
+        "group": {
+          "en": "Palm Sugar Syrup",
+          "ms": "Sirap Gula Melaka",
+          "zh": "椰糖浆"
+        },
+        "items": {
+          "en": [
+            "1/2 cup palm sugar (gula Melaka), grated",
+            "1/2 cup water"
+          ],
+          "ms": [
+            "1/2 cawan gula Melaka, diparut",
+            "1/2 cawan air"
+          ],
+          "zh": [
+            "1/2杯椰糖（Gula Melaka），刨碎",
+            "1/2杯清水"
+          ]
+        }
+      },
+      {
+        "group": {
+          "en": "Coconut Milk",
+          "ms": "Santan",
+          "zh": "椰浆"
+        },
+        "items": {
+          "en": [
+            "1 cup coconut milk",
+            "A pinch of salt"
+          ],
+          "ms": [
+            "1 cawan santan",
+            "Secubit garam"
+          ],
+          "zh": [
+            "1杯椰浆",
+            "少许盐"
+          ]
+        }
+      },
+      {
+        "group": {
+          "en": "To Assemble",
+          "ms": "Untuk Dihidang",
+          "zh": "组合"
+        },
+        "items": {
+          "en": [
+            "Warisan Cendol (cendol strands), as desired",
+            "Crushed ice"
+          ],
+          "ms": [
+            "Warisan Cendol, secukupnya",
+            "Ais kisar"
+          ],
+          "zh": [
+            "Warisan Cendol煎蕊，适量",
+            "刨冰或碎冰"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Make the palm sugar syrup",
+          "ms": "Buat sirap gula Melaka",
+          "zh": "煮椰糖浆"
+        },
+        "text": {
+          "en": "In a saucepan, combine the grated palm sugar and water. Heat over low-medium heat, stirring until the sugar fully dissolves. Set aside to cool.",
+          "ms": "Dalam periuk kecil, campurkan gula Melaka parut dan air. Panaskan dengan api perlahan hingga sederhana sambil dikacau sehingga gula larut sepenuhnya. Ketepikan hingga sejuk.",
+          "zh": "将刨碎的椰糖和清水放入小锅，以中小火加热，边煮边搅拌至椰糖完全溶化，熄火放凉备用。"
+        }
+      },
+      {
+        "title": {
+          "en": "Season the coconut milk",
+          "ms": "Perisakan santan",
+          "zh": "调椰浆"
+        },
+        "text": {
+          "en": "Stir a pinch of salt into the coconut milk.",
+          "ms": "Kacau secubit garam ke dalam santan.",
+          "zh": "在椰浆中加入少许盐，拌匀。"
+        }
+      },
+      {
+        "title": {
+          "en": "Add the cendol",
+          "ms": "Masukkan cendol",
+          "zh": "放入煎蕊"
+        },
+        "text": {
+          "en": "Place a generous portion of cendol strands into serving bowls or glasses.",
+          "ms": "Masukkan cendol secukupnya ke dalam mangkuk atau gelas hidangan.",
+          "zh": "在碗或杯中放入适量煎蕊。"
+        }
+      },
+      {
+        "title": {
+          "en": "Sweeten and pour",
+          "ms": "Tuang sirap dan santan",
+          "zh": "淋上椰糖浆和椰浆"
+        },
+        "text": {
+          "en": "Pour the palm sugar syrup over the cendol to taste, then drizzle over the coconut milk.",
+          "ms": "Tuangkan sirap gula Melaka ke atas cendol mengikut citarasa, kemudian siramkan santan.",
+          "zh": "依个人口味淋上椰糖浆，再倒入椰浆。"
+        }
+      },
+      {
+        "title": {
+          "en": "Top with ice and serve",
+          "ms": "Tambah ais dan hidang",
+          "zh": "加冰享用"
+        },
+        "text": {
+          "en": "Pile crushed ice on top. Mix with a spoon or straw and enjoy straight away.",
+          "ms": "Letakkan ais kisar di atasnya. Gaul dengan sudu atau straw dan nikmati segera.",
+          "zh": "最后铺上刨冰，用汤匙或吸管拌匀，即可享用。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Make the syrup ahead and chill it — cold syrup keeps the ice from melting too quickly.",
+        "A little salt in the coconut milk brings out the sweetness of the gula Melaka — adjust to taste.",
+        "Add red beans or sweet corn for a richer bowl."
+      ],
+      "ms": [
+        "Sediakan sirap lebih awal dan sejukkan di dalam peti sejuk supaya ais tidak cepat cair.",
+        "Sedikit garam dalam santan menaikkan rasa manis gula Melaka — laraskan mengikut selera.",
+        "Tambahkan kacang merah atau jagung manis untuk versi yang lebih mewah."
+      ],
+      "zh": [
+        "椰糖浆可提前煮好放冰箱冷藏，冰凉的糖浆能让冰不那么快融化。",
+        "椰浆里的少许盐能衬托椰糖的甜味，可依口味调整。",
+        "可加入红豆或甜玉米，口感更丰富。"
+      ]
+    },
+    "products": [
+      "warisan-cendol-500gm",
+      "warisan-cendol-1-5kg"
+    ],
+    "keywords": {
+      "en": [
+        "cendol recipe",
+        "easy cendol",
+        "gula Melaka",
+        "Malaysian dessert",
+        "coconut milk dessert",
+        "Warisan Cendol"
+      ],
+      "ms": [
+        "resepi cendol",
+        "cendol mudah",
+        "gula Melaka",
+        "pencuci mulut Malaysia",
+        "pencuci mulut santan",
+        "Warisan Cendol"
+      ],
+      "zh": [
+        "煎蕊食谱",
+        "简易煎蕊",
+        "椰糖",
+        "马来西亚甜品",
+        "椰浆甜品",
+        "Warisan Cendol"
+      ]
+    },
+    "meta_title": {
+      "en": "Easy Homemade Cendol Recipe | Tung Lam Food",
+      "ms": "Resepi Cendol Mudah di Rumah | Tung Lam Food",
+      "zh": "简易自制煎蕊食谱 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Make Malaysian cendol at home in about 20 minutes with Warisan Cendol, gula Melaka syrup, lightly salted coconut milk and crushed ice. Sweet and refreshing.",
+      "ms": "Buat cendol di rumah dalam kira-kira 20 minit dengan Warisan Cendol, sirap gula Melaka, santan dan ais kisar. Mudah, manis dan menyegarkan.",
+      "zh": "在家约20分钟做好马来西亚煎蕊：Warisan Cendol配椰糖浆、微咸椰浆和刨冰，简单、香甜又消暑。"
+    }
+  },
+  {
+    "legacy_id": 129621,
+    "slug": "coffee-cincau",
+    "published_at": "2023-12-07",
+    "title": {
+      "en": "Iced Coffee Cincau with Grass Jelly and Condensed Milk",
+      "ms": "Kopi Cincau Ais dengan Susu Pekat Manis",
+      "zh": "仙草冰咖啡（炼奶版）"
+    },
+    "excerpt": {
+      "en": "Strong coffee, cubes of grass jelly and sweetened condensed milk over ice — a refreshing kopitiam-style drink you can make at home in minutes.",
+      "ms": "Kopi pekat, kiub cincau dan susu pekat manis di atas ais — minuman ala kopitiam yang menyegarkan, boleh dibuat di rumah dalam beberapa minit.",
+      "zh": "浓咖啡加仙草块和炼奶，再配上冰块，几分钟就能在家做出清凉的茶室风味饮品。"
+    },
+    "intro": {
+      "en": "Coffee and cincau are a classic Malaysian pairing. The bittersweet coffee balances the smooth, slightly herbal grass jelly, while condensed milk adds creamy sweetness. It's an easy pick-me-up for coffee lovers who want something a little different.",
+      "ms": "Kopi dan cincau memang pasangan klasik di Malaysia. Rasa kopi yang pahit-manis seimbang dengan cincau yang licin dan beraroma herba, manakala susu pekat manis menambah rasa lemak manis. Minuman mudah untuk peminat kopi yang mahukan kelainan.",
+      "zh": "咖啡配仙草是马来西亚的经典组合。微苦的咖啡衬托滑嫩、带草本香的仙草，再加上炼奶的香甜，是咖啡爱好者想换换口味时的好选择。"
+    },
+    "prep_minutes": 10,
+    "cook_minutes": 5,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": {
+      "en": "Malaysian",
+      "ms": "Malaysia",
+      "zh": "马来西亚"
+    },
+    "course": {
+      "en": "Drink",
+      "ms": "Minuman",
+      "zh": "饮品"
+    },
+    "ingredients": [
+      {
+        "group": null,
+        "items": {
+          "en": [
+            "1 cup strong brewed coffee, cooled",
+            "1 cup cincau (grass jelly), cut into cubes or strips",
+            "1/2 cup sweetened condensed milk",
+            "Sugar, to taste",
+            "Ice cubes"
+          ],
+          "ms": [
+            "1 cawan kopi pekat, disejukkan",
+            "1 cawan cincau, dipotong dadu atau jalur",
+            "1/2 cawan susu pekat manis",
+            "Gula, secukup rasa",
+            "Ketulan ais"
+          ],
+          "zh": [
+            "1杯浓咖啡，放凉",
+            "1杯仙草，切丁或切条",
+            "1/2杯炼奶",
+            "砂糖，适量",
+            "冰块"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": null,
+        "text": {
+          "en": "Brew a cup of strong coffee and let it cool.",
+          "ms": "Bancuh secawan kopi pekat dan biarkan sejuk.",
+          "zh": "冲泡一杯浓咖啡，放凉备用。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Cut the cincau into small cubes or strips.",
+          "ms": "Potong cincau menjadi kiub kecil atau jalur.",
+          "zh": "将仙草切成小丁或细条。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Mix the condensed milk with sugar to your preferred sweetness.",
+          "ms": "Campurkan susu pekat manis dengan gula mengikut tahap kemanisan yang digemari.",
+          "zh": "把炼奶和砂糖拌匀，调到喜欢的甜度。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Fill a glass with ice cubes and layer the cincau over the ice.",
+          "ms": "Isi gelas dengan ais dan susun cincau di atasnya.",
+          "zh": "杯中放入冰块，再铺上仙草。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Pour in the cooled coffee until the glass is about two-thirds full.",
+          "ms": "Tuang kopi yang telah sejuk sehingga gelas kira-kira dua pertiga penuh.",
+          "zh": "倒入放凉的咖啡，约至杯子三分之二满。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Drizzle the condensed milk mixture over the coffee, stir gently and serve.",
+          "ms": "Siramkan campuran susu pekat ke atas kopi, kacau perlahan-lahan dan hidangkan.",
+          "zh": "淋上炼奶混合液，轻轻拌匀即可享用。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Let the coffee cool completely before pouring so the ice doesn't melt and dilute the drink.",
+        "Use a wide straw or a spoon so you get some cincau with every sip.",
+        "Chill the cincau beforehand for an extra-cold drink."
+      ],
+      "ms": [
+        "Pastikan kopi benar-benar sejuk sebelum dituang supaya ais tidak cepat cair dan minuman tidak menjadi tawar.",
+        "Gunakan straw besar atau sudu supaya cincau dapat dinikmati bersama setiap hirupan.",
+        "Sejukkan cincau terlebih dahulu untuk minuman yang lebih dingin."
+      ],
+      "zh": [
+        "咖啡要完全放凉再倒入，以免冰块融化冲淡味道。",
+        "用粗吸管或汤匙，每口都能吃到仙草。",
+        "仙草先冷藏，饮品更冰凉。"
+      ]
+    },
+    "products": [
+      "cincau-tawar-480gm",
+      "tl-cincau-asli-2kg"
+    ],
+    "keywords": {
+      "en": [
+        "coffee cincau",
+        "grass jelly coffee",
+        "cincau drink",
+        "iced coffee recipe",
+        "Malaysian drink"
+      ],
+      "ms": [
+        "kopi cincau",
+        "resepi cincau",
+        "minuman cincau",
+        "kopi ais",
+        "minuman Malaysia"
+      ],
+      "zh": [
+        "仙草咖啡",
+        "仙草饮品",
+        "冰咖啡做法",
+        "炼奶咖啡",
+        "马来西亚饮品"
+      ]
+    },
+    "meta_title": {
+      "en": "Coffee Cincau (Grass Jelly Coffee) Recipe | Tung Lam",
+      "ms": "Resepi Kopi Cincau Ais | Tung Lam Food",
+      "zh": "仙草冰咖啡做法 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Make iced coffee cincau at home with strong brewed coffee, cubes of grass jelly and sweetened condensed milk over ice. A refreshing Malaysian drink in minutes.",
+      "ms": "Buat kopi cincau ais di rumah dengan kopi pekat, kiub cincau dan susu pekat manis. Minuman Malaysia yang menyegarkan, siap dalam beberapa minit.",
+      "zh": "在家做仙草冰咖啡：浓咖啡、仙草块和炼奶加冰，几分钟就能完成的清凉马来西亚饮品。"
+    }
+  },
+  {
+    "legacy_id": 127734,
+    "slug": "dry-curry-firm-tofu-vegetables",
+    "published_at": "2023-11-06",
+    "title": {
+      "en": "Dry Curry Stir-Fry with Firm Tofu and Vegetables",
+      "ms": "Kari Kering Tauhu Keras dengan Sayur-sayuran",
+      "zh": "干咖喱硬豆腐炒杂菜"
+    },
+    "excerpt": {
+      "en": "Golden pan-fried firm tofu and colourful vegetables tossed in a fragrant dry curry sauce — a hearty meatless meal for any day of the week.",
+      "ms": "Tauhu keras goreng keemasan dan sayur-sayuran berwarna-warni digaul dalam kuah kari kering yang wangi — hidangan tanpa daging yang mengenyangkan.",
+      "zh": "煎至金黄的硬豆腐配上缤纷蔬菜，裹上香浓干咖喱酱，是一道饱足的无肉家常菜。"
+    },
+    "intro": {
+      "en": "This dry curry fry is a satisfying plant-based dish built on spices you probably already have. Pan-frying the firm tofu first gives it a golden crust that holds up well in the thick, aromatic sauce, while the vegetables stay tender-crisp. Serve it with rice for an easy weeknight dinner.",
+      "ms": "Kari kering ini hidangan berasaskan tumbuhan yang mengenyangkan, menggunakan rempah yang biasanya sudah ada di dapur. Tauhu keras digoreng dahulu supaya kulitnya keemasan dan tidak hancur dalam kuah pekat yang wangi, manakala sayur kekal rangup. Hidangkan bersama nasi untuk makan malam yang mudah.",
+      "zh": "这道干咖喱用的都是家中常备的香料，简单又饱足。硬豆腐先煎出金黄外皮，在浓稠的咖喱酱里也不易散开，蔬菜则保持脆嫩。配白饭就是一顿轻松的晚餐。"
+    },
+    "prep_minutes": 15,
+    "cook_minutes": 25,
+    "servings": 4,
+    "difficulty": "medium",
+    "cuisine": {
+      "en": "Malaysian",
+      "ms": "Malaysia",
+      "zh": "马来西亚"
+    },
+    "course": {
+      "en": "Main",
+      "ms": "Hidangan Utama",
+      "zh": "主菜"
+    },
+    "ingredients": [
+      {
+        "group": {
+          "en": "Dry Curry Sauce",
+          "ms": "Kuah Kari Kering",
+          "zh": "干咖喱酱"
+        },
+        "items": {
+          "en": [
+            "2 tbsp vegetable oil",
+            "1 small onion, finely chopped",
+            "2 cloves garlic, minced",
+            "2 tbsp curry powder (adjust to taste)",
+            "1 tsp ground cumin",
+            "1 tsp ground coriander",
+            "1/2 tsp ground turmeric",
+            "1/4 tsp cayenne pepper or chilli powder (adjust to taste)",
+            "1 cup vegetable broth",
+            "1 tbsp soy sauce",
+            "1 tsp sugar (adjust to taste)",
+            "Salt and pepper, to taste"
+          ],
+          "ms": [
+            "2 sudu besar minyak masak",
+            "1 biji bawang besar kecil, dicincang halus",
+            "2 ulas bawang putih, dicincang",
+            "2 sudu besar serbuk kari (ikut citarasa)",
+            "1 sudu kecil serbuk jintan putih",
+            "1 sudu kecil serbuk ketumbar",
+            "1/2 sudu kecil serbuk kunyit",
+            "1/4 sudu kecil serbuk cili (ikut citarasa)",
+            "1 cawan stok sayur",
+            "1 sudu besar kicap cair",
+            "1 sudu kecil gula (ikut citarasa)",
+            "Garam dan lada sulah, secukup rasa"
+          ],
+          "zh": [
+            "2汤匙食用油",
+            "1颗小洋葱，切碎",
+            "2瓣蒜，剁碎",
+            "2汤匙咖喱粉（可依口味调整）",
+            "1茶匙孜然粉",
+            "1茶匙芫荽粉",
+            "1/2茶匙黄姜粉",
+            "1/4茶匙辣椒粉（可依口味调整）",
+            "1杯蔬菜高汤",
+            "1汤匙酱油",
+            "1茶匙糖（可依口味调整）",
+            "盐和胡椒粉，适量"
+          ]
+        }
+      },
+      {
+        "group": {
+          "en": "Tofu and Vegetables",
+          "ms": "Tauhu dan Sayur",
+          "zh": "豆腐与蔬菜"
+        },
+        "items": {
+          "en": [
+            "About 400g firm tofu (Tung Lam Taufu Keras), cut into cubes",
+            "2 cups mixed vegetables (bell peppers, carrots, broccoli, etc.), chopped",
+            "1 cup green peas (fresh or frozen)",
+            "A little oil, for pan-frying",
+            "Fresh coriander leaves, to garnish (optional)",
+            "Lime wedges, to serve (optional)"
+          ],
+          "ms": [
+            "Kira-kira 400g tauhu keras (Tung Lam Taufu Keras), dipotong dadu",
+            "2 cawan sayur campur (lada benggala, lobak merah, brokoli dan lain-lain), dipotong",
+            "1 cawan kacang pis (segar atau sejuk beku)",
+            "Sedikit minyak untuk menggoreng",
+            "Daun ketumbar segar untuk hiasan (pilihan)",
+            "Hirisan limau nipis untuk dihidang (pilihan)"
+          ],
+          "zh": [
+            "约400克硬豆腐（Tung Lam Taufu Keras），切块",
+            "2杯杂菜（灯笼椒、红萝卜、西兰花等），切块",
+            "1杯青豆（新鲜或冷冻）",
+            "少许煎炒用油",
+            "新鲜芫荽，装饰用（可选）",
+            "青柠角，佐食用（可选）"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Start the sauce",
+          "ms": "Mulakan kuah",
+          "zh": "炒香酱底"
+        },
+        "text": {
+          "en": "Heat the oil in a large wok or skillet over medium heat. Sauté the onion and garlic until soft and translucent.",
+          "ms": "Panaskan minyak dalam kuali besar dengan api sederhana. Tumis bawang besar dan bawang putih hingga lembut dan layu.",
+          "zh": "大锅或炒锅中火烧热油，放入洋葱和蒜炒至软身透明。"
+        }
+      },
+      {
+        "title": {
+          "en": "Toast the spices",
+          "ms": "Tumis rempah",
+          "zh": "炒香料"
+        },
+        "text": {
+          "en": "Stir in the curry powder, cumin, coriander, turmeric and cayenne. Cook for 1–2 minutes until fragrant.",
+          "ms": "Masukkan serbuk kari, jintan putih, ketumbar, kunyit dan serbuk cili. Masak 1–2 minit hingga naik bau.",
+          "zh": "加入咖喱粉、孜然粉、芫荽粉、黄姜粉和辣椒粉，炒1–2分钟至香味散出。"
+        }
+      },
+      {
+        "title": {
+          "en": "Simmer the sauce",
+          "ms": "Reneh kuah",
+          "zh": "熬煮酱汁"
+        },
+        "text": {
+          "en": "Pour in the vegetable broth and soy sauce, then season with salt, pepper and sugar. Simmer for 10–15 minutes until thickened.",
+          "ms": "Tuangkan stok sayur dan kicap, kemudian perisakan dengan garam, lada sulah dan gula. Reneh 10–15 minit hingga pekat.",
+          "zh": "倒入蔬菜高汤和酱油，以盐、胡椒粉和糖调味，小火煮10–15分钟至浓稠。"
+        }
+      },
+      {
+        "title": {
+          "en": "Pan-fry the tofu",
+          "ms": "Goreng tauhu",
+          "zh": "煎豆腐"
+        },
+        "text": {
+          "en": "Meanwhile, heat a little oil in a separate pan and fry the tofu cubes until golden on all sides. Remove and set aside.",
+          "ms": "Sementara itu, panaskan sedikit minyak dalam kuali lain dan goreng kiub tauhu hingga keemasan di semua bahagian. Angkat dan ketepikan.",
+          "zh": "同时，另起一锅放少许油，把豆腐块煎至各面金黄，盛起备用。"
+        }
+      },
+      {
+        "title": {
+          "en": "Stir-fry the vegetables",
+          "ms": "Goreng sayur",
+          "zh": "炒蔬菜"
+        },
+        "text": {
+          "en": "In the same pan, add a little more oil if needed and stir-fry the mixed vegetables until tender-crisp. Add the green peas and cook for a few more minutes.",
+          "ms": "Dalam kuali yang sama, tambah sedikit minyak jika perlu dan goreng sayur campur hingga empuk tetapi masih rangup. Masukkan kacang pis dan masak beberapa minit lagi.",
+          "zh": "同一锅中视需要再加少许油，下杂菜炒至熟而脆，再加入青豆多炒几分钟。"
+        }
+      },
+      {
+        "title": {
+          "en": "Combine and serve",
+          "ms": "Gaul dan hidang",
+          "zh": "拌匀上桌"
+        },
+        "text": {
+          "en": "Add the tofu to the curry sauce and toss to coat, then stir in the vegetables. Garnish with coriander and serve with lime wedges, if using.",
+          "ms": "Masukkan tauhu ke dalam kuah kari dan gaul rata, kemudian masukkan sayur. Hias dengan daun ketumbar dan hidangkan bersama limau nipis jika suka.",
+          "zh": "把豆腐加入咖喱酱中拌匀，再加入蔬菜。撒上芫荽，可配青柠角享用。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Pat the tofu dry before frying so it browns evenly and doesn't splatter.",
+        "Prefer it drier? Let the sauce reduce a little longer before adding the tofu."
+      ],
+      "ms": [
+        "Keringkan tauhu dengan tuala dapur sebelum digoreng supaya ia perang sekata dan minyak tidak memercik.",
+        "Mahu lebih kering? Reneh kuah lebih lama sedikit sebelum memasukkan tauhu."
+      ],
+      "zh": [
+        "煎之前先用厨房纸吸干豆腐表面水分，煎得更均匀，也不易溅油。",
+        "喜欢更干身的口感，可把酱汁多收一会儿再放豆腐。"
+      ]
+    },
+    "products": [
+      "tl-taufu-keras-4pcs",
+      "tl-taufu-keras-6pcs"
+    ],
+    "keywords": {
+      "en": [
+        "dry curry tofu",
+        "firm tofu recipe",
+        "taufu keras",
+        "vegetarian curry",
+        "tofu stir-fry",
+        "meatless meal"
+      ],
+      "ms": [
+        "kari kering tauhu",
+        "resepi tauhu keras",
+        "taufu keras",
+        "kari sayur",
+        "tauhu goreng sayur",
+        "hidangan tanpa daging"
+      ],
+      "zh": [
+        "干咖喱豆腐",
+        "硬豆腐食谱",
+        "素食咖喱",
+        "豆腐炒杂菜",
+        "无肉料理",
+        "Taufu Keras"
+      ]
+    },
+    "meta_title": {
+      "en": "Dry Curry Firm Tofu with Vegetables | Tung Lam Food",
+      "ms": "Kari Kering Tauhu Keras & Sayur | Tung Lam Food",
+      "zh": "干咖喱硬豆腐炒杂菜 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "A hearty meatless dry curry: golden pan-fried firm tofu and mixed vegetables in a fragrant spiced sauce. Easy to make with Tung Lam Taufu Keras.",
+      "ms": "Kari kering tanpa daging: tauhu keras goreng keemasan dan sayur campur dalam kuah rempah yang wangi. Mudah dimasak dengan Tung Lam Taufu Keras.",
+      "zh": "香浓无肉干咖喱：煎至金黄的硬豆腐配杂菜，裹上香料酱汁。用Tung Lam Taufu Keras轻松做，配饭一流。"
+    }
+  },
+  {
+    "legacy_id": 126149,
+    "slug": "taufu-keras-stir-fry",
+    "published_at": "2023-10-14",
+    "title": {
+      "en": "Quick Taufu Keras Stir-Fry with Mixed Vegetables",
+      "ms": "Tauhu Keras Goreng dengan Sayur Campur",
+      "zh": "快手硬豆腐炒杂菜"
+    },
+    "excerpt": {
+      "en": "Crispy cubes of firm tofu and mixed vegetables in a savoury oyster and soy sauce with ginger and garlic. On the table in about 25 minutes.",
+      "ms": "Kiub tauhu keras yang rangup dan sayur campur dalam sos tiram dan kicap bersama halia dan bawang putih. Siap dalam kira-kira 25 minit.",
+      "zh": "酥脆硬豆腐块与杂菜，以蚝油、酱油、姜和蒜调味，约25分钟就能上桌。"
+    },
+    "intro": {
+      "en": "When you need dinner fast, this stir-fry delivers. Tung Lam Taufu Keras is pan-fried until golden and crispy, then tossed with vegetables and a simple sauce of oyster sauce, soy sauce, sesame oil, ginger and garlic. Serve it with jasmine rice or noodles.",
+      "ms": "Bila perlu masak makan malam dengan cepat, resipi ini memang membantu. Tung Lam Taufu Keras digoreng hingga keemasan dan rangup, kemudian digaul bersama sayur dan sos ringkas daripada sos tiram, kicap, minyak bijan, halia dan bawang putih. Hidangkan bersama nasi wangi atau mi.",
+      "zh": "赶时间做晚餐，这道快炒最合适。Tung Lam硬豆腐煎至金黄酥脆，再与蔬菜和蚝油、酱油、麻油、姜蒜调成的简单酱汁同炒，配香米饭或面条都好吃。"
+    },
+    "prep_minutes": 10,
+    "cook_minutes": 15,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": {
+      "en": "Asian",
+      "ms": "Asia",
+      "zh": "亚洲风味"
+    },
+    "course": {
+      "en": "Main",
+      "ms": "Hidangan Utama",
+      "zh": "主菜"
+    },
+    "ingredients": [
+      {
+        "group": null,
+        "items": {
+          "en": [
+            "4 pieces Tung Lam Taufu Keras, pressed and cubed",
+            "2 tbsp oyster sauce",
+            "1 tbsp soy sauce",
+            "1 tsp sesame oil",
+            "1 tbsp ginger, grated",
+            "2 cloves garlic, minced",
+            "2 cups mixed vegetables",
+            "2 tbsp vegetable oil",
+            "Jasmine rice or noodles, to serve (optional)"
+          ],
+          "ms": [
+            "4 keping Tung Lam Taufu Keras, ditekan dan dipotong dadu",
+            "2 sudu besar sos tiram",
+            "1 sudu besar kicap cair",
+            "1 sudu kecil minyak bijan",
+            "1 sudu besar halia, diparut",
+            "2 ulas bawang putih, dicincang",
+            "2 cawan sayur campur",
+            "2 sudu besar minyak masak",
+            "Nasi wangi atau mi untuk dihidang (pilihan)"
+          ],
+          "zh": [
+            "4块Tung Lam硬豆腐，压干水分后切块",
+            "2汤匙蚝油",
+            "1汤匙酱油",
+            "1茶匙麻油",
+            "1汤匙姜蓉",
+            "2瓣蒜，剁碎",
+            "2杯杂菜",
+            "2汤匙食用油",
+            "香米饭或面条（可选）"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Prepare the tofu",
+          "ms": "Sediakan tauhu",
+          "zh": "处理豆腐"
+        },
+        "text": {
+          "en": "Press the tofu to remove excess water, then cut into cubes.",
+          "ms": "Tekan tauhu untuk membuang lebihan air, kemudian potong dadu.",
+          "zh": "将豆腐压出多余水分，切成小块。"
+        }
+      },
+      {
+        "title": {
+          "en": "Mix the sauce",
+          "ms": "Bancuh sos",
+          "zh": "调酱汁"
+        },
+        "text": {
+          "en": "In a bowl, combine the oyster sauce, soy sauce, sesame oil, ginger and garlic.",
+          "ms": "Dalam mangkuk, campurkan sos tiram, kicap, minyak bijan, halia dan bawang putih.",
+          "zh": "碗中混合蚝油、酱油、麻油、姜蓉和蒜末。"
+        }
+      },
+      {
+        "title": {
+          "en": "Fry the tofu",
+          "ms": "Goreng tauhu",
+          "zh": "煎豆腐"
+        },
+        "text": {
+          "en": "Heat the vegetable oil in a pan or wok. Fry the tofu for 5–7 minutes until golden and crispy.",
+          "ms": "Panaskan minyak dalam kuali. Goreng tauhu selama 5–7 minit hingga keemasan dan rangup.",
+          "zh": "锅中烧热油，放入豆腐煎5–7分钟至金黄酥脆。"
+        }
+      },
+      {
+        "title": {
+          "en": "Cook the vegetables",
+          "ms": "Masak sayur",
+          "zh": "炒蔬菜"
+        },
+        "text": {
+          "en": "Add the mixed vegetables and stir-fry for 3–5 minutes until tender.",
+          "ms": "Masukkan sayur campur dan goreng selama 3–5 minit hingga empuk.",
+          "zh": "加入杂菜翻炒3–5分钟至熟软。"
+        }
+      },
+      {
+        "title": {
+          "en": "Add the sauce",
+          "ms": "Masukkan sos",
+          "zh": "加酱汁"
+        },
+        "text": {
+          "en": "Pour the sauce over the tofu and vegetables and stir-fry for 2–3 minutes until well combined.",
+          "ms": "Tuangkan sos ke atas tauhu dan sayur, goreng selama 2–3 minit hingga sebati.",
+          "zh": "淋入酱汁，与豆腐和蔬菜一起翻炒2–3分钟至均匀入味。"
+        }
+      },
+      {
+        "title": {
+          "en": "Serve",
+          "ms": "Hidang",
+          "zh": "上桌"
+        },
+        "text": {
+          "en": "Serve hot with rice or noodles, if desired.",
+          "ms": "Hidangkan panas-panas bersama nasi atau mi jika suka.",
+          "zh": "趁热上桌，可配饭或面条。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "For a vegetarian version, swap the oyster sauce for a mushroom-based vegetarian oyster sauce.",
+        "Don't move the tofu too often while frying — let each side crisp up before turning.",
+        "Use whatever vegetables you have: carrots, cabbage, long beans or broccoli all work well."
+      ],
+      "ms": [
+        "Untuk versi vegetarian, gantikan sos tiram dengan sos tiram vegetarian berasaskan cendawan.",
+        "Jangan terlalu kerap membalikkan tauhu semasa menggoreng — biarkan setiap bahagian rangup dahulu.",
+        "Gunakan sayur yang ada: lobak merah, kubis, kacang panjang atau brokoli semuanya sesuai."
+      ],
+      "zh": [
+        "素食者可将蚝油换成香菇素蚝油。",
+        "煎豆腐时别频繁翻动，让每一面煎脆再翻面。",
+        "家里有什么菜就用什么，红萝卜、包菜、长豆或西兰花都合适。"
+      ]
+    },
+    "products": [
+      "tl-taufu-keras-4pcs",
+      "tl-taufu-keras-2pcs"
+    ],
+    "keywords": {
+      "en": [
+        "taufu keras stir-fry",
+        "firm tofu recipe",
+        "tofu with vegetables",
+        "quick tofu dinner",
+        "oyster sauce tofu",
+        "Tung Lam Taufu Keras"
+      ],
+      "ms": [
+        "resepi tauhu keras",
+        "tauhu goreng sayur",
+        "taufu keras",
+        "masakan tauhu mudah",
+        "tauhu sos tiram",
+        "Tung Lam Taufu Keras"
+      ],
+      "zh": [
+        "硬豆腐炒杂菜",
+        "硬豆腐食谱",
+        "豆腐快炒",
+        "蚝油豆腐",
+        "家常豆腐",
+        "Tung Lam硬豆腐"
+      ]
+    },
+    "meta_title": {
+      "en": "Quick Taufu Keras Stir-Fry with Vegetables | Tung Lam",
+      "ms": "Tauhu Keras Goreng Sayur Campur | Tung Lam Food",
+      "zh": "快手硬豆腐炒杂菜 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Crispy firm tofu and mixed vegetables tossed in oyster sauce, soy sauce, sesame oil, ginger and garlic. A quick, tasty stir-fry with Tung Lam Taufu Keras.",
+      "ms": "Tauhu keras rangup dan sayur campur digaul dengan sos tiram, kicap, minyak bijan, halia dan bawang putih. Masakan cepat dan sedap dengan Tung Lam Taufu Keras.",
+      "zh": "酥脆硬豆腐配杂菜，用蚝油、酱油、麻油、姜和蒜快炒入味，用Tung Lam Taufu Keras做的快手家常菜。"
+    }
+  },
+  {
+    "legacy_id": 125251,
+    "slug": "tofu-puff-curry-noodles",
+    "published_at": "2023-10-01",
+    "title": {
+      "en": "Coconut Curry Noodles with Tofu Puffs",
+      "ms": "Mi Kari dengan Tauhu Pok",
+      "zh": "豆卜咖喱面"
+    },
+    "excerpt": {
+      "en": "Springy noodles in a creamy coconut curry with tofu puffs that soak up every drop of sauce. A comforting, easy one-bowl meal.",
+      "ms": "Mi kenyal dalam kuah kari santan yang lemak bersama tauhu pok yang menyerap kuah. Hidangan semangkuk yang mudah dan menyelerakan.",
+      "zh": "弹牙面条配香浓椰浆咖喱，豆卜吸满汤汁，是一碗简单又暖胃的料理。"
+    },
+    "intro": {
+      "en": "Tofu puffs are made for curry — their airy, sponge-like texture soaks up the rich, spiced coconut broth. This home-style bowl combines Tung Lam Tofu Puffs, firm tofu and vegetables with egg or rice noodles for a satisfying meal that's easy to put together at home.",
+      "ms": "Tauhu pok memang sesuai untuk kari — teksturnya yang berongga seperti span menyerap kuah santan berempah dengan sempurna. Hidangan ala rumah ini menggabungkan Tauhu Pok Tung Lam, tauhu keras dan sayur bersama mi telur atau bihun untuk santapan yang mengenyangkan dan mudah disediakan.",
+      "zh": "豆卜天生适合煮咖喱，松软多孔的口感能吸满香浓的椰浆咖喱汤。这碗家常咖喱面用了Tung Lam豆卜、硬豆腐和蔬菜，配鸡蛋面或米粉，在家也能轻松完成。"
+    },
+    "prep_minutes": 15,
+    "cook_minutes": 30,
+    "servings": 4,
+    "difficulty": "medium",
+    "cuisine": {
+      "en": "Malaysian",
+      "ms": "Malaysia",
+      "zh": "马来西亚"
+    },
+    "course": {
+      "en": "Main",
+      "ms": "Hidangan Utama",
+      "zh": "主菜"
+    },
+    "ingredients": [
+      {
+        "group": {
+          "en": "Curry Sauce",
+          "ms": "Kuah Kari",
+          "zh": "咖喱汤"
+        },
+        "items": {
+          "en": [
+            "2 tbsp vegetable oil",
+            "1 small onion, finely chopped",
+            "2 cloves garlic, minced",
+            "2 tbsp curry powder (adjust to taste)",
+            "1 can (400ml) coconut milk",
+            "1 cup vegetable or chicken broth",
+            "1 tbsp soy sauce",
+            "1 tsp sugar (adjust to taste)",
+            "Salt and pepper, to taste"
+          ],
+          "ms": [
+            "2 sudu besar minyak masak",
+            "1 biji bawang besar kecil, dicincang halus",
+            "2 ulas bawang putih, dicincang",
+            "2 sudu besar serbuk kari (ikut citarasa)",
+            "1 tin (400ml) santan",
+            "1 cawan stok sayur atau stok ayam",
+            "1 sudu besar kicap cair",
+            "1 sudu kecil gula (ikut citarasa)",
+            "Garam dan lada sulah, secukup rasa"
+          ],
+          "zh": [
+            "2汤匙食用油",
+            "1颗小洋葱，切碎",
+            "2瓣蒜，剁碎",
+            "2汤匙咖喱粉（可依口味调整）",
+            "1罐（400毫升）椰浆",
+            "1杯蔬菜或鸡高汤",
+            "1汤匙酱油",
+            "1茶匙糖（可依口味调整）",
+            "盐和胡椒粉，适量"
+          ]
+        }
+      },
+      {
+        "group": {
+          "en": "Noodles, Tofu and Vegetables",
+          "ms": "Mi, Tauhu dan Sayur",
+          "zh": "面条、豆腐与蔬菜"
+        },
+        "items": {
+          "en": [
+            "1 pack (270g) Tung Lam Tofu Puffs, halved",
+            "225g dried egg noodles or rice noodles",
+            "1 cup mixed vegetables (carrots, bell peppers, snow peas, etc.), thinly sliced",
+            "About 400g firm tofu, cubed (optional)",
+            "A little oil, for pan-frying",
+            "Fresh coriander leaves, to garnish (optional)",
+            "Lime wedges, to serve (optional)"
+          ],
+          "ms": [
+            "1 pek (270g) Tauhu Pok Tung Lam, dibelah dua",
+            "225g mi telur kering atau bihun",
+            "1 cawan sayur campur (lobak merah, lada benggala, kacang kapri dan lain-lain), dihiris nipis",
+            "Kira-kira 400g tauhu keras, dipotong dadu (pilihan)",
+            "Sedikit minyak untuk menggoreng",
+            "Daun ketumbar segar untuk hiasan (pilihan)",
+            "Hirisan limau nipis untuk dihidang (pilihan)"
+          ],
+          "zh": [
+            "1包（270克）Tung Lam豆卜，对半切",
+            "225克干鸡蛋面或米粉",
+            "1杯杂菜（红萝卜、灯笼椒、荷兰豆等），切薄片",
+            "约400克硬豆腐，切块（可选）",
+            "少许煎炒用油",
+            "新鲜芫荽，装饰用（可选）",
+            "青柠角，佐食用（可选）"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Start the curry",
+          "ms": "Mulakan kari",
+          "zh": "炒香咖喱"
+        },
+        "text": {
+          "en": "Heat the oil in a large pot or wok over medium heat. Sauté the onion and garlic until soft, then stir in the curry powder and cook for 1–2 minutes until fragrant.",
+          "ms": "Panaskan minyak dalam periuk besar atau kuali dengan api sederhana. Tumis bawang besar dan bawang putih hingga layu, kemudian masukkan serbuk kari dan masak 1–2 minit hingga naik bau.",
+          "zh": "大锅中火烧热油，下洋葱和蒜炒软，再加入咖喱粉炒1–2分钟至香。"
+        }
+      },
+      {
+        "title": {
+          "en": "Simmer the sauce",
+          "ms": "Reneh kuah",
+          "zh": "熬煮咖喱汤"
+        },
+        "text": {
+          "en": "Pour in the coconut milk and broth, then season with soy sauce, sugar, salt and pepper. Simmer gently for 10–15 minutes until slightly thickened.",
+          "ms": "Tuangkan santan dan stok, kemudian perisakan dengan kicap, gula, garam dan lada sulah. Reneh perlahan selama 10–15 minit hingga sedikit pekat.",
+          "zh": "倒入椰浆和高汤，加酱油、糖、盐和胡椒粉调味，小火煮10–15分钟至略微浓稠。"
+        }
+      },
+      {
+        "title": {
+          "en": "Cook the noodles",
+          "ms": "Rebus mi",
+          "zh": "煮面"
+        },
+        "text": {
+          "en": "Meanwhile, cook the noodles according to the packet instructions. Drain and set aside.",
+          "ms": "Sementara itu, rebus mi mengikut arahan pada bungkusan. Toskan dan ketepikan.",
+          "zh": "同时按包装说明煮好面条，沥干备用。"
+        }
+      },
+      {
+        "title": {
+          "en": "Pan-fry the tofu",
+          "ms": "Goreng tauhu",
+          "zh": "煎豆腐"
+        },
+        "text": {
+          "en": "In a separate pan, heat a little oil and pan-fry the tofu puffs (and the firm tofu cubes, if using) until golden. Set aside.",
+          "ms": "Dalam kuali lain, panaskan sedikit minyak dan goreng tauhu pok (serta tauhu keras jika digunakan) hingga keemasan. Ketepikan.",
+          "zh": "另起一锅放少许油，把豆卜（以及硬豆腐块，如有使用）煎至金黄，盛起备用。"
+        }
+      },
+      {
+        "title": {
+          "en": "Simmer with tofu and vegetables",
+          "ms": "Masak bersama tauhu dan sayur",
+          "zh": "加入豆腐和蔬菜"
+        },
+        "text": {
+          "en": "Add the tofu to the curry and simmer for 5–7 minutes so it soaks up the flavour. Add the vegetables and cook until tender-crisp.",
+          "ms": "Masukkan tauhu ke dalam kari dan reneh selama 5–7 minit supaya menyerap rasa. Masukkan sayur dan masak hingga empuk tetapi masih rangup.",
+          "zh": "把豆腐放入咖喱汤中煮5–7分钟入味，再加入蔬菜煮至熟而脆。"
+        }
+      },
+      {
+        "title": {
+          "en": "Assemble and serve",
+          "ms": "Susun dan hidang",
+          "zh": "盛碗上桌"
+        },
+        "text": {
+          "en": "Divide the noodles into bowls and ladle over the curry, tofu and vegetables. Garnish with coriander and serve with lime wedges, if using.",
+          "ms": "Bahagikan mi ke dalam mangkuk dan cedokkan kuah kari, tauhu dan sayur di atasnya. Hias dengan daun ketumbar dan hidangkan bersama limau nipis jika suka.",
+          "zh": "把面条分到碗中，淋上咖喱汤、豆腐和蔬菜，撒上芫荽，可配青柠角享用。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Gently press the tofu puffs into the curry as they simmer — they'll absorb even more sauce.",
+        "Use vegetable broth to keep the dish meat-free.",
+        "Keep the noodles and curry separate until serving so the noodles don't go soggy."
+      ],
+      "ms": [
+        "Tekan perlahan tauhu pok ke dalam kuah semasa mereneh supaya lebih banyak kuah diserap.",
+        "Gunakan stok sayur jika mahu hidangan tanpa daging.",
+        "Asingkan mi dan kuah sehingga hendak dihidang supaya mi tidak kembang."
+      ],
+      "zh": [
+        "煮的时候把豆卜轻轻按进汤里，能吸收更多咖喱汤汁。",
+        "用蔬菜高汤即可做成无肉版本。",
+        "面和咖喱汤分开放，上桌前才组合，面条才不会泡烂。"
+      ]
+    },
+    "products": [
+      "tofu-goreng-bulat-270gm",
+      "tofu-goreng-keping-270gm",
+      "tl-taufu-keras-4pcs"
+    ],
+    "keywords": {
+      "en": [
+        "curry noodles",
+        "tofu puffs recipe",
+        "tofu goreng",
+        "coconut curry",
+        "curry mee",
+        "Tung Lam Tofu Puffs"
+      ],
+      "ms": [
+        "mi kari",
+        "resepi tauhu pok",
+        "tofu goreng",
+        "kari santan",
+        "resepi mi kari",
+        "Tauhu Pok Tung Lam"
+      ],
+      "zh": [
+        "咖喱面",
+        "豆卜食谱",
+        "椰浆咖喱",
+        "豆卜咖喱",
+        "家常咖喱面",
+        "Tung Lam豆卜"
+      ]
+    },
+    "meta_title": {
+      "en": "Coconut Curry Noodles with Tofu Puffs | Tung Lam Food",
+      "ms": "Resepi Mi Kari Tauhu Pok | Tung Lam Food",
+      "zh": "豆卜咖喱面做法 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Creamy coconut curry noodles with Tung Lam Tofu Puffs that soak up the spiced broth, plus firm tofu and vegetables. A comforting, easy one-bowl meal.",
+      "ms": "Mi kari santan dengan Tauhu Pok Tung Lam yang menyerap kuah berempah, bersama tauhu keras dan sayur. Hidangan semangkuk yang mudah dan menyelerakan.",
+      "zh": "香浓椰浆咖喱面，Tung Lam豆卜吸满香料汤汁，再加硬豆腐和蔬菜，在家就能做的暖胃一碗料理。"
+    }
+  },
+  {
+    "legacy_id": 125250,
+    "slug": "tofu-bergedil-stuffed-tofu-puffs",
+    "published_at": "2023-10-01",
+    "title": {
+      "en": "Tofu Bergedil: Crispy Stuffed Tofu Puffs",
+      "ms": "Tauhu Bergedil: Tauhu Pok Sumbat Rangup",
+      "zh": "酥脆酿豆卜（Tofu Bergedil）"
+    },
+    "excerpt": {
+      "en": "Tofu puffs filled with spiced mashed potato and minced meat, then deep-fried until golden. A crowd-pleasing Malaysian snack or side dish.",
+      "ms": "Tauhu pok disumbat kentang lenyek berempah dan daging cincang, kemudian digoreng hingga keemasan. Snek atau lauk sampingan yang digemari ramai.",
+      "zh": "豆卜塞入香料马铃薯泥和肉碎，再炸至金黄酥脆，是大人小孩都爱的马来西亚小吃或配菜。"
+    },
+    "intro": {
+      "en": "Tofu bergedil brings together two Malaysian favourites: crisp tofu puffs and the spiced potato filling of bergedil. Tung Lam Tofu Puffs make a perfect pocket for the turmeric-and-cumin potato mixture. Serve them hot with chilli sauce or a tangy tamarind dip.",
+      "ms": "Tauhu bergedil menggabungkan dua kegemaran rakyat Malaysia: tauhu pok yang rangup dan inti kentang berempah ala bergedil. Tauhu Pok Tung Lam menjadi poket yang sempurna untuk inti kentang berkunyit dan berjintan. Hidangkan panas-panas bersama sos cili atau cecah asam jawa.",
+      "zh": "酿豆卜结合了两种马来西亚人喜爱的味道：酥脆豆卜和Bergedil风味的香料马铃薯馅。Tung Lam豆卜正好是装满黄姜孜然马铃薯泥的完美口袋，趁热配辣椒酱或酸甜亚参酱吃最棒。"
+    },
+    "prep_minutes": 25,
+    "cook_minutes": 25,
+    "servings": 4,
+    "difficulty": "medium",
+    "cuisine": {
+      "en": "Malaysian",
+      "ms": "Malaysia",
+      "zh": "马来西亚"
+    },
+    "course": {
+      "en": "Snack",
+      "ms": "Snek",
+      "zh": "小吃"
+    },
+    "ingredients": [
+      {
+        "group": null,
+        "items": {
+          "en": [
+            "1 pack (270g) Tung Lam Tofu Puffs",
+            "2 cups mashed potatoes",
+            "1 cup minced chicken or beef (optional)",
+            "2 small onions, finely chopped",
+            "4 cloves garlic, minced",
+            "1 tsp ground turmeric",
+            "1 tsp ground cumin",
+            "1 tsp chilli powder (adjust to taste)",
+            "Salt and pepper, to taste",
+            "Cooking oil, for frying",
+            "Chilli sauce or tamarind dipping sauce, to serve"
+          ],
+          "ms": [
+            "1 pek (270g) Tauhu Pok Tung Lam",
+            "2 cawan kentang lenyek",
+            "1 cawan ayam atau daging lembu cincang (pilihan)",
+            "2 biji bawang besar kecil, dicincang halus",
+            "4 ulas bawang putih, dicincang",
+            "1 sudu kecil serbuk kunyit",
+            "1 sudu kecil serbuk jintan putih",
+            "1 sudu kecil serbuk cili (ikut citarasa)",
+            "Garam dan lada sulah, secukup rasa",
+            "Minyak untuk menggoreng",
+            "Sos cili atau sos asam jawa untuk dicecah"
+          ],
+          "zh": [
+            "1包（270克）Tung Lam豆卜",
+            "2杯马铃薯泥",
+            "1杯鸡肉碎或牛肉碎（可选）",
+            "2颗小洋葱，切碎",
+            "4瓣蒜，剁碎",
+            "1茶匙黄姜粉",
+            "1茶匙孜然粉",
+            "1茶匙辣椒粉（可依口味调整）",
+            "盐和胡椒粉，适量",
+            "炸油",
+            "辣椒酱或亚参蘸酱，佐食用"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Make a pocket",
+          "ms": "Buat poket",
+          "zh": "开口"
+        },
+        "text": {
+          "en": "Carefully cut a small slit in each tofu puff to form a pocket, taking care not to tear it.",
+          "ms": "Belah sedikit setiap tauhu pok dengan berhati-hati untuk membentuk poket, jangan sampai koyak.",
+          "zh": "在每个豆卜上小心切一道小口，做成口袋状，注意不要弄破。"
+        }
+      },
+      {
+        "title": {
+          "en": "Cook the meat",
+          "ms": "Masak daging",
+          "zh": "炒肉碎"
+        },
+        "text": {
+          "en": "Heat a little oil in a pan over medium heat. If using meat, cook the minced chicken or beef until no longer pink.",
+          "ms": "Panaskan sedikit minyak dalam kuali dengan api sederhana. Jika menggunakan daging, masak ayam atau daging cincang hingga tidak lagi merah jambu.",
+          "zh": "锅中放少许油以中火加热，如使用肉碎，先把鸡肉碎或牛肉碎炒至完全变色。"
+        }
+      },
+      {
+        "title": {
+          "en": "Make the filling",
+          "ms": "Sediakan inti",
+          "zh": "做馅料"
+        },
+        "text": {
+          "en": "Add the onion and garlic and sauté until soft. Stir in the mashed potatoes, turmeric, cumin and chilli powder, season with salt and pepper, and cook for a few minutes until well combined and fragrant. Let it cool slightly.",
+          "ms": "Masukkan bawang besar dan bawang putih, tumis hingga layu. Masukkan kentang lenyek, serbuk kunyit, jintan putih dan serbuk cili, perisakan dengan garam dan lada sulah, dan masak beberapa minit hingga sebati dan wangi. Biarkan sejuk sedikit.",
+          "zh": "加入洋葱和蒜炒软，再加入马铃薯泥、黄姜粉、孜然粉和辣椒粉，以盐和胡椒粉调味，翻炒几分钟至均匀飘香，稍微放凉。"
+        }
+      },
+      {
+        "title": {
+          "en": "Stuff the tofu puffs",
+          "ms": "Sumbat tauhu pok",
+          "zh": "酿入馅料"
+        },
+        "text": {
+          "en": "Spoon the filling into each tofu puff and press the opening gently to close.",
+          "ms": "Sudukan inti ke dalam setiap tauhu pok dan tekan perlahan bukaannya supaya tertutup.",
+          "zh": "用小汤匙把馅料填入每个豆卜，轻按开口使其合拢。"
+        }
+      },
+      {
+        "title": {
+          "en": "Deep-fry",
+          "ms": "Goreng",
+          "zh": "油炸"
+        },
+        "text": {
+          "en": "Heat enough oil to submerge the tofu puffs to about 180°C (350°F). Fry a few at a time for 4–5 minutes, turning occasionally, until golden and crispy.",
+          "ms": "Panaskan minyak yang cukup untuk menenggelamkan tauhu pok hingga kira-kira 180°C. Goreng beberapa biji sekali gus selama 4–5 minit, dibalik sekali-sekala, hingga keemasan dan rangup.",
+          "zh": "烧热足以淹过豆卜的油至约180°C，分批下锅炸4–5分钟，不时翻面，炸至金黄酥脆。"
+        }
+      },
+      {
+        "title": {
+          "en": "Drain and serve",
+          "ms": "Tos dan hidang",
+          "zh": "沥油上桌"
+        },
+        "text": {
+          "en": "Drain on paper towels and let cool for a minute or two. Serve with chilli sauce or a tamarind dip.",
+          "ms": "Toskan di atas tuala kertas dan biarkan sejuk seminit dua. Hidangkan bersama sos cili atau cecah asam jawa.",
+          "zh": "捞起放在厨房纸上吸油，稍放凉一两分钟，配辣椒酱或亚参蘸酱享用。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Let the filling cool before stuffing — it's easier to handle and less likely to tear the tofu puffs.",
+        "Skip the meat for a vegetarian version.",
+        "Fry in small batches so the oil stays hot and the tofu puffs stay crisp."
+      ],
+      "ms": [
+        "Biarkan inti sejuk sebelum disumbat supaya lebih mudah dan tauhu pok tidak mudah koyak.",
+        "Tinggalkan daging untuk versi vegetarian.",
+        "Goreng sedikit demi sedikit supaya minyak kekal panas dan tauhu pok kekal rangup."
+      ],
+      "zh": [
+        "馅料放凉再酿，比较好操作，豆卜也不易破。",
+        "不加肉碎即为素食版本。",
+        "少量分批炸，油温才不会下降，豆卜更酥脆。"
+      ]
+    },
+    "products": [
+      "tofu-goreng-bulat-270gm",
+      "tofu-goreng-keping-270gm"
+    ],
+    "keywords": {
+      "en": [
+        "tofu bergedil",
+        "stuffed tofu puffs",
+        "tofu goreng recipe",
+        "Malaysian snack",
+        "bergedil",
+        "Tung Lam Tofu Puffs"
+      ],
+      "ms": [
+        "tauhu bergedil",
+        "tauhu pok sumbat",
+        "resepi tauhu pok",
+        "snek Malaysia",
+        "bergedil",
+        "Tauhu Pok Tung Lam"
+      ],
+      "zh": [
+        "酿豆卜",
+        "豆卜食谱",
+        "马来西亚小吃",
+        "炸豆卜",
+        "Bergedil",
+        "Tung Lam豆卜"
+      ]
+    },
+    "meta_title": {
+      "en": "Tofu Bergedil (Crispy Stuffed Tofu Puffs) | Tung Lam",
+      "ms": "Resepi Tauhu Bergedil Rangup | Tung Lam Food",
+      "zh": "酥脆酿豆卜做法 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Make tofu bergedil at home: Tung Lam Tofu Puffs stuffed with spiced mashed potato and minced meat, deep-fried until golden. Serve with chilli sauce.",
+      "ms": "Buat tauhu bergedil di rumah: Tauhu Pok Tung Lam disumbat kentang berempah dan daging cincang, digoreng hingga keemasan. Hidang bersama sos cili.",
+      "zh": "在家做酿豆卜：Tung Lam豆卜塞入香料马铃薯泥和肉碎，炸至金黄酥脆，配辣椒酱或亚参酱。"
+    }
+  },
+  {
+    "legacy_id": 124898,
+    "slug": "spicy-mala-tofu",
+    "published_at": "2023-09-23",
+    "title": {
+      "en": "Spicy Sichuan Mala Tofu (Mapo-Style)",
+      "ms": "Tauhu Mala Pedas ala Sichuan",
+      "zh": "四川麻辣豆腐（麻婆风味）"
+    },
+    "excerpt": {
+      "en": "Soft tofu and minced meat simmered in a fiery, numbing sauce of chilli bean paste and Sichuan peppercorns. Serve hot with steamed rice.",
+      "ms": "Tauhu lembut dan daging cincang direneh dalam sos pedas dan kebas daripada pes kacang cili dan lada Sichuan. Hidangkan panas bersama nasi putih.",
+      "zh": "嫩豆腐和肉碎在豆瓣酱与花椒调成的麻辣酱汁中慢煮，趁热配白饭最下饭。"
+    },
+    "intro": {
+      "en": "Mala tofu, often known as mapo tofu, is a Sichuan classic famous for its 'ma' (numbing) and 'la' (spicy) kick. Use Tung Lam Silken Tofu Box for a soft, silky texture, or Taufu Keras if you prefer tofu that holds its shape. Either way, it's a bold, warming dish that's even better over a bowl of rice.",
+      "ms": "Tauhu mala, atau lebih dikenali sebagai mapo tofu, ialah hidangan klasik Sichuan yang terkenal dengan rasa 'ma' (kebas) dan 'la' (pedas). Gunakan Tung Lam Silken Tofu Box untuk tekstur lembut dan licin, atau Taufu Keras jika mahu tauhu yang lebih kukuh. Hidangan yang kaya rasa ini lebih sedap dimakan bersama nasi.",
+      "zh": "麻辣豆腐，也就是常说的麻婆豆腐，是以「麻」与「辣」著称的川菜经典。用Tung Lam盒装嫩豆腐口感滑嫩，用硬豆腐则更不易碎。无论哪种，都是浓郁暖胃、配饭一流的好菜。"
+    },
+    "prep_minutes": 15,
+    "cook_minutes": 20,
+    "servings": 4,
+    "difficulty": "medium",
+    "cuisine": {
+      "en": "Sichuan",
+      "ms": "Sichuan",
+      "zh": "川菜"
+    },
+    "course": {
+      "en": "Main",
+      "ms": "Hidangan Utama",
+      "zh": "主菜"
+    },
+    "ingredients": [
+      {
+        "group": {
+          "en": "Sauce",
+          "ms": "Sos",
+          "zh": "酱汁"
+        },
+        "items": {
+          "en": [
+            "2 tbsp vegetable oil",
+            "2 cloves garlic, minced",
+            "1-inch (2.5cm) piece ginger, minced",
+            "2 tbsp Sichuan doubanjiang (chilli bean paste)",
+            "1 tbsp Sichuan peppercorns, toasted and ground",
+            "1 tbsp fermented black beans, rinsed and minced (optional)",
+            "1/2 cup chicken or vegetable broth",
+            "2 tbsp soy sauce",
+            "1 tsp sugar (adjust to taste)"
+          ],
+          "ms": [
+            "2 sudu besar minyak masak",
+            "2 ulas bawang putih, dicincang",
+            "2.5cm halia, dicincang",
+            "2 sudu besar doubanjiang Sichuan (pes kacang cili)",
+            "1 sudu besar lada Sichuan, disangai dan dikisar",
+            "1 sudu besar tausi, dibilas dan dicincang (pilihan)",
+            "1/2 cawan stok ayam atau stok sayur",
+            "2 sudu besar kicap cair",
+            "1 sudu kecil gula (ikut citarasa)"
+          ],
+          "zh": [
+            "2汤匙食用油",
+            "2瓣蒜，剁碎",
+            "2.5厘米姜，剁碎",
+            "2汤匙四川豆瓣酱",
+            "1汤匙花椒，炒香后磨碎",
+            "1汤匙豆豉，冲洗后剁碎（可选）",
+            "1/2杯鸡高汤或蔬菜高汤",
+            "2汤匙酱油",
+            "1茶匙糖（可依口味调整）"
+          ]
+        }
+      },
+      {
+        "group": {
+          "en": "Tofu",
+          "ms": "Tauhu",
+          "zh": "豆腐"
+        },
+        "items": {
+          "en": [
+            "1 box Tung Lam Silken Tofu Box OR 4 pieces Tung Lam Taufu Keras, cut into cubes",
+            "225g minced beef or chicken",
+            "Salt, to taste",
+            "Cornstarch slurry (2 tbsp cornstarch mixed with 2 tbsp water)",
+            "2 spring onions, chopped, and coriander leaves, to garnish",
+            "Steamed rice, to serve"
+          ],
+          "ms": [
+            "1 kotak Tung Lam Silken Tofu Box ATAU 4 keping Tung Lam Taufu Keras, dipotong dadu",
+            "225g daging lembu atau ayam cincang",
+            "Garam, secukup rasa",
+            "Bancuhan tepung jagung (2 sudu besar tepung jagung dengan 2 sudu besar air)",
+            "2 batang daun bawang, dihiris, dan daun ketumbar untuk hiasan",
+            "Nasi putih untuk dihidang"
+          ],
+          "zh": [
+            "1盒Tung Lam盒装嫩豆腐或4块Tung Lam硬豆腐，切块",
+            "225克牛肉碎或鸡肉碎",
+            "盐，适量",
+            "粟粉水（2汤匙粟粉加2汤匙清水）",
+            "2根青葱切葱花，加芫荽装饰",
+            "白饭，佐食用"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Blanch the tofu",
+          "ms": "Celur tauhu",
+          "zh": "汆烫豆腐"
+        },
+        "text": {
+          "en": "Cut the tofu into cubes. Bring a pot of water to the boil, add a pinch of salt and blanch the tofu for about 2 minutes to remove any raw bean taste. Drain gently and set aside.",
+          "ms": "Potong tauhu menjadi dadu. Didihkan air dalam periuk, masukkan secubit garam dan celur tauhu selama kira-kira 2 minit untuk menghilangkan bau kacang mentah. Toskan perlahan-lahan dan ketepikan.",
+          "zh": "豆腐切块。锅中水煮滚后加少许盐，放入豆腐汆烫约2分钟去除豆腥味，轻轻捞起沥干备用。"
+        }
+      },
+      {
+        "title": {
+          "en": "Brown the meat",
+          "ms": "Masak daging",
+          "zh": "炒肉碎"
+        },
+        "text": {
+          "en": "In a separate pan, brown the minced meat over medium-high heat until cooked through and lightly crisp. Set aside.",
+          "ms": "Dalam kuali berasingan, masak daging cincang dengan api sederhana besar hingga masak dan sedikit garing. Ketepikan.",
+          "zh": "另起一锅，以中大火把肉碎炒至熟透、略带焦香，盛起备用。"
+        }
+      },
+      {
+        "title": {
+          "en": "Fry the aromatics",
+          "ms": "Tumis bahan perisa",
+          "zh": "爆香"
+        },
+        "text": {
+          "en": "Heat the oil in a wok over medium heat. Stir-fry the garlic and ginger for about 30 seconds until fragrant, then add the doubanjiang and ground Sichuan peppercorns (and the black beans, if using) and fry for another 30 seconds.",
+          "ms": "Panaskan minyak dalam kuali dengan api sederhana. Tumis bawang putih dan halia selama kira-kira 30 saat hingga wangi, kemudian masukkan doubanjiang dan lada Sichuan kisar (serta tausi jika digunakan) dan tumis 30 saat lagi.",
+          "zh": "炒锅中火烧热油，下蒜末和姜末炒约30秒至香，再加入豆瓣酱和花椒粉（以及豆豉，如有使用），续炒30秒。"
+        }
+      },
+      {
+        "title": {
+          "en": "Simmer the sauce",
+          "ms": "Reneh sos",
+          "zh": "煮酱汁"
+        },
+        "text": {
+          "en": "Add the broth, soy sauce and sugar, stir well and bring to a simmer.",
+          "ms": "Masukkan stok, kicap dan gula, kacau rata dan biarkan mereneh.",
+          "zh": "加入高汤、酱油和糖，拌匀煮至微滚。"
+        }
+      },
+      {
+        "title": {
+          "en": "Add the tofu and meat",
+          "ms": "Masukkan tauhu dan daging",
+          "zh": "加入豆腐和肉碎"
+        },
+        "text": {
+          "en": "Gently slide in the tofu, then add the cooked meat. Simmer for 5–7 minutes so the tofu absorbs the flavours, adding a splash more broth if the sauce gets too thick.",
+          "ms": "Masukkan tauhu perlahan-lahan, diikuti daging yang telah dimasak. Reneh selama 5–7 minit supaya tauhu menyerap rasa; tambah sedikit stok jika sos terlalu pekat.",
+          "zh": "轻轻放入豆腐，再加入炒好的肉碎，小火煮5–7分钟让豆腐入味；若酱汁太稠可酌量加些高汤。"
+        }
+      },
+      {
+        "title": {
+          "en": "Thicken and serve",
+          "ms": "Pekatkan dan hidang",
+          "zh": "勾芡上桌"
+        },
+        "text": {
+          "en": "Stir in the cornstarch slurry and cook for about a minute until glossy and thickened. Adjust the salt and sugar, garnish with spring onions and coriander, and serve hot with steamed rice.",
+          "ms": "Masukkan bancuhan tepung jagung dan masak kira-kira seminit hingga sos pekat dan berkilat. Laraskan garam dan gula, hias dengan daun bawang dan daun ketumbar, dan hidangkan panas bersama nasi putih.",
+          "zh": "倒入粟粉水，煮约1分钟至酱汁浓稠光亮。依口味调整盐和糖，撒上葱花和芫荽，趁热配白饭享用。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Nudge the tofu with the back of a spatula instead of stirring, so the cubes stay whole.",
+        "Control the heat with the amount of doubanjiang and Sichuan pepper — start with less if you're new to mala.",
+        "Choose Silken Tofu Box for a silky texture or Taufu Keras for firmer bites."
+      ],
+      "ms": [
+        "Tolak tauhu perlahan dengan belakang senduk dan bukannya dikacau, supaya kiub tauhu tidak hancur.",
+        "Laraskan tahap pedas dengan jumlah doubanjiang dan lada Sichuan — mulakan dengan sedikit jika baru mencuba mala.",
+        "Pilih Silken Tofu Box untuk tekstur licin, atau Taufu Keras untuk tekstur lebih padat."
+      ],
+      "zh": [
+        "用锅铲背轻推豆腐而不是翻炒，豆腐才不会碎。",
+        "可通过豆瓣酱和花椒的分量调整麻辣程度，初次尝试可以少放一点。",
+        "想要滑嫩就选盒装嫩豆腐，喜欢扎实口感就用硬豆腐。"
+      ]
+    },
+    "products": [
+      "tl-silken-tofu-box-300gm",
+      "tl-taufu-keras-4pcs"
+    ],
+    "keywords": {
+      "en": [
+        "mala tofu",
+        "mapo tofu",
+        "Sichuan tofu",
+        "spicy tofu recipe",
+        "silken tofu recipe",
+        "doubanjiang"
+      ],
+      "ms": [
+        "tauhu mala",
+        "mapo tofu",
+        "tauhu Sichuan",
+        "resepi tauhu pedas",
+        "resepi tauhu sutera",
+        "doubanjiang"
+      ],
+      "zh": [
+        "麻辣豆腐",
+        "麻婆豆腐",
+        "川菜",
+        "嫩豆腐食谱",
+        "豆瓣酱",
+        "下饭菜"
+      ]
+    },
+    "meta_title": {
+      "en": "Spicy Sichuan Mala Tofu (Mapo-Style) | Tung Lam Food",
+      "ms": "Resepi Tauhu Mala Pedas ala Sichuan | Tung Lam",
+      "zh": "四川麻辣豆腐做法 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Make spicy, numbing Sichuan mala tofu at home with Tung Lam silken or firm tofu, minced meat, chilli bean paste and Sichuan peppercorns. Serve with rice.",
+      "ms": "Masak tauhu mala ala Sichuan yang pedas dan kebas dengan tauhu Tung Lam, daging cincang, doubanjiang dan lada Sichuan. Sedap dimakan bersama nasi.",
+      "zh": "用Tung Lam嫩豆腐或硬豆腐，加肉碎、豆瓣酱和花椒，在家做出又麻又辣的四川麻辣豆腐，配饭一流。"
+    }
+  },
+  {
+    "legacy_id": 124897,
+    "slug": "tofu-breakfast-burrito",
+    "published_at": "2023-09-23",
+    "title": {
+      "en": "Vegan Tofu Scramble Breakfast Burrito",
+      "ms": "Burrito Sarapan Tauhu Hancur (Vegan)",
+      "zh": "纯素豆腐碎早餐卷饼"
+    },
+    "excerpt": {
+      "en": "Spiced tofu scramble, black beans, rice and fresh toppings wrapped in a warm tortilla. A protein-packed vegan breakfast that's easy to customise.",
+      "ms": "Tauhu hancur berempah, kacang hitam, nasi dan hiasan segar dibalut dalam tortilla hangat. Sarapan vegan kaya protein yang mudah diubah suai.",
+      "zh": "香料豆腐碎、黑豆、米饭和新鲜配料卷进温热的薄饼，是富含蛋白质、可随意搭配的纯素早餐。"
+    },
+    "intro": {
+      "en": "Crumbled firm tofu cooked with turmeric, cumin and paprika makes a hearty, egg-free scramble. Wrapped up with quinoa or brown rice, black beans, tomatoes, avocado and salsa, this burrito is a filling way to start the day — and it's easy to make ahead.",
+      "ms": "Tauhu keras yang dihancurkan dan dimasak bersama kunyit, jintan putih dan paprika menghasilkan 'scramble' tanpa telur yang mengenyangkan. Dibalut bersama kuinoa atau beras perang, kacang hitam, tomato, avokado dan salsa, burrito ini cara yang mengenyangkan untuk memulakan hari — dan mudah disediakan lebih awal.",
+      "zh": "硬豆腐捏碎后加黄姜粉、孜然粉和红椒粉同炒，就是一道饱足又无蛋的「炒蛋」。再配藜麦或糙米、黑豆、番茄、牛油果和莎莎酱卷起来，是开启一天的饱足早餐，也方便提前准备。"
+    },
+    "prep_minutes": 15,
+    "cook_minutes": 15,
+    "servings": 4,
+    "difficulty": "easy",
+    "cuisine": {
+      "en": "Fusion",
+      "ms": "Fusion",
+      "zh": "融合料理"
+    },
+    "course": {
+      "en": "Breakfast",
+      "ms": "Sarapan",
+      "zh": "早餐"
+    },
+    "ingredients": [
+      {
+        "group": {
+          "en": "Tofu Scramble",
+          "ms": "Tauhu Hancur",
+          "zh": "豆腐碎"
+        },
+        "items": {
+          "en": [
+            "4 pieces Tung Lam Taufu Keras, drained and crumbled",
+            "1 tbsp olive oil",
+            "1/2 onion, finely chopped",
+            "1 bell pepper, diced",
+            "2 cloves garlic, minced",
+            "1/2 tsp ground turmeric (for colour)",
+            "1/2 tsp ground cumin",
+            "1/2 tsp paprika",
+            "Salt and black pepper, to taste",
+            "2 tbsp nutritional yeast (optional, for a cheesy flavour)"
+          ],
+          "ms": [
+            "4 keping Tung Lam Taufu Keras, ditoskan dan dihancurkan",
+            "1 sudu besar minyak zaitun",
+            "1/2 biji bawang besar, dicincang halus",
+            "1 biji lada benggala, dipotong dadu",
+            "2 ulas bawang putih, dicincang",
+            "1/2 sudu kecil serbuk kunyit (untuk warna)",
+            "1/2 sudu kecil serbuk jintan putih",
+            "1/2 sudu kecil serbuk paprika",
+            "Garam dan lada hitam, secukup rasa",
+            "2 sudu besar yis nutrisi (pilihan, untuk rasa seperti keju)"
+          ],
+          "zh": [
+            "4块Tung Lam硬豆腐，沥干后捏碎",
+            "1汤匙橄榄油",
+            "半颗洋葱，切碎",
+            "1颗灯笼椒，切丁",
+            "2瓣蒜，剁碎",
+            "1/2茶匙黄姜粉（上色用）",
+            "1/2茶匙孜然粉",
+            "1/2茶匙红椒粉",
+            "盐和黑胡椒，适量",
+            "2汤匙营养酵母（可选，增添芝士风味）"
+          ]
+        }
+      },
+      {
+        "group": {
+          "en": "Burrito",
+          "ms": "Burrito",
+          "zh": "卷饼"
+        },
+        "items": {
+          "en": [
+            "4 large whole wheat or spinach tortillas",
+            "1 cup cooked quinoa or brown rice",
+            "1 cup black beans, canned or cooked",
+            "1 cup diced tomatoes",
+            "1/2 cup diced avocado",
+            "1/2 cup salsa",
+            "Fresh coriander leaves, to garnish (optional)",
+            "Hot sauce or vegan cheese (optional)"
+          ],
+          "ms": [
+            "4 keping tortilla besar gandum penuh atau bayam",
+            "1 cawan kuinoa atau beras perang yang telah dimasak",
+            "1 cawan kacang hitam, dalam tin atau dimasak",
+            "1 cawan tomato dadu",
+            "1/2 cawan avokado dadu",
+            "1/2 cawan salsa",
+            "Daun ketumbar segar untuk hiasan (pilihan)",
+            "Sos pedas atau keju vegan (pilihan)"
+          ],
+          "zh": [
+            "4张大号全麦或菠菜墨西哥薄饼",
+            "1杯煮熟的藜麦或糙米",
+            "1杯黑豆（罐装或煮熟）",
+            "1杯番茄丁",
+            "1/2杯牛油果丁",
+            "1/2杯莎莎酱",
+            "新鲜芫荽，装饰用（可选）",
+            "辣酱或纯素芝士（可选）"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Soften the vegetables",
+          "ms": "Tumis sayur",
+          "zh": "炒软蔬菜"
+        },
+        "text": {
+          "en": "Heat the olive oil in a large skillet over medium heat. Sauté the onion and bell pepper for 3–4 minutes until they begin to soften, then add the garlic and cook for 1 minute more.",
+          "ms": "Panaskan minyak zaitun dalam kuali besar dengan api sederhana. Tumis bawang besar dan lada benggala selama 3–4 minit hingga mula lembut, kemudian masukkan bawang putih dan masak seminit lagi.",
+          "zh": "大平底锅中火烧热橄榄油，下洋葱和灯笼椒炒3–4分钟至开始变软，再加入蒜末炒1分钟。"
+        }
+      },
+      {
+        "title": {
+          "en": "Cook the scramble",
+          "ms": "Masak tauhu hancur",
+          "zh": "炒豆腐碎"
+        },
+        "text": {
+          "en": "Add the crumbled tofu, season with turmeric, cumin, paprika, salt and pepper, and stir well. Cook for 5–7 minutes, stirring occasionally, until heated through and lightly golden. Stir in the nutritional yeast, if using.",
+          "ms": "Masukkan tauhu yang dihancurkan, perisakan dengan kunyit, jintan putih, paprika, garam dan lada, dan kacau rata. Masak selama 5–7 minit sambil dikacau sekali-sekala hingga panas dan sedikit keemasan. Masukkan yis nutrisi jika digunakan.",
+          "zh": "加入捏碎的豆腐，以黄姜粉、孜然粉、红椒粉、盐和胡椒调味拌匀，不时翻炒5–7分钟至热透、微微金黄。如使用营养酵母，此时拌入。"
+        }
+      },
+      {
+        "title": {
+          "en": "Warm the tortillas",
+          "ms": "Panaskan tortilla",
+          "zh": "加热薄饼"
+        },
+        "text": {
+          "en": "Warm the tortillas in a dry pan or microwave for about 20 seconds to make them pliable.",
+          "ms": "Panaskan tortilla dalam kuali kering atau ketuhar gelombang mikro selama kira-kira 20 saat supaya mudah dilipat.",
+          "zh": "用干锅或微波炉加热薄饼约20秒，使其柔软好卷。"
+        }
+      },
+      {
+        "title": {
+          "en": "Fill",
+          "ms": "Isi burrito",
+          "zh": "放入馅料"
+        },
+        "text": {
+          "en": "Spoon quinoa or rice down the centre of each tortilla, then top with the tofu scramble, black beans, tomatoes, avocado and salsa. Add hot sauce, vegan cheese and coriander if you like.",
+          "ms": "Letakkan kuinoa atau nasi di tengah setiap tortilla, kemudian tambah tauhu hancur, kacang hitam, tomato, avokado dan salsa. Tambah sos pedas, keju vegan dan daun ketumbar jika suka.",
+          "zh": "在每张薄饼中央铺上藜麦或米饭，再放豆腐碎、黑豆、番茄、牛油果和莎莎酱，可依喜好加辣酱、纯素芝士和芫荽。"
+        }
+      },
+      {
+        "title": {
+          "en": "Fold and roll",
+          "ms": "Lipat dan gulung",
+          "zh": "折叠卷起"
+        },
+        "text": {
+          "en": "Fold in the sides of the tortilla, fold up the bottom, then roll tightly into a burrito.",
+          "ms": "Lipat kedua-dua sisi tortilla ke dalam, lipat bahagian bawah ke atas, kemudian gulung dengan ketat.",
+          "zh": "先把薄饼两侧往内折，再把底部折起，紧紧卷成卷饼。"
+        }
+      },
+      {
+        "title": {
+          "en": "Serve",
+          "ms": "Hidang",
+          "zh": "享用"
+        },
+        "text": {
+          "en": "Serve immediately, or wrap in foil and keep warm in a low oven until ready to eat.",
+          "ms": "Hidangkan segera, atau balut dengan kerajang aluminium dan simpan hangat di dalam ketuhar bersuhu rendah sehingga hendak dimakan.",
+          "zh": "立即享用，或用锡纸包好放入低温烤箱保温，待食用时再取出。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Squeeze excess water from the tofu before crumbling for a fluffier, less soggy scramble.",
+        "Add spinach, mushrooms or other favourite vegetables to the scramble."
+      ],
+      "ms": [
+        "Perah lebihan air daripada tauhu sebelum dihancurkan supaya hasilnya lebih gebu dan tidak lembik.",
+        "Tambah bayam, cendawan atau sayur kegemaran lain ke dalam tauhu hancur."
+      ],
+      "zh": [
+        "捏碎前先挤掉豆腐多余水分，炒出来更松软不湿。",
+        "可在豆腐碎中加入菠菜、蘑菇或其他喜欢的蔬菜。"
+      ]
+    },
+    "products": [
+      "tl-taufu-keras-4pcs"
+    ],
+    "keywords": {
+      "en": [
+        "tofu burrito",
+        "breakfast burrito",
+        "tofu scramble",
+        "vegan breakfast",
+        "firm tofu recipe"
+      ],
+      "ms": [
+        "burrito tauhu",
+        "burrito sarapan",
+        "tauhu hancur",
+        "sarapan vegan",
+        "resepi tauhu keras"
+      ],
+      "zh": [
+        "豆腐卷饼",
+        "早餐卷饼",
+        "豆腐碎",
+        "纯素早餐",
+        "硬豆腐食谱"
+      ]
+    },
+    "meta_title": {
+      "en": "Vegan Tofu Breakfast Burrito Recipe | Tung Lam Food",
+      "ms": "Resepi Burrito Sarapan Tauhu Vegan | Tung Lam",
+      "zh": "纯素豆腐早餐卷饼做法 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "A hearty vegan breakfast burrito: spiced Tung Lam Taufu Keras scramble with black beans, rice or quinoa, tomato, avocado and salsa in a warm tortilla.",
+      "ms": "Burrito sarapan vegan yang mengenyangkan: tauhu hancur berempah Tung Lam Taufu Keras bersama kacang hitam, nasi atau kuinoa, avokado dan salsa.",
+      "zh": "饱足纯素早餐卷饼：香料Tung Lam硬豆腐碎配黑豆、米饭或藜麦、番茄、牛油果和莎莎酱，卷进温热薄饼。"
+    }
+  },
+  {
+    "legacy_id": 123964,
+    "slug": "crispy-silken-tofu",
+    "published_at": "2023-09-05",
+    "title": {
+      "en": "Quick Crispy Pan-Fried Silken Tofu",
+      "ms": "Tauhu Sutera Goreng Rangup Mudah",
+      "zh": "快手香煎脆皮嫩豆腐"
+    },
+    "excerpt": {
+      "en": "Soft silken tofu coated in seasoned cornstarch and pan-fried until golden — crisp outside, silky inside. A quick snack or appetiser.",
+      "ms": "Tauhu sutera lembut disalut tepung jagung berperisa dan digoreng hingga keemasan — rangup di luar, lembut di dalam. Snek atau pembuka selera yang cepat.",
+      "zh": "嫩豆腐裹上调味粟粉煎至金黄，外脆内嫩，是快手小吃或开胃菜。"
+    },
+    "intro": {
+      "en": "Silken tofu might seem too delicate for frying, but a light coating of cornstarch turns it into a crisp, golden treat with a custard-soft centre. With just a few pantry ingredients and about 20 minutes, it's an easy vegetarian snack to share.",
+      "ms": "Tauhu sutera mungkin nampak terlalu lembut untuk digoreng, tetapi salutan nipis tepung jagung menjadikannya rangup dan keemasan dengan bahagian dalam yang lembut seperti kastard. Dengan beberapa bahan asas dan kira-kira 20 minit, ini snek vegetarian yang mudah untuk dikongsi.",
+      "zh": "嫩豆腐看似太软不适合煎，但只要薄薄裹一层粟粉，就能煎出金黄酥脆的外皮，里面依旧像布丁般滑嫩。几样常备材料、约20分钟，就能做出适合分享的素食小吃。"
+    },
+    "prep_minutes": 10,
+    "cook_minutes": 10,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": {
+      "en": "Asian",
+      "ms": "Asia",
+      "zh": "亚洲风味"
+    },
+    "course": {
+      "en": "Appetiser",
+      "ms": "Pembuka Selera",
+      "zh": "开胃菜"
+    },
+    "ingredients": [
+      {
+        "group": null,
+        "items": {
+          "en": [
+            "1 box Tung Lam Silken Tofu Box",
+            "2 tbsp vegetable oil",
+            "2 tbsp cornstarch",
+            "1/2 tsp salt",
+            "1/4 tsp black pepper",
+            "Dipping sauce of your choice (optional)",
+            "Fresh herbs or spring onions, to garnish (optional)"
+          ],
+          "ms": [
+            "1 kotak Tung Lam Silken Tofu Box",
+            "2 sudu besar minyak masak",
+            "2 sudu besar tepung jagung",
+            "1/2 sudu kecil garam",
+            "1/4 sudu kecil lada hitam",
+            "Sos cecah kegemaran (jika suka)",
+            "Herba segar atau daun bawang untuk hiasan (pilihan)"
+          ],
+          "zh": [
+            "1盒Tung Lam盒装嫩豆腐",
+            "2汤匙食用油",
+            "2汤匙粟粉",
+            "1/2茶匙盐",
+            "1/4茶匙黑胡椒粉",
+            "蘸酱（可选）",
+            "新鲜香草或葱花，装饰用（可选）"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Drain the tofu",
+          "ms": "Toskan tauhu",
+          "zh": "沥干豆腐"
+        },
+        "text": {
+          "en": "Drain the silken tofu and gently pat it dry with paper towels.",
+          "ms": "Toskan tauhu sutera dan keringkan perlahan-lahan dengan tuala kertas.",
+          "zh": "将嫩豆腐沥干水分，用厨房纸轻轻吸干。"
+        }
+      },
+      {
+        "title": {
+          "en": "Cut and coat",
+          "ms": "Potong dan salut",
+          "zh": "切块裹粉"
+        },
+        "text": {
+          "en": "Cut the tofu into slices or cubes about 1/2 inch (1.5cm) thick. Mix the cornstarch, salt and pepper and gently coat each piece.",
+          "ms": "Potong tauhu berbentuk kepingan atau dadu setebal kira-kira 1.5cm. Campurkan tepung jagung, garam dan lada, kemudian salut setiap keping dengan perlahan.",
+          "zh": "把豆腐切成约1.5厘米厚的片或块。将粟粉、盐和胡椒粉混合，轻轻为每块豆腐裹上粉。"
+        }
+      },
+      {
+        "title": {
+          "en": "Heat the oil",
+          "ms": "Panaskan minyak",
+          "zh": "热油"
+        },
+        "text": {
+          "en": "Heat the vegetable oil in a skillet over medium-high heat.",
+          "ms": "Panaskan minyak dalam kuali leper dengan api sederhana besar.",
+          "zh": "平底锅以中大火烧热油。"
+        }
+      },
+      {
+        "title": {
+          "en": "Pan-fry",
+          "ms": "Goreng",
+          "zh": "香煎"
+        },
+        "text": {
+          "en": "Fry the tofu for 2–3 minutes per side until golden brown, then drain on paper towels.",
+          "ms": "Goreng tauhu selama 2–3 minit setiap bahagian hingga perang keemasan, kemudian toskan di atas tuala kertas.",
+          "zh": "每面煎2–3分钟至金黄，捞起放在厨房纸上吸油。"
+        }
+      },
+      {
+        "title": {
+          "en": "Serve hot",
+          "ms": "Hidang panas",
+          "zh": "趁热享用"
+        },
+        "text": {
+          "en": "Serve immediately with your favourite dipping sauce, garnished with herbs or spring onions if you like.",
+          "ms": "Hidangkan segera bersama sos cecah kegemaran, dihias dengan herba atau daun bawang jika suka.",
+          "zh": "趁热配上喜欢的蘸酱，可撒上香草或葱花。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Handle silken tofu gently and turn it with a thin spatula to keep the pieces intact.",
+        "Coat the tofu just before frying so the cornstarch stays dry and crisps up well.",
+        "Try it with sweet chilli sauce or a soy-garlic dip."
+      ],
+      "ms": [
+        "Kendalikan tauhu sutera dengan lembut dan balikkan menggunakan sudip nipis supaya tidak hancur.",
+        "Salut tauhu sejurus sebelum digoreng supaya tepung kekal kering dan menjadi rangup.",
+        "Cuba bersama sos cili manis atau cecah kicap bawang putih."
+      ],
+      "zh": [
+        "嫩豆腐要轻拿轻放，用薄锅铲翻面，才能保持完整。",
+        "下锅前才裹粉，粉层保持干爽，煎出来更脆。",
+        "可搭配甜辣酱或蒜蓉酱油。"
+      ]
+    },
+    "products": [
+      "tl-silken-tofu-box-300gm",
+      "sakura-silken-tofu-box-300gm"
+    ],
+    "keywords": {
+      "en": [
+        "crispy silken tofu",
+        "pan-fried tofu",
+        "silken tofu recipe",
+        "tofu appetiser",
+        "vegetarian snack",
+        "Tung Lam Silken Tofu"
+      ],
+      "ms": [
+        "tauhu sutera rangup",
+        "tauhu goreng",
+        "resepi tauhu sutera",
+        "pembuka selera tauhu",
+        "snek vegetarian",
+        "Tung Lam Silken Tofu"
+      ],
+      "zh": [
+        "脆皮嫩豆腐",
+        "香煎豆腐",
+        "嫩豆腐食谱",
+        "豆腐小吃",
+        "素食小吃",
+        "Tung Lam嫩豆腐"
+      ]
+    },
+    "meta_title": {
+      "en": "Quick Crispy Pan-Fried Silken Tofu | Tung Lam Food",
+      "ms": "Tauhu Sutera Goreng Rangup | Tung Lam Food",
+      "zh": "香煎脆皮嫩豆腐做法 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Turn soft silken tofu into a crispy, golden snack: coat Tung Lam Silken Tofu in seasoned cornstarch and pan-fry 2–3 minutes a side. Ready in 20 minutes.",
+      "ms": "Jadikan tauhu sutera snek rangup keemasan: salut Tung Lam Silken Tofu dengan tepung jagung berperisa dan goreng 2–3 minit setiap sisi. Siap dalam 20 minit.",
+      "zh": "把嫩豆腐变成金黄酥脆的小吃：Tung Lam嫩豆腐裹上调味粟粉，每面煎2–3分钟，约20分钟完成。"
+    }
+  },
+  {
+    "legacy_id": 123962,
+    "slug": "fish-head-curry-tofu-puffs",
+    "published_at": "2023-09-05",
+    "title": {
+      "en": "Fish Head Curry with Tofu Puffs",
+      "ms": "Kari Kepala Ikan dengan Tauhu Pok",
+      "zh": "豆卜咖喱鱼头"
+    },
+    "excerpt": {
+      "en": "Tender fish head and tofu puffs simmered in a rich, tangy coconut curry with lemongrass, tamarind and lime leaves. Perfect with rice or bread.",
+      "ms": "Kepala ikan yang lembut dan tauhu pok direneh dalam kari santan yang pekat dan masam dengan serai, asam jawa dan daun limau purut. Sesuai dengan nasi atau roti.",
+      "zh": "鲜嫩鱼头和豆卜在加了香茅、亚参和酸柑叶的浓郁椰浆咖喱中慢煮，配白饭或面包都对味。"
+    },
+    "intro": {
+      "en": "Fish head curry is a Malaysian favourite for sharing, and tofu puffs make it even better — they soak up the spiced, tangy gravy like little sponges. This home-style version uses snapper or grouper, fish curry powder, coconut milk and tamarind for a bold, aromatic pot of curry.",
+      "ms": "Kari kepala ikan memang hidangan kegemaran rakyat Malaysia untuk dikongsi bersama, dan tauhu pok menjadikannya lebih istimewa — ia menyerap kuah berempah yang masam seperti span kecil. Versi ala rumah ini menggunakan ikan merah atau kerapu, serbuk kari ikan, santan dan asam jawa untuk kari yang kaya rasa dan wangi.",
+      "zh": "咖喱鱼头是马来西亚人最爱的分享菜，加入豆卜更添美味——豆卜像小海绵一样吸满香辣带酸的咖喱汁。这个家常版本用红鱼或石斑鱼头，加鱼咖喱粉、椰浆和亚参，煮出一锅浓郁芳香的咖喱。"
+    },
+    "prep_minutes": 20,
+    "cook_minutes": 35,
+    "servings": 4,
+    "difficulty": "medium",
+    "cuisine": {
+      "en": "Malaysian",
+      "ms": "Malaysia",
+      "zh": "马来西亚"
+    },
+    "course": {
+      "en": "Main",
+      "ms": "Hidangan Utama",
+      "zh": "主菜"
+    },
+    "ingredients": [
+      {
+        "group": null,
+        "items": {
+          "en": [
+            "1 whole fish head (snapper or grouper), cleaned and cut into chunks",
+            "200g Tung Lam Tofu Puffs, cut into bite-sized pieces",
+            "2 tbsp vegetable oil",
+            "1 large onion, sliced",
+            "3 cloves garlic, minced",
+            "2-inch (5cm) piece ginger, sliced",
+            "2 tomatoes, chopped",
+            "1 can (400ml) coconut milk",
+            "2 tbsp fish curry powder",
+            "1 tbsp chilli powder (adjust to taste)",
+            "1 tbsp tamarind paste",
+            "2 stalks lemongrass, bruised",
+            "4–5 kaffir lime leaves, torn",
+            "Salt and sugar, to taste",
+            "Fresh coriander leaves, to garnish",
+            "Steamed rice or bread, to serve"
+          ],
+          "ms": [
+            "1 kepala ikan (ikan merah atau kerapu), dibersihkan dan dipotong",
+            "200g Tauhu Pok Tung Lam, dipotong kecil",
+            "2 sudu besar minyak masak",
+            "1 biji bawang besar, dihiris",
+            "3 ulas bawang putih, dicincang",
+            "5cm halia, dihiris",
+            "2 biji tomato, dipotong",
+            "1 tin (400ml) santan",
+            "2 sudu besar serbuk kari ikan",
+            "1 sudu besar serbuk cili (ikut citarasa)",
+            "1 sudu besar pes asam jawa",
+            "2 batang serai, diketuk",
+            "4–5 helai daun limau purut, dikoyak",
+            "Garam dan gula, secukup rasa",
+            "Daun ketumbar segar untuk hiasan",
+            "Nasi putih atau roti untuk dihidang"
+          ],
+          "zh": [
+            "1个鱼头（红鱼或石斑），洗净切块",
+            "200克Tung Lam豆卜，切成一口大小",
+            "2汤匙食用油",
+            "1颗大洋葱，切丝",
+            "3瓣蒜，剁碎",
+            "5厘米姜，切片",
+            "2颗番茄，切块",
+            "1罐（400毫升）椰浆",
+            "2汤匙鱼咖喱粉",
+            "1汤匙辣椒粉（可依口味调整）",
+            "1汤匙亚参膏",
+            "2根香茅，拍扁",
+            "4–5片酸柑叶，撕开",
+            "盐和糖，适量",
+            "新鲜芫荽，装饰用",
+            "白饭或面包，佐食用"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Prepare the fish and tofu puffs",
+          "ms": "Sediakan ikan dan tauhu pok",
+          "zh": "处理鱼头和豆卜"
+        },
+        "text": {
+          "en": "Rinse the fish head well, remove any scales or unwanted parts, pat dry and cut into manageable chunks. Cut the tofu puffs into bite-sized pieces.",
+          "ms": "Basuh kepala ikan dengan bersih, buang sisik atau bahagian yang tidak diperlukan, keringkan dan potong kepada saiz yang sesuai. Potong tauhu pok kecil-kecil.",
+          "zh": "鱼头彻底洗净，去除鳞片和不要的部分，抹干后切成适当大小。豆卜切成一口大小。"
+        }
+      },
+      {
+        "title": {
+          "en": "Blend the paste",
+          "ms": "Kisar bahan",
+          "zh": "打酱料"
+        },
+        "text": {
+          "en": "Blend the garlic, ginger and tomatoes into a smooth paste, adding a splash of water if needed.",
+          "ms": "Kisar bawang putih, halia dan tomato hingga halus; tambah sedikit air jika perlu.",
+          "zh": "将蒜、姜和番茄放入搅拌机打成细滑的酱，如有需要可加少许水。"
+        }
+      },
+      {
+        "title": {
+          "en": "Sauté the onion",
+          "ms": "Tumis bawang",
+          "zh": "炒洋葱"
+        },
+        "text": {
+          "en": "Heat the oil in a large, deep pan or wok over medium-high heat and sauté the onion until translucent.",
+          "ms": "Panaskan minyak dalam kuali besar yang dalam dengan api sederhana besar dan tumis bawang besar hingga layu.",
+          "zh": "深锅或炒锅以中大火烧热油，下洋葱炒至透明。"
+        }
+      },
+      {
+        "title": {
+          "en": "Fry the paste and spices",
+          "ms": "Tumis bahan kisar dan rempah",
+          "zh": "炒酱料和香料"
+        },
+        "text": {
+          "en": "Add the blended paste and stir-fry for a few minutes until fragrant and the oil starts to separate. Stir in the fish curry powder and chilli powder and cook for another 1–2 minutes.",
+          "ms": "Masukkan bahan kisar dan tumis beberapa minit hingga wangi dan pecah minyak. Masukkan serbuk kari ikan dan serbuk cili, masak 1–2 minit lagi.",
+          "zh": "加入打好的酱料，炒几分钟至香气四溢、油开始分离。再加入鱼咖喱粉和辣椒粉，续炒1–2分钟。"
+        }
+      },
+      {
+        "title": {
+          "en": "Add coconut milk and tamarind",
+          "ms": "Masukkan santan dan asam jawa",
+          "zh": "加入椰浆和亚参"
+        },
+        "text": {
+          "en": "Pour in the coconut milk and bring to a gentle simmer. Dissolve the tamarind paste in a little warm water and stir it in, then add the lemongrass and lime leaves. Season with salt and sugar to taste.",
+          "ms": "Tuangkan santan dan biarkan mereneh perlahan. Larutkan pes asam jawa dalam sedikit air suam dan masukkan, kemudian tambah serai dan daun limau purut. Perisakan dengan garam dan gula.",
+          "zh": "倒入椰浆，煮至微滚。亚参膏用少许温水化开后加入，再放香茅和酸柑叶，以盐和糖调味。"
+        }
+      },
+      {
+        "title": {
+          "en": "Simmer the fish and tofu puffs",
+          "ms": "Reneh ikan dan tauhu pok",
+          "zh": "煮鱼头和豆卜"
+        },
+        "text": {
+          "en": "Gently add the fish head and tofu puffs, making sure they're submerged. Simmer on low heat for 10–15 minutes until the fish is cooked through.",
+          "ms": "Masukkan kepala ikan dan tauhu pok perlahan-lahan, pastikan tenggelam dalam kuah. Reneh dengan api perlahan selama 10–15 minit hingga ikan masak.",
+          "zh": "轻轻放入鱼头和豆卜，确保浸在咖喱汁中，小火煮10–15分钟至鱼肉熟透。"
+        }
+      },
+      {
+        "title": {
+          "en": "Garnish and serve",
+          "ms": "Hias dan hidang",
+          "zh": "装饰上桌"
+        },
+        "text": {
+          "en": "Garnish with coriander and serve hot with steamed rice or bread.",
+          "ms": "Hias dengan daun ketumbar dan hidangkan panas bersama nasi putih atau roti.",
+          "zh": "撒上芫荽，趁热配白饭或面包享用。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Avoid stirring too much once the fish is in — gently swirl the pan instead so the flesh stays intact.",
+        "Add okra or eggplant along with the fish for a more traditional pot.",
+        "Adjust the tamarind and sugar at the end to balance sour, sweet and spicy."
+      ],
+      "ms": [
+        "Elakkan mengacau terlalu kerap selepas ikan dimasukkan — goyangkan kuali perlahan supaya isi ikan tidak hancur.",
+        "Tambah bendi atau terung bersama ikan untuk rasa yang lebih tradisional.",
+        "Laraskan asam jawa dan gula di akhir untuk mengimbangi rasa masam, manis dan pedas."
+      ],
+      "zh": [
+        "鱼头下锅后少翻动，轻轻晃动锅子即可，鱼肉才不会散。",
+        "可同时加入羊角豆或茄子，更有传统风味。",
+        "最后再调整亚参和糖的分量，平衡酸、甜、辣。"
+      ]
+    },
+    "products": [
+      "tofu-goreng-bulat-270gm",
+      "tofu-goreng-keping-270gm"
+    ],
+    "keywords": {
+      "en": [
+        "fish head curry",
+        "tofu puffs",
+        "curry fish head recipe",
+        "Malaysian curry",
+        "tofu goreng",
+        "Tung Lam Tofu Puffs"
+      ],
+      "ms": [
+        "kari kepala ikan",
+        "tauhu pok",
+        "resepi kari ikan",
+        "kari Malaysia",
+        "tofu goreng",
+        "Tauhu Pok Tung Lam"
+      ],
+      "zh": [
+        "咖喱鱼头",
+        "豆卜",
+        "咖喱鱼头做法",
+        "马来西亚咖喱",
+        "豆卜料理",
+        "Tung Lam豆卜"
+      ]
+    },
+    "meta_title": {
+      "en": "Fish Head Curry with Tofu Puffs Recipe | Tung Lam Food",
+      "ms": "Resepi Kari Kepala Ikan Tauhu Pok | Tung Lam",
+      "zh": "豆卜咖喱鱼头做法 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Cook Malaysian fish head curry at home with Tung Lam Tofu Puffs, coconut milk, tamarind, lemongrass and lime leaves. A rich, tangy curry to share with rice.",
+      "ms": "Masak kari kepala ikan di rumah dengan Tauhu Pok Tung Lam, santan, asam jawa, serai dan daun limau purut. Kari pekat dan masam untuk dikongsi bersama.",
+      "zh": "在家煮马来西亚咖喱鱼头：Tung Lam豆卜配椰浆、亚参、香茅和酸柑叶，浓郁带酸，配饭分享最适合。"
+    }
+  },
+  {
+    "legacy_id": 122012,
+    "slug": "sambal-peeled-quail-eggs",
+    "published_at": "2023-07-28",
+    "title": {
+      "en": "Sambal Peeled Quail Eggs in 5 Easy Steps",
+      "ms": "Sambal Telur Puyuh dalam 5 Langkah Mudah",
+      "zh": "五步简易叁巴鹌鹑蛋"
+    },
+    "excerpt": {
+      "en": "Ready-peeled quail eggs tossed in a spicy, sweet-savoury sambal — a quick appetiser or side that's done in about 15 minutes.",
+      "ms": "Telur puyuh siap dikupas digaul dalam sambal pedas yang manis dan masin — pembuka selera atau lauk sampingan yang siap dalam kira-kira 15 minit.",
+      "zh": "现成去壳鹌鹑蛋拌入香辣甜咸的叁巴酱，约15分钟就能完成的开胃小菜或配菜。"
+    },
+    "intro": {
+      "en": "Sambal telur puyuh is a favourite at Malaysian tables, but peeling dozens of tiny eggs is nobody's idea of fun. With Tung Lam Peeled Quail Eggs, you skip straight to the good part: fry the sambal until fragrant, balance it with soy sauce and sugar, and coat the eggs.",
+      "ms": "Sambal telur puyuh memang kegemaran di meja makan rakyat Malaysia, tetapi mengupas berpuluh-puluh telur kecil bukanlah kerja yang seronok. Dengan Telur Puyuh Kupas Tung Lam, anda terus ke bahagian terbaik: tumis sambal hingga wangi, imbangkan dengan kicap dan gula, kemudian gaulkan telur.",
+      "zh": "叁巴鹌鹑蛋是马来西亚餐桌上的人气菜，但剥一大堆小小的鹌鹑蛋可不轻松。用Tung Lam去壳鹌鹑蛋，直接跳到最好吃的部分：炒香叁巴酱，加酱油和糖调味，再拌入鹌鹑蛋即可。"
+    },
+    "prep_minutes": 5,
+    "cook_minutes": 10,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": {
+      "en": "Malaysian",
+      "ms": "Malaysia",
+      "zh": "马来西亚"
+    },
+    "course": {
+      "en": "Side",
+      "ms": "Lauk Sampingan",
+      "zh": "配菜"
+    },
+    "ingredients": [
+      {
+        "group": null,
+        "items": {
+          "en": [
+            "10 Tung Lam Peeled Quail Eggs",
+            "2 tbsp cooking oil",
+            "3 tbsp sambal (store-bought or homemade)",
+            "1 tbsp soy sauce",
+            "1 tsp sugar",
+            "Fresh coriander leaves, to garnish (optional)"
+          ],
+          "ms": [
+            "10 biji Telur Puyuh Kupas Tung Lam",
+            "2 sudu besar minyak masak",
+            "3 sudu besar sambal (siap dibeli atau buatan sendiri)",
+            "1 sudu besar kicap cair",
+            "1 sudu kecil gula",
+            "Daun ketumbar segar untuk hiasan (pilihan)"
+          ],
+          "zh": [
+            "10颗Tung Lam去壳鹌鹑蛋",
+            "2汤匙食用油",
+            "3汤匙叁巴酱（现成或自制）",
+            "1汤匙酱油",
+            "1茶匙糖",
+            "新鲜芫荽，装饰用（可选）"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": null,
+        "text": {
+          "en": "Drain the Tung Lam Peeled Quail Eggs from the pack and set aside.",
+          "ms": "Toskan Telur Puyuh Kupas Tung Lam daripada bekasnya dan ketepikan.",
+          "zh": "将Tung Lam去壳鹌鹑蛋从包装中取出沥干，备用。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Heat the oil in a pan over medium heat and stir-fry the sambal until fragrant.",
+          "ms": "Panaskan minyak dalam kuali dengan api sederhana dan tumis sambal hingga wangi.",
+          "zh": "锅中以中火烧热油，下叁巴酱炒香。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Add the soy sauce and sugar and stir to balance the flavours.",
+          "ms": "Masukkan kicap dan gula, kacau hingga rasa seimbang.",
+          "zh": "加入酱油和糖拌匀，平衡味道。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Add the quail eggs and toss gently for 2–3 minutes until heated through and well coated in sambal.",
+          "ms": "Masukkan telur puyuh dan gaul perlahan selama 2–3 minit hingga panas dan bersalut rata dengan sambal.",
+          "zh": "放入鹌鹑蛋轻轻翻拌2–3分钟，至热透并均匀裹上叁巴酱。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Transfer to a dish, garnish with coriander if you like, and serve.",
+          "ms": "Pindahkan ke pinggan, hias dengan daun ketumbar jika suka, dan hidangkan.",
+          "zh": "盛盘，可撒上芫荽，即可享用。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "Pat the quail eggs dry before adding them so the sambal clings better.",
+        "Fry the sambal over gentle heat until the oil separates for the best flavour.",
+        "Cooking for a crowd? Use the 50-piece pack and scale up the sauce."
+      ],
+      "ms": [
+        "Keringkan telur puyuh sebelum dimasukkan supaya sambal melekat dengan lebih baik.",
+        "Tumis sambal dengan api perlahan hingga pecah minyak untuk rasa terbaik.",
+        "Masak untuk ramai? Gunakan pek 50 biji dan tambah sos mengikut nisbah."
+      ],
+      "zh": [
+        "鹌鹑蛋下锅前先抹干，叁巴酱更容易附着。",
+        "用小火把叁巴酱炒至油分离出，味道最香。",
+        "人多时可用50颗装，并按比例增加酱料。"
+      ]
+    },
+    "products": [
+      "tl-telur-puyuh-kupas-10pcs",
+      "tl-telur-puyuh-kupas-50pcs"
+    ],
+    "keywords": {
+      "en": [
+        "sambal quail eggs",
+        "sambal telur puyuh",
+        "peeled quail eggs",
+        "quail egg recipe",
+        "Malaysian side dish",
+        "Tung Lam quail eggs"
+      ],
+      "ms": [
+        "sambal telur puyuh",
+        "telur puyuh kupas",
+        "resepi telur puyuh",
+        "lauk sampingan",
+        "resepi sambal",
+        "Telur Puyuh Kupas Tung Lam"
+      ],
+      "zh": [
+        "叁巴鹌鹑蛋",
+        "去壳鹌鹑蛋",
+        "鹌鹑蛋食谱",
+        "马来西亚配菜",
+        "叁巴",
+        "Tung Lam鹌鹑蛋"
+      ]
+    },
+    "meta_title": {
+      "en": "Sambal Peeled Quail Eggs Recipe | Tung Lam Food",
+      "ms": "Resepi Sambal Telur Puyuh Mudah | Tung Lam Food",
+      "zh": "叁巴鹌鹑蛋简易做法 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Make sambal quail eggs in 5 easy steps with Tung Lam Peeled Quail Eggs, no peeling needed. Spicy, sweet and savoury, ready in about 15 minutes.",
+      "ms": "Masak sambal telur puyuh dalam 5 langkah mudah dengan Telur Puyuh Kupas Tung Lam — tak perlu kupas. Pedas, manis dan masin, siap dalam 15 minit.",
+      "zh": "用Tung Lam去壳鹌鹑蛋，五步完成叁巴鹌鹑蛋，免剥壳。香辣甜咸，约15分钟就能上桌。"
+    }
+  },
+  {
+    "legacy_id": 121968,
+    "slug": "steamed-silken-tofu",
+    "published_at": "2023-07-27",
+    "title": {
+      "en": "Easy Steamed Silken Tofu with Ginger Soy Sauce",
+      "ms": "Tauhu Sutera Kukus Mudah dengan Sos Kicap Halia",
+      "zh": "简易姜汁酱油蒸嫩豆腐"
+    },
+    "excerpt": {
+      "en": "Silky steamed tofu dressed with soy sauce, sesame oil, ginger, garlic and spring onions. A light, simple dish ready in about 15 minutes.",
+      "ms": "Tauhu sutera kukus disiram kicap, minyak bijan, halia, bawang putih dan daun bawang. Hidangan ringan dan ringkas yang siap dalam kira-kira 15 minit.",
+      "zh": "滑嫩蒸豆腐淋上酱油、麻油、姜、蒜和青葱调成的酱汁，清淡简单，约15分钟完成。"
+    },
+    "intro": {
+      "en": "Silken tofu's delicate texture and mild flavour make it perfect for steaming. A few minutes over boiling water and a quick ginger-soy dressing give you a comforting dish to enjoy on its own or with steamed rice — whether you're vegetarian or not.",
+      "ms": "Tekstur tauhu sutera yang halus dan rasanya yang lembut amat sesuai untuk dikukus. Kukus beberapa minit, siramkan sos kicap halia yang ringkas, dan anda ada hidangan yang menyenangkan untuk dinikmati begitu sahaja atau bersama nasi — sesuai untuk vegetarian dan bukan vegetarian.",
+      "zh": "嫩豆腐质地细腻、味道清淡，最适合清蒸。蒸几分钟，淋上简单的姜汁酱油，就是一道暖心好菜，单吃或配白饭都好，素食者和非素食者都适合。"
+    },
+    "prep_minutes": 5,
+    "cook_minutes": 10,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": {
+      "en": "Chinese",
+      "ms": "Cina",
+      "zh": "中式"
+    },
+    "course": {
+      "en": "Side",
+      "ms": "Lauk Sampingan",
+      "zh": "配菜"
+    },
+    "ingredients": [
+      {
+        "group": null,
+        "items": {
+          "en": [
+            "1 box Tung Lam Silken Tofu Box",
+            "2 tbsp low-sodium soy sauce",
+            "1 tbsp sesame oil",
+            "1 tbsp spring onions, finely chopped",
+            "1 tsp fresh ginger, grated",
+            "1 clove garlic, minced",
+            "Optional toppings: sesame seeds, sliced chillies or coriander leaves"
+          ],
+          "ms": [
+            "1 kotak Tung Lam Silken Tofu Box",
+            "2 sudu besar kicap cair rendah natrium",
+            "1 sudu besar minyak bijan",
+            "1 sudu besar daun bawang, dihiris halus",
+            "1 sudu kecil halia segar, diparut",
+            "1 ulas bawang putih, dicincang",
+            "Hiasan pilihan: bijan, cili hiris atau daun ketumbar"
+          ],
+          "zh": [
+            "1盒Tung Lam盒装嫩豆腐",
+            "2汤匙低钠酱油",
+            "1汤匙麻油",
+            "1汤匙葱花",
+            "1茶匙姜蓉",
+            "1瓣蒜，剁碎",
+            "可选配料：芝麻、辣椒片或芫荽"
+          ]
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": null,
+        "text": {
+          "en": "Gently remove the tofu from the box and cut it into serving-sized pieces.",
+          "ms": "Keluarkan tauhu dari kotak dengan berhati-hati dan potong mengikut saiz hidangan.",
+          "zh": "小心将豆腐从盒中取出，切成适合的大小。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Place the tofu on a heatproof plate and steam for 5–7 minutes over boiling water.",
+          "ms": "Letakkan tauhu di atas pinggan tahan panas dan kukus selama 5–7 minit di atas air mendidih.",
+          "zh": "把豆腐放在耐热盘上，以滚水蒸5–7分钟。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Meanwhile, mix the soy sauce, sesame oil, spring onions, ginger and garlic to make the sauce.",
+          "ms": "Sementara itu, campurkan kicap, minyak bijan, daun bawang, halia dan bawang putih untuk membuat sos.",
+          "zh": "同时把酱油、麻油、葱花、姜蓉和蒜末拌匀成酱汁。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Pour off any water on the plate, then drizzle the sauce over the steamed tofu.",
+          "ms": "Buang air yang bertakung di pinggan, kemudian siramkan sos ke atas tauhu kukus.",
+          "zh": "倒掉盘中积水，再把酱汁淋在蒸好的豆腐上。"
+        }
+      },
+      {
+        "title": null,
+        "text": {
+          "en": "Top with sesame seeds, chillies or coriander if you like, and serve immediately on its own or with rice.",
+          "ms": "Tabur bijan, cili atau daun ketumbar jika suka, dan hidangkan segera begitu sahaja atau bersama nasi.",
+          "zh": "可撒上芝麻、辣椒片或芫荽，立即单独享用或配饭。"
+        }
+      }
+    ],
+    "tips": {
+      "en": [
+        "To unmould the tofu in one piece, run a knife around the edge of the box and turn it out onto a plate.",
+        "Don't over-steam — silken tofu only needs to be heated through."
+      ],
+      "ms": [
+        "Untuk mengeluarkan tauhu tanpa hancur, lalukan pisau di sekeliling tepi kotak dan terbalikkan ke atas pinggan.",
+        "Jangan kukus terlalu lama — tauhu sutera hanya perlu dipanaskan hingga panas ke dalam."
+      ],
+      "zh": [
+        "想完整取出豆腐，可用刀沿盒边划一圈，再倒扣在盘上。",
+        "别蒸太久，嫩豆腐只需蒸到热透即可。"
+      ]
+    },
+    "products": [
+      "tl-silken-tofu-box-300gm",
+      "sakura-silken-tofu-box-300gm"
+    ],
+    "keywords": {
+      "en": [
+        "steamed silken tofu",
+        "silken tofu recipe",
+        "steamed tofu with soy sauce",
+        "easy tofu recipe",
+        "light tofu dish",
+        "Tung Lam Silken Tofu"
+      ],
+      "ms": [
+        "tauhu sutera kukus",
+        "resepi tauhu sutera",
+        "tauhu kukus kicap",
+        "resepi tauhu mudah",
+        "hidangan ringan",
+        "Tung Lam Silken Tofu"
+      ],
+      "zh": [
+        "蒸嫩豆腐",
+        "嫩豆腐食谱",
+        "酱油蒸豆腐",
+        "简易豆腐料理",
+        "清淡家常菜",
+        "Tung Lam嫩豆腐"
+      ]
+    },
+    "meta_title": {
+      "en": "Easy Steamed Silken Tofu with Ginger Soy | Tung Lam",
+      "ms": "Tauhu Sutera Kukus Kicap Halia | Tung Lam Food",
+      "zh": "姜汁酱油蒸嫩豆腐 | Tung Lam Food"
+    },
+    "meta_description": {
+      "en": "Steam Tung Lam Silken Tofu for 5–7 minutes and drizzle with a quick soy, sesame, ginger and garlic sauce. A light, easy dish to enjoy alone or with rice.",
+      "ms": "Kukus Tung Lam Silken Tofu selama 5–7 minit dan siram dengan sos kicap, minyak bijan, halia dan bawang putih. Hidangan ringan yang mudah, sedap dengan nasi.",
+      "zh": "Tung Lam嫩豆腐蒸5–7分钟，淋上酱油、麻油、姜和蒜调成的酱汁，清淡易做，单吃或配饭皆宜。"
+    }
+  }
+]

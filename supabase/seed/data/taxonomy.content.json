@@ -1,0 +1,476 @@
+{
+ "categories": [
+  {
+   "slug": "tofu-series",
+   "parent": null,
+   "name": {"en": "Tofu Series", "ms": "Siri Tauhu", "zh": "豆腐系列"},
+   "tagline": {"en": "Egg tofu, silken tofu, tofu puffs and firm tau kwa – made in Menglembu, Perak.", "ms": "Tauhu telur, tauhu lembut, tauhu pok dan tau kwa – dibuat di Menglembu, Perak.", "zh": "鸡蛋豆腐、嫩豆腐、豆卜与豆干——霹雳州万里望制造。"},
+   "intro": {
+    "en": "The Tung Lam Tofu Series covers every everyday tofu a Malaysian kitchen needs: silky egg tofu in tubes, soft silken tofu in boxes and tubes, golden tofu puffs (tau pok) in round, square and long cuts, and firm tofu (tau kwa) including a Teochew-style block. You will find them under the Tung Lam, Sakura, AD and Cili brands.\n\nChoose by texture and cooking method. Egg tofu and silken tofu are soft and best steamed, simmered in soup or pan-fried gently. Tofu puffs soak up curry and broth, and are ideal for stuffing. Firm tofu holds its shape for frying, grilling and braising. All are made by Tung Lam Food Industries, a Halal-certified manufacturer with HACCP, GMP and MeSTI certifications – keep chilled or frozen as indicated on each pack.",
+    "ms": "Siri Tauhu Tung Lam merangkumi semua jenis tauhu harian yang diperlukan dapur Malaysia: tauhu telur dalam tiub, tauhu lembut dalam kotak dan tiub, tauhu pok keemasan dalam potongan bulat, segi empat dan panjang, serta tauhu keras (tau kwa) termasuk tau kwa gaya Teochew. Produk ini ditawarkan di bawah jenama Tung Lam, Sakura, AD dan Cili.\n\nPilih mengikut tekstur dan cara memasak. Tauhu telur dan tauhu lembut bertekstur halus, paling sesuai dikukus, direneh dalam sup atau digoreng perlahan. Tauhu pok menyerap kuah kari dan sup serta sesuai disumbat. Tauhu keras kekal elok apabila digoreng, dibakar dan dimasak berkuah. Semuanya dihasilkan oleh Tung Lam Food Industries, pengeluar bertauliah Halal, HACCP, GMP dan MeSTI – simpan sejuk atau beku seperti yang dinyatakan pada setiap bungkusan.",
+    "zh": "东临豆腐系列涵盖大马厨房日常所需的各种豆腐：条装鸡蛋豆腐、盒装与筒装嫩豆腐、圆粒、方块及长形的金黄豆卜，以及包括潮州豆干在内的传统豆干。产品分属东临（Tung Lam）、Sakura、AD 及 Cili 品牌。\n\n可按口感和烹调方式挑选：鸡蛋豆腐与嫩豆腐柔软细滑，最适合清蒸、煮汤或轻煎；豆卜吸汁力强，适合咖喱、汤品及酿馅；豆干质地紧实，煎、烤、卤都不易散。全部由持有清真、HACCP、GMP 及 MeSTI 认证的东临食品工业生产，请按各包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Tofu Series – Egg, Silken, Puffs & Tau Kwa | Tung Lam", "ms": "Siri Tauhu – Telur, Lembut, Pok & Tau Kwa | Tung Lam", "zh": "豆腐系列｜鸡蛋豆腐、嫩豆腐、豆卜、豆干｜东临食品"},
+   "meta_description": {
+    "en": "Explore Tung Lam’s Tofu Series: egg tofu, silken tofu, tofu puffs and firm tau kwa from Tung Lam, Sakura, AD and Cili. Made in Perak by a Halal-certified maker.",
+    "ms": "Terokai Siri Tauhu Tung Lam: tauhu telur, tauhu lembut, tauhu pok dan tau kwa daripada Tung Lam, Sakura, AD dan Cili. Buatan Perak, pengeluar bertauliah Halal.",
+    "zh": "东临豆腐系列：鸡蛋豆腐、嫩豆腐、豆卜及传统豆干，涵盖东临、Sakura、AD、Cili 品牌。霹雳州清真认证厂商出品。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "Which tofu should I use for frying?", "ms": "Tauhu mana yang sesuai untuk digoreng?", "zh": "哪种豆腐适合油炸或煎？"},
+     "a": {"en": "Firm tofu (Taufu Keras / tau kwa) holds its shape best for deep-frying, pan-frying and grilling. Egg tofu can also be pan-fried – dust the slices with a little cornflour first. Silken tofu is very soft and is better steamed or added to soups.", "ms": "Tauhu keras (Taufu Keras / tau kwa) paling kekal bentuknya apabila digoreng atau dibakar. Tauhu telur juga boleh digoreng – salut hirisan dengan sedikit tepung jagung dahulu. Tauhu lembut sangat halus dan lebih sesuai dikukus atau dimasukkan ke dalam sup.", "zh": "传统豆干（Taufu Keras）最耐炸、耐煎、耐烤。鸡蛋豆腐也可以煎，切片后先薄拍玉米粉即可。嫩豆腐非常柔软，较适合清蒸或煮汤。"}
+    },
+    {
+     "q": {"en": "How should I store Tung Lam tofu products?", "ms": "Bagaimana cara menyimpan produk tauhu Tung Lam?", "zh": "东临豆腐产品应如何保存？"},
+     "a": {"en": "Keep each product chilled or frozen as indicated on its pack, and follow the date printed on the packaging. Once opened, keep tofu covered in the fridge and use it promptly.", "ms": "Simpan setiap produk sejuk atau beku seperti yang dinyatakan pada bungkusannya, dan patuhi tarikh yang dicetak. Selepas dibuka, tutup tauhu dan simpan di dalam peti sejuk, kemudian gunakan segera.", "zh": "请按各产品包装标示冷藏或冷冻保存，并留意包装上印的日期。开封后请加盖冷藏，并尽快食用。"}
+    },
+    {
+     "q": {"en": "Can I order Tung Lam tofu in bulk for my business?", "ms": "Bolehkah saya memesan tauhu Tung Lam secara pukal untuk perniagaan?", "zh": "商家可以批量订购东临豆腐吗？"},
+     "a": {"en": "Yes. Several items come in larger packs for hawkers, restaurants and caterers. Please contact our sales team via WhatsApp or email to discuss products, quantities and delivery.", "ms": "Boleh. Beberapa produk ditawarkan dalam pek lebih besar untuk peniaga, restoran dan katering. Sila hubungi pasukan jualan kami melalui WhatsApp atau e-mel untuk berbincang tentang produk, kuantiti dan penghantaran.", "zh": "可以。部分产品备有适合小贩、餐馆及餐饮承办的大包装。请通过 WhatsApp 或电邮联系我们的销售团队，洽谈产品、数量与送货安排。"}
+    }
+   ]
+  },
+  {
+   "slug": "steamboat-series",
+   "parent": null,
+   "name": {"en": "Steamboat Series", "ms": "Siri Stimbot", "zh": "火锅系列"},
+   "tagline": {"en": "Fish balls, fish cakes, fish paste and peeled quail eggs for steamboat, noodles and more.", "ms": "Bebola ikan, kek ikan, isi ikan dan telur puyuh kupas untuk stimbot, mi dan banyak lagi.", "zh": "鱼丸、鱼饼、鱼浆与剥壳鹌鹑蛋，火锅、面食样样合适。"},
+   "intro": {
+    "en": "The Steamboat Series brings together the items that fill a steamboat pot and a hawker’s noodle bowl: white and fried fish balls, fish cakes, raw fish paste for yong tau foo, and ready-peeled quail eggs. Retail and wet-market packs come under the AD and Cili brands, while 1kg food-service bags, fish paste and quail eggs are sold under Tung Lam.\n\nPick your pack by how much you cook. Smaller packs suit a family steamboat or a few bowls of noodle soup; 1kg bags and the 50-piece quail egg pack are made for stalls, restaurants and caterers. Fish balls, fish cakes and quail eggs only need heating through, while fish paste is raw and must be cooked thoroughly. Keep chilled or frozen as indicated on each pack.",
+    "ms": "Siri Stimbot menghimpunkan bahan yang mengisi periuk stimbot dan mangkuk mi penjaja: bebola ikan putih dan goreng, kek ikan, isi ikan mentah untuk yong tau foo, serta telur puyuh yang sudah dikupas. Pek runcit dan pasar basah ditawarkan di bawah jenama AD dan Cili, manakala pek perkhidmatan makanan 1kg, isi ikan dan telur puyuh dijual di bawah Tung Lam.\n\nPilih pek mengikut jumlah masakan anda. Pek kecil sesuai untuk stimbot keluarga atau beberapa mangkuk mi sup; pek 1kg dan pek telur puyuh 50 biji dibuat untuk gerai, restoran dan katering. Bebola ikan, kek ikan dan telur puyuh hanya perlu dipanaskan, manakala isi ikan adalah mentah dan mesti dimasak sepenuhnya. Simpan sejuk atau beku seperti yang dinyatakan pada setiap bungkusan.",
+    "zh": "火锅系列汇集了火锅锅里与小贩面碗中最常见的配料：白鱼丸与炸鱼丸、鱼饼、做酿豆腐用的生鱼浆，以及已去壳的鹌鹑蛋。零售及巴刹装以 AD 与 Cili 品牌出售，1公斤餐饮装、鱼浆及鹌鹑蛋则以东临（Tung Lam）品牌出售。\n\n可按用量选择包装：小包装适合家庭火锅或几碗汤面；1公斤装及50粒鹌鹑蛋装专为小贩、餐馆与餐饮承办而设。鱼丸、鱼饼和鹌鹑蛋只需加热即可，鱼浆为生鲜产品，必须彻底煮熟。请按各包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Steamboat Series – Fish Balls & Fish Cakes | Tung Lam", "ms": "Siri Stimbot – Bebola & Kek Ikan | Tung Lam Food", "zh": "火锅系列｜鱼丸、鱼饼、鱼浆、鹌鹑蛋｜东临食品"},
+   "meta_description": {
+    "en": "Tung Lam’s Steamboat Series: fish balls, fish cakes, fish paste and peeled quail eggs in retail and 1kg food-service packs. AD, Cili and Tung Lam brands.",
+    "ms": "Siri Stimbot Tung Lam: bebola ikan, kek ikan, isi ikan dan telur puyuh kupas dalam pek runcit dan pek 1kg. Jenama AD, Cili dan Tung Lam.",
+    "zh": "东临火锅系列：鱼丸、鱼饼、鱼浆及剥壳鹌鹑蛋，提供零售装与1公斤餐饮装，涵盖 AD、Cili 及东临品牌。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "Do fish balls and fish cakes need to be cooked before eating?", "ms": "Adakah bebola ikan dan kek ikan perlu dimasak sebelum dimakan?", "zh": "鱼丸和鱼饼需要煮过才能吃吗？"},
+     "a": {"en": "Yes – heat them through before serving, for example by simmering in soup until they float or by pan-frying. Fish paste is a raw product and must always be cooked thoroughly. Follow any preparation notes on the pack.", "ms": "Ya – panaskan sepenuhnya sebelum dihidang, contohnya direneh dalam sup sehingga terapung atau digoreng. Isi ikan ialah produk mentah dan mesti sentiasa dimasak sepenuhnya. Ikuti sebarang panduan penyediaan pada bungkusan.", "zh": "需要。食用前请彻底加热，例如在汤中煮至浮起或用平底锅煎热。鱼浆为生鲜产品，必须彻底煮熟。请同时参考包装上的处理说明。"}
+    },
+    {
+     "q": {"en": "What is the difference between retail packs and food-service packs?", "ms": "Apakah perbezaan antara pek runcit dan pek perkhidmatan makanan?", "zh": "零售装和餐饮装有什么不同？"},
+     "a": {"en": "Retail and wet-market packs (AD and Cili) are household sizes for home cooking. Food-service packs (Tung Lam, mostly 1kg) are larger bags for hawkers, restaurants and caterers who need more pieces and fewer packs to open.", "ms": "Pek runcit dan pasar basah (AD dan Cili) bersaiz isi rumah untuk masakan di rumah. Pek perkhidmatan makanan (Tung Lam, kebanyakannya 1kg) ialah beg lebih besar untuk peniaga, restoran dan katering yang memerlukan lebih banyak kepingan dan kurang pek untuk dibuka.", "zh": "零售及巴刹装（AD、Cili）是适合家庭烹调的份量；餐饮装（东临，多为1公斤）则是为需要更多粒数、减少拆包次数的小贩、餐馆及餐饮承办而设的大包装。"}
+    },
+    {
+     "q": {"en": "How do I order steamboat items for my restaurant or stall?", "ms": "Bagaimana saya boleh memesan bahan stimbot untuk restoran atau gerai saya?", "zh": "餐馆或档口如何订购火锅料？"},
+     "a": {"en": "Please contact our sales team via WhatsApp or email with the products and quantities you need, and we will advise on supply and delivery.", "ms": "Sila hubungi pasukan jualan kami melalui WhatsApp atau e-mel dengan senarai produk dan kuantiti yang diperlukan, dan kami akan memberi maklumat tentang bekalan dan penghantaran.", "zh": "请通过 WhatsApp 或电邮联系我们的销售团队，告知所需产品与数量，我们会为您安排供货及送货事宜。"}
+    }
+   ]
+  },
+  {
+   "slug": "dessert-series",
+   "parent": null,
+   "name": {"en": "Dessert Series", "ms": "Siri Pencuci Mulut", "zh": "甜品系列"},
+   "tagline": {"en": "Cincau and cendol for cooling Malaysian desserts and drinks, at home or at your stall.", "ms": "Cincau dan cendol untuk pencuci mulut dan minuman Malaysia yang menyegarkan.", "zh": "仙草与煎蕊，在家或档口都能做出清凉的大马甜品与饮料。"},
+   "intro": {
+    "en": "The Dessert Series covers two of Malaysia’s favourite cooling treats. Tung Lam cincau (grass jelly) comes sweetened and ready to eat as Cincau Manis, unsweetened with no added sugar as Cincau Tawar, and as a large 2kg Cincau Asli block for drink stalls. Warisan Cendol provides ready-made green cendol strands for ais cendol and ABC.\n\nFor home desserts, the 260g Cincau Manis tube and 500g Warisan Cendol bag are easy everyday sizes; the 1kg Cincau Manis and 480g Cincau Tawar suit families and gatherings. Stalls, cafés and caterers usually choose the 2kg cincau block or 1.5kg cendol bag. Cut cincau with a wet knife for clean cubes, and keep all items chilled or frozen as indicated on the pack.",
+    "ms": "Siri Pencuci Mulut merangkumi dua hidangan penyejuk kegemaran rakyat Malaysia. Cincau Tung Lam ditawarkan dalam versi manis sedia dimakan (Cincau Manis), tanpa gula tambahan (Cincau Tawar), dan blok besar 2kg Cincau Asli untuk gerai minuman. Warisan Cendol pula menyediakan cendol hijau siap untuk ais cendol dan ABC.\n\nUntuk pencuci mulut di rumah, tiub Cincau Manis 260g dan pek Warisan Cendol 500g ialah saiz harian yang mudah; Cincau Manis 1kg dan Cincau Tawar 480g sesuai untuk keluarga dan majlis. Gerai, kafe dan katering biasanya memilih blok cincau 2kg atau pek cendol 1.5kg. Potong cincau dengan pisau basah supaya kemas, dan simpan semua produk sejuk atau beku seperti yang dinyatakan pada bungkusan.",
+    "zh": "甜品系列包括两款大马人最爱的消暑甜品。东临仙草有已调甜的即食甜仙草（Cincau Manis）、不添加糖的无糖凉粉（Cincau Tawar），以及供饮料档使用的2公斤原味仙草（Cincau Asli）大块装。Warisan 煎蕊则提供现成的绿色煎蕊条，用来做煎蕊冰和红豆冰（ABC）。\n\n家庭甜品可选260克甜仙草条装和500克 Warisan 煎蕊；1公斤甜仙草和480克无糖凉粉适合家庭和聚会。小贩、咖啡馆和餐饮承办商一般选择2公斤仙草大块或1.5公斤煎蕊。用沾湿的刀切仙草会更整齐，所有产品请按包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Dessert Series – Cincau & Cendol | Tung Lam Food", "ms": "Siri Pencuci Mulut – Cincau & Cendol | Tung Lam", "zh": "甜品系列｜仙草与煎蕊｜东临食品 马来西亚"},
+   "meta_description": {
+    "en": "Tung Lam’s Dessert Series: sweetened and no-sugar-added cincau, a 2kg grass jelly block and Warisan Cendol for ais cendol and ABC. Home and trade sizes.",
+    "ms": "Siri Pencuci Mulut Tung Lam: cincau manis dan tanpa gula, blok cincau 2kg serta Warisan Cendol untuk ais cendol dan ABC. Saiz rumah dan perniagaan.",
+    "zh": "东临甜品系列：甜仙草、无糖凉粉、2公斤原味仙草及 Warisan 煎蕊，家庭装与商用装齐全。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "What is the difference between Cincau Manis and Cincau Tawar?", "ms": "Apakah perbezaan antara Cincau Manis dan Cincau Tawar?", "zh": "甜仙草（Cincau Manis）和无糖凉粉（Cincau Tawar）有什么分别？"},
+     "a": {"en": "Cincau Manis is sweetened and sold as an instant dessert, ready to eat from the pack. Cincau Tawar has no added sugar, so you can sweeten it yourself with gula melaka, honey or syrup.", "ms": "Cincau Manis sudah dimaniskan dan dijual sebagai pencuci mulut segera, sedia dimakan terus dari pek. Cincau Tawar tiada gula tambahan, jadi anda boleh memaniskannya sendiri dengan gula melaka, madu atau sirap.", "zh": "甜仙草已调好甜味，是开包即食的甜品；无糖凉粉不添加糖，可以自己加椰糖、蜂蜜或糖浆调味。"}
+    },
+    {
+     "q": {"en": "How do I make ais cendol at home?", "ms": "Bagaimana cara membuat ais cendol di rumah?", "zh": "在家怎么做煎蕊冰？"},
+     "a": {"en": "Put Warisan Cendol in a bowl, add shaved or crushed ice, pour over coconut milk and finish with gula melaka syrup. Red beans, sweet corn or glutinous rice are popular extras.", "ms": "Masukkan Warisan Cendol ke dalam mangkuk, tambah ais serut atau ais hancur, tuang santan dan siram dengan sirap gula melaka. Kacang merah, jagung manis atau pulut ialah tambahan yang popular.", "zh": "把 Warisan 煎蕊放进碗里，加刨冰或碎冰，淋上椰浆，再浇上椰糖浆即可。也可加红豆、玉米粒或糯米。"}
+    },
+    {
+     "q": {"en": "Do you supply cincau and cendol to drink stalls and cafés?", "ms": "Adakah anda membekalkan cincau dan cendol kepada gerai minuman dan kafe?", "zh": "你们有供应仙草和煎蕊给饮料档和咖啡馆吗？"},
+     "a": {"en": "Yes. The 2kg Cincau Asli block and 1.5kg Warisan Cendol bag are made for trade use. Contact our sales team via WhatsApp or email to arrange supply.", "ms": "Ya. Blok Cincau Asli 2kg dan pek Warisan Cendol 1.5kg dibuat untuk kegunaan perniagaan. Hubungi pasukan jualan kami melalui WhatsApp atau e-mel untuk mengatur bekalan.", "zh": "有。2公斤原味仙草大块及1.5公斤 Warisan 煎蕊专为商用而设。请通过 WhatsApp 或电邮联系销售团队安排供货。"}
+    }
+   ]
+  },
+  {
+   "slug": "egg-tofu",
+   "parent": "tofu-series",
+   "name": {"en": "Egg Tofu", "ms": "Tauhu Telur", "zh": "鸡蛋豆腐"},
+   "tagline": {"en": "Silky, golden egg tofu in tubes – from Tung Lam, Sakura, AD and Cili.", "ms": "Tauhu telur licin dan keemasan dalam tiub – daripada Tung Lam, Sakura, AD dan Cili.", "zh": "嫩滑金黄的条装鸡蛋豆腐——东临、Sakura、AD、Cili 品牌。"},
+   "intro": {
+    "en": "Egg tofu is made with egg, giving it a smooth, custard-like texture and pale golden colour that sets it apart from plain tofu. Tung Lam makes egg tofu under four brands: Tung Lam (120g, 130g and a 3 x 120g pack), Sakura (a Japanese-inspired 150g tube), AD (120g and 3 x 120g) and Cili (120g).\n\nChoose a single tube for one dish, or a three-tube pack if you cook egg tofu several times a week. To remove it neatly, cut the tube across the middle and gently push each half out, then slice into rounds. Pan-fry with a light dusting of cornflour, steam with soy sauce, or add to soups and steamboat towards the end of cooking. Egg tofu contains egg – check each pack for full allergen details.",
+    "ms": "Tauhu telur dibuat dengan telur, memberikannya tekstur licin seperti kastard dan warna kuning keemasan yang berbeza daripada tauhu biasa. Tung Lam menghasilkan tauhu telur di bawah empat jenama: Tung Lam (120g, 130g dan pek 3 x 120g), Sakura (tiub 150g berinspirasikan Jepun), AD (120g dan 3 x 120g) dan Cili (120g).\n\nPilih satu tiub untuk satu hidangan, atau pek tiga tiub jika anda memasak tauhu telur beberapa kali seminggu. Untuk mengeluarkannya dengan kemas, potong tiub di tengah dan tolak setiap bahagian perlahan-lahan, kemudian hiris bulat. Goreng dengan sedikit tepung jagung, kukus dengan kicap, atau masukkan ke dalam sup dan stimbot menjelang akhir masakan. Tauhu telur mengandungi telur – semak setiap bungkusan untuk butiran alergen.",
+    "zh": "鸡蛋豆腐以鸡蛋制作，口感嫩滑如蛋羹，色泽淡金黄，与普通豆腐不同。东临以四个品牌生产鸡蛋豆腐：东临（120克、130克及3 x 120克装）、Sakura（日式风格150克）、AD（120克及3 x 120克）以及 Cili（120克）。\n\n只煮一道菜可选单条装，每周常吃则可选三条装。想完整取出，可从中间横切，再把两半轻轻推出，然后切成圆片。薄拍玉米粉煎香、淋酱油清蒸，或在汤和火锅快煮好时放入都很好。鸡蛋豆腐含蛋，完整过敏原资料请参阅各包装。"
+   },
+   "meta_title": {"en": "Egg Tofu – TL, Sakura, AD & Cili | Tung Lam Food", "ms": "Tauhu Telur – TL, Sakura, AD & Cili | Tung Lam Food", "zh": "鸡蛋豆腐｜东临、Sakura、AD、Cili｜东临食品"},
+   "meta_description": {
+    "en": "Shop egg tofu from Tung Lam, Sakura, AD and Cili – silky tubes in 120g, 130g, 150g and 3-tube packs. Tips on slicing, pan-frying and steaming egg tofu.",
+    "ms": "Tauhu telur Tung Lam, Sakura, AD dan Cili – tiub licin 120g, 130g, 150g dan pek 3 tiub. Tip menghiris, menggoreng dan mengukus tauhu telur.",
+    "zh": "鸡蛋豆腐：东临、Sakura、AD、Cili 品牌，120克、130克、150克及三条装。附切片、煎、蒸小贴士。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "How do I get egg tofu out of the tube without breaking it?", "ms": "Bagaimana cara mengeluarkan tauhu telur dari tiub tanpa pecah?", "zh": "怎样把鸡蛋豆腐完整地从包装里取出？"},
+     "a": {"en": "Cut the tube across the middle with a sharp knife, then gently squeeze or push each half out onto a board. Slice into rounds with a wet knife for clean cuts.", "ms": "Potong tiub di tengah dengan pisau tajam, kemudian picit atau tolak setiap bahagian perlahan-lahan ke atas papan. Hiris bulat dengan pisau basah supaya kemas.", "zh": "用利刀从中间横切，再把两半轻轻挤出或推出到砧板上。用沾湿的刀切圆片会更整齐。"}
+    },
+    {
+     "q": {"en": "Is egg tofu suitable for vegetarians?", "ms": "Adakah tauhu telur sesuai untuk vegetarian?", "zh": "鸡蛋豆腐适合素食者吗？"},
+     "a": {"en": "Egg tofu contains egg, so it suits people who eat eggs but not those who avoid them. Please read the ingredient and allergen information on each pack.", "ms": "Tauhu telur mengandungi telur, jadi ia sesuai untuk mereka yang makan telur tetapi tidak untuk yang mengelakkannya. Sila baca maklumat ramuan dan alergen pada setiap bungkusan.", "zh": "鸡蛋豆腐含蛋，适合可吃蛋的人士，不适合不吃蛋者。请参阅各包装上的成分及过敏原资料。"}
+    },
+    {
+     "q": {"en": "How do I make egg tofu crispy?", "ms": "Bagaimana cara menjadikan tauhu telur rangup?", "zh": "怎样把鸡蛋豆腐煎得香脆？"},
+     "a": {"en": "Pat the slices dry, coat them lightly in cornflour or potato starch, and pan-fry in hot oil until golden on both sides. Turn them gently, as the inside stays soft.", "ms": "Keringkan hirisan, salut nipis dengan tepung jagung atau tepung ubi kentang, dan goreng dalam minyak panas sehingga keemasan pada kedua-dua belah. Terbalikkan perlahan-lahan kerana bahagian dalamnya kekal lembut.", "zh": "先吸干表面水分，薄拍玉米粉或马铃薯淀粉，再用热油把两面煎至金黄。内里柔软，翻面时动作要轻。"}
+    }
+   ]
+  },
+  {
+   "slug": "silken-tofu-box",
+   "parent": "tofu-series",
+   "name": {"en": "Silken Tofu (Box)", "ms": "Tauhu Lembut (Kotak)", "zh": "盒装嫩豆腐"},
+   "tagline": {"en": "Soft, smooth silken tofu in 300g boxes from Tung Lam and Sakura.", "ms": "Tauhu lembut yang licin dalam kotak 300g daripada Tung Lam dan Sakura.", "zh": "东临与 Sakura 300克盒装嫩豆腐，柔软细滑。"},
+   "intro": {
+    "en": "Boxed silken tofu is the softest, smoothest style of tofu, and the box keeps the block whole until you are ready to serve it. Tung Lam offers two 300g boxes: TL Silken Tofu (Taufu Lembut, 嫩滑豆腐) and Sakura Silken Tofu, a Japanese-style kinugoshi tofu from the Sakura brand.\n\nSilken tofu is best in gentle dishes – steamed with minced chicken and soy sauce, served chilled as hiyayakko, cubed into miso or seaweed soup, or blended into sauces and desserts. To unmould, peel back the film, pour off the water and turn the box over onto a plate. Move the block with a flat spatula, and add it late in cooking so it stays intact. Keep chilled or frozen as indicated on the pack.",
+    "ms": "Tauhu lembut berkotak ialah jenis tauhu yang paling halus dan licin, dan kotaknya memastikan tauhu kekal sempurna sehingga dihidang. Tung Lam menawarkan dua kotak 300g: TL Silken Tofu (Taufu Lembut, 嫩滑豆腐) dan Sakura Silken Tofu, tauhu kinugoshi gaya Jepun daripada jenama Sakura.\n\nTauhu lembut paling sesuai untuk masakan ringkas – dikukus dengan ayam cincang dan kicap, dihidang sejuk sebagai hiyayakko, dipotong kiub ke dalam sup miso atau sup rumpai laut, atau dikisar untuk sos dan pencuci mulut. Untuk mengeluarkannya, kupas filem, tuang keluar air dan terbalikkan kotak ke atas pinggan. Alihkan dengan sudip leper, dan masukkan lewat dalam masakan supaya tidak pecah. Simpan sejuk atau beku seperti yang dinyatakan pada bungkusan.",
+    "zh": "盒装嫩豆腐是最柔软细滑的豆腐，盒装能让整块豆腐在上桌前保持完整。东临提供两款300克盒装：TL 嫩滑豆腐（Taufu Lembut）与 Sakura 嫩滑豆腐，后者是 Sakura 品牌的日式绢豆腐。\n\n嫩豆腐最适合温和的做法：铺鸡肉碎淋酱油清蒸、冷食做成日式冷豆腐、切丁煮味噌汤或紫菜汤，或打成酱汁和甜品。取出时撕开封膜、倒掉盒内水分，再倒扣在盘上。用平铲移动，并在烹调后段才放入，以免弄碎。请按包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Silken Tofu Box 300g – TL & Sakura | Tung Lam Food", "ms": "Tauhu Lembut Kotak 300g – TL & Sakura | Tung Lam", "zh": "盒装嫩豆腐 300克｜TL 与 Sakura｜东临食品"},
+   "meta_description": {
+    "en": "Boxed silken tofu from Tung Lam and Sakura – soft 300g blocks for steamed tofu, hiyayakko and miso soup. Plus tips on unmoulding and cooking silken tofu.",
+    "ms": "Tauhu lembut berkotak Tung Lam dan Sakura – blok 300g untuk tauhu kukus, hiyayakko dan sup miso. Termasuk tip mengeluarkan dan memasak tauhu lembut.",
+    "zh": "东临与 Sakura 盒装嫩豆腐300克，适合清蒸、日式冷豆腐及味噌汤。附取出与烹调小贴士。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "How do I take silken tofu out of the box in one piece?", "ms": "Bagaimana cara mengeluarkan tauhu lembut dari kotak tanpa pecah?", "zh": "怎样把盒装嫩豆腐完整取出？"},
+     "a": {"en": "Peel back the film, drain the water, then place a plate over the box and flip it over. If it sticks, run a thin knife around the edge or snip a corner of the box to release the air.", "ms": "Kupas filem, toskan air, kemudian letakkan pinggan di atas kotak dan terbalikkan. Jika melekat, lalukan pisau nipis di sekeliling tepi atau gunting satu sudut kotak untuk melepaskan udara.", "zh": "撕开封膜、沥去水分，把盘子盖在盒上再一起翻转。若豆腐粘住，可用薄刀沿边划一圈，或剪开盒角让空气进入。"}
+    },
+    {
+     "q": {"en": "Can silken tofu be eaten cold?", "ms": "Bolehkah tauhu lembut dimakan sejuk?", "zh": "嫩豆腐可以冷食吗？"},
+     "a": {"en": "Silken tofu is commonly served chilled, for example as Japanese hiyayakko with soy sauce, ginger and spring onion. Follow the preparation and storage guidance on the pack.", "ms": "Tauhu lembut biasanya dihidang sejuk, contohnya sebagai hiyayakko Jepun dengan kicap, halia dan daun bawang. Ikuti panduan penyediaan dan penyimpanan pada bungkusan.", "zh": "嫩豆腐常见的吃法之一就是冷食，例如配酱油、姜蓉和葱花的日式冷豆腐。请同时遵循包装上的处理与保存说明。"}
+    }
+   ]
+  },
+  {
+   "slug": "silken-tofu-tube",
+   "parent": "tofu-series",
+   "name": {"en": "Silken Tofu (Tube)", "ms": "Tauhu Lembut (Tiub)", "zh": "筒装嫩豆腐"},
+   "tagline": {"en": "Silken tofu in 250g tubes that slice into neat rounds – from Tung Lam and Sakura.", "ms": "Tauhu lembut dalam tiub 250g yang mudah dihiris bulat – daripada Tung Lam dan Sakura.", "zh": "250克筒装嫩豆腐，切成整齐圆片——东临与 Sakura 出品。"},
+   "intro": {
+    "en": "Tube silken tofu has the same soft, smooth texture as boxed silken tofu, in a round, sealed tube that is easy to portion. Tung Lam makes two 250g versions: the TL Silken Tofu Tube, a traditional silken tofu labelled 山水嫩豆腐, and the Sakura Silken Tofu Tube in the brand’s Japanese kinugoshi style.\n\nThe advantage of a tube is speed: slice straight through into even rounds and push them out – no unmoulding needed. The rounds look neat in clear soups, steamboat and miso soup, or arranged on a plate for steaming with minced chicken, mushrooms or a soy dressing. Add them near the end of cooking and stir gently. Keep chilled or frozen as indicated on the pack and use promptly after opening.",
+    "ms": "Tauhu lembut tiub mempunyai tekstur licin dan lembut yang sama seperti tauhu berkotak, dalam tiub bulat yang dimeterai dan mudah dibahagi. Tung Lam menghasilkan dua versi 250g: TL Silken Tofu Tube, tauhu lembut tradisional berlabel 山水嫩豆腐, dan Sakura Silken Tofu Tube dalam gaya kinugoshi Jepun jenama tersebut.\n\nKelebihan tiub ialah kepantasan: hiris terus menjadi kepingan bulat yang sekata dan tolak keluar – tidak perlu menterbalikkan blok. Hirisan bulat nampak kemas dalam sup jernih, stimbot dan sup miso, atau disusun di atas pinggan untuk dikukus bersama ayam cincang, cendawan atau kicap. Masukkan menjelang akhir masakan dan kacau perlahan. Simpan sejuk atau beku seperti yang dinyatakan pada bungkusan dan gunakan segera selepas dibuka.",
+    "zh": "筒装嫩豆腐与盒装嫩豆腐同样柔软细滑，只是装在密封圆筒里，更方便分份。东临推出两款250克筒装：TL 筒装嫩豆腐（包装标示「山水嫩豆腐」的传统嫩豆腐），以及 Sakura 品牌的日式绢豆腐筒装。\n\n筒装的好处是快：直接切成均匀圆片推出即可，不必倒扣脱模。圆片放进清汤、火锅、味噌汤里都很整齐好看，也可以排盘后铺上鸡肉碎、香菇或淋酱油清蒸。宜在烹调后段放入，轻轻搅拌。请按包装标示冷藏或冷冻保存，开封后尽快食用。"
+   },
+   "meta_title": {"en": "Silken Tofu Tube 250g – TL & Sakura | Tung Lam Food", "ms": "Tauhu Lembut Tiub 250g – TL & Sakura | Tung Lam", "zh": "筒装嫩豆腐 250克｜TL 与 Sakura｜东临食品"},
+   "meta_description": {
+    "en": "Silken tofu tubes from Tung Lam and Sakura: 250g tubes that slice into neat rounds for soups, steamboat and steamed tofu – no unmoulding required.",
+    "ms": "Tauhu lembut tiub Tung Lam dan Sakura: tiub 250g yang mudah dihiris bulat untuk sup, stimbot dan tauhu kukus – tidak perlu diterbalikkan.",
+    "zh": "东临与 Sakura 250克筒装嫩豆腐，直接切成整齐圆片，煮汤、火锅、清蒸都方便，免脱模。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "What is the difference between tube and box silken tofu?", "ms": "Apakah perbezaan antara tauhu lembut tiub dan kotak?", "zh": "筒装和盒装嫩豆腐有什么不同？"},
+     "a": {"en": "Both are soft silken tofu. A tube slices straight into round portions, which is quick for soups and steamboat; a box gives a whole square block, which suits dishes served as one piece.", "ms": "Kedua-duanya tauhu lembut. Tiub boleh terus dihiris menjadi kepingan bulat, sesuai untuk sup dan stimbot; kotak memberikan satu blok segi empat, sesuai untuk hidangan seketul.", "zh": "两者都是嫩豆腐。筒装可直接切成圆片，适合煮汤和火锅；盒装是整块方形，适合整块上桌的菜式。"}
+    },
+    {
+     "q": {"en": "How do I stop silken tofu breaking in soup?", "ms": "Bagaimana mengelakkan tauhu lembut hancur dalam sup?", "zh": "怎样避免嫩豆腐在汤里煮碎？"},
+     "a": {"en": "Add the slices in the last few minutes, keep the soup at a gentle simmer rather than a rolling boil, and move them with a ladle instead of stirring hard.", "ms": "Masukkan hirisan beberapa minit sebelum siap, kekalkan sup pada reneh perlahan dan bukan didih kuat, dan alihkan dengan senduk tanpa mengacau dengan kuat.", "zh": "在最后几分钟才放入，汤保持小火微滚而不是大滚，并用汤勺轻轻推动，不要大力搅拌。"}
+    }
+   ]
+  },
+  {
+   "slug": "tofu-puffs",
+   "parent": "tofu-series",
+   "name": {"en": "Tofu Puffs (Tau Pok)", "ms": "Tauhu Pok (Tofu Goreng)", "zh": "豆卜（油扬豆腐卜）"},
+   "tagline": {"en": "Golden tau pok in round, square and long cuts – for curry mee, laksa and yong tau foo.", "ms": "Tauhu pok keemasan – bulat, segi empat dan panjang – untuk kari mi dan yong tau foo.", "zh": "圆粒、方块、长形金黄豆卜——咖喱面、叻沙、酿豆腐必备。"},
+   "intro": {
+    "en": "Tung Lam’s Tofu Goreng (油扬豆腐卜) are deep-fried tofu puffs – light, golden pieces with a spongy inside that soaks up curry, laksa gravy and soup. They come in three cuts: Bulat (round) in 10-piece, 270g and 1kg packs; Keping (square) in 270g and 500g; and Panjang (long) in 270g.\n\nEach cut has its strengths. Round puffs are the classic for curry mee, laksa and steamboat. Square puffs are flat and easy to slit open for stuffing with fish paste. Long puffs suit Malay-style tauhu sumbat and skewers. Home cooks usually choose the 10-piece or 270g packs, while stalls and caterers use the 500g and 1kg bags. Keep chilled or frozen as indicated on the pack.",
+    "ms": "Tofu Goreng (油扬豆腐卜) Tung Lam ialah tauhu pok yang digoreng – kepingan ringan dan keemasan dengan isi berongga yang menyerap kuah kari, laksa dan sup. Ia ditawarkan dalam tiga potongan: Bulat dalam pek 10 biji, 270g dan 1kg; Keping (segi empat) dalam 270g dan 500g; serta Panjang dalam 270g.\n\nSetiap potongan ada kelebihannya. Tauhu pok bulat ialah pilihan klasik untuk kari mi, laksa dan stimbot. Tauhu pok segi empat leper dan mudah dibelah untuk disumbat dengan isi ikan. Tauhu pok panjang sesuai untuk tauhu sumbat gaya Melayu dan dicucuk. Tukang masak di rumah biasanya memilih pek 10 biji atau 270g, manakala gerai dan katering menggunakan pek 500g dan 1kg. Simpan sejuk atau beku seperti yang dinyatakan pada bungkusan.",
+    "zh": "东临 Tofu Goreng（油扬豆腐卜）是油炸豆卜，轻盈金黄，内里多孔，最能吸收咖喱、叻沙汤汁和清汤。共有三种形状：圆粒（Bulat）有10粒、270克及1公斤装；方块（Keping）有270克及500克装；长形（Panjang）有270克装。\n\n每种形状各有所长：圆粒是咖喱面、叻沙和火锅的经典选择；方块扁平，容易开口酿入鱼浆；长形适合马来式酿豆腐和串烧。家庭一般选10粒或270克装，小贩与餐饮承办则多用500克及1公斤装。请按包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Tofu Puffs (Tau Pok) – Round, Square, Long | Tung Lam", "ms": "Tauhu Pok – Bulat, Keping, Panjang | Tung Lam Food", "zh": "豆卜｜圆粒、方块、长形油扬豆腐卜｜东临食品"},
+   "meta_description": {
+    "en": "Tung Lam tofu puffs (tau pok) in round, square and long cuts, from 10-piece packs to 1kg bags. Find the right cut for curry mee, laksa and yong tau foo.",
+    "ms": "Tauhu pok Tung Lam dalam potongan bulat, segi empat dan panjang, dari pek 10 biji hingga 1kg. Pilih potongan sesuai untuk kari mi, laksa dan yong tau foo.",
+    "zh": "东临豆卜有圆粒、方块、长形三种，从10粒装到1公斤装。为咖喱面、叻沙、酿豆腐选对形状。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "Which tofu puff cut is best for yong tau foo?", "ms": "Potongan tauhu pok mana paling sesuai untuk yong tau foo?", "zh": "做酿豆腐用哪种豆卜最好？"},
+     "a": {"en": "Square (Keping) puffs are the easiest to slit and fill because of their flat sides. Long (Panjang) puffs also stuff well, especially with shredded vegetables. Round puffs can be halved and filled too.", "ms": "Tauhu pok segi empat (Keping) paling mudah dibelah dan diisi kerana sisinya leper. Tauhu pok panjang juga mudah disumbat, terutamanya dengan sayur hiris. Tauhu pok bulat juga boleh dibelah dua dan diisi.", "zh": "方块（Keping）豆卜两面平整，最容易开口酿馅；长形（Panjang）豆卜也很适合，特别是塞蔬菜丝。圆粒豆卜对半切开同样可以酿。"}
+    },
+    {
+     "q": {"en": "When should I add tofu puffs to curry or soup?", "ms": "Bilakah saya perlu memasukkan tauhu pok ke dalam kari atau sup?", "zh": "什么时候把豆卜放进咖喱或汤里？"},
+     "a": {"en": "Add them in the last few minutes if you like some bite, or simmer longer for a softer, juicier puff. Briefly blanching them in hot water first can refresh them before cooking.", "ms": "Masukkan beberapa minit sebelum siap jika anda suka teksturnya sedikit kenyal, atau reneh lebih lama untuk tauhu pok yang lebih lembut dan berjus. Celur sebentar dalam air panas sebelum dimasak untuk menyegarkannya.", "zh": "喜欢有点嚼劲，就在最后几分钟放入；想要软嫩多汁，就多煮一会儿。下锅前用热水稍烫一下，也能让豆卜更清爽。"}
+    },
+    {
+     "q": {"en": "Do you supply tofu puffs to curry mee and yong tau foo stalls?", "ms": "Adakah anda membekalkan tauhu pok kepada gerai kari mi dan yong tau foo?", "zh": "你们有供应豆卜给咖喱面和酿豆腐档吗？"},
+     "a": {"en": "Yes – the 1kg Bulat and 500g Keping packs are popular with stalls. Contact our sales team via WhatsApp or email to arrange regular supply.", "ms": "Ya – pek Bulat 1kg dan Keping 500g popular dalam kalangan peniaga gerai. Hubungi pasukan jualan kami melalui WhatsApp atau e-mel untuk bekalan tetap.", "zh": "有。1公斤圆粒装和500克方块装很受档口欢迎。请通过 WhatsApp 或电邮联系销售团队安排长期供货。"}
+    }
+   ]
+  },
+  {
+   "slug": "firm-tofu",
+   "parent": "tofu-series",
+   "name": {"en": "Firm Tofu (Tau Kwa)", "ms": "Tauhu Keras (Tau Kwa)", "zh": "豆干"},
+   "tagline": {"en": "Traditional Taufu Keras and Teochew-style tau kwa that hold their shape in the wok.", "ms": "Taufu Keras tradisional dan tau kwa gaya Teochew yang tidak mudah hancur di dalam kuali.", "zh": "传统豆干与潮州豆干，下锅不易碎。"},
+   "intro": {
+    "en": "Firm tofu, or tau kwa, is pressed into dense blocks that keep their shape when fried, grilled, stuffed or braised. Tung Lam offers TL Taufu Keras (传统豆干) in 2, 4, 6 and 10-piece vacuum packs, and TauFu TeoChew, a 350g Teochew-style tau kwa (潮州豆干).\n\nPick your pack size by how often you cook: 2 pieces for a single meal, 4 for an everyday family dinner, 6 for bigger households or batch cooking, and 10 for hawkers, canteens and caterers. Choose the Teochew tau kwa for braised and pan-fried Teochew dishes. Pat firm tofu dry before frying for a crisper surface. Keep chilled or frozen as indicated on the pack and cook promptly once opened.",
+    "ms": "Tauhu keras atau tau kwa dimampatkan menjadi blok padat yang kekal bentuknya apabila digoreng, dibakar, disumbat atau dimasak berkuah. Tung Lam menawarkan TL Taufu Keras (传统豆干) dalam pek vakum 2, 4, 6 dan 10 keping, serta TauFu TeoChew, tau kwa gaya Teochew 350g (潮州豆干).\n\nPilih saiz pek mengikut kekerapan memasak: 2 keping untuk satu hidangan, 4 untuk makan malam keluarga, 6 untuk keluarga besar atau masakan pukal, dan 10 untuk penjaja, kantin dan katering. Pilih tau kwa Teochew untuk masakan Teochew yang direneh atau digoreng. Keringkan tauhu keras sebelum menggoreng supaya lebih rangup. Simpan sejuk atau beku seperti yang dinyatakan pada bungkusan dan masak segera selepas dibuka.",
+    "zh": "豆干（tau kwa）经压制成紧实方块，煎、烤、酿、卤都能保持形状。东临提供 TL 传统豆干（Taufu Keras）2块、4块、6块及10块真空装，以及350克潮州豆干（TauFu TeoChew）。\n\n可按下厨频率选择包装：2块够一餐，4块是家庭日常，6块适合大家庭或批量备餐，10块适合小贩、食堂和餐饮承办。做潮州卤味或香煎菜式，可选潮州豆干。油煎前先吸干水分，表面会更香脆。请按包装标示冷藏或冷冻保存，开封后尽快烹煮。"
+   },
+   "meta_title": {"en": "Firm Tofu (Tau Kwa) – Taufu Keras & Teochew | Tung Lam", "ms": "Tauhu Keras (Tau Kwa) – Taufu Keras & Teochew | Tung Lam", "zh": "豆干｜传统豆干与潮州豆干｜东临食品"},
+   "meta_description": {
+    "en": "TL Taufu Keras in 2, 4, 6 and 10-piece packs plus Teochew-style tau kwa. Firm tofu that holds its shape for frying, grilling and braising. Made in Perak.",
+    "ms": "TL Taufu Keras dalam pek 2, 4, 6 dan 10 keping serta tau kwa gaya Teochew. Tauhu keras yang kekal bentuk apabila digoreng, dibakar dan direneh.",
+    "zh": "TL 传统豆干2、4、6、10块装及潮州豆干，煎、烤、卤都不易碎。霹雳州东临食品出品。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "Which Taufu Keras pack size should I buy?", "ms": "Saiz pek Taufu Keras mana yang patut saya beli?", "zh": "传统豆干该买哪种包装？"},
+     "a": {"en": "Choose 2 pieces for one meal, 4 for a regular family dinner, 6 for larger households or batch cooking, and 10 for stalls, canteens or big gatherings.", "ms": "Pilih 2 keping untuk satu hidangan, 4 untuk makan malam keluarga biasa, 6 untuk keluarga besar atau masakan pukal, dan 10 untuk gerai, kantin atau majlis besar.", "zh": "一餐选2块，一般家庭晚餐选4块，大家庭或批量备餐选6块，档口、食堂或大型聚会选10块。"}
+    },
+    {
+     "q": {"en": "How do I get firm tofu crispy?", "ms": "Bagaimana cara menjadikan tauhu keras rangup?", "zh": "怎样把豆干煎得香脆？"},
+     "a": {"en": "Pat the tofu dry with kitchen paper, cut it into cubes or slices, and fry in hot oil without crowding the pan. A light coating of cornflour gives an extra-crisp finish.", "ms": "Keringkan tauhu dengan tuala dapur, potong kiub atau hiris, dan goreng dalam minyak panas tanpa memenuhkan kuali. Salutan nipis tepung jagung menjadikannya lebih rangup.", "zh": "先用厨房纸吸干水分，切块或切片，用热油煎炸，锅里不要放太满。薄拍一层玉米粉会更脆。"}
+    }
+   ]
+  },
+  {
+   "slug": "retail-wet-market-pack",
+   "parent": "steamboat-series",
+   "name": {"en": "Retail & Wet Market Packs", "ms": "Pek Runcit & Pasar Basah", "zh": "零售及巴刹装"},
+   "tagline": {"en": "Household packs of fish balls and fish cakes from the AD and Cili brands.", "ms": "Pek isi rumah bebola ikan dan kek ikan daripada jenama AD dan Cili.", "zh": "AD 与 Cili 品牌家庭装鱼丸、鱼饼。"},
+   "intro": {
+    "en": "Retail and wet-market packs are the household sizes of Tung Lam’s steamboat items, sold under the AD and Cili brands. AD offers 450g family bags of white fish balls (Bebola Ikan) and fish cake strips (Kek Ikan). Cili offers smaller packs: 280g fish cake, 160g small fried fish balls and 160g white fish balls.\n\nChoose AD’s 450g bags for a full family steamboat or several meals, and Cili’s smaller packs for one or two dishes or for small households. White fish balls keep soups clear and light, fried fish balls add a savoury, golden bite, and fish cake slices are a classic in fried noodles. Heat all items through before eating, and keep chilled or frozen as indicated on the pack.",
+    "ms": "Pek runcit dan pasar basah ialah saiz isi rumah bagi bahan stimbot Tung Lam, dijual di bawah jenama AD dan Cili. AD menawarkan pek keluarga 450g bebola ikan putih (Bebola Ikan) dan jalur kek ikan (Kek Ikan). Cili menawarkan pek lebih kecil: kek ikan 280g, bebola ikan goreng kecil 160g dan bebola ikan putih 160g.\n\nPilih pek AD 450g untuk stimbot sekeluarga atau beberapa hidangan, dan pek Cili yang lebih kecil untuk satu dua hidangan atau isi rumah kecil. Bebola ikan putih mengekalkan sup jernih, bebola ikan goreng memberikan rasa gurih, dan hirisan kek ikan ialah bahan klasik dalam mi goreng. Panaskan semua produk sepenuhnya sebelum dimakan, dan simpan sejuk atau beku seperti yang dinyatakan pada bungkusan.",
+    "zh": "零售及巴刹装是东临火锅料的家庭份量，以 AD 和 Cili 品牌出售。AD 提供450克家庭装白鱼丸（Bebola Ikan）和长条鱼饼（Kek Ikan）；Cili 则提供较小的包装：280克鱼饼、160克小炸鱼丸及160克白鱼丸。\n\n全家吃火锅或想分几餐使用，可选 AD 450克装；只煮一两道菜或小家庭，可选 Cili 小包装。白鱼丸让汤底清爽，炸鱼丸带来金黄香气，鱼饼片则是炒面的经典配料。所有产品食用前须热透，并按包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Retail Fish Balls & Fish Cakes – AD & Cili | Tung Lam", "ms": "Pek Runcit Bebola & Kek Ikan – AD & Cili | Tung Lam", "zh": "零售及巴刹装鱼丸鱼饼｜AD 与 Cili｜东临食品"},
+   "meta_description": {
+    "en": "AD and Cili fish balls and fish cakes in household packs from 160g to 450g – for steamboat, noodle soups and fried noodles. Made in Perak by Tung Lam Food.",
+    "ms": "Bebola ikan dan kek ikan AD dan Cili dalam pek isi rumah 160g hingga 450g – untuk stimbot, mi sup dan mi goreng. Buatan Perak oleh Tung Lam Food.",
+    "zh": "AD 与 Cili 鱼丸、鱼饼家庭装，160克至450克，适合火锅、汤面及炒面。霹雳州东临食品出品。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "What is the difference between white and fried fish balls?", "ms": "Apakah perbezaan antara bebola ikan putih dan goreng?", "zh": "白鱼丸和炸鱼丸有什么分别？"},
+     "a": {"en": "White fish balls are unfried, with a mild flavour that keeps soups clear. Fried fish balls are fried until golden, giving a firmer skin and a more savoury taste – great in curry and on skewers.", "ms": "Bebola ikan putih tidak digoreng, dengan rasa ringan yang mengekalkan sup jernih. Bebola ikan goreng digoreng hingga keemasan, memberikan kulit lebih padat dan rasa lebih gurih – sedap dalam kari dan dicucuk.", "zh": "白鱼丸未经油炸，味道清爽，汤底清澈；炸鱼丸炸至金黄，外皮较紧实、更香，适合咖喱和串烧。"}
+    },
+    {
+     "q": {"en": "How should I cook fish balls for steamboat?", "ms": "Bagaimana cara memasak bebola ikan untuk stimbot?", "zh": "火锅里的鱼丸要怎么煮？"},
+     "a": {"en": "Add them to simmering broth and cook until heated through – white fish balls will float when ready. A gentle simmer keeps the texture springy.", "ms": "Masukkan ke dalam sup yang mendidih perlahan dan masak sehingga panas sepenuhnya – bebola ikan putih akan terapung apabila siap. Reneh perlahan mengekalkan teksturnya kenyal.", "zh": "放入微滚的汤中煮至热透即可，白鱼丸浮起就表示熟了。保持小火微滚，口感更弹牙。"}
+    }
+   ]
+  },
+  {
+   "slug": "food-service-pack",
+   "parent": "steamboat-series",
+   "name": {"en": "Food Service Packs", "ms": "Pek Perkhidmatan Makanan", "zh": "餐饮装"},
+   "tagline": {"en": "1kg bags of fish balls and fish cakes for hawkers, restaurants and caterers.", "ms": "Pek 1kg bebola ikan dan kek ikan untuk penjaja, restoran dan katering.", "zh": "1公斤鱼丸、鱼饼大包装，专为小贩、餐馆与餐饮承办而设。"},
+   "intro": {
+    "en": "Tung Lam’s food-service packs are 1kg bags designed for kitchens that use fish balls and fish cakes every day. The range covers large and small fried fish balls (Bebola Goreng Besar and Kecil), large and small white fish balls (Bebola Puteh Besar and Kecil), long fish cake (Kek Ikan Panjang) and Lingo-cut fish cake.\n\nMatch the item to your menu: small balls give a high piece count for noodle bowls, lok-lok and steamboat buffets; large balls stand out at yong tau foo counters; long fish cake slices quickly and evenly for char kuey teow and noodle soups; Lingo pieces suit serving fish cake whole. Keep bags chilled or frozen as indicated, reseal after use and heat through before serving. Contact our sales team via WhatsApp or email for trade supply.",
+    "ms": "Pek perkhidmatan makanan Tung Lam ialah beg 1kg untuk dapur yang menggunakan bebola ikan dan kek ikan setiap hari. Rangkaiannya merangkumi bebola ikan goreng besar dan kecil (Bebola Goreng Besar dan Kecil), bebola ikan putih besar dan kecil (Bebola Puteh Besar dan Kecil), kek ikan panjang (Kek Ikan Panjang) dan kek ikan potongan Lingo.\n\nPadankan produk dengan menu anda: bebola kecil memberikan banyak biji untuk mi, lok-lok dan bufet stimbot; bebola besar menonjol di kaunter yong tau foo; kek ikan panjang cepat dan sekata dihiris untuk char kuey teow dan mi sup; kepingan Lingo sesuai dihidang seketul. Simpan sejuk atau beku seperti yang dinyatakan, tutup rapat selepas digunakan dan panaskan sebelum dihidang. Hubungi pasukan jualan kami melalui WhatsApp atau e-mel untuk bekalan perniagaan.",
+    "zh": "东临餐饮装为1公斤大包装，专为每天使用鱼丸鱼饼的厨房而设。系列包括大、小炸鱼丸（Bebola Goreng Besar / Kecil）、大、小白鱼丸（Bebola Puteh Besar / Kecil）、长条鱼饼（Kek Ikan Panjang）以及 Lingo 款鱼饼。\n\n按菜单挑选：小颗粒数多，适合面食、lok-lok 和火锅自助餐；大颗在酿豆腐档里格外抢眼；长条鱼饼切片快又均匀，适合炒粿条和汤面；Lingo 款适合整块供应。请按包装标示冷藏或冷冻保存，用后封紧，供应前须热透。商业供货请通过 WhatsApp 或电邮联系我们的销售团队。"
+   },
+   "meta_title": {"en": "Food Service Packs 1kg – Fish Balls & Cakes | Tung Lam", "ms": "Pek Perkhidmatan Makanan 1kg | Tung Lam Food", "zh": "餐饮装1公斤｜鱼丸与鱼饼｜东临食品"},
+   "meta_description": {
+    "en": "1kg food-service bags of fried and white fish balls, long fish cake and Lingo fish cake for hawkers, restaurants and caterers. Halal-certified maker, Perak.",
+    "ms": "Pek 1kg bebola ikan goreng dan putih, kek ikan panjang dan Lingo untuk penjaja, restoran dan katering. Pengeluar bertauliah Halal di Perak.",
+    "zh": "1公斤餐饮装：炸鱼丸、白鱼丸、长条鱼饼及 Lingo 鱼饼，适合小贩、餐馆与餐饮承办。霹雳州清真认证厂商。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "Which fish ball size is best for my stall?", "ms": "Saiz bebola ikan mana yang terbaik untuk gerai saya?", "zh": "我的档口适合用哪种大小的鱼丸？"},
+     "a": {"en": "Small balls suit noodle bowls, lok-lok and buffets where you want more pieces per kilo. Large balls suit yong tau foo counters and platters where each piece is served on its own.", "ms": "Bebola kecil sesuai untuk mi, lok-lok dan bufet yang memerlukan lebih banyak biji sekilogram. Bebola besar sesuai untuk kaunter yong tau foo dan set hidangan di mana setiap ketul dihidang sendiri.", "zh": "小颗适合面食、lok-lok 和自助餐，每公斤粒数较多；大颗适合酿豆腐档和拼盘，每粒单独供应更显份量。"}
+    },
+    {
+     "q": {"en": "How do I set up regular supply?", "ms": "Bagaimana cara mendapatkan bekalan tetap?", "zh": "如何安排长期供货？"},
+     "a": {"en": "Please contact our sales team via WhatsApp or email with your products, quantities and location, and we will advise on supply and delivery arrangements.", "ms": "Sila hubungi pasukan jualan kami melalui WhatsApp atau e-mel dengan senarai produk, kuantiti dan lokasi anda, dan kami akan memberi maklumat tentang bekalan dan penghantaran.", "zh": "请通过 WhatsApp 或电邮联系我们的销售团队，告知所需产品、数量和地点，我们会为您安排供货与送货。"}
+    },
+    {
+     "q": {"en": "How should opened 1kg bags be handled?", "ms": "Bagaimana pek 1kg yang telah dibuka perlu dikendalikan?", "zh": "开封后的1公斤装应如何处理？"},
+     "a": {"en": "Take out only what you need, reseal the bag well and return it to chilled or frozen storage as indicated on the pack. Use older stock first.", "ms": "Keluarkan hanya apa yang diperlukan, tutup rapat pek dan simpan semula dalam keadaan sejuk atau beku seperti yang dinyatakan pada bungkusan. Gunakan stok lama terlebih dahulu.", "zh": "只取出所需份量，封紧袋口后按包装标示放回冷藏或冷冻，并以先进先出方式使用库存。"}
+    }
+   ]
+  },
+  {
+   "slug": "peeled-quail-eggs",
+   "parent": "steamboat-series",
+   "name": {"en": "Peeled Quail Eggs", "ms": "Telur Puyuh Kupas", "zh": "剥壳鹌鹑蛋"},
+   "tagline": {"en": "Hard-boiled, ready-peeled quail eggs in 10 and 50-piece packs – no peeling needed.", "ms": "Telur puyuh rebus siap dikupas dalam pek 10 dan 50 biji – tak perlu kupas lagi.", "zh": "全熟去壳鹌鹑蛋，10粒及50粒装，免剥壳。"},
+   "intro": {
+    "en": "TL Telur Puyuh Kupas are quail eggs that are hard-boiled and peeled for you – the pack describes them as ready to eat. Peeling quail eggs by hand is slow and fiddly, so ready-peeled eggs save real time, whether you are cooking for a family or running a busy stall.\n\nChoose the 10-piece tray for household steamboat, sambal telur puyuh or a few lok-lok skewers. The 50-piece bag suits steamboat restaurants, lok-lok and satay celup stalls, nasi campur stalls and caterers. Because the eggs are already cooked, simply warm them through in broth, gravy or a hot pan. Quail eggs contain egg; check the pack for allergen information, and keep chilled or frozen as indicated on the pack.",
+    "ms": "TL Telur Puyuh Kupas ialah telur puyuh yang sudah direbus dan dikupas – bungkusannya menyatakan ia sedia dimakan. Mengupas telur puyuh dengan tangan memakan masa, jadi telur yang siap dikupas sangat menjimatkan masa, sama ada memasak untuk keluarga atau mengendalikan gerai yang sibuk.\n\nPilih dulang 10 biji untuk stimbot di rumah, sambal telur puyuh atau beberapa cucuk lok-lok. Pek 50 biji sesuai untuk restoran stimbot, gerai lok-lok dan satay celup, gerai nasi campur dan katering. Oleh sebab telur sudah dimasak, panaskan sahaja dalam sup, kuah atau kuali panas. Telur puyuh mengandungi telur; semak bungkusan untuk maklumat alergen, dan simpan sejuk atau beku seperti yang dinyatakan pada bungkusan.",
+    "zh": "TL 剥壳鹌鹑蛋已为你煮熟去壳，包装注明为即食。手剥鹌鹑蛋既慢又麻烦，现成去壳蛋无论是家庭下厨还是繁忙档口，都能真正省下时间。\n\n家庭火锅、参巴鹌鹑蛋或几串 lok-lok，可选10粒盒装；火锅店、lok-lok 与沙爹朱律档、经济饭摊及餐饮承办，则适合50粒大包装。蛋已煮熟，只需在汤、酱汁或热锅中加热即可。鹌鹑蛋属蛋类，过敏原资料请参阅包装，并按包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Peeled Quail Eggs 10 & 50 pcs | Tung Lam Food", "ms": "Telur Puyuh Kupas 10 & 50 Biji | Tung Lam Food", "zh": "剥壳鹌鹑蛋 10粒及50粒装｜东临食品"},
+   "meta_description": {
+    "en": "TL Telur Puyuh Kupas: hard-boiled, ready-peeled quail eggs in 10-piece trays and 50-piece bags for steamboat, sambal, lok-lok and food-service kitchens.",
+    "ms": "TL Telur Puyuh Kupas: telur puyuh rebus siap dikupas dalam dulang 10 biji dan pek 50 biji untuk stimbot, sambal, lok-lok dan dapur perniagaan.",
+    "zh": "TL 剥壳鹌鹑蛋，全熟免剥壳，10粒盒装与50粒大包装，适合火锅、参巴、lok-lok 及餐饮厨房。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "Do the quail eggs need cooking?", "ms": "Adakah telur puyuh ini perlu dimasak?", "zh": "这些鹌鹑蛋需要再煮吗？"},
+     "a": {"en": "The pack describes them as hard-boiled and ready to eat. Most people warm them through in soup, gravy or a pan before serving; follow any guidance on the pack.", "ms": "Bungkusan menyatakan telur ini sudah direbus dan sedia dimakan. Kebanyakan orang memanaskannya dalam sup, kuah atau kuali sebelum dihidang; ikuti sebarang panduan pada bungkusan.", "zh": "包装注明为全熟即食。一般会在汤、酱汁或锅中加热后再食用，请同时参考包装上的说明。"}
+    },
+    {
+     "q": {"en": "Which pack size suits a restaurant?", "ms": "Saiz pek mana yang sesuai untuk restoran?", "zh": "餐馆适合哪种包装？"},
+     "a": {"en": "The 50-piece bag is made for steamboat restaurants, stalls and caterers. For regular supply, contact our sales team via WhatsApp or email.", "ms": "Pek 50 biji dibuat untuk restoran stimbot, gerai dan katering. Untuk bekalan tetap, hubungi pasukan jualan kami melalui WhatsApp atau e-mel.", "zh": "50粒装专为火锅店、档口及餐饮承办而设。如需长期供货，请通过 WhatsApp 或电邮联系我们的销售团队。"}
+    }
+   ]
+  },
+  {
+   "slug": "fish-paste",
+   "parent": "steamboat-series",
+   "name": {"en": "Fish Paste", "ms": "Isi Ikan (Kuih Ikan)", "zh": "鱼浆"},
+   "tagline": {"en": "Ready-mixed raw fish paste in 300g, 400g and 1kg packs for yong tau foo and more.", "ms": "Isi ikan mentah siap diadun dalam pek 300g, 400g dan 1kg untuk yong tau foo dan lain-lain.", "zh": "已调味生鱼浆，300克、400克及1公斤装，做酿豆腐等多种用途。"},
+   "intro": {
+    "en": "Fish paste is the raw, ready-mixed base behind yong tau foo, home-made fish balls and fish cakes. Tung Lam’s range comes in three sizes: 300g and 1kg packs of High Quality Fish Paste (Kuih Ikan Segar, 上等鲛鱼酱) and a 400g pack labelled Kuih Ikan Mentah.\n\nThe 300g pack suits a family batch of stuffed tofu puffs, chillies and vegetables; the 400g pack gives a little more for bigger households; and the 1kg bag is made for yong tau foo stalls, restaurants and caterers. Wet your hands or spoon with water or oil to make shaping easier. Fish paste is raw – always cook it thoroughly. Keep chilled or frozen as indicated on the pack, and thaw only what you need.",
+    "ms": "Isi ikan ialah bahan mentah siap diadun untuk yong tau foo, bebola ikan dan kek ikan buatan sendiri. Rangkaian Tung Lam ditawarkan dalam tiga saiz: pek 300g dan 1kg High Quality Fish Paste (Kuih Ikan Segar, 上等鲛鱼酱) serta pek 400g berlabel Kuih Ikan Mentah.\n\nPek 300g sesuai untuk menyumbat tauhu pok, cili dan sayur untuk sekeluarga; pek 400g memberikan sedikit lebih untuk keluarga besar; dan pek 1kg dibuat untuk gerai yong tau foo, restoran dan katering. Basahkan tangan atau sudu dengan air atau minyak supaya lebih mudah dibentuk. Isi ikan adalah mentah – sentiasa masak sepenuhnya. Simpan sejuk atau beku seperti yang dinyatakan pada bungkusan, dan cairkan hanya yang diperlukan.",
+    "zh": "鱼浆是做酿豆腐、自制鱼丸和鱼饼的生鲜基底。东临鱼浆有三种规格：300克及1公斤的上等鲛鱼酱（High Quality Fish Paste / Kuih Ikan Segar），以及标示 Kuih Ikan Mentah 的400克装。\n\n300克适合全家一次酿豆卜、辣椒和蔬菜；400克份量稍多，适合较大的家庭；1公斤装则专为酿豆腐档、餐馆和餐饮承办而设。手或汤匙沾点水或油，塑形更容易。鱼浆为生鲜产品，务必彻底煮熟。请按包装标示冷藏或冷冻保存，只解冻所需份量。"
+   },
+   "meta_title": {"en": "Fish Paste 300g, 400g & 1kg | Tung Lam Food Malaysia", "ms": "Isi Ikan (Kuih Ikan) 300g, 400g & 1kg | Tung Lam", "zh": "鱼浆 300克、400克、1公斤｜东临食品"},
+   "meta_description": {
+    "en": "Tung Lam fish paste in 300g, 400g and 1kg packs – ready-mixed raw paste for yong tau foo, stuffed chillies, fish balls and fish cakes. Cook thoroughly.",
+    "ms": "Isi ikan Tung Lam dalam pek 300g, 400g dan 1kg – siap diadun untuk yong tau foo, cili sumbat, bebola ikan dan kek ikan. Masak sepenuhnya.",
+    "zh": "东临鱼浆300克、400克及1公斤装，已调味生鱼浆，适合酿豆腐、酿辣椒、自制鱼丸与鱼饼。须彻底煮熟。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "How do I stuff tofu puffs and vegetables with fish paste?", "ms": "Bagaimana cara menyumbat tauhu pok dan sayur dengan isi ikan?", "zh": "怎样用鱼浆酿豆卜和蔬菜？"},
+     "a": {"en": "Slit the tofu puff, chilli, okra or brinjal, then press in fish paste with a spoon dipped in water or oil and smooth the surface. Pan-fry, steam or simmer until the paste is cooked through.", "ms": "Belah tauhu pok, cili, bendi atau terung, kemudian tekan isi ikan dengan sudu yang dicelup air atau minyak dan ratakan permukaannya. Goreng, kukus atau reneh sehingga isi ikan masak sepenuhnya.", "zh": "把豆卜、辣椒、羊角豆或茄子切开，用沾水或油的汤匙把鱼浆压进去并抹平表面，再煎、蒸或煮至鱼浆熟透。"}
+    },
+    {
+     "q": {"en": "Can fish paste be eaten raw?", "ms": "Bolehkah isi ikan dimakan mentah?", "zh": "鱼浆可以生吃吗？"},
+     "a": {"en": "No. Fish paste is a raw product and must be cooked thoroughly before eating.", "ms": "Tidak. Isi ikan ialah produk mentah dan mesti dimasak sepenuhnya sebelum dimakan.", "zh": "不可以。鱼浆为生鲜产品，必须彻底煮熟后才能食用。"}
+    }
+   ]
+  },
+  {
+   "slug": "cincau-grass-jelly",
+   "parent": "dessert-series",
+   "name": {"en": "Cincau (Grass Jelly)", "ms": "Cincau", "zh": "仙草"},
+   "tagline": {"en": "Sweetened, no-sugar-added and original cincau – from single tubes to 2kg blocks.", "ms": "Cincau manis, tanpa gula dan asli – dari tiub tunggal hingga blok 2kg.", "zh": "甜仙草、无糖凉粉与原味仙草——从单条装到2公斤大块。"},
+   "intro": {
+    "en": "Cincau, also known as grass jelly or chin chow, is the dark, cooling jelly found in drinks and desserts all over Malaysia. Tung Lam makes it in three styles: Cincau Manis (甜仙草), sweetened and ready to eat, in a 260g tube and a 1kg pack; Cincau Tawar (无糖凉粉) with no added sugar, in 480g; and Cincau Asli, an original 2kg block for trade use.\n\nPick Cincau Manis for a quick dessert straight from the pack, Cincau Tawar when you want to control the sweetness yourself, and the 2kg Cincau Asli block if you run a drink stall, kopitiam or dessert shop. Cut with a wet knife into cubes or strips and keep leftovers covered. Keep chilled or frozen as indicated on the pack.",
+    "ms": "Cincau, juga dikenali sebagai grass jelly atau chin chow, ialah jeli gelap yang menyegarkan dan terdapat dalam minuman serta pencuci mulut di seluruh Malaysia. Tung Lam menghasilkannya dalam tiga jenis: Cincau Manis (甜仙草) yang sedia dimakan dalam tiub 260g dan pek 1kg; Cincau Tawar (无糖凉粉) tanpa gula tambahan dalam 480g; dan Cincau Asli, blok 2kg untuk kegunaan perniagaan.\n\nPilih Cincau Manis untuk pencuci mulut segera terus dari pek, Cincau Tawar jika anda mahu mengawal kemanisan sendiri, dan blok Cincau Asli 2kg jika anda mengendalikan gerai minuman, kopitiam atau kedai pencuci mulut. Potong kiub atau jalur dengan pisau basah dan tutup bakinya. Simpan sejuk atau beku seperti yang dinyatakan pada bungkusan.",
+    "zh": "仙草（又称草粿、凉粉或 chin chow）是大马各地饮料与甜品中常见的黑色清凉果冻。东临出品三种仙草：已调甜即食的甜仙草（Cincau Manis），有260克条装和1公斤装；不添加糖的无糖凉粉（Cincau Tawar），480克装；以及供商用的2公斤原味仙草（Cincau Asli）大块。\n\n想开包即食，选甜仙草；想自己控制甜度，选无糖凉粉；经营饮料档、咖啡店或甜品店，则选2公斤原味仙草。用沾湿的刀切成方块或长条，剩余部分加盖保存。请按包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Cincau Grass Jelly – Manis, Tawar & Asli | Tung Lam", "ms": "Cincau – Manis, Tawar & Asli | Tung Lam Food Malaysia", "zh": "仙草｜甜仙草、无糖凉粉、原味仙草｜东临食品"},
+   "meta_description": {
+    "en": "Tung Lam cincau: sweetened Cincau Manis, no-sugar-added Cincau Tawar and a 2kg Cincau Asli block. For soya cincau, ais kacang and cooling desserts.",
+    "ms": "Cincau Tung Lam: Cincau Manis, Cincau Tawar tanpa gula tambahan dan blok Cincau Asli 2kg. Untuk soya cincau, ais kacang dan pencuci mulut.",
+    "zh": "东临仙草：甜仙草、无糖凉粉及2公斤原味仙草，适合豆奶仙草、红豆冰及各式清凉甜品。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "How do I cut cincau neatly?", "ms": "Bagaimana cara memotong cincau dengan kemas?", "zh": "怎样把仙草切得整齐？"},
+     "a": {"en": "Turn the jelly out onto a board and cut with a knife dipped in water. A wet blade stops the jelly sticking and gives clean cubes or strips.", "ms": "Keluarkan cincau ke atas papan dan potong dengan pisau yang dicelup air. Pisau basah menghalang cincau melekat dan menghasilkan kiub atau jalur yang kemas.", "zh": "把仙草倒在砧板上，用沾水的刀切。刀面湿润可防止粘刀，切出整齐的方块或长条。"}
+    },
+    {
+     "q": {"en": "What is soya cincau?", "ms": "Apakah soya cincau?", "zh": "什么是豆奶仙草？"},
+     "a": {"en": "Soya cincau is a popular Malaysian drink of cold soy milk with cubes or strips of grass jelly. Use Cincau Manis for a sweeter drink, or Cincau Tawar if your soy milk is already sweetened.", "ms": "Soya cincau ialah minuman popular Malaysia iaitu susu soya sejuk bersama kiub atau jalur cincau. Gunakan Cincau Manis untuk minuman lebih manis, atau Cincau Tawar jika susu soya anda sudah manis.", "zh": "豆奶仙草是大马很受欢迎的饮品，即冰豆奶加入仙草丁或仙草条。想要更甜可用甜仙草；若豆奶本身已有甜味，可用无糖凉粉。"}
+    },
+    {
+     "q": {"en": "Do you supply cincau to drink stalls?", "ms": "Adakah anda membekalkan cincau kepada gerai minuman?", "zh": "你们供应仙草给饮料档吗？"},
+     "a": {"en": "Yes. The 2kg Cincau Asli block is made for trade use. Contact our sales team via WhatsApp or email to arrange supply.", "ms": "Ya. Blok Cincau Asli 2kg dibuat untuk kegunaan perniagaan. Hubungi pasukan jualan kami melalui WhatsApp atau e-mel untuk mengatur bekalan.", "zh": "有。2公斤原味仙草大块专为商用而设，请通过 WhatsApp 或电邮联系销售团队安排供货。"}
+    }
+   ]
+  },
+  {
+   "slug": "cendol",
+   "parent": "dessert-series",
+   "name": {"en": "Cendol", "ms": "Cendol", "zh": "煎蕊"},
+   "tagline": {"en": "Warisan Cendol – ready-made green cendol for ais cendol, ABC and dessert stations.", "ms": "Warisan Cendol – cendol hijau siap untuk ais cendol, ABC dan stesen pencuci mulut.", "zh": "Warisan 煎蕊——现成绿色煎蕊，做煎蕊冰、红豆冰与甜品台。"},
+   "intro": {
+    "en": "Cendol is the soft green jelly at the heart of ais cendol, one of Malaysia’s most loved desserts. Tung Lam’s Warisan Cendol, carrying the tagline Warisan Turun Temurun, comes ready-made, so all you need to add is ice, coconut milk and gula melaka syrup.\n\nTwo sizes are available. The 500g bag is a family size for making several bowls at home. The 1.5kg bag holds three times as much and suits cendol and ABC stalls, cafés, caterers and festive open houses with a self-serve dessert station. Popular extras include red beans, sweet corn, glutinous rice and durian. If the strands clump, rinse lightly and drain before use. Keep chilled or frozen as indicated on the pack.",
+    "ms": "Cendol ialah jeli hijau lembut yang menjadi nadi ais cendol, antara pencuci mulut paling digemari di Malaysia. Warisan Cendol keluaran Tung Lam, dengan cogan kata Warisan Turun Temurun, didatangkan siap dibuat, jadi anda hanya perlu menambah ais, santan dan sirap gula melaka.\n\nDua saiz ditawarkan. Pek 500g ialah saiz keluarga untuk membuat beberapa mangkuk di rumah. Pek 1.5kg mengandungi tiga kali ganda dan sesuai untuk gerai cendol dan ABC, kafe, katering serta rumah terbuka dengan stesen pencuci mulut layan diri. Tambahan popular termasuk kacang merah, jagung manis, pulut dan durian. Jika cendol melekat, bilas sedikit dan toskan sebelum digunakan. Simpan sejuk atau beku seperti yang dinyatakan pada bungkusan.",
+    "zh": "煎蕊是煎蕊冰的灵魂，柔软的绿色条状甜品，也是大马最受喜爱的甜品之一。东临的 Warisan 煎蕊（标语 Warisan Turun Temurun，代代相传）为现成产品，只需加冰、椰浆和椰糖浆即可。\n\n提供两种规格：500克为家庭装，在家可做好几碗；1.5公斤装份量为三倍，适合煎蕊及红豆冰档、咖啡馆、餐饮承办，以及设有自助甜品台的节庆开放门户。常见加料包括红豆、玉米粒、糯米和榴梿。若煎蕊条黏在一起，可稍冲洗后沥干再用。请按包装标示冷藏或冷冻保存。"
+   },
+   "meta_title": {"en": "Cendol – Warisan Cendol 500g & 1.5kg | Tung Lam Food", "ms": "Cendol – Warisan Cendol 500g & 1.5kg | Tung Lam", "zh": "煎蕊｜Warisan 煎蕊 500克及1.5公斤｜东临食品"},
+   "meta_description": {
+    "en": "Warisan Cendol by Tung Lam: ready-made green cendol in 500g and 1.5kg bags. Add ice, santan and gula melaka for ais cendol at home or at your stall.",
+    "ms": "Warisan Cendol oleh Tung Lam: cendol hijau siap dalam pek 500g dan 1.5kg. Tambah ais, santan dan gula melaka untuk ais cendol di rumah atau gerai.",
+    "zh": "东临 Warisan 煎蕊，500克及1.5公斤装现成煎蕊。加冰、椰浆、椰糖，在家或档口都能做煎蕊冰。"
+   },
+   "faqs": [
+    {
+     "q": {"en": "What do I need to make ais cendol?", "ms": "Apa yang saya perlukan untuk membuat ais cendol?", "zh": "做煎蕊冰需要什么材料？"},
+     "a": {"en": "Warisan Cendol, shaved or crushed ice, coconut milk (santan) and gula melaka syrup. Red beans, sweet corn or glutinous rice are optional extras.", "ms": "Warisan Cendol, ais serut atau ais hancur, santan dan sirap gula melaka. Kacang merah, jagung manis atau pulut ialah tambahan pilihan.", "zh": "Warisan 煎蕊、刨冰或碎冰、椰浆以及椰糖浆。红豆、玉米粒或糯米可按喜好添加。"}
+    },
+    {
+     "q": {"en": "Which cendol pack suits a stall or event?", "ms": "Pek cendol mana yang sesuai untuk gerai atau majlis?", "zh": "档口或活动适合哪种包装？"},
+     "a": {"en": "The 1.5kg bag is designed for stalls, cafés, caterers and open houses. For regular orders, contact our sales team via WhatsApp or email.", "ms": "Pek 1.5kg direka untuk gerai, kafe, katering dan rumah terbuka. Untuk pesanan berkala, hubungi pasukan jualan kami melalui WhatsApp atau e-mel.", "zh": "1.5公斤装专为档口、咖啡馆、餐饮承办及开放门户而设。如需定期订购，请通过 WhatsApp 或电邮联系销售团队。"}
+    }
+   ]
+  }
+ ],
+ "brands": [
+  {
+   "slug": "tung-lam",
+   "name": "Tung Lam",
+   "tagline": {"en": "The house brand of Tung Lam Food Industries – everyday chilled and frozen foods from Perak.", "ms": "Jenama utama Tung Lam Food Industries – makanan sejuk dan beku harian dari Perak.", "zh": "东临食品工业自家品牌——来自霹雳州的日常冷藏与冷冻食品。"},
+   "description": {
+    "en": "Tung Lam (TL) is the house brand of Tung Lam Food Industries Sdn Bhd, established in 1999 in Menglembu, Perak. It covers the widest part of the range: egg tofu, silken tofu, tofu puffs and firm tau kwa; 1kg food-service fish balls and fish cakes, fish paste and peeled quail eggs; and desserts including cincau and Warisan Cendol. Products are made by a Halal-certified manufacturer with HACCP, GMP and MeSTI certifications, in pack sizes for both home kitchens and food businesses.",
+    "ms": "Tung Lam (TL) ialah jenama utama Tung Lam Food Industries Sdn Bhd, yang ditubuhkan pada 1999 di Menglembu, Perak. Ia merangkumi bahagian terbesar rangkaian produk: tauhu telur, tauhu lembut, tauhu pok dan tau kwa; bebola ikan dan kek ikan pek perkhidmatan makanan 1kg, isi ikan dan telur puyuh kupas; serta pencuci mulut termasuk cincau dan Warisan Cendol. Produk dihasilkan oleh pengeluar bertauliah Halal, HACCP, GMP dan MeSTI, dalam saiz pek untuk dapur rumah dan perniagaan makanan.",
+    "zh": "东临（Tung Lam，TL）是东临食品工业有限公司的自家品牌，公司于1999年在霹雳州万里望创立。品牌涵盖最广泛的产品线：鸡蛋豆腐、嫩豆腐、豆卜与豆干；1公斤餐饮装鱼丸鱼饼、鱼浆与剥壳鹌鹑蛋；以及仙草和 Warisan 煎蕊等甜品。产品由持有清真、HACCP、GMP 及 MeSTI 认证的厂商生产，提供家庭与餐饮业适用的各种包装规格。"
+   },
+   "meta_title": {"en": "Tung Lam (TL) Brand | Tung Lam Food Malaysia", "ms": "Jenama Tung Lam (TL) | Tung Lam Food Malaysia", "zh": "东临（TL）品牌｜东临食品 马来西亚"},
+   "meta_description": {
+    "en": "Tung Lam (TL) is the house brand of Tung Lam Food Industries: tofu, tofu puffs, fish balls, fish paste, quail eggs, cincau and cendol, made in Perak since 1999.",
+    "ms": "Tung Lam (TL) ialah jenama utama Tung Lam Food Industries: tauhu, tauhu pok, bebola ikan, isi ikan, telur puyuh, cincau dan cendol, dari Perak sejak 1999.",
+    "zh": "东临（TL）是东临食品工业的自家品牌，产品包括豆腐、豆卜、鱼丸、鱼浆、鹌鹑蛋、仙草与煎蕊，1999年创立于霹雳州。"
+   }
+  },
+  {
+   "slug": "sakura",
+   "name": "Sakura",
+   "tagline": {"en": "Because you love life – Japanese-inspired egg tofu and silken tofu.", "ms": "Because you love life – tauhu telur dan tauhu lembut berinspirasikan Jepun.", "zh": "珍爱生命的选择——日式风格鸡蛋豆腐与嫩豆腐。"},
+   "description": {
+    "en": "Sakura is a brand in the Tung Lam portfolio, recognisable by its cherry-blossom packaging and the slogan because you love life (珍爱生命的选择). The Sakura range focuses on Japanese-style tofu: a 150g egg tofu tube, a 300g silken tofu box labelled 絹こし豆腐 (kinugoshi), and a 250g silken tofu tube. These smooth, delicate tofus are ideal for steaming, miso soup, hiyayakko and agedashi-style dishes. Sakura products are made by Tung Lam Food Industries in Menglembu, Perak, a Halal-certified manufacturer.",
+    "ms": "Sakura ialah jenama dalam portfolio Tung Lam, mudah dikenali dengan bungkusan bunga sakura dan slogan because you love life (珍爱生命的选择). Rangkaian Sakura menumpukan kepada tauhu gaya Jepun: tiub tauhu telur 150g, kotak tauhu lembut 300g berlabel 絹こし豆腐 (kinugoshi), dan tiub tauhu lembut 250g. Tauhu yang licin dan halus ini sesuai untuk dikukus, sup miso, hiyayakko dan hidangan ala agedashi. Produk Sakura dihasilkan oleh Tung Lam Food Industries di Menglembu, Perak, pengeluar bertauliah Halal.",
+    "zh": "Sakura 是东临旗下品牌，以樱花图案包装及标语「because you love life · 珍爱生命的选择」为标志。Sakura 系列专注于日式风格豆腐：150克鸡蛋豆腐条装、标示「絹こし豆腐」的300克盒装嫩豆腐，以及250克筒装嫩豆腐。这些细腻柔滑的豆腐最适合清蒸、味噌汤、日式冷豆腐及扬出豆腐等料理。Sakura 产品由霹雳州万里望持有清真认证的东临食品工业生产。"
+   },
+   "meta_title": {"en": "Sakura – Because You Love Life | Tung Lam Food", "ms": "Sakura – Because You Love Life | Tung Lam Food", "zh": "Sakura 珍爱生命的选择｜东临食品"},
+   "meta_description": {
+    "en": "Sakura, because you love life: Japanese-style egg tofu and kinugoshi silken tofu in boxes and tubes, from the Tung Lam portfolio. Made in Menglembu, Perak.",
+    "ms": "Sakura, because you love life: tauhu telur dan tauhu lembut kinugoshi gaya Jepun dalam kotak dan tiub, daripada portfolio Tung Lam. Buatan Menglembu, Perak.",
+    "zh": "Sakura · 珍爱生命的选择：日式鸡蛋豆腐与绢豆腐，盒装及筒装，东临旗下品牌，霹雳州万里望制造。"
+   }
+  },
+  {
+   "slug": "cili",
+   "name": "Cili",
+   "tagline": {"en": "Egg tofu, fish cakes and fish balls with a cheerful chilli on every pack.", "ms": "Tauhu telur, kek ikan dan bebola ikan dengan maskot cili yang ceria.", "zh": "鸡蛋豆腐、鱼饼与鱼丸，包装上的辣椒吉祥物一眼认出。"},
+   "description": {
+    "en": "Cili is a brand in the Tung Lam portfolio, easy to spot by the smiling chilli mascot on its red-and-white packs. The range is made up of everyday household sizes: a 120g egg tofu tube, a 280g pack of fish cake (Kek Ikan), and 160g packs of small fried fish balls and white fish balls. Compact pack sizes make Cili a practical choice for small households, quick noodle dishes and steamboat top-ups. All Cili products are made by Tung Lam Food Industries in Menglembu, Perak, a Halal-certified manufacturer.",
+    "ms": "Cili ialah jenama dalam portfolio Tung Lam, mudah dikenali dengan maskot cili yang tersenyum pada bungkusan merah dan putih. Rangkaiannya terdiri daripada saiz isi rumah harian: tiub tauhu telur 120g, pek kek ikan 280g, serta pek 160g bebola ikan goreng kecil dan bebola ikan putih. Saiz pek yang padat menjadikan Cili pilihan praktikal untuk isi rumah kecil, hidangan mi segera dan tambahan stimbot. Semua produk Cili dihasilkan oleh Tung Lam Food Industries di Menglembu, Perak, pengeluar bertauliah Halal.",
+    "zh": "Cili 是东临旗下品牌，红白包装上的笑脸辣椒吉祥物很容易辨认。产品以日常家庭份量为主：120克鸡蛋豆腐、280克鱼饼，以及160克小炸鱼丸和白鱼丸。小巧的包装让 Cili 成为小家庭、快手面食和火锅加料的实用选择。所有 Cili 产品均由霹雳州万里望持有清真认证的东临食品工业生产。"
+   },
+   "meta_title": {"en": "Cili Brand – Egg Tofu, Fish Cakes & Fish Balls | Tung Lam", "ms": "Jenama Cili – Tauhu Telur & Bebola Ikan | Tung Lam", "zh": "Cili 品牌｜鸡蛋豆腐、鱼饼、鱼丸｜东临食品"},
+   "meta_description": {
+    "en": "Cili brand from Tung Lam: 120g egg tofu, 280g fish cake and 160g fried or white fish balls in compact household packs. Made in Menglembu, Perak.",
+    "ms": "Jenama Cili daripada Tung Lam: tauhu telur 120g, kek ikan 280g serta bebola ikan goreng atau putih 160g dalam pek isi rumah. Buatan Menglembu, Perak.",
+    "zh": "东临旗下 Cili 品牌：120克鸡蛋豆腐、280克鱼饼及160克炸鱼丸、白鱼丸，小巧家庭装，霹雳州万里望制造。"
+   }
+  },
+  {
+   "slug": "ad",
+   "name": "AD",
+   "tagline": {"en": "Family-size fish balls, fish cakes and egg tofu for everyday cooking.", "ms": "Bebola ikan, kek ikan dan tauhu telur saiz keluarga untuk masakan harian.", "zh": "家庭装鱼丸、鱼饼与鸡蛋豆腐，日常下厨好帮手。"},
+   "description": {
+    "en": "AD is a brand in the Tung Lam portfolio, known for its green-and-yellow fish product packs and red-and-green egg tofu tubes. The AD range includes 450g family bags of white fish balls (Bebola Ikan) and fish cake strips (Kek Ikan), plus egg tofu in a single 120g tube and a 3 x 120g multipack. These family-size packs are well suited to steamboat dinners, noodle dishes and weekly home cooking. AD products are made by Tung Lam Food Industries in Menglembu, Perak, a Halal-certified manufacturer.",
+    "ms": "AD ialah jenama dalam portfolio Tung Lam, dikenali dengan bungkusan produk ikan berwarna hijau dan kuning serta tiub tauhu telur merah dan hijau. Rangkaian AD termasuk pek keluarga 450g bebola ikan putih (Bebola Ikan) dan jalur kek ikan (Kek Ikan), serta tauhu telur dalam tiub tunggal 120g dan pek 3 x 120g. Pek saiz keluarga ini sesuai untuk makan malam stimbot, hidangan mi dan masakan mingguan di rumah. Produk AD dihasilkan oleh Tung Lam Food Industries di Menglembu, Perak, pengeluar bertauliah Halal.",
+    "zh": "AD 是东临旗下品牌，鱼类产品采用绿黄色包装，鸡蛋豆腐则为红绿色条装。AD 系列包括450克家庭装白鱼丸（Bebola Ikan）与长条鱼饼（Kek Ikan），以及120克单条和3 x 120克三合一装鸡蛋豆腐。这些家庭份量的包装很适合火锅晚餐、面食和一周的家常烹调。AD 产品由霹雳州万里望持有清真认证的东临食品工业生产。"
+   },
+   "meta_title": {"en": "AD Brand – Fish Balls, Fish Cakes & Egg Tofu | Tung Lam", "ms": "Jenama AD – Bebola Ikan & Tauhu Telur | Tung Lam", "zh": "AD 品牌｜鱼丸、鱼饼、鸡蛋豆腐｜东临食品"},
+   "meta_description": {
+    "en": "AD brand from Tung Lam: 450g family bags of fish balls and fish cake, plus egg tofu in single and 3-tube packs. For steamboat and everyday home cooking.",
+    "ms": "Jenama AD daripada Tung Lam: pek keluarga 450g bebola ikan dan kek ikan, serta tauhu telur dalam pek tunggal dan 3 tiub. Untuk stimbot dan masakan harian.",
+    "zh": "东临旗下 AD 品牌：450克家庭装鱼丸与鱼饼，以及单条和三合一装鸡蛋豆腐，适合火锅和日常家常菜。"
+   }
+  }
+ ]
+}

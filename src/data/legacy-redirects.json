@@ -1,0 +1,378 @@
+[
+ {
+  "source": "/showproducts/productid/4790256/:rest*",
+  "destination": "/products/tl-taufu-keras-10pcs"
+ },
+ {
+  "source": "/showproducts/productid/4790257/:rest*",
+  "destination": "/products/tofu-goreng-keping-500gm"
+ },
+ {
+  "source": "/showproducts/productid/4564242/:rest*",
+  "destination": "/products/tl-cincau-asli-2kg"
+ },
+ {
+  "source": "/showproducts/productid/4563999/:rest*",
+  "destination": "/products/tl-taufu-keras-6pcs"
+ },
+ {
+  "source": "/showproducts/productid/4563684/:rest*",
+  "destination": "/products/tofu-goreng-keping-270gm"
+ },
+ {
+  "source": "/showproducts/productid/4551181/:rest*",
+  "destination": "/products/sakura-egg-tofu-150gm"
+ },
+ {
+  "source": "/showproducts/productid/4551183/:rest*",
+  "destination": "/products/tl-egg-tofu-130gm"
+ },
+ {
+  "source": "/showproducts/productid/4551182/:rest*",
+  "destination": "/products/tl-egg-tofu-120gm"
+ },
+ {
+  "source": "/showproducts/productid/4551374/:rest*",
+  "destination": "/products/tl-egg-tofu-3-x-120gm"
+ },
+ {
+  "source": "/showproducts/productid/4563683/:rest*",
+  "destination": "/products/tofu-goreng-panjang-270gm"
+ },
+ {
+  "source": "/showproducts/productid/4563952/:rest*",
+  "destination": "/products/ad-egg-tofu-120gm"
+ },
+ {
+  "source": "/showproducts/productid/4563938/:rest*",
+  "destination": "/products/cili-brand-egg-tofu-120gm"
+ },
+ {
+  "source": "/showproducts/productid/4563998/:rest*",
+  "destination": "/products/tl-taufu-keras-4pcs"
+ },
+ {
+  "source": "/showproducts/productid/4563996/:rest*",
+  "destination": "/products/tl-taufu-keras-2pcs"
+ },
+ {
+  "source": "/showproducts/productid/4564251/:rest*",
+  "destination": "/products/taufu-teochew-350gm"
+ },
+ {
+  "source": "/showproducts/productid/4563978/:rest*",
+  "destination": "/products/ad-egg-tofu-3-x-120gm"
+ },
+ {
+  "source": "/showproducts/productid/4551249/:rest*",
+  "destination": "/products/tl-silken-tofu-box-300gm"
+ },
+ {
+  "source": "/showproducts/productid/4551273/:rest*",
+  "destination": "/products/cincau-manis-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4551274/:rest*",
+  "destination": "/products/cincau-manis-260gm"
+ },
+ {
+  "source": "/showproducts/productid/4551285/:rest*",
+  "destination": "/products/ad-fish-ball-450gm"
+ },
+ {
+  "source": "/showproducts/productid/4551286/:rest*",
+  "destination": "/products/ad-fish-cake-450gm"
+ },
+ {
+  "source": "/showproducts/productid/4551287/:rest*",
+  "destination": "/products/cili-brand-fish-cake-280gm"
+ },
+ {
+  "source": "/showproducts/productid/4551343/:rest*",
+  "destination": "/products/sakura-silken-tofu-box-300gm"
+ },
+ {
+  "source": "/showproducts/productid/4551351/:rest*",
+  "destination": "/products/silken-tofu-tube-250gm"
+ },
+ {
+  "source": "/showproducts/productid/4551369/:rest*",
+  "destination": "/products/cili-brand-fried-fish-ball-160gm"
+ },
+ {
+  "source": "/showproducts/productid/4551370/:rest*",
+  "destination": "/products/cili-brand-white-fish-ball-160gm"
+ },
+ {
+  "source": "/showproducts/productid/4551373/:rest*",
+  "destination": "/products/cincau-tawar-480gm"
+ },
+ {
+  "source": "/showproducts/productid/4551377/:rest*",
+  "destination": "/products/tofu-goreng-bulat-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4551378/:rest*",
+  "destination": "/products/tofu-goreng-bulat-270gm"
+ },
+ {
+  "source": "/showproducts/productid/4551379/:rest*",
+  "destination": "/products/tofu-goreng-bulat-10pcs"
+ },
+ {
+  "source": "/showproducts/productid/4563929/:rest*",
+  "destination": "/products/sakura-tofu-tube-250gm"
+ },
+ {
+  "source": "/showproducts/productid/4564128/:rest*",
+  "destination": "/products/tl-lingo-kek-ikan-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4564140/:rest*",
+  "destination": "/products/tl-kek-ikan-panjang-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4564141/:rest*",
+  "destination": "/products/tl-bebola-goreng-besar-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4564142/:rest*",
+  "destination": "/products/tl-bebola-goreng-cecil-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4564143/:rest*",
+  "destination": "/products/tl-bebola-puteh-kecil-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4564145/:rest*",
+  "destination": "/products/tl-bebola-puteh-besar-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4564224/:rest*",
+  "destination": "/products/tl-telur-puyuh-kupas-10pcs"
+ },
+ {
+  "source": "/showproducts/productid/4564229/:rest*",
+  "destination": "/products/tl-telur-puyuh-kupas-50pcs"
+ },
+ {
+  "source": "/showproducts/productid/4564230/:rest*",
+  "destination": "/products/tl-fish-paste-300gm"
+ },
+ {
+  "source": "/showproducts/productid/4564232/:rest*",
+  "destination": "/products/tl-fish-paste-1kg"
+ },
+ {
+  "source": "/showproducts/productid/4564240/:rest*",
+  "destination": "/products/tl-fish-paste-400gm"
+ },
+ {
+  "source": "/showproducts/productid/4564247/:rest*",
+  "destination": "/products/warisan-cendol-500gm"
+ },
+ {
+  "source": "/showproducts/productid/4564248/:rest*",
+  "destination": "/products/warisan-cendol-1-5kg"
+ },
+ {
+  "source": "/ourproducts/cid/476076/:rest*",
+  "destination": "/products/tofu-series"
+ },
+ {
+  "source": "/ourproducts/cid/476077/:rest*",
+  "destination": "/products/egg-tofu"
+ },
+ {
+  "source": "/ourproducts/cid/476078/:rest*",
+  "destination": "/products/egg-tofu"
+ },
+ {
+  "source": "/ourproducts/cid/476079/:rest*",
+  "destination": "/products/egg-tofu"
+ },
+ {
+  "source": "/ourproducts/cid/476090/:rest*",
+  "destination": "/products/silken-tofu-box"
+ },
+ {
+  "source": "/ourproducts/cid/476091/:rest*",
+  "destination": "/products/silken-tofu-box"
+ },
+ {
+  "source": "/ourproducts/cid/476096/:rest*",
+  "destination": "/products/dessert-series"
+ },
+ {
+  "source": "/ourproducts/cid/476097/:rest*",
+  "destination": "/products/cincau-grass-jelly"
+ },
+ {
+  "source": "/ourproducts/cid/476098/:rest*",
+  "destination": "/products/cincau-grass-jelly"
+ },
+ {
+  "source": "/ourproducts/cid/476100/:rest*",
+  "destination": "/products/steamboat-series"
+ },
+ {
+  "source": "/ourproducts/cid/476101/:rest*",
+  "destination": "/products/retail-wet-market-pack"
+ },
+ {
+  "source": "/ourproducts/cid/476102/:rest*",
+  "destination": "/products/retail-wet-market-pack"
+ },
+ {
+  "source": "/ourproducts/cid/476103/:rest*",
+  "destination": "/products/retail-wet-market-pack"
+ },
+ {
+  "source": "/ourproducts/cid/476116/:rest*",
+  "destination": "/products/silken-tofu-box"
+ },
+ {
+  "source": "/ourproducts/cid/476117/:rest*",
+  "destination": "/products/silken-tofu-tube"
+ },
+ {
+  "source": "/ourproducts/cid/476118/:rest*",
+  "destination": "/products/silken-tofu-tube"
+ },
+ {
+  "source": "/ourproducts/cid/476124/:rest*",
+  "destination": "/products/tofu-puffs"
+ },
+ {
+  "source": "/ourproducts/cid/476125/:rest*",
+  "destination": "/products/tofu-puffs"
+ },
+ {
+  "source": "/ourproducts/cid/477584/:rest*",
+  "destination": "/products/silken-tofu-tube"
+ },
+ {
+  "source": "/ourproducts/cid/477586/:rest*",
+  "destination": "/products/egg-tofu"
+ },
+ {
+  "source": "/ourproducts/cid/477588/:rest*",
+  "destination": "/products/egg-tofu"
+ },
+ {
+  "source": "/ourproducts/cid/477592/:rest*",
+  "destination": "/products/firm-tofu"
+ },
+ {
+  "source": "/ourproducts/cid/477593/:rest*",
+  "destination": "/products/firm-tofu"
+ },
+ {
+  "source": "/ourproducts/cid/477597/:rest*",
+  "destination": "/products/food-service-pack"
+ },
+ {
+  "source": "/ourproducts/cid/477603/:rest*",
+  "destination": "/products/peeled-quail-eggs"
+ },
+ {
+  "source": "/ourproducts/cid/477604/:rest*",
+  "destination": "/products/fish-paste"
+ },
+ {
+  "source": "/ourproducts/cid/477605/:rest*",
+  "destination": "/products/cendol"
+ },
+ {
+  "source": "/latestnews/nid/129625/:rest*",
+  "destination": "/recipes/cendol-dessert"
+ },
+ {
+  "source": "/latestnews/nid/129621/:rest*",
+  "destination": "/recipes/coffee-cincau"
+ },
+ {
+  "source": "/latestnews/nid/127734/:rest*",
+  "destination": "/recipes/dry-curry-firm-tofu-vegetables"
+ },
+ {
+  "source": "/latestnews/nid/126149/:rest*",
+  "destination": "/recipes/taufu-keras-stir-fry"
+ },
+ {
+  "source": "/latestnews/nid/125251/:rest*",
+  "destination": "/recipes/tofu-puff-curry-noodles"
+ },
+ {
+  "source": "/latestnews/nid/125250/:rest*",
+  "destination": "/recipes/tofu-bergedil-stuffed-tofu-puffs"
+ },
+ {
+  "source": "/latestnews/nid/124898/:rest*",
+  "destination": "/recipes/spicy-mala-tofu"
+ },
+ {
+  "source": "/latestnews/nid/124897/:rest*",
+  "destination": "/recipes/tofu-breakfast-burrito"
+ },
+ {
+  "source": "/latestnews/nid/123964/:rest*",
+  "destination": "/recipes/crispy-silken-tofu"
+ },
+ {
+  "source": "/latestnews/nid/123962/:rest*",
+  "destination": "/recipes/fish-head-curry-tofu-puffs"
+ },
+ {
+  "source": "/latestnews/nid/122012/:rest*",
+  "destination": "/recipes/sambal-peeled-quail-eggs"
+ },
+ {
+  "source": "/latestnews/nid/121968/:rest*",
+  "destination": "/recipes/steamed-silken-tofu"
+ },
+ {
+  "source": "/brand/bid/6895/:rest*",
+  "destination": "/brands/tung-lam"
+ },
+ {
+  "source": "/brand/bid/:rest*",
+  "destination": "/brands"
+ },
+ {
+  "source": "/showproducts/:rest*",
+  "destination": "/products"
+ },
+ {
+  "source": "/ourproducts/:rest*",
+  "destination": "/products"
+ },
+ {
+  "source": "/category/:rest*",
+  "destination": "/products"
+ },
+ {
+  "source": "/tag/:rest*",
+  "destination": "/products"
+ },
+ {
+  "source": "/latestnews/:rest*",
+  "destination": "/recipes"
+ },
+ {
+  "source": "/pages/pages_id/21827/:rest*",
+  "destination": "/about"
+ },
+ {
+  "source": "/contactus/:rest*",
+  "destination": "/contact"
+ },
+ {
+  "source": "/career/:rest*",
+  "destination": "/careers"
+ },
+ {
+  "source": "/en/sitemap/:rest*",
+  "destination": "/"
+ }
+]
