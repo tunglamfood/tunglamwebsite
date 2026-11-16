@@ -426,9 +426,139 @@ export async function deleteInquiry(id: string): Promise<ActionResult> {
 }
 
 // ---------------------------------------------------------------------------
+// Guides (/guides)
+// ---------------------------------------------------------------------------
+const slugList = z.array(z.string().trim().min(1)).max(30);
+const guideSchema = z.object({
+  id: z.string().uuid().optional(),
+  slug,
+  title: l10n,
+  meta_title: l10n,
+  meta_description: l10n,
+  lead: l10n,
+  image_alt: l10n,
+  summary: l10nList,
+  body: l10n,
+  faqs: z.array(faqItem).max(20),
+  image_path: z.string().nullable(),
+  image_width: z.number().int().nullable(),
+  image_height: z.number().int().nullable(),
+  product_slugs: slugList,
+  category_slugs: slugList,
+  recipe_slugs: slugList,
+  related_slugs: slugList,
+  about: z.array(z.string().trim().min(1)).max(10),
+  is_published: z.boolean(),
+  published_at: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+});
+export type GuideInput = z.input<typeof guideSchema>;
+
+export async function saveGuide(input: GuideInput): Promise<ActionResult> {
+  await requireAdmin();
+  try {
+    const v = guideSchema.parse(input);
+    const row = {
+      slug: v.slug,
+      title: requireEn(cleanL(v.title), "Title"),
+      meta_title: cleanL(v.meta_title),
+      meta_description: cleanL(v.meta_description),
+      lead: cleanL(v.lead),
+      image_alt: cleanL(v.image_alt),
+      summary: cleanLL(v.summary),
+      body: cleanL(v.body),
+      faqs: v.faqs.map((f) => ({ q: cleanL(f.q), a: cleanL(f.a) })).filter((f) => f.q.en && f.a.en),
+      image_path: v.image_path,
+      image_width: v.image_width,
+      image_height: v.image_height,
+      product_slugs: v.product_slugs,
+      category_slugs: v.category_slugs,
+      recipe_slugs: v.recipe_slugs,
+      related_slugs: v.related_slugs,
+      about: v.about,
+      is_published: v.is_published,
+      published_at: v.published_at,
+    };
+    const db = adminClient();
+    const res = v.id
+      ? await db.from("guides").update(row).eq("id", v.id).select("id").single()
+      : await db.from("guides").insert(row).select("id").single();
+    if (res.error) throw new Error(res.error.message);
+    publish(["/guides", `/guides/${v.slug}`]);
+    return { ok: true, id: res.data.id, message: "Saved and published to the website." };
+  } catch (e) {
+    return fail(e);
+  }
+}
+
+export async function deleteGuide(id: string): Promise<ActionResult> {
+  await requireAdmin();
+  const { error } = await adminClient().from("guides").delete().eq("id", id);
+  if (error) return fail(error.message);
+  publish(["/guides"]);
+  redirect("/admin/guides");
+}
+
+// ---------------------------------------------------------------------------
+// Auto posts (daily AI recipes and guides — src/lib/auto-content)
+// ---------------------------------------------------------------------------
+export async function setAutoEnabled(enabled: boolean): Promise<ActionResult> {
+  await requireAdmin();
+  const { error } = await adminClient().from("auto_settings").update({ enabled }).eq("id", 1);
+  if (error) return fail(error.message);
+  return { ok: true, message: enabled ? "Auto posting is on." : "Auto posting is paused." };
+}
+
+export async function runAutoNow(kind: "recipe" | "guide"): Promise<ActionResult> {
+  await requireAdmin();
+  const { runAutoPost } = await import("@/lib/auto-content/pipeline");
+  try {
+    const r = await runAutoPost(kind, { force: true });
+    return r.ok ? { ok: true, message: r.message } : { ok: false, error: r.message };
+  } catch (e) {
+    return fail(e);
+  }
+}
+
+export async function checkAutoImages(): Promise<ActionResult> {
+  await requireAdmin();
+  const { sweep } = await import("@/lib/auto-content/pipeline");
+  const s = await sweep();
+  return { ok: true, message: `Published ${s.published}, still waiting ${s.waiting}, failed ${s.failed}.` };
+}
+
+export async function addAutoTopic(kind: "recipe" | "guide", title: string, keyword: string): Promise<ActionResult> {
+  await requireAdmin();
+  if (title.trim().length < 4) return { ok: false, error: "Type a topic title." };
+  const { addTopic } = await import("@/lib/auto-content/pipeline");
+  try {
+    await addTopic(kind, title, keyword);
+    return { ok: true, message: "Topic added to the queue." };
+  } catch (e) {
+    return fail(e);
+  }
+}
+
+/** Remove a queued/rejected/failed topic (published posts are deleted from Recipes or Guides). */
+export async function deleteAutoPost(id: string): Promise<ActionResult> {
+  await requireAdmin();
+  const { error } = await adminClient().from("auto_posts").delete().eq("id", id).in("status", ["planned", "rejected", "failed"]);
+  return error ? fail(error.message) : { ok: true };
+}
+
+export async function retryAutoPost(id: string): Promise<ActionResult> {
+  await requireAdmin();
+  const { error } = await adminClient()
+    .from("auto_posts")
+    .update({ status: "planned", attempts: 0, error: null, content: null, kie_task_id: null, created_at: new Date(0).toISOString() })
+    .eq("id", id)
+    .in("status", ["rejected", "failed"]);
+  return error ? fail(error.message) : { ok: true, message: "Queued — it will be written next." };
+}
+
+// ---------------------------------------------------------------------------
 // Media upload (images are resized + converted to WebP in the browser first)
 // ---------------------------------------------------------------------------
-const FOLDERS = ["products", "recipes", "brands", "categories"] as const;
+const FOLDERS = ["products", "recipes", "brands", "categories", "guides"] as const;
 
 export async function uploadImage(formData: FormData): Promise<ActionResult & { path?: string }> {
   await requireAdmin();

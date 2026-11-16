@@ -24,6 +24,10 @@ The repository already contains `vercel.json`, which sets `"regions": ["sin1"]`.
 | `PORTAL_DEMO_OTP` | `123123` **for the demo only.** Remove it before real dealers use the portal |
 | `ONEWAYSMS_API_USERNAME`, `ONEWAYSMS_API_PASSWORD` | OneWay SMS account. Needed for real sign-in codes once `PORTAL_DEMO_OTP` is removed |
 | `ONEWAYSMS_SENDER_ID` | Optional; default `INFO` |
+| `OPENAI_API_KEY` | Auto posts: writes and reviews the daily recipes and guides |
+| `KIE_API_KEY` | Auto posts: makes each post's photo |
+| `CRON_SECRET` | Auto posts: a long random string (copy from `.env`). Vercel Cron sends it; without it the daily job does nothing |
+| `OPENAI_MODEL`, `OPENAI_REVIEW_MODEL` | Optional; defaults `gpt-5.4` and `gpt-5.4-mini` |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Optional |
 
 3. Check that **Settings → Functions → Region** shows Singapore (`sin1`).

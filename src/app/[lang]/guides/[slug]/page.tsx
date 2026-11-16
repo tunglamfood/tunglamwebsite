@@ -4,10 +4,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CircleCheck } from "lucide-react";
 import { getDictionary } from "@/i18n";
-import { LOCALES, fmt, hasLocale, localePath } from "@/lib/i18n";
-import { getCatalog, getRecipes } from "@/lib/data";
-import { GUIDES, getGuide } from "@/lib/guides";
-import { absoluteUrl, articleJsonLd, pageMetadata } from "@/lib/seo";
+import { LOCALES, fmt, hasLocale, localePath, t } from "@/lib/i18n";
+import { getCatalog, getGuides, getRecipes } from "@/lib/data";
+import { mediaUrl } from "@/lib/media";
+import { articleJsonLd, pageMetadata } from "@/lib/seo";
 import { SITE, whatsappLink } from "@/lib/site";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { FaqList } from "@/components/ui/faq-list";
@@ -21,25 +21,27 @@ import { GuideCard } from "@/components/guide/guide-card";
 
 export const revalidate = 3600;
 
-export function generateStaticParams() {
-  return LOCALES.flatMap((lang) => GUIDES.map((g) => ({ lang, slug: g.slug })));
+export async function generateStaticParams() {
+  const guides = await getGuides();
+  return LOCALES.flatMap((lang) => guides.map((g) => ({ lang, slug: g.slug })));
 }
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/guides/[slug]">): Promise<Metadata> {
   const { lang, slug } = await params;
   if (!hasLocale(lang)) return {};
-  const g = getGuide(slug);
+  const g = (await getGuides()).find((x) => x.slug === slug);
   if (!g) return { robots: { index: false } };
-  const tx = g.text[lang];
+  const title = t(g.title, lang) ?? g.slug;
+  const img = mediaUrl(g.image_path);
   return pageMetadata({
     locale: lang,
     path: `/guides/${g.slug}`,
-    title: tx.metaTitle,
-    description: tx.metaDescription,
+    title: t(g.meta_title, lang) ?? title,
+    description: t(g.meta_description, lang) ?? t(g.lead, lang) ?? "",
     type: "article",
-    publishedTime: g.published,
-    modifiedTime: g.updated,
-    image: { url: absoluteUrl(g.image.src), width: g.image.width, height: g.image.height, alt: tx.imageAlt },
+    publishedTime: g.published_at,
+    modifiedTime: g.updated_at,
+    image: img ? { url: img, width: g.image_width ?? undefined, height: g.image_height ?? undefined, alt: t(g.image_alt, lang) ?? title } : null,
   });
 }
 
@@ -48,23 +50,30 @@ const DATE_LOCALE = { en: "en-MY", ms: "ms-MY", zh: "zh-CN" } as const;
 export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[slug]">) {
   const { lang, slug } = await params;
   if (!hasLocale(lang)) notFound();
-  const g = getGuide(slug);
+  const [guides, catalog, allRecipes] = await Promise.all([getGuides(), getCatalog(), getRecipes()]);
+  const g = guides.find((x) => x.slug === slug);
   if (!g) notFound();
   const d = getDictionary(lang);
   const p = (path: string) => localePath(lang, path);
-  const tx = g.text[lang];
   const url = p(`/guides/${g.slug}`);
-  const blocks = parseGuide(tx.body);
+  const title = t(g.title, lang) ?? g.slug;
+  const img = mediaUrl(g.image_path);
+  const blocks = parseGuide(t(g.body, lang) ?? "");
   const toc = blocks.flatMap((b) => (b.type === "h2" ? [b] : []));
+  const summary = t(g.summary, lang) ?? [];
+  const faqs = g.faqs.map((f) => ({ q: t(f.q, lang) ?? "", a: t(f.a, lang) ?? "" })).filter((f) => f.q && f.a);
 
-  const [catalog, allRecipes] = await Promise.all([getCatalog(), getRecipes()]);
-  const products = g.products
+  const products = g.product_slugs
     .map((s) => catalog.products.find((x) => x.slug === s))
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
     .map((x) => toCardData(x, lang, x.brand_id ? catalog.brandById.get(x.brand_id) : undefined));
-  const recipes = g.recipes.map((s) => allRecipes.find((r) => r.slug === s)).filter((r): r is NonNullable<typeof r> => Boolean(r));
-  const related = g.related.map(getGuide).filter((x): x is NonNullable<typeof x> => Boolean(x));
-  const updated = new Date(`${g.updated}T00:00:00Z`).toLocaleDateString(DATE_LOCALE[lang], { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  const recipes = g.recipe_slugs.map((s) => allRecipes.find((r) => r.slug === s)).filter((r): r is NonNullable<typeof r> => Boolean(r));
+  const related = g.related_slugs
+    .map((s) => guides.find((x) => x.slug === s))
+    .filter((x): x is NonNullable<typeof x> => Boolean(x))
+    .concat(guides.filter((x) => x.id !== g.id && !g.related_slugs.includes(x.slug)))
+    .slice(0, 3);
+  const updated = new Date(g.updated_at).toLocaleDateString(DATE_LOCALE[lang], { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kuala_Lumpur" });
 
   return (
     <article>
@@ -73,7 +82,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
           items={[
             { name: d.common.breadcrumbHome, href: p("/") },
             { name: d.guides.title, href: p("/guides") },
-            { name: tx.title, href: url },
+            { name: title, href: url },
           ]}
         />
       </div>
@@ -81,30 +90,34 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
       <header className="container-x grid items-center gap-6 py-6 sm:gap-10 sm:py-10 lg:grid-cols-2 lg:gap-14">
         <div>
           <p className="eyebrow mb-4">{d.guides.label}</p>
-          <h1 className="font-display text-[2rem] font-bold leading-tight tracking-tight sm:text-5xl">{tx.title}</h1>
-          <p className="mt-4 text-base leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">{tx.lead}</p>
+          <h1 className="font-display text-[2rem] font-bold leading-tight tracking-tight sm:text-5xl">{title}</h1>
+          <p className="mt-4 text-base leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">{t(g.lead, lang)}</p>
           <p className="mt-6 text-sm text-muted">
             {fmt(d.guides.byline, { year: SITE.foundingYear })} ·{" "}
-            <time dateTime={g.updated}>{fmt(d.guides.updated, { date: updated })}</time>
+            <time dateTime={g.updated_at}>{fmt(d.guides.updated, { date: updated })}</time>
           </p>
         </div>
-        <div className="relative order-first aspect-[16/9] overflow-hidden rounded-[1.5rem] border border-line bg-sand shadow-[var(--shadow-card)] sm:rounded-[2rem] lg:order-none">
-          <Image src={g.image.src} alt={tx.imageAlt} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
-        </div>
+        {img && (
+          <div className="relative order-first aspect-[16/9] overflow-hidden rounded-[1.5rem] border border-line bg-sand shadow-[var(--shadow-card)] sm:rounded-[2rem] lg:order-none">
+            <Image src={img} alt={t(g.image_alt, lang) ?? title} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+          </div>
+        )}
       </header>
 
       <div className="container-x grid gap-8 py-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-x-14">
-        <section aria-labelledby="in-short" className="max-w-3xl rounded-2xl border border-line bg-sand/50 p-5 sm:p-7 lg:col-start-2 lg:row-start-1">
-          <h2 id="in-short" className="mb-4 font-display text-2xl font-semibold">{d.guides.quickAnswer}</h2>
-          <ul className="space-y-3">
-            {tx.summary.map((s, i) => (
-              <li key={i} className="flex gap-3 leading-relaxed text-ink-soft">
-                <CircleCheck className="mt-1 size-5 shrink-0 text-leaf" aria-hidden />
-                <span><Inline text={s} locale={lang} /></span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {summary.length > 0 && (
+          <section aria-labelledby="in-short" className="max-w-3xl rounded-2xl border border-line bg-sand/50 p-5 sm:p-7 lg:col-start-2 lg:row-start-1">
+            <h2 id="in-short" className="mb-4 font-display text-2xl font-semibold">{d.guides.quickAnswer}</h2>
+            <ul className="space-y-3">
+              {summary.map((s, i) => (
+                <li key={i} className="flex gap-3 leading-relaxed text-ink-soft">
+                  <CircleCheck className="mt-1 size-5 shrink-0 text-leaf" aria-hidden />
+                  <span><Inline text={s} locale={lang} /></span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {toc.length > 1 && (
           <nav aria-label={d.guides.contents} className="lg:sticky lg:top-24 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-start">
@@ -133,10 +146,10 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
         </section>
       )}
 
-      {tx.faqs.length > 0 && (
+      {faqs.length > 0 && (
         <section className="container-x max-w-4xl py-12">
           <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.guides.faqTitle}</h2>
-          <FaqList items={tx.faqs} />
+          <FaqList items={faqs} />
         </section>
       )}
 
@@ -181,11 +194,11 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
         data={articleJsonLd({
           url,
           locale: lang,
-          headline: tx.title,
-          description: tx.metaDescription,
-          image: absoluteUrl(g.image.src),
-          datePublished: g.published,
-          dateModified: g.updated,
+          headline: title,
+          description: t(g.meta_description, lang) ?? t(g.lead, lang) ?? "",
+          image: img ?? undefined,
+          datePublished: g.published_at,
+          dateModified: g.updated_at,
           about: g.about,
         })}
       />

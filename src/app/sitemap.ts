@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next";
-import { getCatalog, getRecipes } from "@/lib/data";
+import { getCatalog, getGuides, getRecipes } from "@/lib/data";
 import { LOCALES, localePath } from "@/lib/i18n";
 import { absoluteUrl, languageAlternates } from "@/lib/seo";
 import { mediaUrl } from "@/lib/media";
-import { GUIDES } from "@/lib/guides";
 
 export const revalidate = 3600;
 
@@ -23,7 +22,7 @@ const STATIC_PAGES: { path: string; priority: number; changeFrequency: MetadataR
 
 /** One entry per URL per locale, each carrying hreflang alternates and image references. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [{ categories, products, brands }, recipes] = await Promise.all([getCatalog(), getRecipes()]);
+  const [{ categories, products, brands }, recipes, guides] = await Promise.all([getCatalog(), getRecipes(), getGuides()]);
 
   const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; lastModified?: string; images?: string[] }[] = [
     ...STATIC_PAGES,
@@ -43,12 +42,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: r.updated_at,
       images: r.image_path ? [mediaUrl(r.image_path)!] : [],
     })),
-    ...GUIDES.map((g) => ({
+    ...guides.map((g) => ({
       path: `/guides/${g.slug}`,
       priority: 0.7,
       changeFrequency: "monthly" as const,
-      lastModified: g.updated,
-      images: [absoluteUrl(g.image.src)],
+      lastModified: g.updated_at,
+      images: g.image_path ? [mediaUrl(g.image_path)!] : [],
     })),
   ];
 

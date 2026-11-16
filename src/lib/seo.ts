@@ -134,7 +134,7 @@ export function articleJsonLd(a: {
   locale: Locale;
   headline: string;
   description: string;
-  image: string;
+  image?: string;
   datePublished: string;
   dateModified: string;
   about?: string[];
@@ -146,7 +146,7 @@ export function articleJsonLd(a: {
     "@id": `${url}#article`,
     headline: a.headline.slice(0, 110),
     description: a.description,
-    image: [a.image],
+    image: [a.image ?? absoluteUrl("/og-default.jpg")],
     datePublished: a.datePublished,
     dateModified: a.dateModified,
     inLanguage: LOCALE_META[a.locale].hreflang,

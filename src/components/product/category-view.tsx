@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Catalog, Category } from "@/lib/data";
+import { getGuides, type Catalog, type Category } from "@/lib/data";
 import type { Dictionary } from "@/i18n/dictionaries/en";
 import { fmt, localePath, t, type Locale } from "@/lib/i18n";
 import { itemListJsonLd } from "@/lib/seo";
@@ -14,7 +14,7 @@ import { GuideLinks } from "@/components/guide/guide-card";
 import { guidesFor } from "@/lib/guides";
 
 
-export function CategoryView({ category, catalog, locale, dict: d }: { category: Category; catalog: Catalog; locale: Locale; dict: Dictionary }) {
+export async function CategoryView({ category, catalog, locale, dict: d }: { category: Category; catalog: Catalog; locale: Locale; dict: Dictionary }) {
   const p = (path: string) => localePath(locale, path);
   const { brandById, categoryById, linesOf, seriesOf, productsIn } = catalog;
   const parent = category.parent_id ? categoryById.get(category.parent_id) : undefined;
@@ -83,7 +83,7 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
         </section>
       )}
 
-      <GuideLinks guides={guidesFor([category.slug, parent?.slug])} locale={locale} dict={d} />
+      <GuideLinks guides={guidesFor(await getGuides(), [category.slug, parent?.slug])} locale={locale} dict={d} />
 
       {faqs.length > 0 && (
         <section className="container-x max-w-4xl py-12">

@@ -40,6 +40,7 @@ export default async function RecipesAdmin({ searchParams }: { searchParams: Pro
                         {r.course?.en ? ` · ${r.course.en}` : ""}
                       </span>
                     </span>
+                    {r.source === "auto" && <Badge tone="blue">Auto</Badge>}
                     {!r.is_published && <Badge>Draft</Badge>}
                   </Link>
                 </li>

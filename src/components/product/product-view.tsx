@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, ShieldCheck, Snowflake, Utensils } from "lucide-react";
 import type { Catalog, Product } from "@/lib/data";
-import { getRecipes } from "@/lib/data";
+import { getGuides, getRecipes } from "@/lib/data";
 import type { Dictionary } from "@/i18n/dictionaries/en";
 import { fmt, localePath, t, type Locale } from "@/lib/i18n";
 import { mediaUrl } from "@/lib/media";
@@ -203,7 +203,7 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
         </div>
       </section>
 
-      <GuideLinks guides={guidesFor([category?.slug, series?.slug])} locale={locale} dict={d} />
+      <GuideLinks guides={guidesFor(await getGuides(), [category?.slug, series?.slug])} locale={locale} dict={d} />
 
       {related.length > 0 && (
         <section className="container-x py-12">

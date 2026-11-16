@@ -1,14 +1,13 @@
-import { getCatalog, getRecipes } from "@/lib/data";
+import { getCatalog, getGuides, getRecipes } from "@/lib/data";
 import { t } from "@/lib/i18n";
 import { SITE, fullAddress } from "@/lib/site";
 import { absoluteUrl } from "@/lib/seo";
-import { GUIDES } from "@/lib/guides";
 
 export const revalidate = 3600;
 
 /** llms.txt — a plain-text summary of the site for AI assistants and answer engines. */
 export async function GET() {
-  const [{ series, linesOf, productsIn, brands }, recipes] = await Promise.all([getCatalog(), getRecipes()]);
+  const [{ series, linesOf, productsIn, brands }, recipes, guides] = await Promise.all([getCatalog(), getRecipes(), getGuides()]);
   const lines: string[] = [
     `# ${SITE.legalName} (Tung Lam Food)`,
     "",
@@ -43,9 +42,8 @@ export async function GET() {
     }
   }
   lines.push("## Tofu guides");
-  for (const g of GUIDES) {
-    const tx = g.text.en;
-    lines.push(`### [${tx.title}](${absoluteUrl(`/guides/${g.slug}`)})`, ...tx.summary.map((s) => `- ${s}`), "");
+  for (const g of guides) {
+    lines.push(`### [${t(g.title, "en") ?? g.slug}](${absoluteUrl(`/guides/${g.slug}`)})`, ...(t(g.summary, "en") ?? []).map((s) => `- ${s}`), "");
   }
   lines.push("## Recipes");
   for (const r of recipes) lines.push(`- [${t(r.title, "en")}](${absoluteUrl(`/recipes/${r.slug}`)}): ${t(r.excerpt, "en") ?? ""}`);

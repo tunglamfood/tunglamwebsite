@@ -87,6 +87,32 @@ export type Recipe = {
 
 export type SiteFaq = { id: string; grp: string; question: L10n; answer: L10n; sort: number };
 
+/** /guides articles. `body` is the Markdown subset rendered by <GuideBody>. */
+export type Guide = {
+  id: string;
+  slug: string;
+  title: L10n;
+  meta_title: L10n;
+  meta_description: L10n;
+  lead: L10n;
+  image_alt: L10n;
+  summary: L10n<string[]>;
+  body: L10n;
+  faqs: Faq[];
+  image_path: string | null;
+  image_width: number | null;
+  image_height: number | null;
+  product_slugs: string[];
+  category_slugs: string[];
+  recipe_slugs: string[];
+  related_slugs: string[];
+  about: string[];
+  source: "manual" | "auto";
+  published_at: string;
+  updated_at: string;
+  sort: number;
+};
+
 // ---------------------------------------------------------------------------
 // Queries — the catalog is small, so we load whole tables once per request
 // (deduped by React cache, persisted by the fetch cache) and filter in memory.
@@ -119,6 +145,18 @@ export const getRecipes = cache(async (): Promise<Recipe[]> =>
   must(
     await contentClient().from("recipes").select("*").eq("is_published", true).order("published_at", { ascending: false }),
     "recipes",
+  ),
+);
+
+export const getGuides = cache(async (): Promise<Guide[]> =>
+  must(
+    await contentClient()
+      .from("guides")
+      .select("*")
+      .eq("is_published", true)
+      .order("published_at", { ascending: false })
+      .order("sort"),
+    "guides",
   ),
 );
 

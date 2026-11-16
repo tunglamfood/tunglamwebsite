@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { BookOpen, ExternalLink, FolderTree, HelpCircle, Inbox, LayoutDashboard, LogOut, Menu, Package, Tag, X } from "lucide-react";
+import { BookOpen, ExternalLink, FolderTree, HelpCircle, Inbox, LayoutDashboard, LogOut, Menu, Newspaper, Package, Sparkles, Tag, X } from "lucide-react";
 import { logout } from "@/lib/admin/actions";
 
 const NAV = [
@@ -13,6 +13,8 @@ const NAV = [
   { href: "/admin/categories", label: "Categories", icon: FolderTree },
   { href: "/admin/brands", label: "Brands", icon: Tag },
   { href: "/admin/recipes", label: "Recipes & articles", icon: BookOpen },
+  { href: "/admin/guides", label: "Guides", icon: Newspaper },
+  { href: "/admin/auto-posts", label: "Auto posts", icon: Sparkles },
   { href: "/admin/faqs", label: "FAQs", icon: HelpCircle },
   { href: "/admin/inquiries", label: "Enquiries", icon: Inbox },
 ];

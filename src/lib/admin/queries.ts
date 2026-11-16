@@ -1,6 +1,6 @@
 import "server-only";
 import { adminClient } from "@/lib/supabase/admin";
-import type { Brand, Category, Faq, Product, Recipe, SiteFaq } from "@/lib/data";
+import type { Brand, Category, Faq, Guide, Product, Recipe, SiteFaq } from "@/lib/data";
 import { requireAdmin } from "./auth";
 
 /** Admin reads: service role (sees unpublished rows), never cached. Every call re-checks the session. */
@@ -14,7 +14,21 @@ function must<T>(res: { data: T | null; error: { message: string } | null }, wha
 }
 
 export type AdminProduct = Product & { is_published: boolean; legacy_id: number | null };
-export type AdminRecipe = Recipe & { is_published: boolean };
+export type AdminRecipe = Recipe & { is_published: boolean; source: "manual" | "auto" };
+export type AdminGuide = Guide & { is_published: boolean };
+export type AdminAutoPost = {
+  id: string;
+  kind: "recipe" | "guide";
+  keyword: string;
+  topic: { title: string; angle?: string; keywords?: { en?: string; ms?: string; zh?: string } };
+  status: "planned" | "writing" | "imaging" | "publishing" | "published" | "rejected" | "failed";
+  slug: string | null;
+  error: string | null;
+  attempts: number;
+  created_at: string;
+  updated_at: string;
+  published_at: string | null;
+};
 export type Inquiry = {
   id: string;
   kind: "general" | "wholesale" | "product" | "career";
@@ -42,6 +56,23 @@ export async function adminProducts(): Promise<AdminProduct[]> {
 export async function adminRecipes(): Promise<AdminRecipe[]> {
   return must(await (await db()).from("recipes").select("*").order("published_at", { ascending: false }), "recipes");
 }
+export async function adminGuides(): Promise<AdminGuide[]> {
+  return must(await (await db()).from("guides").select("*").order("published_at", { ascending: false }).order("sort"), "guides");
+}
+export async function adminAutoPosts(): Promise<AdminAutoPost[]> {
+  return must(
+    await (await db())
+      .from("auto_posts")
+      .select("id,kind,keyword,topic,status,slug,error,attempts,created_at,updated_at,published_at")
+      .order("updated_at", { ascending: false })
+      .limit(300),
+    "auto posts",
+  );
+}
+export async function adminAutoSettings(): Promise<{ enabled: boolean; slots: string[] }> {
+  const res = await (await db()).from("auto_settings").select("enabled,slots").eq("id", 1).maybeSingle();
+  return must(res, "auto settings") ?? { enabled: false, slots: [] };
+}
 export async function adminFaqs(): Promise<SiteFaq[]> {
   return must(await (await db()).from("faqs").select("*").order("sort"), "faqs");
 }
@@ -61,6 +92,7 @@ export const adminCategory = (id: string) => byId<Category>("categories", id);
 export const adminBrand = (id: string) => byId<Brand>("brands", id);
 export const adminRecipe = (id: string) => byId<AdminRecipe>("recipes", id);
 export const adminFaq = (id: string) => byId<SiteFaq>("faqs", id);
+export const adminGuide = (id: string) => byId<AdminGuide>("guides", id);
 
 export async function adminCounts() {
   const c = await db();

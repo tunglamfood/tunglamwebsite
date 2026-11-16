@@ -18,7 +18,6 @@ src/app/sitemap.ts, robots.ts, llms.txt/, manifest.ts, api/revalidate/
 src/components/         layout/, product/, recipe/, forms/, ui/, seo/, brand/
 src/lib/                data.ts (queries), seo.ts (metadata + JSON-LD), i18n.ts, site.ts (company facts), supabase/, actions/
 src/i18n/dictionaries/  en.ts (source of truth for keys), ms.ts, zh.ts
-src/content/guides/     /guides articles (trilingual, in code, not the admin); registry + rules in src/lib/guides.ts
 src/data/               legacy-redirects.json (generated)
 supabase/migrations/    SQL schema + RLS
 supabase/seed/          data/*.json (trilingual content) + media/ (WebP) — canonical content source
@@ -31,6 +30,15 @@ docs/                   SEO strategy, deployment, content review
 checked in `src/proxy.ts`, every admin page (`requireAdmin`) and every server action (`src/lib/admin/actions.ts`).
 Separate root layout `src/app/admin/layout.tsx` (neutral `.admin-theme`, noindex). Saves call `updateTag("content")`.
 **The admin is now the source of truth for content** — don't re-run `db:seed` (it refuses without `--force`).
+Guides (`/guides`, table `guides`, Markdown subset rendered by `src/components/guide/guide-body.tsx`) are edited in /admin/guides.
+
+## Auto posts (daily AI content)
+`src/lib/auto-content/`: Vercel Cron (`vercel.json`, 09:00/13:00/17:00 MYT + a 20:00 sweep) calls `/api/auto-content/cron`,
+which plans topics, writes one trilingual recipe or guide with OpenAI, checks it (`guards.ts` hard bans: non-halal, alcohol,
+invented company facts, prices, shelf life, health claims; an AI editor; duplicate checks in `dedupe.ts`), then Kie makes the
+photo and `/api/auto-content/kie` (signed callback) publishes it with `source='auto'`. Tables `auto_posts`, `auto_settings`.
+Controlled in /admin/auto-posts (pause switch, write-now, topic queue). Needs `OPENAI_API_KEY`, `KIE_API_KEY`, `CRON_SECRET`.
+Company facts the writer may use come only from `src/lib/site.ts` and the product table — keep both accurate.
 
 ## Dealer portal (/portal)
 B2B ordering for dealers and sales reps. **All trading data lives in the ERP database** (project `ndmnbmctwebwscptvenu`,

@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import type { Guide } from "@/lib/guides";
+import type { Guide } from "@/lib/data";
 import type { Dictionary } from "@/i18n/dictionaries/en";
-import { localePath, type Locale } from "@/lib/i18n";
+import { localePath, t, type Locale } from "@/lib/i18n";
+import { mediaUrl } from "@/lib/media";
 
 export function GuideCard({ guide, locale, dict, headingLevel = "h3" }: { guide: Guide; locale: Locale; dict: Dictionary; headingLevel?: "h2" | "h3" }) {
-  const tx = guide.text[locale];
+  const title = t(guide.title, locale) ?? guide.slug;
+  const img = mediaUrl(guide.image_path);
   const Heading = headingLevel;
   return (
     <Link
@@ -14,21 +16,23 @@ export function GuideCard({ guide, locale, dict, headingLevel = "h3" }: { guide:
       className="group flex h-full overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-card)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] sm:flex-col sm:rounded-[1.25rem]"
     >
       <div className="relative min-h-28 w-[36%] shrink-0 overflow-hidden bg-sand sm:aspect-[16/9] sm:min-h-0 sm:w-auto">
-        <Image
-          src={guide.image.src}
-          alt={tx.imageAlt}
-          fill
-          sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 40vw"
-          className="object-cover transition duration-700 group-hover:scale-105"
-        />
+        {img && (
+          <Image
+            src={img}
+            alt={t(guide.image_alt, locale) ?? title}
+            fill
+            sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 40vw"
+            className="object-cover transition duration-700 group-hover:scale-105"
+          />
+        )}
       </div>
       <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 p-4 sm:justify-start sm:gap-2 sm:p-5">
         <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-brand">
           <BookOpen className="size-3.5" aria-hidden />
           {dict.guides.label}
         </span>
-        <Heading className="line-clamp-3 font-display text-base font-semibold leading-snug text-ink group-hover:text-brand sm:text-xl">{tx.title}</Heading>
-        <p className="hidden text-sm text-muted sm:line-clamp-2">{tx.lead}</p>
+        <Heading className="line-clamp-3 font-display text-base font-semibold leading-snug text-ink group-hover:text-brand sm:text-xl">{title}</Heading>
+        <p className="hidden text-sm text-muted sm:line-clamp-2">{t(guide.lead, locale)}</p>
       </div>
     </Link>
   );
