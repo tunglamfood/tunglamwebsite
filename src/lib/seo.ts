@@ -128,6 +128,36 @@ export function faqJsonLd(faqs: { q: string; a: string }[]) {
   };
 }
 
+/** Article for guides. `url` is the locale-prefixed path; `image` an absolute URL. */
+export function articleJsonLd(a: {
+  url: string;
+  locale: Locale;
+  headline: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  dateModified: string;
+  about?: string[];
+}) {
+  const url = absoluteUrl(a.url);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: a.headline.slice(0, 110),
+    description: a.description,
+    image: [a.image],
+    datePublished: a.datePublished,
+    dateModified: a.dateModified,
+    inLanguage: LOCALE_META[a.locale].hreflang,
+    author: { "@type": "Organization", "@id": ORG_ID, name: SITE.legalName, url: SITE.url },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: SITE.legalName, logo: { "@type": "ImageObject", url: absoluteUrl("/icon.png") } },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    isPartOf: { "@id": WEBSITE_ID },
+    ...(a.about?.length ? { about: a.about.map((name) => ({ "@type": "Thing", name })) } : {}),
+  };
+}
+
 export function itemListJsonLd(items: { name: string; url: string; image?: string | null }[]) {
   return {
     "@context": "https://schema.org",

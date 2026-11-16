@@ -3,6 +3,7 @@ import { getCatalog, getRecipes } from "@/lib/data";
 import { LOCALES, localePath } from "@/lib/i18n";
 import { absoluteUrl, languageAlternates } from "@/lib/seo";
 import { mediaUrl } from "@/lib/media";
+import { GUIDES } from "@/lib/guides";
 
 export const revalidate = 3600;
 
@@ -12,6 +13,7 @@ const STATIC_PAGES: { path: string; priority: number; changeFrequency: MetadataR
   { path: "/wholesale", priority: 0.9, changeFrequency: "monthly" },
   { path: "/brands", priority: 0.7, changeFrequency: "monthly" },
   { path: "/recipes", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/guides", priority: 0.7, changeFrequency: "monthly" },
   { path: "/about", priority: 0.7, changeFrequency: "yearly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/faq", priority: 0.6, changeFrequency: "monthly" },
@@ -40,6 +42,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       lastModified: r.updated_at,
       images: r.image_path ? [mediaUrl(r.image_path)!] : [],
+    })),
+    ...GUIDES.map((g) => ({
+      path: `/guides/${g.slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+      lastModified: g.updated,
+      images: [absoluteUrl(g.image.src)],
     })),
   ];
 

@@ -35,6 +35,7 @@ export function SiteFooter({ locale, dict, series }: { locale: Locale; dict: Dic
             <li><Link className="hover:text-white" href={p("/products")}>{dict.nav.allProducts}</Link></li>
             <li><Link className="hover:text-white" href={p("/brands")}>{dict.nav.brands}</Link></li>
             <li><Link className="hover:text-white" href={p("/recipes")}>{dict.nav.recipes}</Link></li>
+            <li><Link className="hover:text-white" href={p("/guides")}>{dict.nav.guides}</Link></li>
           </ul>
         </div>
 

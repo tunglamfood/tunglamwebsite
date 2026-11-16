@@ -27,7 +27,8 @@ const pass = (msg) => console.log(`  ✓ ${msg}`);
 console.log("HTTP status");
 const expect200 = ["/", "/ms", "/zh", "/products", "/products/tofu-series", "/products/egg-tofu", "/products/tl-egg-tofu-130gm",
   "/zh/products/ad-fish-ball-450gm", "/brands", "/brands/sakura", "/recipes", "/recipes/cendol-dessert", "/about", "/wholesale",
-  "/contact", "/faq", "/careers", "/privacy", "/sitemap.xml", "/robots.txt", "/llms.txt"];
+  "/contact", "/faq", "/careers", "/privacy", "/sitemap.xml", "/robots.txt", "/llms.txt",
+  "/guides", "/ms/guides", "/zh/guides", "/guides/types-of-tofu", "/ms/guides/egg-tofu", "/zh/guides/tau-pok-tofu-puffs"];
 for (const p of expect200) {
   const r = await fetch(BASE + p, { redirect: "manual" });
   if (r.status === 200) pass(`${r.status} ${p}`);
@@ -71,7 +72,8 @@ console.log("SEO tags (product page)");
 
 // ------------------------------------------------------------------ Render
 console.log("Render (overflow / errors)");
-const pages = ["/", "/zh", "/ms/products", "/products/tofu-series", "/products/tl-egg-tofu-130gm", "/recipes/cendol-dessert", "/about", "/wholesale", "/contact", "/faq"];
+const pages = ["/", "/zh", "/ms/products", "/products/tofu-series", "/products/tl-egg-tofu-130gm", "/recipes/cendol-dessert", "/about", "/wholesale", "/contact", "/faq",
+  "/guides", "/guides/types-of-tofu", "/zh/guides/how-to-store-tofu"];
 const browser = await chromium.launch({ channel: o.channel, headless: true });
 if (o.shots) await mkdir(o.shots, { recursive: true });
 for (const [name, opts] of [

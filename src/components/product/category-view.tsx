@@ -10,6 +10,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { ProductGrid, toCardData } from "./product-card";
 import clsx from "clsx";
 import { seriesImageSrc } from "@/components/brand/brand-logos";
+import { GuideLinks } from "@/components/guide/guide-card";
+import { guidesFor } from "@/lib/guides";
 
 
 export function CategoryView({ category, catalog, locale, dict: d }: { category: Category; catalog: Catalog; locale: Locale; dict: Dictionary }) {
@@ -80,6 +82,8 @@ export function CategoryView({ category, catalog, locale, dict: d }: { category:
           )}
         </section>
       )}
+
+      <GuideLinks guides={guidesFor([category.slug, parent?.slug])} locale={locale} dict={d} />
 
       {faqs.length > 0 && (
         <section className="container-x max-w-4xl py-12">

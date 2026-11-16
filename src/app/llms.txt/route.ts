@@ -2,6 +2,7 @@ import { getCatalog, getRecipes } from "@/lib/data";
 import { t } from "@/lib/i18n";
 import { SITE, fullAddress } from "@/lib/site";
 import { absoluteUrl } from "@/lib/seo";
+import { GUIDES } from "@/lib/guides";
 
 export const revalidate = 3600;
 
@@ -25,6 +26,7 @@ export async function GET() {
     `- [Wholesale & food service](${absoluteUrl("/wholesale")})`,
     `- [Brands](${absoluteUrl("/brands")})`,
     `- [Recipes](${absoluteUrl("/recipes")})`,
+    `- [Tofu guides](${absoluteUrl("/guides")})`,
     `- [About](${absoluteUrl("/about")})`,
     `- [FAQ](${absoluteUrl("/faq")})`,
     `- [Contact](${absoluteUrl("/contact")})`,
@@ -39,6 +41,11 @@ export async function GET() {
       }
       lines.push("");
     }
+  }
+  lines.push("## Tofu guides");
+  for (const g of GUIDES) {
+    const tx = g.text.en;
+    lines.push(`### [${tx.title}](${absoluteUrl(`/guides/${g.slug}`)})`, ...tx.summary.map((s) => `- ${s}`), "");
   }
   lines.push("## Recipes");
   for (const r of recipes) lines.push(`- [${t(r.title, "en")}](${absoluteUrl(`/recipes/${r.slug}`)}): ${t(r.excerpt, "en") ?? ""}`);

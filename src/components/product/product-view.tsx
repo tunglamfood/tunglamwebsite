@@ -15,6 +15,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { InquiryForm } from "@/components/forms/inquiry-form";
 import { RecipeCard } from "@/components/recipe/recipe-card";
 import { ProductGrid, toCardData } from "./product-card";
+import { GuideLinks } from "@/components/guide/guide-card";
+import { guidesFor } from "@/lib/guides";
 
 export async function ProductView({ product, catalog, locale, dict: d }: { product: Product; catalog: Catalog; locale: Locale; dict: Dictionary }) {
   const p = (path: string) => localePath(locale, path);
@@ -200,6 +202,8 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
           />
         </div>
       </section>
+
+      <GuideLinks guides={guidesFor([category?.slug, series?.slug])} locale={locale} dict={d} />
 
       {related.length > 0 && (
         <section className="container-x py-12">

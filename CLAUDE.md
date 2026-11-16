@@ -18,6 +18,7 @@ src/app/sitemap.ts, robots.ts, llms.txt/, manifest.ts, api/revalidate/
 src/components/         layout/, product/, recipe/, forms/, ui/, seo/, brand/
 src/lib/                data.ts (queries), seo.ts (metadata + JSON-LD), i18n.ts, site.ts (company facts), supabase/, actions/
 src/i18n/dictionaries/  en.ts (source of truth for keys), ms.ts, zh.ts
+src/content/guides/     /guides articles (trilingual, in code, not the admin); registry + rules in src/lib/guides.ts
 src/data/               legacy-redirects.json (generated)
 supabase/migrations/    SQL schema + RLS
 supabase/seed/          data/*.json (trilingual content) + media/ (WebP) — canonical content source
