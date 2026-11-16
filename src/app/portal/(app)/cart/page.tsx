@@ -24,6 +24,8 @@ export default async function PortalCart() {
         scope={`${ctx.account.id}:${ctx.customer.code}`}
         items={items}
         currency={ctx.customer.currency}
+        paymentTerms={ctx.customer.paymentTerms}
+        onHold={ctx.customer.onHold}
         labels={d.cart}
         priceTbc={d.products.priceTbc}
         minDate={myDate(0)}

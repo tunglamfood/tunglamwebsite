@@ -22,6 +22,8 @@ The repository already contains `vercel.json`, which sets `"regions": ["sin1"]`.
 | `ERP_SUPABASE_SECRET_KEY` | The ERP's `tunglamfood_portal` secret key (copy from `.env`) |
 | `PORTAL_SESSION_SECRET` | Copy from `.env` |
 | `PORTAL_DEMO_OTP` | `123123` **for the demo only.** Remove it before real dealers use the portal |
+| `ONEWAYSMS_API_USERNAME`, `ONEWAYSMS_API_PASSWORD` | OneWay SMS account. Needed for real sign-in codes once `PORTAL_DEMO_OTP` is removed |
+| `ONEWAYSMS_SENDER_ID` | Optional; default `INFO` |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Optional |
 
 3. Check that **Settings → Functions → Region** shows Singapore (`sin1`).

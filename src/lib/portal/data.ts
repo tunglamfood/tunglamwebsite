@@ -108,7 +108,7 @@ export type PortalOrder = {
   customerCode: string;
   orderDate: string;
   deliverOn: string | null;
-  status: "submitted" | "draft" | "confirmed" | "delivered" | "cancelled";
+  status: "submitted" | "on_hold" | "draft" | "confirmed" | "delivered" | "cancelled";
   theirRef: string | null;
   note: string | null;
   source: "erp" | "portal" | "rep";
@@ -209,4 +209,44 @@ function toOrder(o: OrderRow, lines: OrderLine[]): PortalOrder {
     total,
     hasTbc: lines.some((l) => !(l.price > 0)),
   };
+}
+
+/* ── Usual items ───────────────────────────────────────────────────────────── */
+
+export type UsualItem = { times: number; lastQty: number; lastOrdered: string };
+
+/** What this dealer ordered in the last six months, by item code — most often first. */
+export async function getUsualItems(customerCode: string): Promise<Record<string, UsualItem>> {
+  const { data, error } = await erp().rpc("portal_usual_items", { p_customer: customerCode, p_limit: 40 });
+  if (error) return {};
+  const out: Record<string, UsualItem> = {};
+  for (const r of (data ?? []) as { item_code: string; times: number; last_qty: number; last_ordered: string }[]) {
+    out[r.item_code] = { times: Number(r.times), lastQty: Number(r.last_qty), lastOrdered: r.last_ordered };
+  }
+  return out;
+}
+
+/* ── Announcements ─────────────────────────────────────────────────────────── */
+
+export type Announcement = { id: number; title: string; body: string };
+
+/** Notices the office has switched on for today (Malaysia time), in the dealer's language. */
+export async function getAnnouncements(lang: PortalLang): Promise<Announcement[]> {
+  const today = new Date(Date.now() + 8 * 3600_000).toISOString().slice(0, 10);
+  const { data, error } = await erp()
+    .from("portal_announcements")
+    .select("id, title_en, title_ms, title_zh, body_en, body_ms, body_zh, starts_on, ends_on")
+    .eq("active", true)
+    .order("created_at", { ascending: false })
+    .limit(50);
+  if (error) return [];
+  const showing = (data ?? []).filter(
+    (r) => (!r.starts_on || r.starts_on <= today) && (!r.ends_on || r.ends_on >= today),
+  );
+  return showing.slice(0, 5).map((r) => ({
+    id: r.id,
+    title: pick(lang, r.title_en, r.title_ms, r.title_zh),
+    // A translated title with no translated body keeps the English body.
+    body: pick(lang, r.body_en, r.body_ms, r.body_zh),
+  }));
 }

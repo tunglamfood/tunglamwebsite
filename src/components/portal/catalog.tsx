@@ -3,36 +3,46 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import clsx from "clsx";
-import { Check, Minus, Plus, Search } from "lucide-react";
+import { Check, Minus, Plus, Search, Star } from "lucide-react";
 import { useCart } from "./cart";
-import type { CatalogProduct } from "@/lib/portal/data";
+import type { CatalogProduct, UsualItem } from "@/lib/portal/data";
 import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 
 const CATS = ["tofu", "steamboat", "dessert", "grocery"] as const;
 
+/** How often a product was ordered: its most-ordered variant. */
+const usualScore = (p: CatalogProduct, usual: Record<string, UsualItem>) =>
+  Math.max(0, ...p.variants.map((v) => usual[v.itemCode]?.times ?? 0));
+
 export function Catalog({
   products,
+  usual,
+  startUsual,
   scope,
   currency,
   labels,
 }: {
   products: CatalogProduct[];
+  usual: Record<string, UsualItem>;
+  startUsual: boolean;
   scope: string;
   currency: string;
   labels: PortalDict["products"];
 }) {
-  const [cat, setCat] = useState<string>("all");
+  const [cat, setCat] = useState<string>(startUsual ? "usual" : "all");
   const [q, setQ] = useState("");
   const present = CATS.filter((c) => products.some((p) => p.category === c));
+  const hasUsual = products.some((p) => usualScore(p, usual) > 0);
 
   const shown = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    return products.filter(
+    const list = products.filter(
       (p) =>
-        (cat === "all" || p.category === cat) &&
+        (cat === "all" || (cat === "usual" ? usualScore(p, usual) > 0 : p.category === cat)) &&
         (!needle || `${p.name} ${p.brand} ${p.variants.map((v) => `${v.itemCode} ${v.label}`).join(" ")}`.toLowerCase().includes(needle)),
     );
-  }, [products, cat, q]);
+    return cat === "usual" ? list.sort((a, b) => usualScore(b, usual) - usualScore(a, usual)) : list;
+  }, [products, usual, cat, q]);
 
   return (
     <div>
@@ -49,6 +59,18 @@ export function Catalog({
           />
         </label>
         <div className="flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {hasUsual && (
+            <button
+              type="button"
+              onClick={() => setCat("usual")}
+              className={clsx(
+                "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full px-4 text-sm font-medium transition",
+                cat === "usual" ? "bg-ink text-white" : "border border-line bg-white text-ink-soft hover:border-ink/30",
+              )}
+            >
+              <Star className="size-3.5" aria-hidden /> {labels.usual}
+            </button>
+          )}
           {["all", ...present].map((c) => (
             <button
               key={c}
@@ -72,7 +94,7 @@ export function Catalog({
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((p) => (
             <li key={p.id}>
-              <ProductCard product={p} scope={scope} currency={currency} labels={labels} />
+              <ProductCard product={p} usual={usual} scope={scope} currency={currency} labels={labels} />
             </li>
           ))}
         </ul>
@@ -81,18 +103,26 @@ export function Catalog({
   );
 }
 
-function ProductCard({ product, scope, currency, labels }: { product: CatalogProduct; scope: string; currency: string; labels: PortalDict["products"] }) {
+function ProductCard({
+  product, usual, scope, currency, labels,
+}: {
+  product: CatalogProduct; usual: Record<string, UsualItem>; scope: string; currency: string; labels: PortalDict["products"];
+}) {
   const { setQty, qtyOf } = useCart(scope);
-  const [code, setCode] = useState(product.variants[0]?.itemCode ?? "");
+  // Open on the pack size this dealer usually takes, at the quantity they took last time.
+  const usualVariant = [...product.variants].sort((a, b) => (usual[b.itemCode]?.times ?? 0) - (usual[a.itemCode]?.times ?? 0))[0];
+  const startQty = (c: string) => Math.max(1, qtyOf(c) || usual[c]?.lastQty || 1);
+  const [code, setCode] = useState(usualVariant?.itemCode ?? "");
   const variant = product.variants.find((v) => v.itemCode === code) ?? product.variants[0];
   const inCart = qtyOf(variant.itemCode);
-  const [qty, setLocalQty] = useState(Math.max(1, inCart));
+  const [qty, setLocalQty] = useState(() => startQty(code));
   const [saved, setSaved] = useState(false);
   const image = variant.image ?? product.image;
+  const usualHere = usual[variant.itemCode];
 
   const pickVariant = (c: string) => {
     setCode(c);
-    setLocalQty(Math.max(1, qtyOf(c)));
+    setLocalQty(startQty(c));
     setSaved(false);
   };
 
@@ -141,7 +171,10 @@ function ProductCard({ product, scope, currency, labels }: { product: CatalogPro
             <span className="text-sm font-medium text-gold">{labels.priceTbc}</span>
           )}
         </div>
-        <p className="text-[0.7rem] text-muted">{variant.itemCode}</p>
+        <p className="text-[0.7rem] text-muted">
+          {variant.itemCode}
+          {usualHere && <span className="ml-2 font-medium text-ink-soft">· {pfmt(labels.usually, { qty: usualHere.lastQty })}</span>}
+        </p>
 
         <div className="mt-auto flex items-center gap-2 pt-3">
           <div className="flex h-10 items-center rounded-full border border-line">

@@ -18,6 +18,7 @@ export default async function PortalAccount() {
         [d.account.code, c.code],
         [d.account.address, c.address],
         [d.account.currency, c.currency],
+        [d.account.terms, c.paymentTerms],
       ]
     : [];
 

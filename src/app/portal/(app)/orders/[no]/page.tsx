@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, FileDown } from "lucide-react";
 import { requireCustomer, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { getOrder } from "@/lib/portal/data";
 import { money, pfmt } from "@/lib/portal/i18n";
@@ -23,12 +23,12 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
         <ArrowLeft className="size-4" /> {d.orders.back}
       </Link>
 
-      {placed && order.status === "submitted" && (
+      {placed && (order.status === "submitted" || order.status === "on_hold") && (
         <div className="flex gap-3 rounded-2xl bg-leaf-soft p-4 text-leaf">
           <CheckCircle2 className="mt-0.5 size-5 shrink-0" />
           <div>
             <p className="font-semibold">{pfmt(d.orders.placedThanks, { no: order.orderNo })}</p>
-            <p className="text-sm text-ink-soft">{d.orders.placedNext}</p>
+            <p className="text-sm text-ink-soft">{order.status === "on_hold" ? d.orders.placedHold : d.orders.placedNext}</p>
           </div>
         </div>
       )}
@@ -49,14 +49,22 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
           {order.placedBy && (<div><dt className="text-muted">{d.orders.placedBy}</dt><dd className="font-medium text-ink">{order.placedBy}</dd></div>)}
           {order.note && (<div className="sm:col-span-3"><dt className="text-muted">{d.orders.note}</dt><dd className="whitespace-pre-wrap text-ink">{order.note}</dd></div>)}
         </dl>
-        <div className="mt-5">
+        <div className="mt-5 flex flex-wrap gap-2">
           <OrderActions
             scope={scope}
             orderNo={order.orderNo}
-            canCancel={order.status === "submitted"}
+            canCancel={order.status === "submitted" || order.status === "on_hold"}
             lines={order.lines.map((l) => ({ itemCode: l.itemCode, qty: l.qty }))}
             labels={{ reorder: d.orders.reorder, cancel: d.orders.cancel, cancelConfirm: d.orders.cancelConfirm }}
           />
+          {order.status !== "cancelled" && (
+            <a
+              href={`/portal/orders/${encodeURIComponent(order.orderNo)}/pdf`}
+              className="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-4 text-sm font-semibold text-ink hover:border-ink/30"
+            >
+              <FileDown className="size-4" /> {d.orders.pdf}
+            </a>
+          )}
         </div>
       </section>
 

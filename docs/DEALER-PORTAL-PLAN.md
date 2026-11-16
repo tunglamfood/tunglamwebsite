@@ -35,10 +35,29 @@ It is based on what already exists, as of 16 November 2026:
 
 In the ERP, portal orders appear as "New from portal".
 
-**Next:**
-- Phase 2: order PDF, status messages to dealers, favourites.
-- Phase 3: AutoCount export and credit terms.
-- Phase 4: real SMS sign-in codes.
+**Phase 2 – done:**
+- **Order PDF:** dealers can download a PDF of any order from its page. The PDF is in English, and Chinese text in a note prints as "?".
+- **"My usual":** a filter in the catalogue for items ordered in the last 6 months. It opens on the usual pack size and last quantity. The home page links to it.
+- **Announcements:** written in ERP → Sales → Dealer portal → Announcements, in EN/BM/中文, with optional start and end dates. They show on the portal home page.
+
+**Phase 3 – done:**
+- **Per-dealer settings:** ERP → Customers now has payment terms, credit limit (for the office only), currency, and an on-hold switch with a reason.
+- **Payment terms:** shown to the dealer at checkout and on their account page.
+- **Dealers on hold:** they can still order, but their orders arrive as **"On hold (credit)"** for the office to confirm or cancel. The dealer sees "Under account review"; the reason stays internal.
+- **AutoCount export:** ERP → Sales orders → **Export for AutoCount** downloads an Excel file of confirmed and delivered orders in a date range, one row per line.
+  - Each exported order is marked so it never goes out twice. "Export it again next time" on an order clears the mark.
+  - A chain group's sheet becomes one document per outlet: `SO-…-1`, `-2`, and so on.
+  - Lines with no price are flagged after the export.
+  - **Check the columns against the AutoCount import template** before the first real import. They are listed in one place, `tunglamerp/src/lib/autocount.ts`.
+
+**Phase 4 – ready, waiting for an SMS account:**
+- Real sign-in codes are sent by OneWay SMS. Only a hash of each code is stored. A code lasts 5 minutes and allows 5 tries.
+- To switch it on, set `ONEWAYSMS_API_USERNAME` and `ONEWAYSMS_API_PASSWORD` (optionally `ONEWAYSMS_SENDER_ID`) in Vercel, then **remove `PORTAL_DEMO_OTP`**. While the demo code is set, it takes priority.
+- This was tested end to end against a stand-in SMS gateway. The first real SMS should still be checked on a staff phone.
+
+**Still parked:**
+- WhatsApp and email updates to dealers when an order is confirmed or delivered.
+- New-order alerts for the office.
 
 ---
 

@@ -24,6 +24,10 @@ export type PortalCustomer = {
   address: string | null;
   contact: string | null;
   currency: "MYR" | "SGD";
+  /** "30 days", "COD" — empty when the office has not set it. */
+  paymentTerms: string;
+  /** The office reviews this dealer's orders before confirming. The reason stays internal. */
+  onHold: boolean;
 };
 
 export type PortalContext = {
@@ -62,7 +66,7 @@ export const getPortal = cache(async (): Promise<PortalContext | null> => {
   if (allowed.length > 0) {
     const { data: rows } = await db
       .from("sales_customers")
-      .select("code, name, short_name, state, address, contact, currency")
+      .select("code, name, short_name, state, address, contact, currency, payment_terms, on_hold")
       .in("code", allowed)
       .order("name");
     customers = (rows ?? []).map((r) => ({
@@ -73,6 +77,8 @@ export const getPortal = cache(async (): Promise<PortalContext | null> => {
       address: r.address,
       contact: r.contact,
       currency: (r.currency ?? "MYR") as "MYR" | "SGD",
+      paymentTerms: r.payment_terms ?? "",
+      onHold: r.on_hold === true,
     }));
   }
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Package } from "lucide-react";
+import { ArrowRight, ChevronRight, Megaphone, Package, Star } from "lucide-react";
 import { requirePortal, getPortalDict, getPortalLang, customerLabel } from "@/lib/portal/context";
-import { getOrders } from "@/lib/portal/data";
+import { getAnnouncements, getOrders, getUsualItems } from "@/lib/portal/data";
 import { money, pfmt } from "@/lib/portal/i18n";
 import { ReorderButton } from "@/components/portal/order-actions";
 import { StatusPill, formatDate } from "@/components/portal/bits";
@@ -12,7 +12,12 @@ export const metadata = { title: "Home" };
 export default async function PortalHome() {
   const [ctx, d, lang] = await Promise.all([requirePortal(), getPortalDict(), getPortalLang()]);
   if (!ctx.customer) redirect("/portal/dealers");
-  const orders = await getOrders([ctx.customer.code], 5);
+  const [orders, notices, usual] = await Promise.all([
+    getOrders([ctx.customer.code], 5),
+    getAnnouncements(lang),
+    getUsualItems(ctx.customer.code),
+  ]);
+  const usualCount = Object.keys(usual).length;
   const last = orders.find((o) => o.status !== "cancelled");
   const scope = `${ctx.account.id}:${ctx.customer.code}`;
   const name = ctx.account.name || ctx.customer.shortName || ctx.customer.name;
@@ -31,6 +36,20 @@ export default async function PortalHome() {
         </div>
       </section>
 
+      {notices.length > 0 && (
+        <section aria-label={d.home.notices} className="space-y-2">
+          {notices.map((n) => (
+            <div key={n.id} className="flex gap-3 rounded-2xl border border-gold/30 bg-gold-soft p-4">
+              <Megaphone className="mt-0.5 size-5 shrink-0 text-gold" aria-hidden />
+              <div className="min-w-0">
+                <p className="font-semibold text-ink">{n.title}</p>
+                {n.body && <p className="mt-0.5 whitespace-pre-wrap text-sm text-ink-soft">{n.body}</p>}
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+
       <section className="grid gap-3 sm:grid-cols-2">
         <Link href="/portal/products" className="flex items-center gap-4 rounded-2xl bg-brand p-4 text-white transition hover:bg-brand-600">
           <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white/15"><Package className="size-5" /></span>
@@ -40,6 +59,16 @@ export default async function PortalHome() {
           </span>
           <ArrowRight className="size-5" />
         </Link>
+        {usualCount > 0 && (
+          <Link href="/portal/products?usual=1" className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4 transition hover:border-ink/30">
+            <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-sand text-ink"><Star className="size-5" /></span>
+            <span className="flex-1">
+              <span className="block font-semibold text-ink">{d.home.usual}</span>
+              <span className="block text-sm text-muted">{pfmt(d.home.usualText, { n: usualCount })}</span>
+            </span>
+            <ChevronRight className="size-4 text-muted" />
+          </Link>
+        )}
         {last && (
           <ReorderButton
             scope={scope}

@@ -42,6 +42,9 @@ const en = {
     recent: "Recent orders",
     none: "No orders yet. Your orders will appear here.",
     viewAll: "View all",
+    notices: "Notices",
+    usual: "Your usual items",
+    usualText: "{n} items you order often",
   },
   dealers: {
     title: "Choose a dealer",
@@ -62,6 +65,8 @@ const en = {
     empty: "No products match your search.",
     per: "per {uom}",
     count: "{n} products",
+    usual: "My usual",
+    usually: "Usually {qty}",
   },
   cart: {
     title: "Cart",
@@ -75,6 +80,8 @@ const en = {
     note: "Note to Tung Lam (optional)",
     notePlaceholder: "Delivery instructions, substitutions…",
     terms: "No payment now — this order is billed on your usual credit terms.",
+    termsWith: "No payment now — billed on your credit terms ({terms}).",
+    onHold: "Your account is under review. You can still place this order — our office will contact you before confirming it.",
     place: "Place order",
     placing: "Placing order…",
     unavailable: "No longer available. It will be left out.",
@@ -96,6 +103,7 @@ const en = {
     total: "Total",
     status: {
       submitted: "Waiting for confirmation",
+      on_hold: "Under account review",
       draft: "Being prepared",
       confirmed: "Confirmed",
       delivered: "Delivered",
@@ -115,6 +123,7 @@ const en = {
     tbc: "TBC",
     events: {
       submitted: "Order placed",
+      on_hold: "Waiting for account review",
       created: "Created by Tung Lam",
       confirmed: "Confirmed by Tung Lam",
       delivered: "Delivered",
@@ -122,6 +131,8 @@ const en = {
       draft: "Being prepared",
     },
     back: "All orders",
+    pdf: "Download PDF",
+    placedHold: "Our office will review your account and contact you before confirming this order.",
   },
   account: {
     title: "Account",
@@ -131,6 +142,7 @@ const en = {
     signedIn: "Signed in as",
     language: "Language",
     currency: "Currency",
+    terms: "Payment terms",
     logout: "Sign out",
     support: "Need help? WhatsApp Tung Lam",
     switchDealer: "Switch dealer",
@@ -173,6 +185,9 @@ const ms: PortalDict = {
     recent: "Pesanan terkini",
     none: "Belum ada pesanan. Pesanan anda akan dipaparkan di sini.",
     viewAll: "Lihat semua",
+    notices: "Notis",
+    usual: "Barang biasa anda",
+    usualText: "{n} barang yang kerap anda pesan",
   },
   dealers: {
     title: "Pilih pengedar",
@@ -193,6 +208,8 @@ const ms: PortalDict = {
     empty: "Tiada produk sepadan dengan carian anda.",
     per: "setiap {uom}",
     count: "{n} produk",
+    usual: "Biasa saya",
+    usually: "Biasanya {qty}",
   },
   cart: {
     title: "Troli",
@@ -206,6 +223,8 @@ const ms: PortalDict = {
     note: "Nota kepada Tung Lam (pilihan)",
     notePlaceholder: "Arahan penghantaran, penggantian…",
     terms: "Tiada bayaran sekarang — pesanan ini dibilkan mengikut terma kredit biasa anda.",
+    termsWith: "Tiada bayaran sekarang — dibilkan mengikut terma kredit anda ({terms}).",
+    onHold: "Akaun anda sedang disemak. Anda masih boleh membuat pesanan ini — pejabat kami akan menghubungi anda sebelum mengesahkannya.",
     place: "Hantar pesanan",
     placing: "Menghantar pesanan…",
     unavailable: "Tidak lagi tersedia. Ia akan dikecualikan.",
@@ -227,6 +246,7 @@ const ms: PortalDict = {
     total: "Jumlah",
     status: {
       submitted: "Menunggu pengesahan",
+      on_hold: "Dalam semakan akaun",
       draft: "Sedang disediakan",
       confirmed: "Disahkan",
       delivered: "Dihantar",
@@ -246,6 +266,7 @@ const ms: PortalDict = {
     tbc: "Belum ditetapkan",
     events: {
       submitted: "Pesanan dibuat",
+      on_hold: "Menunggu semakan akaun",
       created: "Dibuat oleh Tung Lam",
       confirmed: "Disahkan oleh Tung Lam",
       delivered: "Dihantar",
@@ -253,6 +274,8 @@ const ms: PortalDict = {
       draft: "Sedang disediakan",
     },
     back: "Semua pesanan",
+    pdf: "Muat turun PDF",
+    placedHold: "Pejabat kami akan menyemak akaun anda dan menghubungi anda sebelum mengesahkan pesanan ini.",
   },
   account: {
     title: "Akaun",
@@ -262,6 +285,7 @@ const ms: PortalDict = {
     signedIn: "Log masuk sebagai",
     language: "Bahasa",
     currency: "Mata wang",
+    terms: "Terma bayaran",
     logout: "Log keluar",
     support: "Perlukan bantuan? WhatsApp Tung Lam",
     switchDealer: "Tukar pengedar",
@@ -302,6 +326,9 @@ const zh: PortalDict = {
     recent: "最近订单",
     none: "暂无订单。您的订单会显示在这里。",
     viewAll: "查看全部",
+    notices: "公告",
+    usual: "常订商品",
+    usualText: "{n} 款您常订的商品",
   },
   dealers: {
     title: "选择经销商",
@@ -322,6 +349,8 @@ const zh: PortalDict = {
     empty: "没有符合搜索的产品。",
     per: "每{uom}",
     count: "{n} 款产品",
+    usual: "我的常订",
+    usually: "通常 {qty}",
   },
   cart: {
     title: "购物车",
@@ -335,6 +364,8 @@ const zh: PortalDict = {
     note: "给东临的备注（可选）",
     notePlaceholder: "送货说明、替代商品…",
     terms: "现在无需付款 — 此订单按您惯常的信用期限结算。",
+    termsWith: "现在无需付款 — 按您的信用期限（{terms}）结算。",
+    onHold: "您的账户正在审核中。您仍可下此订单 — 我们会在确认前与您联系。",
     place: "提交订单",
     placing: "提交中…",
     unavailable: "已不再供应，下单时将不包括在内。",
@@ -356,6 +387,7 @@ const zh: PortalDict = {
     total: "总额",
     status: {
       submitted: "等待确认",
+      on_hold: "账户审核中",
       draft: "准备中",
       confirmed: "已确认",
       delivered: "已送达",
@@ -375,6 +407,7 @@ const zh: PortalDict = {
     tbc: "待定",
     events: {
       submitted: "已下单",
+      on_hold: "等待账户审核",
       created: "由东临建立",
       confirmed: "东临已确认",
       delivered: "已送达",
@@ -382,6 +415,8 @@ const zh: PortalDict = {
       draft: "准备中",
     },
     back: "全部订单",
+    pdf: "下载 PDF",
+    placedHold: "我们会审核您的账户，并在确认此订单前与您联系。",
   },
   account: {
     title: "账户",
@@ -391,6 +426,7 @@ const zh: PortalDict = {
     signedIn: "登录号码",
     language: "语言",
     currency: "货币",
+    terms: "付款期限",
     logout: "登出",
     support: "需要帮助？WhatsApp 东临",
     switchDealer: "切换经销商",

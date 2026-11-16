@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { erp, portalReason } from "./erp";
 import { getPortal } from "./context";
 import { normalisePhone } from "./phone";
+import { checkCode, issueCode, smsConfigured } from "./otp";
 import { PORTAL_COOKIE, PORTAL_TTL_SECONDS, signPortalSession } from "./session";
 import { PORTAL_LANG_COOKIE, isPortalLang } from "./i18n";
 
@@ -66,9 +67,11 @@ export async function requestCode(_prev: LoginState, formData: FormData): Promis
     return { step: "phone", error: "notRegistered", phone: raw };
   }
 
+  // Demo mode wins while PORTAL_DEMO_OTP is set; otherwise a real code goes out by SMS.
   if (!demoCode()) {
-    // Phase 4: send a real code by SMS / WhatsApp here (e.g. OneWay SMS), store its hash with an expiry.
-    return { step: "phone", error: "smsUnavailable", phone: raw };
+    if (!smsConfigured() || !(await issueCode(phone))) {
+      return { step: "phone", error: "smsUnavailable", phone: raw };
+    }
   }
   await logAuth(phone, ip, "send");
   return { step: "code", phone };
@@ -85,8 +88,8 @@ export async function verifyCode(_prev: LoginState, formData: FormData): Promise
     return { step: "code", phone, error: "tooMany" };
   }
   const account = await activeAccount(phone);
-  const expected = demoCode();
-  const ok = !!account && !!expected && code.length === expected.length && timingSafe(code, expected);
+  const demo = demoCode();
+  const ok = !!account && (demo ? code.length === demo.length && timingSafe(code, demo) : await checkCode(phone, code));
   if (!ok || !account) {
     await logAuth(phone, ip, "fail");
     await new Promise((r) => setTimeout(r, 500));

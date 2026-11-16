@@ -3,6 +3,7 @@ import type { PortalLang } from "@/lib/portal/i18n";
 
 const TONE: Record<string, string> = {
   submitted: "bg-gold-soft text-[#8a5a10]",
+  on_hold: "bg-gold-soft text-[#8a5a10]",
   draft: "bg-sand text-ink-soft",
   confirmed: "bg-sky-50 text-sky-700",
   delivered: "bg-leaf-soft text-leaf",

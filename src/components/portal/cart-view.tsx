@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { AlertTriangle, Loader2, Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "./cart";
 import { placeOrder } from "@/lib/portal/actions";
-import { money, type PortalDict } from "@/lib/portal/i18n";
+import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 
 export type CartItemInfo = { name: string; label: string; uom: string; price: number | null; image: string | null };
 
@@ -15,6 +15,8 @@ export function CartView({
   scope,
   items,
   currency,
+  paymentTerms,
+  onHold,
   labels,
   priceTbc,
   minDate,
@@ -24,6 +26,8 @@ export function CartView({
   scope: string;
   items: Record<string, CartItemInfo>;
   currency: string;
+  paymentTerms: string;
+  onHold: boolean;
   labels: PortalDict["cart"];
   priceTbc: string;
   minDate: string;
@@ -129,7 +133,12 @@ export function CartView({
           <span className="mb-1 block text-sm font-semibold text-ink">{labels.note}</span>
           <textarea value={note} maxLength={1000} rows={3} placeholder={labels.notePlaceholder} onChange={(e) => setNote(e.target.value)} className={`${field} resize-y`} />
         </label>
-        <p className="text-xs text-muted">{labels.terms}</p>
+        {onHold && (
+          <p className="flex gap-2 rounded-xl bg-gold-soft px-3 py-2 text-xs text-ink-soft">
+            <AlertTriangle className="mt-px size-3.5 shrink-0 text-gold" aria-hidden /> {labels.onHold}
+          </p>
+        )}
+        <p className="text-xs text-muted">{paymentTerms ? pfmt(labels.termsWith, { terms: paymentTerms }) : labels.terms}</p>
         {error && <p role="alert" className="rounded-xl bg-brand-50 px-3 py-2 text-sm font-medium text-brand-700">{error}</p>}
         <button
           type="button"
