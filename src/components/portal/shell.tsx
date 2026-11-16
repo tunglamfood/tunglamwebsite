@@ -94,7 +94,6 @@ export function PortalShell({
   appName,
   dealer,
   canSwitch,
-  demo,
   user,
 }: {
   children: React.ReactNode;
@@ -104,7 +103,6 @@ export function PortalShell({
   appName: string;
   dealer: { name: string } | null;
   canSwitch: boolean;
-  demo: string | null;
   user: string;
 }) {
   const pathname = usePathname();
@@ -212,7 +210,6 @@ export function PortalShell({
       </aside>
 
       <div className="lg:pl-64">
-        {demo && <div className="bg-ink px-4 py-1.5 text-center text-xs font-medium text-white">{demo}</div>}
         {/* ------------------------------------------------ Top bar */}
         <header className="glass-bar sticky top-0 z-20 border-b">
           <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:px-6 lg:h-16 lg:px-8">

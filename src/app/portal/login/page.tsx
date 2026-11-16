@@ -3,7 +3,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Check, KeyRound } from "lucide-react";
 import { getPortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
-import { pfmt } from "@/lib/portal/i18n";
 import { LoginForm } from "./login-form";
 
 export const metadata = { title: "Sign in" };
@@ -11,7 +10,6 @@ export const metadata = { title: "Sign in" };
 export default async function PortalLogin() {
   if (await getPortal()) redirect("/portal");
   const [d, lang] = await Promise.all([getPortalDict(), getPortalLang()]);
-  const demo = process.env.PORTAL_DEMO_OTP ? pfmt(d.demoBanner, { code: process.env.PORTAL_DEMO_OTP }) : null;
 
   return (
     <main className="grid min-h-dvh lg:grid-cols-[1fr_1fr]">
@@ -54,12 +52,6 @@ export default async function PortalLogin() {
           </span>
           <h1 className="font-display text-[1.875rem] font-bold leading-tight tracking-[-0.03em] text-ink">{d.login.title}</h1>
           <p className="mt-2 text-ink-soft lg:hidden">{d.login.lead}</p>
-          {demo && (
-            <p className="mt-5 flex items-center gap-2.5 rounded-xl border border-amber-200/80 bg-amber-50 px-3.5 py-2.5 text-sm font-medium text-amber-900">
-              <span className="size-2 shrink-0 rounded-full bg-amber-500" aria-hidden />
-              {demo}
-            </p>
-          )}
           <div className="mt-6">
             <LoginForm labels={d.login} lang={lang} />
           </div>
