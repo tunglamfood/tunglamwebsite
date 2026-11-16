@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { ArrowRight, ChevronRight, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronRight, LogIn, Menu, X } from "lucide-react";
 import { LOCALES, LOCALE_META, localePath, stripLocale, type Locale } from "@/lib/i18n";
 import { whatsappLink } from "@/lib/site";
 import { buttonClass } from "@/components/ui/button";
@@ -27,6 +27,7 @@ export function MobileNav({
   ctaLabel,
   whatsappLabel,
   languageLabel,
+  portalLabel,
 }: {
   items: NavItem[];
   locale: Locale;
@@ -35,6 +36,7 @@ export function MobileNav({
   ctaLabel: string;
   whatsappLabel: string;
   languageLabel: string;
+  portalLabel: string;
 }) {
   const [phase, setPhase] = useState<"closed" | "open" | "closing">("closed");
   // Portal target only exists on the client.
@@ -138,6 +140,13 @@ export function MobileNav({
               <div key={item.href}>{row(item.href, item.label)}</div>
             ),
           )}
+
+          <Link href="/portal" prefetch={false} onClick={close} className="mx-3 mt-4 flex items-center justify-between rounded-xl border border-line px-4 py-3 text-[0.95rem] font-semibold text-ink transition-colors active:bg-sand">
+            <span className="flex items-center gap-2.5">
+              <LogIn className="size-4 text-brand" aria-hidden /> {portalLabel}
+            </span>
+            <ArrowRight className="size-4 text-muted" aria-hidden />
+          </Link>
 
           <div className="mt-5 px-3">
             <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted">{languageLabel}</p>

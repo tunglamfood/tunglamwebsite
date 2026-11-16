@@ -19,6 +19,7 @@ const en = {
     careers: "Careers",
     privacy: "Privacy Policy",
     allProducts: "All products",
+    dealerPortal: "Dealer portal",
     menu: "Menu",
     close: "Close",
     language: "Language",

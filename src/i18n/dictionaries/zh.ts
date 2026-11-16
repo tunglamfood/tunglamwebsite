@@ -21,6 +21,7 @@ const zh: Dictionary = {
     careers: "招聘",
     privacy: "隐私政策",
     allProducts: "全部产品",
+    dealerPortal: "经销商入口",
     menu: "菜单",
     close: "关闭",
     language: "语言",

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck } from "lucide-react";
+import { LogIn, ShieldCheck } from "lucide-react";
 import type { Dictionary } from "@/i18n/dictionaries/en";
 import type { Category } from "@/lib/data";
 import { localePath, type Locale } from "@/lib/i18n";
@@ -40,6 +40,11 @@ export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dic
           <div className="ml-auto flex items-center gap-2 lg:ml-0">
             <LanguageSwitcher locale={locale} label={dict.nav.language} />
             <div className="hidden lg:block">
+              <Link href="/portal" prefetch={false} className={buttonClass("secondary", "sm")}>
+                <LogIn className="size-4" aria-hidden /> {dict.nav.dealerPortal}
+              </Link>
+            </div>
+            <div className="hidden lg:block">
               <Link href={localePath(locale, "/wholesale")} className={buttonClass("primary", "sm")}>
                 {dict.cta.wholesale}
               </Link>
@@ -52,6 +57,7 @@ export function SiteHeader({ locale, dict, series }: { locale: Locale; dict: Dic
               ctaLabel={dict.cta.wholesale}
               whatsappLabel={dict.cta.whatsapp}
               languageLabel={dict.nav.language}
+              portalLabel={dict.nav.dealerPortal}
             />
           </div>
         </div>

@@ -28,6 +28,7 @@ export function SiteFooter({ locale, dict, series }: { locale: Locale; dict: Dic
     { href: p("/careers"), label: dict.nav.careers },
     { href: p("/contact"), label: dict.nav.contact },
     { href: p("/privacy"), label: dict.nav.privacy },
+    { href: "/portal", label: dict.nav.dealerPortal },
   ];
 
   return (
@@ -50,7 +51,7 @@ export function SiteFooter({ locale, dict, series }: { locale: Locale; dict: Dic
               <ul className="space-y-2.5 text-sm">
                 {explore.map((l) => (
                   <li key={l.href}>
-                    <Link className={linkClass} href={l.href}>
+                    <Link className={linkClass} href={l.href} prefetch={l.href === "/portal" ? false : undefined}>
                       {l.label}
                     </Link>
                   </li>
@@ -62,7 +63,7 @@ export function SiteFooter({ locale, dict, series }: { locale: Locale; dict: Dic
               <ul className="space-y-2.5 text-sm">
                 {company.map((l) => (
                   <li key={l.href}>
-                    <Link className={linkClass} href={l.href}>
+                    <Link className={linkClass} href={l.href} prefetch={l.href === "/portal" ? false : undefined}>
                       {l.label}
                     </Link>
                   </li>

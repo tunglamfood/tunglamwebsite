@@ -21,6 +21,7 @@ const ms: Dictionary = {
     careers: "Kerjaya",
     privacy: "Dasar Privasi",
     allProducts: "Semua produk",
+    dealerPortal: "Portal pengedar",
     menu: "Menu",
     close: "Tutup",
     language: "Bahasa",
