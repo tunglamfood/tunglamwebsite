@@ -64,7 +64,7 @@ export function ReorderButton({ scope, lines, title, text }: { scope: string; li
     <button
       type="button"
       onClick={() => { addMany(lines); router.push("/portal/cart"); }}
-      className="group flex w-full items-center gap-4 rounded-2xl border border-line bg-white p-4 text-left shadow-[var(--shadow-xs)] transition duration-300 hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-[var(--shadow-lift)] sm:p-5"
+      className="glass group flex w-full items-center gap-4 rounded-2xl p-4 text-left transition duration-300 hover:bg-white/80 sm:p-5"
     >
       <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-sky-50 text-sky-600"><RotateCcw className="size-5" /></span>
       <span className="min-w-0 flex-1">

@@ -8,9 +8,9 @@ import { money, pfmt } from "@/lib/portal/i18n";
 
 type BtnVariant = "primary" | "brand" | "secondary" | "danger" | "whatsapp";
 
-/** Red gradient button with a soft glow; shared by pbtn("primary") and the catalogue's Add buttons. */
+/** Flat Tung Lam red; shared by pbtn("primary") and the catalogue's Add buttons. */
 export const PRIMARY =
-  "bg-gradient-to-b from-[#e3262d] to-brand text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.22),0_6px_16px_-8px_rgb(215_25_32/0.7)] hover:from-brand hover:to-brand-600";
+  "bg-brand text-white hover:bg-brand-600";
 
 /** Portal buttons (usable on <button>, <a> and <Link>, from server or client components). */
 export function pbtn(variant: BtnVariant = "secondary", size: "md" | "lg" = "md", className?: string) {
@@ -19,18 +19,18 @@ export function pbtn(variant: BtnVariant = "secondary", size: "md" | "lg" = "md"
     size === "lg" ? "h-12 px-5 text-base" : "h-10 px-4 text-sm",
     // Tung Lam red: the portal's main action colour.
     variant === "primary" && PRIMARY,
-    variant === "brand" && "bg-brand text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.18),0_1px_2px_rgb(159_17_23/0.3)] hover:bg-brand-600",
-    variant === "secondary" && "border border-line bg-white text-ink shadow-[var(--shadow-xs)] hover:border-ink/20 hover:bg-sand/60",
-    variant === "danger" && "border border-line bg-white text-red-600 shadow-[var(--shadow-xs)] hover:border-red-200 hover:bg-red-50",
+    variant === "brand" && "bg-brand text-white hover:bg-brand-600",
+    variant === "secondary" && "border border-white/80 bg-white/70 text-ink backdrop-blur hover:bg-white",
+    variant === "danger" && "border border-white/80 bg-white/70 text-red-600 backdrop-blur hover:bg-red-50",
     variant === "whatsapp" && "bg-[#1fa855] text-white hover:bg-[#1a964b]",
     className,
   );
 }
 
-export const pcard = "rounded-2xl border border-line bg-white shadow-[var(--shadow-xs)]";
+export const pcard = "glass rounded-2xl";
 
 export const pfield =
-  "w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-[0.95rem] text-ink shadow-[var(--shadow-xs)] outline-none transition placeholder:text-muted/70 hover:border-ink/20 focus:border-ink/40 focus:ring-4 focus:ring-ink/5";
+  "w-full rounded-xl border border-white/80 bg-white/75 px-3.5 py-2.5 text-[0.95rem] text-ink outline-none transition placeholder:text-muted/70 hover:border-ink/20 focus:border-ink/40 focus:ring-4 focus:ring-ink/5";
 
 /* ------------------------------------------------------------------ Status */
 
@@ -108,7 +108,7 @@ export function OrderList({ orders, d, lang }: { orders: OrderRow[]; d: PortalDi
   const c = d.orders.cols;
   return (
     <div className={clsx(pcard, "overflow-hidden")}>
-      <div className={clsx("hidden items-center gap-4 border-b border-line bg-cream/70 px-5 py-2.5 text-xs font-medium text-muted md:grid", ORDER_GRID)}>
+      <div className={clsx("hidden items-center gap-4 border-b border-line bg-white/40 px-5 py-2.5 text-xs font-medium text-muted md:grid", ORDER_GRID)}>
         <span>{c.order}</span>
         <span>{c.placed}</span>
         <span>{c.delivery}</span>
@@ -122,7 +122,7 @@ export function OrderList({ orders, d, lang }: { orders: OrderRow[]; d: PortalDi
           <li key={o.orderNo}>
             <Link
               href={`/portal/orders/${encodeURIComponent(o.orderNo)}`}
-              className={clsx("group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 px-4 py-3.5 transition-colors hover:bg-cream md:gap-4 md:px-5", ORDER_GRID)}
+              className={clsx("group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 px-4 py-3.5 transition-colors hover:bg-white/60 md:gap-4 md:px-5", ORDER_GRID)}
             >
               <span className="min-w-0">
                 <span className="block font-semibold tabular-nums text-ink">{o.orderNo}</span>

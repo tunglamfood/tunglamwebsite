@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-import { AlertTriangle, ArrowRight, ArrowUp, Check, Minus, Plus, RotateCcw, ShoppingCart, Sparkles, X } from "lucide-react";
+import { AlertTriangle, ArrowRight, ArrowUp, Check, Minus, Plus, RotateCcw, ShoppingCart, X } from "lucide-react";
 import { askAssistant, type ProposedLine } from "@/lib/portal/assistant";
 import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 import { useCart } from "./cart";
 import { PRIMARY } from "./bits";
+import { AssistantIcon } from "./assistant-icon";
 
 type Msg =
   | { id: number; role: "user"; text: string }
@@ -86,10 +87,8 @@ export function AssistantChat({ scope, currency, labels, priceTbc }: { scope: st
       {/* Thread */}
       <div className="flex-1 space-y-4 pb-6">
         {msgs.length === 0 && (
-          <div className="animate-fade-up rounded-3xl border border-line bg-white p-5 shadow-[var(--shadow-xs)] sm:p-7">
-            <span className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-[#e3262d] to-brand text-white shadow-[0_8px_20px_-10px_rgb(215_25_32/0.8)]">
-              <Sparkles className="size-6" aria-hidden />
-            </span>
+          <div className="glass animate-fade-up rounded-3xl p-5 sm:p-7">
+            <AssistantIcon size={64} />
             <p className="mt-4 max-w-xl text-[0.975rem] leading-relaxed text-ink-soft">{labels.intro}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[...labels.suggestions, labels.placeholder.replace(/^(e\.g\.|cth\.|例如：)\s*/, "")].map((s) => (
@@ -97,7 +96,7 @@ export function AssistantChat({ scope, currency, labels, priceTbc }: { scope: st
                   key={s}
                   type="button"
                   onClick={() => send(s)}
-                  className="rounded-full border border-line bg-cream px-3.5 py-2 text-left text-sm font-medium text-ink-soft transition-colors hover:border-brand/30 hover:bg-brand-50 hover:text-brand-700"
+                  className="rounded-full border border-white/80 bg-white/60 px-3.5 py-2 text-left text-sm font-medium text-ink-soft transition-colors hover:bg-white hover:text-brand-700"
                 >
                   {s}
                 </button>
@@ -109,7 +108,7 @@ export function AssistantChat({ scope, currency, labels, priceTbc }: { scope: st
         {msgs.map((m) =>
           m.role === "user" ? (
             <div key={m.id} className="flex justify-end">
-              <p className="max-w-[85%] animate-fade-in whitespace-pre-wrap rounded-2xl rounded-br-md bg-brand px-4 py-2.5 text-[0.95rem] text-white shadow-[0_6px_16px_-10px_rgb(215_25_32/0.8)]">
+              <p className="max-w-[85%] animate-fade-in whitespace-pre-wrap rounded-2xl rounded-br-md bg-brand px-4 py-2.5 text-[0.95rem] text-white">
                 {m.text}
               </p>
             </div>
@@ -119,20 +118,20 @@ export function AssistantChat({ scope, currency, labels, priceTbc }: { scope: st
             </p>
           ) : (
             <div key={m.id} className="flex animate-fade-in gap-2.5">
-              <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#e3262d] to-brand text-white">
-                <Sparkles className="size-4" aria-hidden />
+              <span className="mt-0.5 shrink-0">
+                <AssistantIcon size={32} />
               </span>
               <div className="min-w-0 max-w-[calc(100%-2.75rem)] flex-1 space-y-3">
-                {m.text && <p className="w-fit max-w-full whitespace-pre-wrap rounded-2xl rounded-tl-md border border-line bg-white px-4 py-2.5 text-[0.95rem] text-ink shadow-[var(--shadow-xs)]">{m.text}</p>}
+                {m.text && <p className="w-fit max-w-full whitespace-pre-wrap glass rounded-2xl rounded-tl-md px-4 py-2.5 text-[0.95rem] text-ink">{m.text}</p>}
                 {(m.lines.length > 0 || m.unmatched.length > 0) && (
-                  <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-[var(--shadow-card)] sm:max-w-xl">
+                  <div className="glass overflow-hidden rounded-2xl sm:max-w-xl">
                     {m.lines.length > 0 && (
                       <>
-                        <p className="border-b border-line bg-cream/70 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-muted">{labels.proposal}</p>
+                        <p className="border-b border-white/60 bg-white/40 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-muted">{labels.proposal}</p>
                         <ul className="divide-y divide-line">
                           {m.lines.map((l) => (
                             <li key={l.itemCode} className={clsx("flex flex-wrap items-center gap-x-3 gap-y-2 px-3 py-2.5 sm:flex-nowrap sm:px-4", !l.sure && !m.added && "bg-amber-50/60")}>
-                              <span className="relative size-12 shrink-0 overflow-hidden rounded-lg bg-[#f4f3f1]">
+                              <span className="relative size-12 shrink-0 overflow-hidden rounded-lg bg-white/70">
                                 {l.image && <Image src={l.image} alt="" fill sizes="48px" className="object-contain p-1 mix-blend-multiply" />}
                               </span>
                               <span className="min-w-0 flex-1 basis-[calc(100%-3.75rem)] sm:basis-auto">
@@ -203,10 +202,10 @@ export function AssistantChat({ scope, currency, labels, priceTbc }: { scope: st
 
         {pending && (
           <div className="flex gap-2.5">
-            <span className="grid size-8 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#e3262d] to-brand text-white">
-              <Sparkles className="size-4 animate-pulse" aria-hidden />
+            <span className="shrink-0 animate-pulse">
+              <AssistantIcon size={32} />
             </span>
-            <p className="flex items-center gap-2 rounded-2xl rounded-tl-md border border-line bg-white px-4 py-2.5 text-sm text-muted shadow-[var(--shadow-xs)]">
+            <p className="glass flex items-center gap-2 rounded-2xl rounded-tl-md px-4 py-2.5 text-sm text-muted">
               <span className="flex gap-1" aria-hidden>
                 <span className="size-1.5 animate-bounce rounded-full bg-brand [animation-delay:-0.3s]" />
                 <span className="size-1.5 animate-bounce rounded-full bg-brand [animation-delay:-0.15s]" />
@@ -220,13 +219,13 @@ export function AssistantChat({ scope, currency, labels, priceTbc }: { scope: st
       </div>
 
       {/* Composer: sticks above the phone tab bar */}
-      <div className="sticky bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-10 -mx-4 bg-gradient-to-t from-cream via-cream to-cream/0 px-4 pb-2 pt-4 sm:-mx-6 sm:px-6 lg:bottom-0 lg:-mx-8 lg:px-8 lg:pb-6">
+      <div className="sticky bottom-[calc(5.75rem+env(safe-area-inset-bottom))] z-10 -mx-4 px-4 pb-1 pt-4 sm:-mx-6 sm:px-6 lg:bottom-0 lg:-mx-8 lg:px-8 lg:pb-6">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             send(text);
           }}
-          className="flex items-end gap-2 rounded-2xl border border-line bg-white p-2 shadow-[var(--shadow-lift)] transition focus-within:border-ink/25 focus-within:ring-4 focus-within:ring-ink/5"
+          className="glass flex items-end gap-2 rounded-2xl p-2 transition focus-within:bg-white/85"
         >
           <textarea
             ref={boxRef}
@@ -241,7 +240,7 @@ export function AssistantChat({ scope, currency, labels, priceTbc }: { scope: st
             rows={Math.min(6, Math.max(1, text.split("\n").length))}
             maxLength={2500}
             placeholder={labels.placeholder}
-            className="max-h-40 min-h-10 flex-1 resize-none bg-transparent px-2 py-2 text-[0.95rem] text-ink outline-none placeholder:text-muted/70"
+            className="max-h-40 min-h-10 flex-1 resize-none bg-transparent px-2 py-2 text-[0.95rem] text-ink outline-none placeholder:text-muted/70 placeholder-shown:overflow-hidden placeholder-shown:text-ellipsis placeholder-shown:whitespace-nowrap"
           />
           {msgs.length > 0 && (
             <button
@@ -257,7 +256,7 @@ export function AssistantChat({ scope, currency, labels, priceTbc }: { scope: st
               <RotateCcw className="size-4" />
             </button>
           )}
-          <button type="submit" disabled={pending || !text.trim()} aria-label={labels.send} className={clsx("grid size-10 shrink-0 place-items-center rounded-xl transition disabled:opacity-40", PRIMARY)}>
+          <button type="submit" disabled={pending || !text.trim()} aria-label={labels.send} className={clsx("grid size-10 shrink-0 place-items-center rounded-xl transition", pending || !text.trim() ? "bg-ink/10 text-ink/35" : PRIMARY)}>
             <ArrowUp className="size-5" />
           </button>
         </form>

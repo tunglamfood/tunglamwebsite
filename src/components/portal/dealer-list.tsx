@@ -35,8 +35,8 @@ export function DealerList({ customers, current, searchLabel }: { customers: Por
                 <input type="hidden" name="code" value={c.code} />
                 <button
                   className={clsx(
-                    "group flex w-full items-center gap-3 rounded-2xl border bg-white p-3.5 text-left shadow-[var(--shadow-xs)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)]",
-                    on ? "border-brand/40 bg-brand-50/40 ring-1 ring-brand/20" : "border-line hover:border-ink/15",
+                    "glass group flex w-full items-center gap-3 rounded-2xl p-3.5 text-left transition duration-200 hover:bg-white/80",
+                    on && "border-brand/40 ring-1 ring-brand/20",
                   )}
                 >
                   <span className={clsx("grid size-11 shrink-0 place-items-center rounded-xl text-sm font-bold", on ? "bg-brand text-white" : "bg-sand text-ink-soft")}>

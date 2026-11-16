@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
 import { getPortalLang } from "@/lib/portal/context";
 
 const display = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-display-face", display: "swap" });
-const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+const body = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {
   title: { default: "Dealer Portal · Tung Lam Food", template: "%s · Tung Lam Dealer Portal" },
@@ -19,7 +19,7 @@ export default async function PortalRootLayout({ children }: { children: React.R
   const lang = await getPortalLang();
   return (
     <html lang={lang === "zh" ? "zh-Hans-MY" : lang === "ms" ? "ms-MY" : "en-MY"} className={`${display.variable} ${body.variable}`} data-scroll-behavior="smooth">
-      <body className="min-h-dvh bg-cream antialiased">{children}</body>
+      <body className="portal-theme min-h-dvh antialiased">{children}</body>
     </html>
   );
 }

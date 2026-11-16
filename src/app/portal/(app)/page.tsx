@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeftRight, ArrowRight, ArrowUpRight, Megaphone, Package, Sparkles, Star } from "lucide-react";
+import { ArrowLeftRight, ArrowRight, ArrowUpRight, Megaphone, Package, Star } from "lucide-react";
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { getAnnouncements, getOrders, getUsualItems } from "@/lib/portal/data";
 import { pfmt } from "@/lib/portal/i18n";
 import { ReorderButton } from "@/components/portal/order-actions";
 import { EmptyCard, OrderList } from "@/components/portal/bits";
-import SpotlightCard from "@/components/reactbits/SpotlightCard";
+import { AssistantIcon } from "@/components/portal/assistant-icon";
 
 export const metadata = { title: "Home" };
 
@@ -26,28 +26,27 @@ export default async function PortalHome() {
   return (
     <div className="space-y-5 sm:space-y-7">
       {/* Welcome */}
-      <SpotlightCard theme="dark" intensity={0.12} spotlightSize={380} className="!rounded-3xl !p-0 text-white" style={{ "--spotlight-card-surface": "#141414" } as React.CSSProperties}>
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_top_right,rgb(215_25_32/0.35),transparent_60%)]" />
+      <section className="glass rounded-3xl">
         <div className="p-5 sm:p-8">
           <div className="min-w-0">
-            <h1 className="break-words font-display text-[1.75rem] font-bold leading-tight tracking-[-0.025em] sm:text-4xl">{pfmt(d.home.hello, { name })}</h1>
+            <h1 className="break-words font-display text-[1.75rem] font-bold leading-tight tracking-[-0.025em] text-ink sm:text-4xl">{pfmt(d.home.hello, { name })}</h1>
             <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-              <span className="text-white/55">{d.home.orderingFor}</span>
-              <span className="font-semibold">{ctx.customer.name}</span>
+              <span className="text-muted">{d.home.orderingFor}</span>
+              <span className="font-semibold text-ink">{ctx.customer.name}</span>
               {ctx.customers.length > 1 && (
-                <Link href="/portal/dealers" className="inline-flex items-center gap-1 rounded-lg bg-white/10 px-2.5 py-1 text-xs font-semibold transition-colors hover:bg-white/20">
+                <Link href="/portal/dealers" className="inline-flex items-center gap-1 rounded-lg border border-white/80 bg-white/70 px-2.5 py-1 text-xs font-semibold text-ink-soft transition-colors hover:bg-white">
                   <ArrowLeftRight className="size-3.5" aria-hidden /> {d.home.switch}
                 </Link>
               )}
             </div>
           </div>
         </div>
-      </SpotlightCard>
+      </section>
 
       {notices.length > 0 && (
         <section aria-label={d.home.notices} className="space-y-2.5">
           {notices.map((n) => (
-            <div key={n.id} className="flex gap-3 rounded-2xl border border-amber-200/80 bg-amber-50/70 p-4">
+            <div key={n.id} className="flex gap-3 rounded-2xl border border-amber-200/70 bg-amber-50/60 p-4 backdrop-blur">
               <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-white text-amber-600 shadow-[var(--shadow-xs)]">
                 <Megaphone className="size-[1.125rem]" aria-hidden />
               </span>
@@ -64,7 +63,7 @@ export default async function PortalHome() {
       <section className="grid gap-2.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         <Link
           href="/portal/products"
-          className="group flex items-center gap-4 rounded-2xl bg-brand p-4 text-white shadow-[0_10px_30px_-14px_rgb(215_25_32/0.8)] transition duration-300 hover:-translate-y-0.5 hover:bg-brand-600 sm:p-5"
+          className="group flex items-center gap-4 rounded-2xl bg-brand p-4 text-white transition duration-300 hover:bg-brand-600 sm:p-5"
         >
           <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white/15">
             <Package className="size-5" aria-hidden />
@@ -77,11 +76,9 @@ export default async function PortalHome() {
         </Link>
         <Link
           href="/portal/assistant"
-          className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-brand/20 bg-gradient-to-br from-brand-50 to-white p-4 shadow-[var(--shadow-xs)] transition duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[var(--shadow-lift)] sm:p-5"
+          className="glass group relative flex items-center gap-4 overflow-hidden rounded-2xl p-4 transition duration-300 hover:bg-white/80 sm:p-5"
         >
-          <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#e3262d] to-brand text-white shadow-[0_8px_18px_-10px_rgb(215_25_32/0.9)]">
-            <Sparkles className="size-5" aria-hidden />
-          </span>
+          <AssistantIcon size={44} />
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-2 font-semibold text-ink">
               {d.home.aiTitle}
@@ -94,7 +91,7 @@ export default async function PortalHome() {
         {usualCount > 0 && (
           <Link
             href="/portal/products?usual=1"
-            className="group flex items-center gap-4 rounded-2xl border border-line bg-white p-4 shadow-[var(--shadow-xs)] transition duration-300 hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-[var(--shadow-lift)] sm:p-5"
+            className="glass group flex items-center gap-4 rounded-2xl p-4 transition duration-300 hover:bg-white/80 sm:p-5"
           >
             <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-amber-50 text-amber-600">
               <Star className="size-5" aria-hidden />

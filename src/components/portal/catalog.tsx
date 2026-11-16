@@ -9,6 +9,7 @@ import { useCart } from "./cart";
 import type { CatalogProduct, UsualItem } from "@/lib/portal/data";
 import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 import { PRIMARY } from "./bits";
+import { ZoomImage } from "@/components/ui/zoom-image";
 
 const CATS = ["tofu", "steamboat", "dessert", "grocery"] as const;
 type Cat = (typeof CATS)[number];
@@ -98,7 +99,7 @@ export function Catalog({
     // Phones: leave room under the last row for the floating cart bar.
     <div className={clsx(count > 0 && "pb-20 lg:pb-0")}>
       {/* Toolbar: search + categories (sticks under the top bar) */}
-      <div className="sticky top-14 z-10 -mx-4 mb-5 border-b border-line bg-cream/90 px-4 pb-3 pt-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:top-16 lg:-mx-8 lg:px-8">
+      <div className="glass-bar sticky top-14 z-10 -mx-4 mb-5 border-b px-4 pb-3 pt-3 sm:-mx-6 sm:px-6 lg:top-16 lg:-mx-8 lg:px-8">
         <label className="relative block lg:max-w-md">
           <span className="sr-only">{labels.search}</span>
           <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted" aria-hidden />
@@ -107,7 +108,7 @@ export function Catalog({
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={labels.search}
-            className="h-11 w-full rounded-xl border border-line bg-white pl-10 pr-10 text-[0.95rem] shadow-[var(--shadow-xs)] outline-none transition placeholder:text-muted/80 focus:border-ink/30 focus:ring-4 focus:ring-ink/5 [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full rounded-xl border border-white/80 bg-white/75 pl-10 pr-10 text-[0.95rem] outline-none transition placeholder:text-muted/80 focus:border-ink/30 focus:ring-4 focus:ring-ink/5 [&::-webkit-search-cancel-button]:hidden"
           />
           {q && (
             <button type="button" onClick={() => setQ("")} aria-label="Clear" className="absolute right-2 top-1/2 grid size-7 -translate-y-1/2 place-items-center rounded-lg text-muted hover:bg-sand hover:text-ink">
@@ -127,7 +128,7 @@ export function Catalog({
                 onClick={() => setCat(t.key)}
                 className={clsx(
                   "flex h-11 shrink-0 items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm font-semibold transition-colors duration-150",
-                  on ? "border-brand/40 bg-brand-50 text-brand-700 shadow-[0_6px_16px_-10px_rgb(215_25_32/0.6)]" : "border-line bg-white text-ink-soft hover:border-ink/20 hover:text-ink",
+                  on ? "border-brand/30 bg-white text-brand-700" : "border-white/70 bg-white/55 text-ink-soft backdrop-blur hover:bg-white/80 hover:text-ink",
                 )}
               >
                 <CatThumb cat={t.key} active={on} />
@@ -140,7 +141,7 @@ export function Catalog({
       </div>
 
       {shown.length === 0 ? (
-        <p className="rounded-2xl border border-dashed border-line bg-white p-10 text-center text-muted">{labels.empty}</p>
+        <p className="glass rounded-2xl p-10 text-center text-muted">{labels.empty}</p>
       ) : (
         <div className="space-y-8">
           {sections.map((s) => (
@@ -235,23 +236,27 @@ function ProductCard({
   return (
     <div
       className={clsx(
-        "flex h-full flex-col rounded-2xl border bg-white p-1.5 shadow-[var(--shadow-xs)] transition duration-300 sm:p-2",
-        anyInCart ? "border-emerald-300 ring-1 ring-emerald-200/70" : "border-line hover:border-ink/15 hover:shadow-[var(--shadow-lift)]",
+        "glass flex h-full flex-col rounded-2xl p-1.5 transition duration-300 sm:p-2",
+        anyInCart ? "border-emerald-300 ring-1 ring-emerald-200/70" : "hover:bg-white/80",
       )}
     >
-      <div className="relative aspect-square overflow-hidden rounded-xl bg-[#f4f3f1]">
+      <div className="relative aspect-square overflow-hidden rounded-xl bg-white/70">
         {image ? (
-          <Image src={image} alt={product.name} fill sizes="(min-width: 1280px) 240px, (min-width: 768px) 30vw, 46vw" className="object-contain p-3 mix-blend-multiply sm:p-5" />
+          <ZoomImage src={image} alt={`${product.name} · ${variant.label}`} className="h-full">
+            <span className="relative block aspect-square w-full">
+              <Image src={image} alt={product.name} fill sizes="(min-width: 1280px) 240px, (min-width: 768px) 30vw, 46vw" className="object-contain p-3 transition duration-300 group-hover/zoom:scale-105 sm:p-5" />
+            </span>
+          </ZoomImage>
         ) : (
           <div className="grid h-full place-items-center font-display text-3xl font-bold text-muted/40">{(product.brand || product.name).slice(0, 2)}</div>
         )}
         {anyInCart && (
-          <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-1 rounded-md bg-emerald-600 px-1.5 py-0.5 text-[0.68rem] font-semibold text-white shadow-sm">
+          <span className="pointer-events-none absolute left-1.5 top-1.5 z-[1] inline-flex items-center gap-1 rounded-md bg-emerald-600 px-1.5 py-0.5 text-[0.68rem] font-semibold text-white">
             <Check className="size-3" aria-hidden /> {labels.inCartShort}
           </span>
         )}
         {isUsual && (
-          <span className="absolute right-1.5 top-1.5 grid size-6 place-items-center rounded-full bg-white/95 shadow-[var(--shadow-xs)]" title={labels.usual}>
+          <span className="pointer-events-none absolute right-1.5 top-1.5 z-[1] grid size-6 place-items-center rounded-full bg-white/95" title={labels.usual}>
             <Star className="size-3.5 fill-amber-400 text-amber-400" aria-hidden />
           </span>
         )}
@@ -279,7 +284,7 @@ function ProductCard({
                       ? "border-brand bg-brand-50 text-brand-700 ring-1 ring-brand/15"
                       : n > 0
                         ? "border-emerald-300 bg-emerald-50 text-emerald-800"
-                        : "border-line bg-white text-ink-soft hover:border-ink/25 hover:text-ink",
+                        : "border-white/80 bg-white/70 text-ink-soft hover:bg-white hover:text-ink",
                   )}
                 >
                   {v.label}

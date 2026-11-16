@@ -17,6 +17,7 @@ import { RecipeCard } from "@/components/recipe/recipe-card";
 import { ProductGrid, toCardData } from "./product-card";
 import { GuideLinks } from "@/components/guide/guide-card";
 import { Rail } from "@/components/ui/rail";
+import { ZoomImage } from "@/components/ui/zoom-image";
 import { H2_CLASS } from "@/components/ui/section-heading";
 import { guidesFor } from "@/lib/guides";
 
@@ -77,14 +78,18 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
         <div className="lg:sticky lg:top-24 lg:self-start">
           <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-3xl border border-line bg-[#f4f3f1] sm:aspect-[4/5] lg:max-w-none lg:rounded-[2rem]">
             {imgUrl && (
-              <Image
-                src={imgUrl}
-                alt={name}
-                fill
-                priority
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="animate-pop object-contain p-6 mix-blend-multiply sm:p-14"
-              />
+              <ZoomImage src={imgUrl} alt={name} className="h-full">
+                <span className="absolute inset-0">
+                  <Image
+                    src={imgUrl}
+                    alt={name}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    className="animate-pop object-contain p-6 mix-blend-multiply sm:p-14"
+                  />
+                </span>
+              </ZoomImage>
             )}
           </div>
           {product.images.length > 1 && (
