@@ -8,12 +8,17 @@ import { money, pfmt } from "@/lib/portal/i18n";
 
 type BtnVariant = "primary" | "brand" | "secondary" | "danger" | "whatsapp";
 
+/** Red gradient button with a soft glow; shared by pbtn("primary") and the catalogue's Add buttons. */
+export const PRIMARY =
+  "bg-gradient-to-b from-[#e3262d] to-brand text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.22),0_6px_16px_-8px_rgb(215_25_32/0.7)] hover:from-brand hover:to-brand-600";
+
 /** Portal buttons (usable on <button>, <a> and <Link>, from server or client components). */
 export function pbtn(variant: BtnVariant = "secondary", size: "md" | "lg" = "md", className?: string) {
   return clsx(
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-semibold transition duration-150 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60",
     size === "lg" ? "h-12 px-5 text-base" : "h-10 px-4 text-sm",
-    variant === "primary" && "bg-ink text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.14),0_1px_2px_rgb(0_0_0/0.18)] hover:bg-[#2a2826]",
+    // Tung Lam red: the portal's main action colour.
+    variant === "primary" && PRIMARY,
     variant === "brand" && "bg-brand text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.18),0_1px_2px_rgb(159_17_23/0.3)] hover:bg-brand-600",
     variant === "secondary" && "border border-line bg-white text-ink shadow-[var(--shadow-xs)] hover:border-ink/20 hover:bg-sand/60",
     variant === "danger" && "border border-line bg-white text-red-600 shadow-[var(--shadow-xs)] hover:border-red-200 hover:bg-red-50",

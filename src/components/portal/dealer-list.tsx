@@ -36,10 +36,10 @@ export function DealerList({ customers, current, searchLabel }: { customers: Por
                 <button
                   className={clsx(
                     "group flex w-full items-center gap-3 rounded-2xl border bg-white p-3.5 text-left shadow-[var(--shadow-xs)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)]",
-                    on ? "border-ink ring-1 ring-ink" : "border-line hover:border-ink/15",
+                    on ? "border-brand/40 bg-brand-50/40 ring-1 ring-brand/20" : "border-line hover:border-ink/15",
                   )}
                 >
-                  <span className={clsx("grid size-11 shrink-0 place-items-center rounded-xl text-sm font-bold", on ? "bg-ink text-white" : "bg-sand text-ink-soft")}>
+                  <span className={clsx("grid size-11 shrink-0 place-items-center rounded-xl text-sm font-bold", on ? "bg-brand text-white" : "bg-sand text-ink-soft")}>
                     {name.replace(/[^\p{L}\p{N} ]/gu, "").trim().slice(0, 2).toUpperCase()}
                   </span>
                   <span className="min-w-0 flex-1">
@@ -53,7 +53,7 @@ export function DealerList({ customers, current, searchLabel }: { customers: Por
                       )}
                     </span>
                   </span>
-                  {on ? <Check className="size-5 shrink-0 text-ink" /> : <ChevronRight className="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-ink" />}
+                  {on ? <Check className="size-5 shrink-0 text-brand" /> : <ChevronRight className="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-ink" />}
                 </button>
               </form>
             </li>

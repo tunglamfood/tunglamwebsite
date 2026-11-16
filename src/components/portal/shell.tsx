@@ -175,13 +175,13 @@ export function PortalShell({
                 aria-current={on ? "page" : undefined}
                 className={clsx(
                   "group flex h-10 items-center gap-3 rounded-xl px-3 text-[0.9rem] font-medium transition-all duration-150",
-                  on ? "bg-ink text-white shadow-[0_4px_12px_-4px_rgb(0_0_0/0.35)]" : "text-ink-soft hover:bg-sand hover:text-ink",
+                  on ? "bg-brand-50 font-semibold text-brand-700" : "text-ink-soft hover:bg-sand hover:text-ink",
                 )}
               >
-                <n.icon className={clsx("size-[1.125rem] shrink-0", on ? "text-white" : "text-muted group-hover:text-ink")} aria-hidden />
+                <n.icon className={clsx("size-[1.125rem] shrink-0", on ? "text-brand" : "text-muted group-hover:text-ink")} aria-hidden />
                 <span className="flex-1">{n.label}</span>
                 {!!n.badge && (
-                  <span className={clsx("min-w-5 rounded-full px-1.5 text-center text-[0.7rem] font-semibold leading-5 tabular-nums", on ? "bg-white/20 text-white" : "bg-brand text-white")}>
+                  <span className="min-w-5 rounded-full bg-brand px-1.5 text-center text-[0.7rem] font-semibold leading-5 text-white tabular-nums">
                     {n.badge}
                   </span>
                 )}
@@ -267,8 +267,8 @@ export function PortalShell({
             const on = isActive(n.href, n.exact);
             return (
               <li key={n.href}>
-                <Link href={n.href} aria-current={on ? "page" : undefined} className={clsx("relative flex flex-col items-center gap-1 pb-2 pt-2 text-[0.68rem] font-medium transition-colors", on ? "text-ink" : "text-muted")}>
-                  <span className={clsx("grid h-7 w-12 place-items-center rounded-full transition-colors duration-200", on ? "bg-ink text-white" : "")}>
+                <Link href={n.href} aria-current={on ? "page" : undefined} className={clsx("relative flex flex-col items-center gap-1 pb-2 pt-2 text-[0.68rem] transition-colors", on ? "font-semibold text-brand-700" : "font-medium text-muted")}>
+                  <span className={clsx("grid h-7 w-12 place-items-center rounded-full transition-colors duration-200", on ? "bg-brand-50 text-brand" : "")}>
                     <n.icon className="size-[1.125rem]" aria-hidden />
                   </span>
                   {n.label}

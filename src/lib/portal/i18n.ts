@@ -69,6 +69,7 @@ const en = {
     usual: "My usual",
     usually: "Usually {qty}",
     viewCart: "View cart",
+    inCartShort: "In cart",
   },
   cart: {
     title: "Cart",
@@ -79,6 +80,7 @@ const en = {
     tbcNote: "Items marked “price on confirmation” are priced by our sales team when they confirm your order.",
     deliverOn: "Delivery date",
     poRef: "Your PO number (optional)",
+    poHint: "Only if your shop uses its own purchase order (PO) numbers. It is saved with the order and shown on the order PDF.",
     note: "Note to Tung Lam (optional)",
     notePlaceholder: "Delivery instructions, substitutions…",
     terms: "No payment now — this order is billed on your usual credit terms.",
@@ -215,6 +217,7 @@ const ms: PortalDict = {
     usual: "Biasa saya",
     usually: "Biasanya {qty}",
     viewCart: "Lihat troli",
+    inCartShort: "Dalam troli",
   },
   cart: {
     title: "Troli",
@@ -225,6 +228,7 @@ const ms: PortalDict = {
     tbcNote: "Item bertanda “harga semasa pengesahan” akan diberi harga oleh pasukan jualan kami semasa mengesahkan pesanan anda.",
     deliverOn: "Tarikh penghantaran",
     poRef: "Nombor PO anda (pilihan)",
+    poHint: "Hanya jika kedai anda guna nombor pesanan belian (PO) sendiri. Ia disimpan bersama pesanan dan dipaparkan dalam PDF pesanan.",
     note: "Nota kepada Tung Lam (pilihan)",
     notePlaceholder: "Arahan penghantaran, penggantian…",
     terms: "Tiada bayaran sekarang — pesanan ini dibilkan mengikut terma kredit biasa anda.",
@@ -359,6 +363,7 @@ const zh: PortalDict = {
     usual: "我的常订",
     usually: "通常 {qty}",
     viewCart: "查看购物车",
+    inCartShort: "购物车中",
   },
   cart: {
     title: "购物车",
@@ -369,6 +374,7 @@ const zh: PortalDict = {
     tbcNote: "标示“确认时报价”的商品，将由我们的销售团队在确认订单时报价。",
     deliverOn: "送货日期",
     poRef: "您的采购单号（可选）",
+    poHint: "仅当贵店有自己的采购单（PO）号码时填写。号码会随订单保存，并显示在订单 PDF 上。",
     note: "给东临的备注（可选）",
     notePlaceholder: "送货说明、替代商品…",
     terms: "现在无需付款 — 此订单按您惯常的信用期限结算。",

@@ -137,6 +137,7 @@ export function CartView({
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-ink">{labels.poRef}</span>
           <input value={theirRef} maxLength={60} onChange={(e) => setTheirRef(e.target.value)} className={pfield} />
+          <span className="mt-1.5 block text-xs leading-relaxed text-muted">{labels.poHint}</span>
         </label>
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-ink">{labels.note}</span>

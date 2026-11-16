@@ -8,6 +8,7 @@ import { ArrowRight, Check, LayoutGrid, Minus, Plus, Search, ShoppingBasket, Sho
 import { useCart } from "./cart";
 import type { CatalogProduct, UsualItem } from "@/lib/portal/data";
 import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
+import { PRIMARY } from "./bits";
 
 const CATS = ["tofu", "steamboat", "dessert", "grocery"] as const;
 type Cat = (typeof CATS)[number];
@@ -27,15 +28,15 @@ function CatThumb({ cat, active }: { cat: string; active: boolean }) {
   const img = CAT_IMAGE[cat as Cat];
   if (img) {
     return (
-      <span className={clsx("relative size-7 shrink-0 overflow-hidden rounded-full ring-2", active ? "ring-white/30" : "ring-white")}>
+      <span className="relative size-7 shrink-0 overflow-hidden rounded-full ring-2 ring-white">
         <Image src={img} alt="" fill sizes="28px" className="object-cover" />
       </span>
     );
   }
   const Icon = cat === "usual" ? Star : cat === "all" ? LayoutGrid : ShoppingBasket;
   return (
-    <span className={clsx("grid size-7 shrink-0 place-items-center rounded-full", active ? "bg-white/15" : cat === "usual" ? "bg-amber-50 text-amber-600" : "bg-sand text-ink-soft")}>
-      <Icon className={clsx("size-3.5", active && cat === "usual" && "fill-amber-400 text-amber-400")} aria-hidden />
+    <span className={clsx("grid size-7 shrink-0 place-items-center rounded-full", active ? "bg-white text-brand" : cat === "usual" ? "bg-amber-50 text-amber-600" : "bg-sand text-ink-soft")}>
+      <Icon className={clsx("size-3.5", cat === "usual" && "fill-amber-400 text-amber-400")} aria-hidden />
     </span>
   );
 }
@@ -94,7 +95,8 @@ export function Catalog({
   );
 
   return (
-    <div>
+    // Phones: leave room under the last row for the floating cart bar.
+    <div className={clsx(count > 0 && "pb-20 lg:pb-0")}>
       {/* Toolbar: search + categories (sticks under the top bar) */}
       <div className="sticky top-14 z-10 -mx-4 mb-5 border-b border-line bg-cream/90 px-4 pb-3 pt-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:top-16 lg:-mx-8 lg:px-8">
         <label className="relative block lg:max-w-md">
@@ -125,12 +127,12 @@ export function Catalog({
                 onClick={() => setCat(t.key)}
                 className={clsx(
                   "flex h-11 shrink-0 items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm font-semibold transition-colors duration-150",
-                  on ? "border-ink bg-ink text-white shadow-[0_6px_16px_-8px_rgb(0_0_0/0.5)]" : "border-line bg-white text-ink-soft hover:border-ink/20 hover:text-ink",
+                  on ? "border-brand/40 bg-brand-50 text-brand-700 shadow-[0_6px_16px_-10px_rgb(215_25_32/0.6)]" : "border-line bg-white text-ink-soft hover:border-ink/20 hover:text-ink",
                 )}
               >
                 <CatThumb cat={t.key} active={on} />
                 {t.label}
-                <span className={clsx("rounded-full px-1.5 text-[0.7rem] font-semibold leading-5 tabular-nums", on ? "bg-white/15 text-white" : "bg-sand text-muted")}>{t.n}</span>
+                <span className={clsx("rounded-full px-1.5 text-[0.7rem] font-semibold leading-5 tabular-nums", on ? "bg-brand text-white" : "bg-sand text-muted")}>{t.n}</span>
               </button>
             );
           })}
@@ -164,11 +166,11 @@ export function Catalog({
       {count > 0 && (
         <Link
           href="/portal/cart"
-          className="fixed inset-x-4 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-20 flex animate-fade-up items-center gap-3 rounded-2xl bg-ink px-4 py-3 text-white shadow-[0_16px_40px_-12px_rgb(0_0_0/0.45)] lg:hidden"
+          className={clsx("fixed inset-x-4 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-20 flex animate-fade-up items-center gap-3 rounded-2xl px-4 py-3 lg:hidden", PRIMARY)}
         >
-          <span className="relative grid size-9 place-items-center rounded-xl bg-white/10">
+          <span className="relative grid size-9 place-items-center rounded-xl bg-white/15">
             <ShoppingCart className="size-[1.125rem]" aria-hidden />
-            <span className="absolute -right-1.5 -top-1.5 min-w-5 rounded-full bg-brand px-1 text-center text-[0.68rem] font-semibold leading-5 ring-2 ring-ink">{count}</span>
+            <span className="absolute -right-1.5 -top-1.5 min-w-5 rounded-full bg-white px-1 text-center text-[0.68rem] font-bold leading-5 text-brand ring-2 ring-brand">{count}</span>
           </span>
           <span className="flex-1 text-sm font-semibold">{cartLabel}</span>
           <span className="inline-flex items-center gap-1 text-sm font-semibold">
@@ -217,19 +219,24 @@ function ProductCard({
   product: CatalogProduct; usual: Record<string, UsualItem>; scope: string; currency: string; labels: PortalDict["products"]; isUsual: boolean;
 }) {
   const { setQty, qtyOf } = useCart(scope);
-  // Open on the pack size this dealer usually takes.
-  const usualVariant = [...product.variants].sort((a, b) => (usual[b.itemCode]?.times ?? 0) - (usual[a.itemCode]?.times ?? 0))[0];
+  // Open on the pack size already in the cart, else the one this dealer usually takes.
+  const usualVariant =
+    product.variants.find((v) => qtyOf(v.itemCode) > 0) ??
+    [...product.variants].sort((a, b) => (usual[b.itemCode]?.times ?? 0) - (usual[a.itemCode]?.times ?? 0))[0];
   const [code, setCode] = useState(usualVariant?.itemCode ?? "");
   const variant = product.variants.find((v) => v.itemCode === code) ?? product.variants[0];
   const inCart = qtyOf(variant.itemCode);
   const image = variant.image ?? product.image;
   const usualHere = usual[variant.itemCode];
+  // Everything from this product that is in the cart, across pack sizes.
+  const carted = product.variants.map((v) => ({ v, n: qtyOf(v.itemCode) })).filter((x) => x.n > 0);
+  const anyInCart = carted.length > 0;
 
   return (
     <div
       className={clsx(
         "flex h-full flex-col rounded-2xl border bg-white p-1.5 shadow-[var(--shadow-xs)] transition duration-300 sm:p-2",
-        inCart > 0 ? "border-emerald-300 ring-1 ring-emerald-200/70" : "border-line hover:border-ink/15 hover:shadow-[var(--shadow-lift)]",
+        anyInCart ? "border-emerald-300 ring-1 ring-emerald-200/70" : "border-line hover:border-ink/15 hover:shadow-[var(--shadow-lift)]",
       )}
     >
       <div className="relative aspect-square overflow-hidden rounded-xl bg-[#f4f3f1]">
@@ -238,9 +245,9 @@ function ProductCard({
         ) : (
           <div className="grid h-full place-items-center font-display text-3xl font-bold text-muted/40">{(product.brand || product.name).slice(0, 2)}</div>
         )}
-        {inCart > 0 && (
-          <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-1 rounded-md bg-emerald-600 px-1.5 py-0.5 text-[0.68rem] font-bold text-white tabular-nums">
-            <Check className="size-3" aria-hidden /> {inCart}
+        {anyInCart && (
+          <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-1 rounded-md bg-emerald-600 px-1.5 py-0.5 text-[0.68rem] font-semibold text-white shadow-sm">
+            <Check className="size-3" aria-hidden /> {labels.inCartShort}
           </span>
         )}
         {isUsual && (
@@ -255,25 +262,45 @@ function ProductCard({
         <h3 className="line-clamp-2 text-[0.8125rem] font-semibold leading-snug text-ink sm:text-[0.95rem]">{product.name}</h3>
 
         {product.variants.length > 1 ? (
-          <div className="mt-2 flex flex-wrap gap-1" role="radiogroup" aria-label={product.name}>
-            {product.variants.map((v) => (
-              <button
-                key={v.itemCode}
-                type="button"
-                role="radio"
-                aria-checked={v.itemCode === variant.itemCode}
-                onClick={() => setCode(v.itemCode)}
-                className={clsx(
-                  "rounded-md border px-1.5 py-0.5 text-[0.68rem] font-semibold transition-colors sm:px-2 sm:text-xs",
-                  v.itemCode === variant.itemCode ? "border-ink bg-ink text-white" : "border-line text-ink-soft hover:border-ink/25 hover:text-ink",
-                )}
-              >
-                {v.label}
-              </button>
-            ))}
+          <div className="mt-2 flex flex-wrap gap-1.5 pt-1" role="radiogroup" aria-label={product.name}>
+            {product.variants.map((v) => {
+              const on = v.itemCode === variant.itemCode;
+              const n = qtyOf(v.itemCode);
+              return (
+                <button
+                  key={v.itemCode}
+                  type="button"
+                  role="radio"
+                  aria-checked={on}
+                  onClick={() => setCode(v.itemCode)}
+                  className={clsx(
+                    "relative rounded-lg border px-2 py-1 text-[0.68rem] font-semibold transition-colors duration-150 sm:text-xs",
+                    on
+                      ? "border-brand bg-brand-50 text-brand-700 ring-1 ring-brand/15"
+                      : n > 0
+                        ? "border-emerald-300 bg-emerald-50 text-emerald-800"
+                        : "border-line bg-white text-ink-soft hover:border-ink/25 hover:text-ink",
+                  )}
+                >
+                  {v.label}
+                  {n > 0 && (
+                    <span className="absolute -right-1.5 -top-1.5 min-w-4 rounded-full bg-emerald-600 px-1 text-center text-[0.6rem] font-bold leading-4 text-white ring-2 ring-white tabular-nums">
+                      {n}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         ) : (
           <p className="mt-0.5 truncate text-xs text-ink-soft">{variant.label}</p>
+        )}
+
+        {/* What is already in the cart from this product (all pack sizes) */}
+        {anyInCart && product.variants.length > 1 && (
+          <p className="mt-2 rounded-lg bg-emerald-50 px-2 py-1.5 text-[0.68rem] leading-snug text-emerald-800 sm:text-xs">
+            <span className="font-semibold">{labels.inCartShort}:</span> {carted.map((x) => `${x.v.label} × ${x.n}`).join(" · ")}
+          </p>
         )}
 
         <div className="mt-auto pt-2.5">
@@ -298,9 +325,9 @@ function ProductCard({
               <button
                 type="button"
                 onClick={() => setQty(variant.itemCode, usualHere?.lastQty || 1)}
-                className="inline-flex h-9 w-full items-center justify-center gap-1.5 rounded-xl bg-ink text-sm font-semibold text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.14)] transition duration-150 hover:bg-[#2a2826] active:scale-[0.98] sm:h-10"
+                className={clsx("inline-flex h-9 w-full items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition duration-150 active:scale-[0.98] sm:h-10", PRIMARY)}
               >
-                <Plus className="size-4" aria-hidden /> {labels.add}
+                <ShoppingCart className="size-4" aria-hidden /> {labels.add}
               </button>
             )}
           </div>
