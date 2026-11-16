@@ -163,7 +163,7 @@ const en = {
     title: "Contact us",
     metaTitle: "Contact Tung Lam Food — Menglembu, Perak",
     metaDescription:
-      "Contact Tung Lam Food Industries in Menglembu, Perak. WhatsApp +60 16-524 0268 or email sales@tunglamfood.com for product and wholesale enquiries.",
+      "Contact Tung Lam Food Industries in Menglembu, Perak. WhatsApp +60 16-524 0268 or email it.tunglamfood@gmail.com for product and wholesale enquiries.",
     lead: "Questions about our products, wholesale or distribution? We'd love to hear from you.",
     address: "Address",
     phone: "Phone / WhatsApp",

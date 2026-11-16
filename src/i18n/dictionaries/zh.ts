@@ -155,7 +155,7 @@ const zh: Dictionary = {
   contact: {
     title: "联系我们",
     metaTitle: "联系 Tung Lam Food — 霹雳万里望",
-    metaDescription: "联系位于霹雳万里望的 Tung Lam Food Industries。WhatsApp +60 16-524 0268 或电邮 sales@tunglamfood.com 查询产品与批发。",
+    metaDescription: "联系位于霹雳万里望的 Tung Lam Food Industries。WhatsApp +60 16-524 0268 或电邮 it.tunglamfood@gmail.com 查询产品与批发。",
     lead: "对我们的产品、批发或经销有任何疑问？欢迎联系我们。",
     address: "地址",
     phone: "电话 / WhatsApp",

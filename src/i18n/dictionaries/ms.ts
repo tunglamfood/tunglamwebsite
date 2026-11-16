@@ -165,7 +165,7 @@ const ms: Dictionary = {
     title: "Hubungi kami",
     metaTitle: "Hubungi Tung Lam Food — Menglembu, Perak",
     metaDescription:
-      "Hubungi Tung Lam Food Industries di Menglembu, Perak. WhatsApp +60 16-524 0268 atau e-mel sales@tunglamfood.com untuk pertanyaan produk dan borong.",
+      "Hubungi Tung Lam Food Industries di Menglembu, Perak. WhatsApp +60 16-524 0268 atau e-mel it.tunglamfood@gmail.com untuk pertanyaan produk dan borong.",
     lead: "Ada soalan tentang produk, borong atau pengedaran? Kami sedia membantu.",
     address: "Alamat",
     phone: "Telefon / WhatsApp",

@@ -5,7 +5,7 @@ export const SITE = {
   legalName: "TUNG LAM FOOD INDUSTRIES SDN BHD",
   registrationNo: "200701029326 (787350-V)",
   foundingYear: 1999,
-  email: "sales@tunglamfood.com",
+  email: "it.tunglamfood@gmail.com",
   phone: "+60165240268",
   phoneDisplay: "+60 16-524 0268",
   whatsapp: "60165240268",
