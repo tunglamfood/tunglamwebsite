@@ -20,7 +20,12 @@ export const SITE = {
   geo: { lat: 4.5803, lng: 101.043877 },
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=4.580300,101.043877",
   certifications: ["Halal", "HACCP", "GMP", "MeSTI"] as const,
-  legacyDomain: "https://www.tunglamfood.com",
+  /**
+   * Official profiles of the company (Facebook, Instagram, Google Business Profile…), used as
+   * schema.org `sameAs` so search engines and AI assistants tie them to this website.
+   * Deliberately NOT tunglamfood.com: that domain is run by NEWPAGES, not by the company.
+   */
+  profiles: [] as string[],
 } as const;
 
 export const fullAddress = `${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.locality}, ${SITE.address.region}, ${SITE.address.countryName}`;

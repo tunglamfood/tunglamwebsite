@@ -97,7 +97,7 @@ export function organizationJsonLd(description: string) {
             availableLanguage: ["English", "Malay", "Chinese"],
           },
         ],
-        sameAs: [SITE.legacyDomain],
+        ...(SITE.profiles.length > 0 ? { sameAs: SITE.profiles } : {}),
         knowsAbout: ["Tofu", "Egg tofu", "Tofu puffs", "Fish balls", "Fish cakes", "Fish paste", "Quail eggs", "Cincau", "Cendol", "Steamboat ingredients"],
       },
       {

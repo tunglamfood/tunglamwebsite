@@ -3,10 +3,12 @@
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { updateTag } from "next/cache";
+import { after } from "next/server";
 import { z } from "zod";
 import { adminClient } from "@/lib/supabase/admin";
 import { CONTENT_TAG } from "@/lib/supabase/server";
 import { requireAdmin } from "./auth";
+import { allLanguageUrls, submitToIndexNow } from "@/lib/indexnow";
 import { ADMIN_COOKIE, SESSION_TTL_SECONDS, checkPassword, createSessionToken } from "./session";
 
 export type ActionResult = { ok: true; id?: string; message?: string } | { ok: false; error: string };
@@ -89,9 +91,14 @@ function fail(e: unknown): ActionResult {
   return { ok: false, error: msg };
 }
 
-function publish() {
-  // Expire all cached public content so the website shows the change on the next request.
+/**
+ * Expire all cached public content so the website shows the change on the next request,
+ * then (after the response) tell Bing & co. via IndexNow which pages changed.
+ * `paths` are locale-agnostic ("/products/x"); every language version is sent.
+ */
+function publish(paths: string[] = []) {
   updateTag(CONTENT_TAG);
+  if (paths.length > 0) after(() => submitToIndexNow(allLanguageUrls(paths)));
 }
 
 async function slugTakenByOther(table: "products" | "categories", value: string) {
@@ -152,7 +159,7 @@ export async function saveProduct(input: ProductInput): Promise<ActionResult> {
       ? await db.from("products").update(row).eq("id", v.id).select("id").single()
       : await db.from("products").insert(row).select("id").single();
     if (res.error) throw new Error(res.error.message);
-    publish();
+    publish(["/products", `/products/${v.slug}`]);
     return { ok: true, id: res.data.id, message: "Product saved and published to the website." };
   } catch (e) {
     return fail(e);
@@ -163,7 +170,7 @@ export async function deleteProduct(id: string): Promise<ActionResult> {
   await requireAdmin();
   const { error } = await adminClient().from("products").delete().eq("id", id);
   if (error) return fail(error.message);
-  publish();
+  publish(["/products"]);
   return { ok: true };
 }
 
@@ -209,7 +216,7 @@ export async function saveCategory(input: CategoryInput): Promise<ActionResult> 
       ? await db.from("categories").update(row).eq("id", v.id).select("id").single()
       : await db.from("categories").insert(row).select("id").single();
     if (res.error) throw new Error(res.error.message);
-    publish();
+    publish(["/products", `/products/${v.slug}`]);
     return { ok: true, id: res.data.id, message: "Category saved." };
   } catch (e) {
     return fail(e);
@@ -226,7 +233,7 @@ export async function deleteCategory(id: string): Promise<ActionResult> {
   if (products || children) return { ok: false, error: "Move or delete the products and sub-categories in this category first." };
   const { error } = await db.from("categories").delete().eq("id", id);
   if (error) return fail(error.message);
-  publish();
+  publish(["/products"]);
   return { ok: true };
 }
 
@@ -265,7 +272,7 @@ export async function saveBrand(input: BrandInput): Promise<ActionResult> {
       ? await db.from("brands").update(row).eq("id", v.id).select("id").single()
       : await db.from("brands").insert(row).select("id").single();
     if (res.error) throw new Error(res.error.message);
-    publish();
+    publish(["/brands", `/brands/${v.slug}`]);
     return { ok: true, id: res.data.id, message: "Brand saved." };
   } catch (e) {
     return fail(e);
@@ -279,7 +286,7 @@ export async function deleteBrand(id: string): Promise<ActionResult> {
   if (count) return { ok: false, error: `${count} product(s) still use this brand. Reassign them first.` };
   const { error } = await db.from("brands").delete().eq("id", id);
   if (error) return fail(error.message);
-  publish();
+  publish(["/brands"]);
   return { ok: true };
 }
 
@@ -350,7 +357,7 @@ export async function saveRecipe(input: RecipeInput): Promise<ActionResult> {
       ? await db.from("recipes").update(row).eq("id", v.id).select("id").single()
       : await db.from("recipes").insert(row).select("id").single();
     if (res.error) throw new Error(res.error.message);
-    publish();
+    publish(["/recipes", `/recipes/${v.slug}`]);
     return { ok: true, id: res.data.id, message: "Saved and published to the website." };
   } catch (e) {
     return fail(e);
@@ -361,7 +368,7 @@ export async function deleteRecipe(id: string): Promise<ActionResult> {
   await requireAdmin();
   const { error } = await adminClient().from("recipes").delete().eq("id", id);
   if (error) return fail(error.message);
-  publish();
+  publish(["/recipes"]);
   return { ok: true };
 }
 
@@ -387,7 +394,7 @@ export async function saveFaq(input: FaqInput): Promise<ActionResult> {
       ? await db.from("faqs").update(row).eq("id", v.id).select("id").single()
       : await db.from("faqs").insert(row).select("id").single();
     if (res.error) throw new Error(res.error.message);
-    publish();
+    publish(["/faq"]);
     return { ok: true, id: res.data.id, message: "FAQ saved." };
   } catch (e) {
     return fail(e);
@@ -398,7 +405,7 @@ export async function deleteFaq(id: string): Promise<ActionResult> {
   await requireAdmin();
   const { error } = await adminClient().from("faqs").delete().eq("id", id);
   if (error) return fail(error.message);
-  publish();
+  publish(["/faq"]);
   return { ok: true };
 }
 

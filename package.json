@@ -11,7 +11,8 @@
     "db:seed": "node --env-file=.env scripts/seed.mjs",
     "db:seed:data": "node --env-file=.env scripts/seed.mjs --no-media",
     "image:generate": "node --env-file=.env scripts/kie-image.mjs",
-    "qa": "node scripts/qa.mjs"
+    "qa": "node scripts/qa.mjs",
+    "seo:indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",

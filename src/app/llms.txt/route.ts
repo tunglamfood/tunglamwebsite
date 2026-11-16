@@ -13,6 +13,7 @@ export async function GET() {
     "",
     `> Halal-certified chilled and frozen food manufacturer in Menglembu, Perak, Malaysia, established ${SITE.foundingYear}. Makes tofu, egg tofu, silken tofu, tofu puffs (tofu goreng), firm tofu (taufu keras), fish balls, fish cakes, fish paste, peeled quail eggs, cincau (grass jelly) and cendol under the brands ${brands.map((b) => b.name).join(", ")}. Supplies households, retailers, wet markets, hawkers, restaurants and distributors in Malaysia. Certifications shown: Halal, HACCP, GMP, MeSTI.`,
     "",
+    `- Official website: ${SITE.url} (the company's own site, in English, Bahasa Melayu and 简体中文)`,
     `- Address: ${fullAddress}`,
     `- Phone / WhatsApp: ${SITE.phoneDisplay}`,
     `- Email: ${SITE.email}`,
