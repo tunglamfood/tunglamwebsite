@@ -10,9 +10,9 @@ export default async function PortalAppLayout({ children }: { children: React.Re
     <PortalShell
       scope={`${ctx.account.id}:${ctx.customer?.code ?? "none"}`}
       lang={lang}
-      labels={{ nav: d.nav, orderingFor: d.home.orderingFor, switch: d.home.switch, search: d.products.search, support: d.account.support }}
+      labels={{ nav: d.nav, orderingFor: d.home.orderingFor, switch: d.home.switch, search: d.products.search, help: d.shell.help, whatsapp: d.shell.whatsapp }}
       appName={d.appName}
-      dealer={ctx.customer ? { name: ctx.customer.shortName || ctx.customer.name, code: ctx.customer.code } : null}
+      dealer={ctx.customer ? { name: ctx.customer.name } : null}
       canSwitch={ctx.customers.length > 1}
       demo={demo}
       user={ctx.account.name || showPhone(ctx.account.phone)}

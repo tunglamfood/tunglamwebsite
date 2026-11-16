@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeftRight, ArrowRight, ArrowUpRight, Megaphone, Package, Star } from "lucide-react";
-import { requirePortal, getPortalDict, getPortalLang, customerLabel } from "@/lib/portal/context";
+import { ArrowLeftRight, ArrowRight, ArrowUpRight, Megaphone, Package, Sparkles, Star } from "lucide-react";
+import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { getAnnouncements, getOrders, getUsualItems } from "@/lib/portal/data";
 import { pfmt } from "@/lib/portal/i18n";
 import { ReorderButton } from "@/components/portal/order-actions";
@@ -33,8 +33,7 @@ export default async function PortalHome() {
             <h1 className="break-words font-display text-[1.75rem] font-bold leading-tight tracking-[-0.025em] sm:text-4xl">{pfmt(d.home.hello, { name })}</h1>
             <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
               <span className="text-white/55">{d.home.orderingFor}</span>
-              <span className="font-semibold">{customerLabel(ctx.customer)}</span>
-              <span className="rounded-md bg-white/10 px-1.5 py-0.5 text-xs tabular-nums text-white/70">{ctx.customer.code}</span>
+              <span className="font-semibold">{ctx.customer.name}</span>
               {ctx.customers.length > 1 && (
                 <Link href="/portal/dealers" className="inline-flex items-center gap-1 rounded-lg bg-white/10 px-2.5 py-1 text-xs font-semibold transition-colors hover:bg-white/20">
                   <ArrowLeftRight className="size-3.5" aria-hidden /> {d.home.switch}
@@ -75,6 +74,22 @@ export default async function PortalHome() {
             <span className="block text-sm text-white/80">{d.home.startText}</span>
           </span>
           <ArrowUpRight className="size-5 shrink-0 transition-transform duration-300 group-hover:rotate-45" aria-hidden />
+        </Link>
+        <Link
+          href="/portal/assistant"
+          className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-brand/20 bg-gradient-to-br from-brand-50 to-white p-4 shadow-[var(--shadow-xs)] transition duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[var(--shadow-lift)] sm:p-5"
+        >
+          <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#e3262d] to-brand text-white shadow-[0_8px_18px_-10px_rgb(215_25_32/0.9)]">
+            <Sparkles className="size-5" aria-hidden />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="flex items-center gap-2 font-semibold text-ink">
+              {d.home.aiTitle}
+              <span className="rounded-md bg-brand px-1.5 py-px text-[0.6rem] font-bold tracking-wide text-white">AI</span>
+            </span>
+            <span className="block text-sm text-muted">{d.home.aiText}</span>
+          </span>
+          <ArrowUpRight className="size-5 shrink-0 text-brand transition duration-300 group-hover:rotate-45" aria-hidden />
         </Link>
         {usualCount > 0 && (
           <Link

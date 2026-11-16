@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
 import clsx from "clsx";
-import { ArrowLeftRight, Check, ChevronDown, Globe, Home, Loader2, Package, ReceiptText, Search, ShoppingCart, UserRound } from "lucide-react";
+import { ArrowLeftRight, Check, ChevronDown, Globe, Home, Loader2, Package, ReceiptText, Search, ShoppingCart, Sparkles, UserRound } from "lucide-react";
 import { useCart } from "./cart";
 import { setPortalLang } from "@/lib/portal/actions";
 import { LANG_LABEL, PORTAL_LANGS, type PortalLang } from "@/lib/portal/i18n";
@@ -77,11 +77,12 @@ function LangMenu({ lang, pending, onChange }: { lang: PortalLang; pending: bool
 }
 
 type ShellLabels = {
-  nav: { home: string; products: string; cart: string; orders: string; account: string };
+  nav: { home: string; products: string; cart: string; orders: string; account: string; assistant: string };
   orderingFor: string;
   switch: string;
   search: string;
-  support: string;
+  help: string;
+  whatsapp: string;
 };
 
 export function PortalShell({
@@ -100,7 +101,7 @@ export function PortalShell({
   lang: PortalLang;
   labels: ShellLabels;
   appName: string;
-  dealer: { name: string; code: string } | null;
+  dealer: { name: string } | null;
   canSwitch: boolean;
   demo: string | null;
   user: string;
@@ -114,10 +115,13 @@ export function PortalShell({
   const nav = [
     { href: "/portal", label: labels.nav.home, icon: Home, exact: true },
     { href: "/portal/products", label: labels.nav.products, icon: Package },
+    { href: "/portal/assistant", label: labels.nav.assistant, icon: Sparkles, ai: true },
     { href: "/portal/cart", label: labels.nav.cart, icon: ShoppingCart, badge: count },
     { href: "/portal/orders", label: labels.nav.orders, icon: ReceiptText },
     { href: "/portal/account", label: labels.nav.account, icon: UserRound },
   ];
+  // Phones: five tabs with the assistant in the middle; Account sits in the header.
+  const tabs = nav.filter((n) => n.href !== "/portal/account");
   const isActive = (href: string, exact?: boolean) => (exact ? pathname === href : pathname.startsWith(href));
   const changeLang = (l: string) => start(async () => { await setPortalLang(l); router.refresh(); });
   const initials = user.replace(/[^\p{L}\p{N} ]/gu, "").trim().split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase() || "TL";
@@ -154,8 +158,7 @@ export function PortalShell({
           <div className="p-3">
             <div className="rounded-xl border border-line bg-cream p-3">
               <p className="text-[0.7rem] font-medium uppercase tracking-wider text-muted">{labels.orderingFor}</p>
-              <p className="mt-1 truncate font-semibold text-ink">{dealer.name}</p>
-              <p className="text-xs tabular-nums text-muted">{dealer.code}</p>
+              <p className="mt-1 break-words text-[0.875rem] font-semibold leading-snug text-ink">{dealer.name}</p>
               {canSwitch && (
                 <Link href="/portal/dealers" className={clsx("mt-2.5 flex h-8 items-center justify-center gap-1.5 rounded-lg border border-line bg-white text-xs font-semibold text-ink-soft transition-colors hover:border-ink/20 hover:text-ink")}>
                   <ArrowLeftRight className="size-3.5" aria-hidden /> {labels.switch}
@@ -180,6 +183,7 @@ export function PortalShell({
               >
                 <n.icon className={clsx("size-[1.125rem] shrink-0", on ? "text-brand" : "text-muted group-hover:text-ink")} aria-hidden />
                 <span className="flex-1">{n.label}</span>
+                {n.ai && <span className="rounded-md bg-gradient-to-r from-[#e3262d] to-brand px-1.5 py-px text-[0.62rem] font-bold tracking-wide text-white">AI</span>}
                 {!!n.badge && (
                   <span className="min-w-5 rounded-full bg-brand px-1.5 text-center text-[0.7rem] font-semibold leading-5 text-white tabular-nums">
                     {n.badge}
@@ -192,9 +196,17 @@ export function PortalShell({
 
         <div className="space-y-3 border-t border-line p-3">
           {langSwitch}
-          <a href={whatsappLink()} target="_blank" rel="noopener" className="flex h-10 items-center gap-3 rounded-xl px-3 text-[0.9rem] font-medium text-ink-soft transition-colors hover:bg-sand hover:text-ink">
-            <WhatsAppIcon className="size-[1.125rem] shrink-0 text-[#1fa855]" /> <span className="truncate">{labels.support}</span>
-          </a>
+          <div className="rounded-xl border border-line bg-cream p-3">
+            <p className="mb-2 text-xs font-medium text-muted">{labels.help}</p>
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener"
+              className="flex h-10 items-center justify-center gap-2 rounded-xl bg-[#1fa855] text-sm font-semibold text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.2),0_6px_14px_-8px_rgb(31_168_85/0.8)] transition hover:bg-[#1a964b] active:scale-[0.98]"
+            >
+              <WhatsAppIcon className="size-[1.125rem] shrink-0" /> {labels.whatsapp}
+            </a>
+          </div>
         </div>
       </aside>
 
@@ -242,6 +254,15 @@ export function PortalShell({
               <div className="lg:hidden">
                 <LangMenu lang={lang} pending={pending} onChange={changeLang} />
               </div>
+              {/* Phones: account (not in the tab bar) */}
+              <Link
+                href="/portal/account"
+                aria-label={labels.nav.account}
+                aria-current={isActive("/portal/account") ? "page" : undefined}
+                className="grid size-9 shrink-0 place-items-center rounded-xl bg-brand text-xs font-bold text-white ring-offset-2 aria-[current]:ring-2 aria-[current]:ring-brand/40 lg:hidden"
+              >
+                {initials}
+              </Link>
 
               {/* Desktop: cart + account */}
               <Link href="/portal/cart" className="relative hidden h-10 items-center gap-2 rounded-xl border border-line bg-white px-3.5 text-sm font-semibold text-ink shadow-[var(--shadow-xs)] transition hover:border-ink/20 lg:inline-flex">
@@ -251,7 +272,7 @@ export function PortalShell({
               </Link>
               <Link href="/portal/account" className="hidden items-center gap-2 rounded-xl py-1 pl-1 pr-2 transition-colors hover:bg-sand lg:flex" title={labels.nav.account}>
                 <span className="grid size-8 place-items-center rounded-lg bg-brand text-xs font-bold text-white">{initials}</span>
-                <span className="max-w-36 truncate text-sm font-medium text-ink">{user}</span>
+                <span className="max-w-56 truncate text-sm font-medium text-ink">{user}</span>
               </Link>
             </div>
           </div>
@@ -263,8 +284,26 @@ export function PortalShell({
       {/* ------------------------------------------------ Phone tab bar */}
       <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden" aria-label="Portal">
         <ul className="grid grid-cols-5">
-          {nav.map((n) => {
+          {tabs.map((n) => {
             const on = isActive(n.href, n.exact);
+            if (n.ai) {
+              // Raised centre button for the order assistant.
+              return (
+                <li key={n.href} className="flex justify-center">
+                  <Link href={n.href} aria-current={on ? "page" : undefined} className="relative -mt-5 flex flex-col items-center gap-1 pb-2 text-[0.68rem] font-semibold text-brand-700">
+                    <span
+                      className={clsx(
+                        "grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-[#e3262d] to-brand text-white shadow-[0_10px_24px_-10px_rgb(215_25_32/0.9)] ring-4 ring-white transition-transform duration-200",
+                        on && "scale-105",
+                      )}
+                    >
+                      <n.icon className="size-5" aria-hidden />
+                    </span>
+                    {n.label}
+                  </Link>
+                </li>
+              );
+            }
             return (
               <li key={n.href}>
                 <Link href={n.href} aria-current={on ? "page" : undefined} className={clsx("relative flex flex-col items-center gap-1 pb-2 pt-2 text-[0.68rem] transition-colors", on ? "font-semibold text-brand-700" : "font-medium text-muted")}>

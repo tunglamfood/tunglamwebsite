@@ -88,6 +88,32 @@ export async function getCatalog(customerCode: string, lang: PortalLang): Promis
   return [...byId.values()];
 }
 
+/** Every orderable item for this dealer with its names in all three languages (for the order assistant). */
+export type AssistantItem = {
+  itemCode: string;
+  names: string[];
+  labels: string[];
+  description: string;
+  uom: string;
+  brand: string;
+  category: CatalogProduct["category"];
+};
+
+export async function getAssistantCatalog(customerCode: string): Promise<AssistantItem[]> {
+  const { data, error } = await erp().rpc("portal_catalog", { p_customer: customerCode });
+  if (error) throw new Error(`Could not load the catalogue: ${error.message}`);
+  const uniq = (xs: (string | null)[]) => [...new Set(xs.filter((x): x is string => !!x && !!x.trim()))];
+  return ((data ?? []) as CatalogRow[]).map((r) => ({
+    itemCode: r.item_code,
+    names: uniq([r.name_en, r.name_ms, r.name_zh]),
+    labels: uniq([r.label_en, r.label_ms, r.label_zh]),
+    description: r.description,
+    uom: r.uom,
+    brand: r.brand,
+    category: r.category,
+  }));
+}
+
 /* ── Orders ────────────────────────────────────────────────────────────────── */
 
 export type OrderLine = {

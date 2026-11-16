@@ -47,7 +47,10 @@ Prices, order numbers and order placement are ERP database functions (`sales_pri
 `portal_place_order`, `portal_cancel_order`) — never compute money in this app. Login = phone + OTP
 (`PORTAL_DEMO_OTP` for the demo; otherwise a real code by OneWay SMS, `src/lib/portal/otp.ts`). Session = signed cookie `tl_portal` (`src/lib/portal/session.ts`),
 re-checked against `portal_accounts` on every request. Cart lives in localStorage per login+dealer.
-Plan and phases: `docs/DEALER-PORTAL-PLAN.md`. Logins, catalogue grouping and reps are managed in the ERP → Sales → Dealer portal.
+Plan and phases: `docs/DEALER-PORTAL-PLAN.md`.
+Order assistant (`/portal/assistant`, `src/lib/portal/assistant.ts`): OpenAI (`OPENAI_REVIEW_MODEL`) turns a dealer's free-text order
+into item codes + quantities from that dealer's own catalogue; the server re-checks every code/qty, flags unsure matches,
+and the dealer adds them to the cart and places the order there. It never sees or states prices/totals. Logins, catalogue grouping and reps are managed in the ERP → Sales → Dealer portal.
 
 ## Design system
 Neutral canvas, near-black primary buttons, Tung Lam red as accent. Tokens in `src/app/globals.css` (`.admin-theme` overrides for /admin).
