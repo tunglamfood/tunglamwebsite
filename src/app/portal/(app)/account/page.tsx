@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeftRight, ChevronRight, LogOut } from "lucide-react";
+import { ArrowLeftRight, ChevronRight, LogOut, UserRound } from "lucide-react";
 import { requirePortal, getPortalDict } from "@/lib/portal/context";
 import { logout } from "@/lib/portal/actions";
 import { showPhone } from "@/lib/portal/phone";
@@ -22,7 +22,6 @@ export default async function PortalAccount() {
       ]
     : [];
   const who = ctx.account.name || showPhone(ctx.account.phone);
-  const initials = who.replace(/[^\p{L}\p{N} ]/gu, "").trim().split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase() || "TL";
   const row = "flex h-14 w-full items-center gap-3 px-4 text-left font-medium transition-colors sm:px-5";
 
   return (
@@ -31,7 +30,9 @@ export default async function PortalAccount() {
       <div className="grid gap-4 sm:gap-5 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
         <div className={`${pcard} overflow-hidden`}>
           <div className="flex items-center gap-4 border-b border-line p-4 sm:p-5">
-            <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-brand text-lg font-bold text-white">{initials}</span>
+            <span className="grid size-14 shrink-0 place-items-center rounded-full border border-white/80 bg-white/70 text-ink-soft">
+              <UserRound className="size-6" aria-hidden />
+            </span>
             <div className="min-w-0">
               <p className="truncate text-lg font-semibold text-ink">{who}</p>
               <p className="text-sm text-muted">

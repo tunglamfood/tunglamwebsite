@@ -1,5 +1,4 @@
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
-import { showPhone } from "@/lib/portal/phone";
 import { PortalShell } from "@/components/portal/shell";
 
 export default async function PortalAppLayout({ children }: { children: React.ReactNode }) {
@@ -12,7 +11,6 @@ export default async function PortalAppLayout({ children }: { children: React.Re
       appName={d.appName}
       dealer={ctx.customer ? { name: ctx.customer.name } : null}
       canSwitch={ctx.customers.length > 1}
-      user={ctx.account.name || showPhone(ctx.account.phone)}
     >
       {children}
     </PortalShell>

@@ -94,7 +94,6 @@ export function PortalShell({
   appName,
   dealer,
   canSwitch,
-  user,
 }: {
   children: React.ReactNode;
   scope: string;
@@ -103,7 +102,6 @@ export function PortalShell({
   appName: string;
   dealer: { name: string } | null;
   canSwitch: boolean;
-  user: string;
 }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -123,7 +121,6 @@ export function PortalShell({
   const tabs = nav.filter((n) => n.href !== "/portal/account");
   const isActive = (href: string, exact?: boolean) => (exact ? pathname === href : pathname.startsWith(href));
   const changeLang = (l: string) => start(async () => { await setPortalLang(l); router.refresh(); });
-  const initials = user.replace(/[^\p{L}\p{N} ]/gu, "").trim().split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase() || "TL";
 
   const langSwitch = (
     <div className="glass-inset grid grid-cols-3 gap-1 rounded-xl p-1" role="group" aria-label="Language">
@@ -252,25 +249,21 @@ export function PortalShell({
               <div className="lg:hidden">
                 <LangMenu lang={lang} pending={pending} onChange={changeLang} />
               </div>
-              {/* Phones: account (not in the tab bar) */}
-              <Link
-                href="/portal/account"
-                aria-label={labels.nav.account}
-                aria-current={isActive("/portal/account") ? "page" : undefined}
-                className="grid size-9 shrink-0 place-items-center rounded-xl bg-brand text-xs font-bold text-white ring-offset-2 aria-[current]:ring-2 aria-[current]:ring-brand/40 lg:hidden"
-              >
-                {initials}
-              </Link>
-
               {/* Desktop: cart + account */}
               <Link href="/portal/cart" className="relative hidden h-10 items-center gap-2 rounded-xl border border-white/80 bg-white/70 px-3.5 text-sm font-semibold text-ink transition hover:bg-white lg:inline-flex">
                 <ShoppingCart className="size-4" aria-hidden />
                 {labels.nav.cart}
                 {count > 0 && <span className="min-w-5 rounded-full bg-brand px-1.5 text-center text-[0.7rem] font-semibold leading-5 text-white tabular-nums">{count}</span>}
               </Link>
-              <Link href="/portal/account" className="hidden items-center gap-2 rounded-xl py-1 pl-1 pr-2 transition-colors hover:bg-sand lg:flex" title={labels.nav.account}>
-                <span className="grid size-8 place-items-center rounded-lg bg-brand text-xs font-bold text-white">{initials}</span>
-                <span className="max-w-56 truncate text-sm font-medium text-ink">{user}</span>
+              {/* Account: a plain profile icon on every screen size */}
+              <Link
+                href="/portal/account"
+                aria-label={labels.nav.account}
+                title={labels.nav.account}
+                aria-current={isActive("/portal/account") ? "page" : undefined}
+                className="grid size-9 shrink-0 place-items-center rounded-full border border-white/80 bg-white/70 text-ink-soft transition hover:bg-white hover:text-ink aria-[current]:border-brand/40 aria-[current]:text-brand lg:size-10"
+              >
+                <UserRound className="size-[1.125rem]" aria-hidden />
               </Link>
             </div>
           </div>
