@@ -78,7 +78,7 @@ export default async function PortalHome() {
           href="/portal/assistant"
           className="glass group relative flex items-center gap-4 overflow-hidden rounded-2xl p-4 transition duration-300 hover:bg-white/80 sm:p-5"
         >
-          <AssistantIcon size={44} />
+          <AssistantIcon size={56} />
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-2 font-semibold text-ink">
               {d.home.aiTitle}

@@ -293,7 +293,7 @@ export function PortalShell({
                 <li key={n.href} className="flex justify-center">
                   <Link href={n.href} aria-current={on ? "page" : undefined} className="relative -mt-6 flex flex-col items-center gap-0.5 pb-2 text-[0.68rem] font-semibold text-brand-700">
                     <span className={clsx("glass grid size-14 place-items-center rounded-full transition-transform duration-200", on && "scale-105")}>
-                      <AssistantIcon size={36} />
+                      <AssistantIcon size={46} />
                     </span>
                     {n.label}
                   </Link>
