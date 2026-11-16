@@ -21,9 +21,9 @@ export default async function InquiriesAdmin({ searchParams }: { searchParams: P
     <>
       <AdminHeader title="Enquiries" description="Messages sent from the website's enquiry forms." />
       <FilterTabs active={status} tabs={STATUSES.map((s) => ({ key: s.key, label: s.label, count: count(s.key), href: `/admin/inquiries?status=${s.key}` }))} />
-      <Card>
+      <Card className="overflow-hidden">
         {rows.length === 0 ? (
-          <EmptyState>No enquiries here.</EmptyState>
+          <EmptyState>No enquiries here. Messages from the website forms will appear here.</EmptyState>
         ) : (
           <ul className="divide-y divide-line">
             {rows.map((q) => (

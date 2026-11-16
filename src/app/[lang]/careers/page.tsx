@@ -33,7 +33,7 @@ export default async function CareersPage({ params }: PageProps<"/[lang]/careers
           <p className="prose-tl text-lg">{d.careers.body}</p>
         </div>
         <div className="rounded-[1.5rem] border border-line bg-white p-5 sm:rounded-[2rem] sm:p-10">
-          <h2 className="mb-6 font-display text-2xl font-semibold">{d.careers.formTitle}</h2>
+          <h2 className="mb-5 font-display text-xl font-bold tracking-[-0.015em] sm:mb-6 sm:text-2xl">{d.careers.formTitle}</h2>
           <InquiryForm labels={d.form} locale={lang} defaultKind="career" kinds={["career"]} whatsappHref={whatsappLink()} />
         </div>
       </section>

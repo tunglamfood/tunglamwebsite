@@ -28,7 +28,7 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
         title={d.privacy.title}
       />
       <section className="container-x max-w-3xl py-16" lang="en">
-        <div className="prose-tl space-y-6 [&_h2]:mt-10 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-ink">
+        <div className="prose-tl space-y-6 [&_h2]:mt-10 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:tracking-[-0.015em] [&_h2]:text-ink">
           <p>
             This policy explains how {SITE.legalName} ({SITE.registrationNo}) (&ldquo;we&rdquo;, &ldquo;us&rdquo;) handles personal data
             submitted through this website, in line with Malaysia&rsquo;s Personal Data Protection Act 2010 (PDPA).

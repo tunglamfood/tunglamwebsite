@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Home } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
@@ -10,21 +10,22 @@ export function Breadcrumbs({ items, className = "" }: { items: Crumb[]; classNa
   return (
     <>
       <nav aria-label="Breadcrumb" className={className}>
-        <ol className="flex flex-wrap items-center gap-1 text-sm text-muted">
+        <ol className="flex flex-wrap items-center gap-1 text-[0.8125rem] text-muted sm:text-sm">
           {items.map((c, i) => {
             const last = i === items.length - 1;
             return (
-              <li key={c.href} className="inline-flex items-center gap-1">
+              <li key={c.href} className="inline-flex min-w-0 items-center gap-1">
                 {last ? (
-                  <span aria-current="page" className="font-medium text-ink-soft">
+                  <span aria-current="page" className="truncate font-medium text-ink">
                     {c.name}
                   </span>
                 ) : (
                   <>
-                    <Link href={c.href} className="hover:text-brand">
-                      {c.name}
+                    <Link href={c.href} className="inline-flex items-center gap-1.5 rounded-md transition-colors hover:text-ink">
+                      {i === 0 && <Home className="size-3.5" aria-hidden />}
+                      <span className={i === 0 ? "sr-only sm:not-sr-only" : undefined}>{c.name}</span>
                     </Link>
-                    <ChevronRight className="size-3.5 opacity-60" aria-hidden />
+                    <ChevronRight className="size-3.5 shrink-0 opacity-50" aria-hidden />
                   </>
                 )}
               </li>

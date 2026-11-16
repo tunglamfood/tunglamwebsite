@@ -8,6 +8,7 @@ import { getCatalog } from "@/lib/data";
 import { pageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { PageHeader } from "@/components/ui/page-header";
+import SpotlightCard from "@/components/reactbits/SpotlightCard";
 import { CertBadges } from "@/components/ui/cert-badges";
 import { buttonClass } from "@/components/ui/button";
 
@@ -52,19 +53,21 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
 
       <section className="bg-sand/50 py-12 sm:py-20">
         <div className="container-x">
-          <h2 className="mb-6 font-display text-[1.75rem] font-semibold tracking-tight sm:mb-10 sm:text-4xl">{d.about.valuesTitle}</h2>
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <h2 className="mb-6 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-10 sm:text-4xl">{d.about.valuesTitle}</h2>
+          <ul className="grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
             {d.about.values.map((v, i) => {
               const Icon = VALUE_ICONS[i % VALUE_ICONS.length];
               return (
-                <li key={v.title} className="reveal border border-line shadow-[var(--shadow-card)] flex items-start gap-4 rounded-2xl bg-white p-4 sm:block sm:p-6" data-dir="zoom">
-                  <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand">
-                    <Icon className="size-6" aria-hidden />
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-semibold sm:mt-5">{v.title}</h3>
-                    <p className="mt-1 text-ink-soft sm:mt-2">{v.text}</p>
-                  </div>
+                <li key={v.title} className="reveal" data-dir="zoom">
+                  <SpotlightCard theme="light" spotlightColor="#d71920" intensity={0.35} spotlightSize={280} className="flex h-full items-start gap-4 !rounded-2xl !p-4 sm:block sm:!p-6">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand">
+                      <Icon className="size-5" aria-hidden />
+                    </span>
+                    <div>
+                      <h3 className="text-[1.0625rem] font-semibold text-ink sm:mt-5">{v.title}</h3>
+                      <p className="mt-1 text-[0.95rem] text-ink-soft sm:mt-2">{v.text}</p>
+                    </div>
+                  </SpotlightCard>
                 </li>
               );
             })}
@@ -74,7 +77,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
 
       <section className="container-x grid gap-10 py-12 sm:py-20 lg:grid-cols-2">
         <div>
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.about.factsTitle}</h2>
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.about.factsTitle}</h2>
           <dl className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">
             {[
               [d.about.facts.founded, String(SITE.foundingYear)],
@@ -82,7 +85,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
               [d.about.facts.reg, SITE.registrationNo],
               [d.about.facts.brands, brands.map((b) => b.name).join(" · ")],
             ].map(([k, v]) => (
-              <div key={k} className="grid grid-cols-[10rem_1fr] gap-4 px-5 py-4">
+              <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-3 px-4 py-3.5 sm:grid-cols-[10rem_1fr] sm:gap-4 sm:px-5 sm:py-4">
                 <dt className="text-sm text-muted">{k}</dt>
                 <dd className="font-semibold text-ink">{v}</dd>
               </div>
@@ -90,7 +93,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
           </dl>
         </div>
         <div>
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.home.certTitle}</h2>
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.home.certTitle}</h2>
           <div className="rounded-2xl border border-line bg-white p-6">
             <CertBadges size={84} className="gap-4" />
           </div>

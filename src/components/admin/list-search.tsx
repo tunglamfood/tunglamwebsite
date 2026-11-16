@@ -37,10 +37,10 @@ export function ListSearch({
       <label className="relative flex-1">
         <span className="sr-only">{placeholder}</span>
         <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={placeholder} className={`${inputClass} pl-9`} />
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={placeholder} className={`${inputClass} h-10 pl-9`} />
       </label>
       {filters.map((f) => (
-        <select key={f.name} value={params.get(f.name) ?? ""} onChange={(e) => push(f.name, e.target.value)} className={`${inputClass} sm:w-56`}>
+        <select key={f.name} value={params.get(f.name) ?? ""} onChange={(e) => push(f.name, e.target.value)} className={`${inputClass} h-10 sm:w-60`}>
           <option value="">{f.label}</option>
           {f.options.map((o) => (
             <option key={o.value} value={o.value}>

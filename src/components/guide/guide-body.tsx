@@ -103,7 +103,7 @@ export function GuideBody({ blocks, locale }: { blocks: GuideBlock[]; locale: Lo
         switch (b.type) {
           case "h2":
             return (
-              <h2 key={i} id={b.id} className="mb-4 mt-12 scroll-mt-28 font-display text-[1.6rem] font-semibold leading-snug tracking-tight text-ink first:mt-0 sm:text-3xl">
+              <h2 key={i} id={b.id} className="mb-4 mt-12 scroll-mt-28 font-display text-[1.5rem] font-bold leading-snug tracking-[-0.02em] text-ink first:mt-0 sm:text-3xl">
                 {b.text}
               </h2>
             );

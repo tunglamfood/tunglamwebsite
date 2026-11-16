@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useId, type ReactNode } from "react";
 import clsx from "clsx";
+import { inputClass } from "./styles";
 
 export type Lang = "en" | "ms" | "zh";
 export type L10n = Partial<Record<Lang, string>>;
@@ -17,14 +18,13 @@ export const LANGS: { key: Lang; label: string }[] = [
 export const EditLangContext = createContext<Lang>("en");
 export const useEditLang = () => useContext(EditLangContext);
 
-export const inputClass =
-  "w-full rounded-lg border border-line bg-white px-3 py-2 text-[0.95rem] text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-4 focus:ring-brand/10";
+export { inputClass };
 
 export function Field({ label, hint, children, className }: { label: string; hint?: ReactNode; children: ReactNode; className?: string }) {
   return (
     <div className={className}>
       <div className="mb-1.5 flex items-baseline justify-between gap-3">
-        <span className="text-sm font-semibold text-ink">{label}</span>
+        <span className="text-[0.8125rem] font-medium text-ink">{label}</span>
         {hint && <span className="text-xs text-muted">{hint}</span>}
       </div>
       {children}
@@ -36,8 +36,8 @@ function Dots({ filled }: { filled: Record<Lang, boolean> }) {
   return (
     <span className="inline-flex items-center gap-1" title="Translations filled: EN / BM / 中文">
       {LANGS.map((l) => (
-        <span key={l.key} className={clsx("inline-flex items-center gap-0.5 text-[0.65rem] font-semibold", filled[l.key] ? "text-leaf" : "text-muted/50")}>
-          <span className={clsx("size-1.5 rounded-full", filled[l.key] ? "bg-leaf" : "bg-line")} />
+        <span key={l.key} className={clsx("inline-flex items-center gap-0.5 text-[0.65rem] font-semibold", filled[l.key] ? "text-emerald-600" : "text-muted/50")}>
+          <span className={clsx("size-1.5 rounded-full", filled[l.key] ? "bg-emerald-500" : "bg-zinc-200")} />
           {l.label}
         </span>
       ))}
@@ -74,7 +74,7 @@ export function L10nField({
   return (
     <div>
       <div className="mb-1.5 flex flex-wrap items-baseline justify-between gap-2">
-        <label htmlFor={id} className="text-sm font-semibold text-ink">
+        <label htmlFor={id} className="text-[0.8125rem] font-medium text-ink">
           {label}
           {required && lang === "en" && <span className="text-brand"> *</span>}
         </label>
@@ -89,7 +89,7 @@ export function L10nField({
         <input id={id} value={current} onChange={(e) => set(e.target.value)} placeholder={placeholder} className={inputClass} />
       )}
       {lang !== "en" && value?.en && (
-        <p className="mt-1.5 line-clamp-3 rounded-md bg-sand/60 px-2.5 py-1.5 text-xs text-ink-soft">
+        <p className="mt-1.5 line-clamp-3 rounded-lg border border-dashed border-line bg-cream px-2.5 py-1.5 text-xs text-ink-soft">
           <span className="font-semibold">EN:</span> {value.en}
         </p>
       )}
@@ -106,7 +106,7 @@ export function L10nListField({ label, value, onChange, rows = 4, hint }: { labe
   return (
     <div>
       <div className="mb-1.5 flex flex-wrap items-baseline justify-between gap-2">
-        <label htmlFor={id} className="text-sm font-semibold text-ink">
+        <label htmlFor={id} className="text-[0.8125rem] font-medium text-ink">
           {label} <span className="font-normal text-muted">— {hint ?? "one per line"}</span>
         </label>
         <Dots filled={filled} />
@@ -119,7 +119,7 @@ export function L10nListField({ label, value, onChange, rows = 4, hint }: { labe
         className={clsx(inputClass, "resize-y leading-relaxed")}
       />
       {lang !== "en" && value?.en?.length ? (
-        <p className="mt-1.5 rounded-md bg-sand/60 px-2.5 py-1.5 text-xs text-ink-soft">
+        <p className="mt-1.5 rounded-lg border border-dashed border-line bg-cream px-2.5 py-1.5 text-xs text-ink-soft">
           <span className="font-semibold">EN:</span> {value.en.filter(Boolean).join(" · ")}
         </p>
       ) : null}
@@ -180,15 +180,15 @@ export function SelectInput({
 
 export function Toggle({ label, checked, onChange, description }: { label: string; checked: boolean; onChange: (v: boolean) => void; description?: string }) {
   return (
-    <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-line bg-white p-3">
+    <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-line bg-white p-3.5 transition-colors hover:border-zinc-300">
       <button
         type="button"
         role="switch"
         aria-checked={checked}
         onClick={() => onChange(!checked)}
-        className={clsx("relative mt-0.5 h-6 w-11 shrink-0 rounded-full transition", checked ? "bg-leaf" : "bg-line")}
+        className={clsx("relative mt-0.5 h-6 w-11 shrink-0 rounded-full transition-colors duration-200", checked ? "bg-emerald-500" : "bg-zinc-200")}
       >
-        <span className={clsx("absolute top-0.5 size-5 rounded-full bg-white shadow transition-all", checked ? "left-[1.375rem]" : "left-0.5")} />
+        <span className={clsx("absolute top-0.5 size-5 rounded-full bg-white shadow-[0_1px_3px_rgb(0_0_0/0.25)] transition-all duration-200", checked ? "left-[1.375rem]" : "left-0.5")} />
       </button>
       <span>
         <span className="block text-sm font-semibold text-ink">{label}</span>
@@ -231,12 +231,12 @@ export function SlugInput({ value, onChange, source, prefix }: { value: string; 
 
 export function Section({ title, description, children }: { title: string; description?: string; children: ReactNode }) {
   return (
-    <section className="rounded-2xl border border-line bg-white p-4 sm:p-6">
-      <div className="mb-5">
-        <h2 className="text-base font-semibold text-ink">{title}</h2>
+    <section className="rounded-2xl border border-line bg-white shadow-[0_1px_2px_rgb(0_0_0/0.03)]">
+      <div className="border-b border-line px-4 py-3.5 sm:px-6">
+        <h2 className="text-[0.95rem] font-semibold text-ink">{title}</h2>
         {description && <p className="mt-0.5 text-sm text-muted">{description}</p>}
       </div>
-      <div className="space-y-5">{children}</div>
+      <div className="space-y-5 p-4 sm:p-6">{children}</div>
     </section>
   );
 }

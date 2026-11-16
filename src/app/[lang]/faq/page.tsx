@@ -46,12 +46,12 @@ export default async function FaqPage({ params }: PageProps<"/[lang]/faq">) {
       <section className="container-x max-w-4xl space-y-12 py-10 sm:py-16">
         {groups.map((g) => (
           <div key={g.key}>
-            <h2 className="mb-5 font-display text-2xl font-semibold">{g.title}</h2>
+            <h2 className="mb-5 font-display text-xl font-bold tracking-[-0.015em] sm:text-2xl">{g.title}</h2>
             <FaqList items={g.items} withSchema={false} />
           </div>
         ))}
         <div className="rounded-[1.5rem] bg-ink p-6 text-white sm:rounded-[2rem] sm:p-10">
-          <h2 className="font-display text-2xl font-semibold">{d.faq.stillTitle}</h2>
+          <h2 className="font-display text-xl font-bold tracking-[-0.015em] sm:text-2xl">{d.faq.stillTitle}</h2>
           <p className="mt-2 text-white/75">{d.faq.stillText}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a href={whatsappLink()} target="_blank" rel="noopener" className={buttonClass("whatsapp", "md")}>

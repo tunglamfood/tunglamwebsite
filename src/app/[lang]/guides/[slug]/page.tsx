@@ -90,7 +90,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
       <header className="container-x grid items-center gap-6 py-6 sm:gap-10 sm:py-10 lg:grid-cols-2 lg:gap-14">
         <div>
           <p className="eyebrow mb-4">{d.guides.label}</p>
-          <h1 className="font-display text-[2rem] font-bold leading-tight tracking-tight sm:text-5xl">{title}</h1>
+          <h1 className="font-display text-[1.875rem] font-bold leading-[1.1] tracking-[-0.025em] sm:text-5xl">{title}</h1>
           <p className="mt-4 text-base leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">{t(g.lead, lang)}</p>
           <p className="mt-6 text-sm text-muted">
             {fmt(d.guides.byline, { year: SITE.foundingYear })} ·{" "}
@@ -107,7 +107,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
       <div className="container-x grid gap-8 py-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-x-14">
         {summary.length > 0 && (
           <section aria-labelledby="in-short" className="max-w-3xl rounded-2xl border border-line bg-sand/50 p-5 sm:p-7 lg:col-start-2 lg:row-start-1">
-            <h2 id="in-short" className="mb-4 font-display text-2xl font-semibold">{d.guides.quickAnswer}</h2>
+            <h2 id="in-short" className="mb-4 font-display text-xl font-bold tracking-[-0.015em] sm:text-2xl">{d.guides.quickAnswer}</h2>
             <ul className="space-y-3">
               {summary.map((s, i) => (
                 <li key={i} className="flex gap-3 leading-relaxed text-ink-soft">
@@ -141,21 +141,21 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
 
       {products.length > 0 && (
         <section className="container-x py-12">
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.guides.products}</h2>
-          <ProductGrid products={products} mobileLimit={4} />
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.guides.products}</h2>
+          <ProductGrid products={products} rail />
         </section>
       )}
 
       {faqs.length > 0 && (
         <section className="container-x max-w-4xl py-12">
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.guides.faqTitle}</h2>
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.guides.faqTitle}</h2>
           <FaqList items={faqs} />
         </section>
       )}
 
       {recipes.length > 0 && (
         <section className="container-x py-12">
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.guides.recipes}</h2>
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.guides.recipes}</h2>
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {recipes.map((r) => (
               <div key={r.slug}>
@@ -168,7 +168,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
 
       {related.length > 0 && (
         <section className="container-x py-12">
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.guides.more}</h2>
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.guides.more}</h2>
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {related.map((x) => (
               <GuideCard key={x.slug} guide={x} locale={lang} dict={d} />
@@ -179,7 +179,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
 
       <section className="container-x py-12">
         <div className="rounded-[1.5rem] bg-ink p-6 text-white sm:rounded-[2rem] sm:p-10">
-          <h2 className="font-display text-2xl font-semibold">{d.guides.ctaTitle}</h2>
+          <h2 className="font-display text-xl font-bold tracking-[-0.015em] sm:text-2xl">{d.guides.ctaTitle}</h2>
           <p className="mt-2 max-w-2xl text-white/75">{d.guides.ctaText}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a href={whatsappLink()} target="_blank" rel="noopener" className={buttonClass("whatsapp", "md")}>

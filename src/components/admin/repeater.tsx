@@ -26,11 +26,11 @@ export function Repeater<T>({
     [next[i], next[j]] = [next[j], next[i]];
     onChange(next);
   };
-  const btn = "grid size-7 place-items-center rounded-md text-muted hover:bg-cream hover:text-ink disabled:opacity-30";
+  const btn = "grid size-7 place-items-center rounded-md text-muted transition-colors hover:bg-white hover:text-ink disabled:opacity-30";
   return (
     <div className="space-y-3">
       {items.map((item, i) => (
-        <div key={i} className="rounded-lg border border-line bg-cream/50 p-3 sm:p-4">
+        <div key={i} className="rounded-xl border border-line bg-cream/60 p-3 sm:p-4">
           <div className="mb-3 flex items-center justify-between">
             <span className="text-xs font-semibold uppercase tracking-wider text-muted">{itemLabel(i)}</span>
             <div className="flex items-center gap-0.5">
@@ -51,7 +51,7 @@ export function Repeater<T>({
       <button
         type="button"
         onClick={() => onChange([...items, create()])}
-        className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-dashed border-line px-3 text-sm font-medium text-ink-soft hover:border-ink/30 hover:text-ink"
+        className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-dashed border-zinc-300 bg-white px-3 text-sm font-medium text-ink-soft transition-colors hover:border-zinc-400 hover:text-ink"
       >
         <Plus className="size-4" /> {addLabel}
       </button>

@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { Brand, Product } from "@/lib/data";
 import { localePath, t, type Locale } from "@/lib/i18n";
 import { mediaUrl } from "@/lib/media";
+import { Rail } from "@/components/ui/rail";
 
 export type ProductCardData = {
   slug: string;
@@ -36,9 +37,9 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
   return (
     <Link
       href={product.href}
-      className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-white shadow-[var(--shadow-card)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
+      className="group flex h-full flex-col rounded-2xl border border-line bg-white p-1.5 shadow-[var(--shadow-xs)] transition duration-300 ease-out hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-[var(--shadow-lift)] sm:p-2"
     >
-      <div className="relative aspect-square overflow-hidden border-b border-line/60 bg-white sm:aspect-[4/5]">
+      <div className="relative aspect-square overflow-hidden rounded-xl bg-[#f4f3f1] sm:aspect-[4/5]">
         {product.image && (
           <Image
             src={product.image}
@@ -46,26 +47,26 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
             fill
             priority={priority}
             sizes="(min-width: 1280px) 280px, (min-width: 768px) 30vw, 50vw"
-            className="object-contain p-1.5 transition duration-500 group-hover:scale-105 sm:p-5"
+            className="object-contain p-3 mix-blend-multiply transition duration-500 ease-out group-hover:scale-[1.05] sm:p-6"
           />
         )}
         {product.brand && (
-          <span className="absolute left-2 top-2 rounded-full bg-cream px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-ink-soft sm:left-3 sm:top-3 sm:px-2.5 sm:py-1 sm:text-[0.7rem]">
+          <span className="absolute left-1.5 top-1.5 rounded-md bg-white/95 px-1.5 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-ink-soft shadow-[var(--shadow-xs)] sm:left-2.5 sm:top-2.5 sm:px-2 sm:text-[0.66rem]">
             {product.brand}
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-1 p-3 sm:gap-1.5 sm:p-5">
-        <h3 className="line-clamp-2 min-h-[2.5rem] text-[0.9rem] font-semibold leading-snug text-ink group-hover:text-brand sm:min-h-0 sm:text-base">{product.name}</h3>
-        {product.short && <p className="hidden text-sm text-muted sm:line-clamp-2">{product.short}</p>}
-        <div className="mt-auto flex items-center justify-between pt-2 text-xs sm:pt-3 sm:text-sm">
+      <div className="flex flex-1 flex-col px-1.5 pb-1 pt-2.5 sm:px-2.5 sm:pb-2 sm:pt-4">
+        <h3 className="line-clamp-2 text-[0.8125rem] font-semibold leading-snug text-ink sm:text-[0.975rem]">{product.name}</h3>
+        {product.short && <p className="mt-1 hidden text-sm leading-snug text-muted sm:line-clamp-2">{product.short}</p>}
+        <div className="mt-auto flex items-center justify-between gap-2 pt-2.5 sm:pt-4">
           {product.netWeight ? (
-            <span className="rounded-full bg-cream px-2 py-0.5 font-medium text-ink-soft sm:px-2.5 sm:py-1">{product.netWeight}</span>
+            <span className="truncate rounded-md bg-sand px-1.5 py-0.5 text-[0.7rem] font-semibold text-ink-soft sm:px-2 sm:py-1 sm:text-xs">{product.netWeight}</span>
           ) : (
             <span />
           )}
-          <span className="grid size-7 place-items-center rounded-full bg-cream text-ink-soft transition group-hover:bg-brand group-hover:text-white sm:size-8">
-            <ArrowUpRight className="size-4" aria-hidden />
+          <span className="hidden size-8 shrink-0 place-items-center rounded-full border border-line text-ink-soft transition duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white sm:grid">
+            <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:rotate-45" aria-hidden />
           </span>
         </div>
       </div>
@@ -73,12 +74,21 @@ export function ProductCard({ product, priority = false }: { product: ProductCar
   );
 }
 
-/** `mobileLimit`: on phones show only the first N products (the rest appear from tablet width up). */
-export function ProductGrid({ products, priorityCount = 0, mobileLimit }: { products: ProductCardData[]; priorityCount?: number; mobileLimit?: number }) {
+/** `rail`: on phones show a swipeable row instead of the grid (for "featured"/"related" strips). */
+export function ProductGrid({ products, priorityCount = 0, rail, cols = "md:grid-cols-3 xl:grid-cols-4" }: { products: ProductCardData[]; priorityCount?: number; rail?: boolean; cols?: string }) {
+  if (rail) {
+    return (
+      <Rail grid="md:grid-cols-3 xl:grid-cols-4 sm:grid-cols-3" itemWidth="w-[44%]">
+        {products.map((p, i) => (
+          <ProductCard key={p.slug} product={p} priority={i < priorityCount} />
+        ))}
+      </Rail>
+    );
+  }
   return (
-    <ul className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4">
+    <ul className={`grid grid-cols-2 gap-2.5 sm:gap-4 lg:gap-5 ${cols}`}>
       {products.map((p, i) => (
-        <li key={p.slug} className={mobileLimit && i >= mobileLimit ? "hidden sm:block" : undefined}>
+        <li key={p.slug}>
           <ProductCard product={p} priority={i < priorityCount} />
         </li>
       ))}

@@ -29,7 +29,7 @@ export type InquiryFormLabels = {
 type Kind = keyof InquiryFormLabels["kinds"];
 
 const field =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-muted/70 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/10";
+  "w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-[0.95rem] text-ink shadow-[var(--shadow-xs)] placeholder:text-muted/70 outline-none transition hover:border-ink/20 focus:border-ink/40 focus:ring-4 focus:ring-ink/5";
 
 export function InquiryForm({
   labels,
@@ -64,8 +64,8 @@ export function InquiryForm({
 
   if (state.status === "success") {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-[var(--radius-card)] bg-leaf-soft p-8 text-center" role="status">
-        <CheckCircle2 className="size-10 text-leaf" aria-hidden />
+      <div className="flex animate-fade-up flex-col items-center gap-4 rounded-2xl border border-leaf/20 bg-leaf-soft p-8 text-center" role="status">
+        <span className="grid size-14 place-items-center rounded-full bg-white shadow-[var(--shadow-card)]"><CheckCircle2 className="size-7 text-leaf" aria-hidden /></span>
         <p className="text-lg font-semibold text-ink">{labels.success}</p>
       </div>
     );
@@ -86,7 +86,7 @@ export function InquiryForm({
 
       {options.length > 1 ? (
         <label className="sm:col-span-2">
-          <span className="mb-1.5 block text-sm font-medium text-ink-soft">{labels.kind}</span>
+          <span className="mb-1.5 block text-sm font-medium text-ink">{labels.kind}</span>
           <select name="kind" defaultValue={defaultKind} className={field}>
             {options.map((k) => (
               <option key={k} value={k}>
@@ -100,23 +100,23 @@ export function InquiryForm({
       )}
 
       <label>
-        <span className="mb-1.5 block text-sm font-medium text-ink-soft">{labels.name} *</span>
+        <span className="mb-1.5 block text-sm font-medium text-ink">{labels.name} *</span>
         <input name="name" required maxLength={120} autoComplete="name" className={field} />
       </label>
       <label>
-        <span className="mb-1.5 block text-sm font-medium text-ink-soft">{labels.company}</span>
+        <span className="mb-1.5 block text-sm font-medium text-ink">{labels.company}</span>
         <input name="company" maxLength={160} autoComplete="organization" className={field} />
       </label>
       <label>
-        <span className="mb-1.5 block text-sm font-medium text-ink-soft">{labels.phone}</span>
+        <span className="mb-1.5 block text-sm font-medium text-ink">{labels.phone}</span>
         <input name="phone" type="tel" maxLength={40} autoComplete="tel" inputMode="tel" className={field} />
       </label>
       <label>
-        <span className="mb-1.5 block text-sm font-medium text-ink-soft">{labels.email}</span>
+        <span className="mb-1.5 block text-sm font-medium text-ink">{labels.email}</span>
         <input name="email" type="email" maxLength={200} autoComplete="email" className={field} />
       </label>
       <label className="sm:col-span-2">
-        <span className="mb-1.5 block text-sm font-medium text-ink-soft">{labels.message}</span>
+        <span className="mb-1.5 block text-sm font-medium text-ink">{labels.message}</span>
         <textarea
           name="message"
           rows={5}
@@ -134,11 +134,11 @@ export function InquiryForm({
       )}
 
       <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center">
-        <button type="submit" disabled={pending} className={buttonClass("primary", "lg")}>
+        <button type="submit" disabled={pending} className={buttonClass("primary", "lg", "w-full sm:w-auto")}>
           {pending && <Loader2 className="size-4 animate-spin" aria-hidden />}
           {pending ? labels.sending : labels.submit}
         </button>
-        <a href={whatsappHref} target="_blank" rel="noopener" className={buttonClass("ghost", "lg")}>
+        <a href={whatsappHref} target="_blank" rel="noopener" className={buttonClass("secondary", "lg", "w-full sm:w-auto")}>
           <WhatsAppIcon className="size-5 text-[#1fa855]" />
           {labels.orWhatsapp}
         </a>

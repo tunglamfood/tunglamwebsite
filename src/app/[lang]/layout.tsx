@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../globals.css";
@@ -15,7 +15,7 @@ import { WhatsAppFab } from "@/components/layout/whatsapp-fab";
 import { getCatalog } from "@/lib/data";
 import { RevealInit } from "@/components/ui/reveal-init";
 
-const display = Outfit({ subsets: ["latin"], variable: "--font-display-face", display: "swap" });
+const display = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-display-face", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export function generateStaticParams() {
@@ -23,7 +23,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#d71920",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };

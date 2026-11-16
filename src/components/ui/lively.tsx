@@ -39,9 +39,9 @@ export function Marquee({ items, className }: { items: string[]; className?: str
   const row = (hidden: boolean) => (
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center">
       {items.map((it, i) => (
-        <li key={i} className="flex items-center whitespace-nowrap px-5 text-sm font-medium uppercase tracking-[0.14em] sm:px-7">
+        <li key={i} className="flex items-center whitespace-nowrap px-5 text-[0.8125rem] font-medium uppercase tracking-[0.16em] sm:px-7">
           {it}
-          <span className="ml-10 size-1.5 rounded-full bg-brand sm:ml-14" aria-hidden />
+          <span className="ml-10 size-1 rounded-full bg-brand/70 sm:ml-14" aria-hidden />
         </li>
       ))}
     </ul>

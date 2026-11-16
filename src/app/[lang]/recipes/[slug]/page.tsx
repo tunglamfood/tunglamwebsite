@@ -113,7 +113,7 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
           <p className="eyebrow mb-4">
             {t(r.cuisine, lang)} · {t(r.course, lang)}
           </p>
-          <h1 className="font-display text-[2rem] font-bold leading-tight tracking-tight sm:text-5xl">{title}</h1>
+          <h1 className="font-display text-[1.875rem] font-bold leading-[1.1] tracking-[-0.025em] sm:text-5xl">{title}</h1>
           <p className="mt-4 text-base leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">{t(r.intro, lang) ?? t(r.excerpt, lang)}</p>
           <ul className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
             {meta.map((m, i) => (
@@ -138,7 +138,7 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
       <div className="container-x grid gap-10 py-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-2xl border border-line bg-sand/50 p-5 sm:p-8">
-            <h2 className="mb-5 font-display text-2xl font-semibold">{d.recipes.ingredients}</h2>
+            <h2 className="mb-5 font-display text-xl font-bold tracking-[-0.015em] sm:text-2xl">{d.recipes.ingredients}</h2>
             <div className="space-y-6">
               {r.ingredients.map((g, gi) => (
                 <div key={gi}>
@@ -158,7 +158,7 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
         </aside>
 
         <div>
-          <h2 className="mb-6 font-display text-2xl font-semibold">{d.recipes.method}</h2>
+          <h2 className="mb-5 font-display text-xl font-bold tracking-[-0.015em] sm:mb-6 sm:text-2xl">{d.recipes.method}</h2>
           <ol className="space-y-6">
             {r.steps.map((s, i) => (
               <li key={i} id={`step-${i + 1}`} className="flex gap-5">
@@ -187,14 +187,14 @@ export default async function RecipePage({ params }: PageProps<"/[lang]/recipes/
 
       {used.length > 0 && (
         <section className="container-x py-12">
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.recipes.productsUsed}</h2>
-          <ProductGrid products={used} mobileLimit={4} />
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.recipes.productsUsed}</h2>
+          <ProductGrid products={used} rail />
         </section>
       )}
 
       {more.length > 0 && (
         <section className="container-x py-12">
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.recipes.more}</h2>
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.recipes.more}</h2>
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {more.map((x) => (
               <div key={x.slug}>

@@ -117,7 +117,7 @@ export function CartView({
       <div className="space-y-4 rounded-2xl border border-line bg-white p-4 sm:p-5 lg:sticky lg:top-24">
         <div className="flex items-baseline justify-between">
           <span className="text-ink-soft">{labels.subtotal}</span>
-          <span className="font-display text-2xl font-semibold text-ink">{money(total, currency)}</span>
+          <span className="font-display text-xl font-bold tracking-[-0.015em] text-ink sm:text-2xl">{money(total, currency)}</span>
         </div>
         {hasTbc && <p className="rounded-xl bg-gold-soft px-3 py-2 text-xs text-ink-soft">{labels.tbcNote}</p>}
 

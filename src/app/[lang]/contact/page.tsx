@@ -75,7 +75,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
         </div>
       </section>
       <section className="container-x">
-        <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.contact.mapTitle}</h2>
+        <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.contact.mapTitle}</h2>
         <iframe
           title="Tung Lam Food location map"
           src={`https://maps.google.com/maps?q=${SITE.geo.lat},${SITE.geo.lng}&z=15&output=embed`}

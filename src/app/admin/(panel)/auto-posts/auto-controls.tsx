@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, Play, RefreshCw, RotateCcw, Trash2 } from "lucide-react";
 import { addAutoTopic, checkAutoImages, deleteAutoPost, retryAutoPost, runAutoNow, setAutoEnabled, type ActionResult } from "@/lib/admin/actions";
 import { Toggle, inputClass } from "@/components/admin/fields";
+import { btnClass, iconBtnClass } from "@/components/admin/ui";
 
 function useAction() {
   const [pending, start] = useTransition();
@@ -17,11 +18,11 @@ function useAction() {
       setMsg(r.ok ? { ok: true, text: r.message ?? "Done." } : { ok: false, text: r.error });
       router.refresh();
     });
-  const note = msg && <p className={msg.ok ? "text-sm text-leaf" : "text-sm text-brand-700"}>{msg.text}</p>;
+  const note = msg && <p className={msg.ok ? "animate-fade-in rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700" : "animate-fade-in rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"}>{msg.text}</p>;
   return { pending, run, note };
 }
 
-const btn = "inline-flex h-9 items-center gap-2 rounded-lg border border-line bg-white px-3 text-sm font-medium text-ink-soft hover:text-ink disabled:opacity-50";
+const btn = btnClass("secondary");
 
 export function AutoToggle({ enabled }: { enabled: boolean }) {
   const { pending, run, note } = useAction();
@@ -43,7 +44,7 @@ export function RunButtons() {
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap gap-2">
-        <button type="button" disabled={pending} onClick={() => run(() => runAutoNow("recipe"))} className={btn}>
+        <button type="button" disabled={pending} onClick={() => run(() => runAutoNow("recipe"))} className={btnClass("primary")}>
           {pending ? <Loader2 className="size-4 animate-spin" /> : <Play className="size-4" />} Write a recipe now
         </button>
         <button type="button" disabled={pending} onClick={() => run(() => runAutoNow("guide"))} className={btn}>
@@ -89,7 +90,7 @@ export function AddTopic() {
         <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. Fish ball curry for lok-lok" className={inputClass} />
       </div>
       <input value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Main search phrase in English (optional), e.g. curry fish balls" className={inputClass} />
-      <button type="submit" disabled={pending || title.trim().length < 4} className={btn}>
+      <button type="submit" disabled={pending || title.trim().length < 4} className={btnClass("primary")}>
         {pending && <Loader2 className="size-4 animate-spin" />} Add to queue
       </button>
       {note}
@@ -103,11 +104,11 @@ export function PostActions({ id, status }: { id: string; status: string }) {
   return (
     <span className="flex gap-1">
       {(status === "rejected" || status === "failed") && (
-        <button type="button" title="Try this topic again" disabled={pending} onClick={() => run(() => retryAutoPost(id))} className="grid size-7 place-items-center rounded-md text-muted hover:bg-cream hover:text-ink">
+        <button type="button" title="Try this topic again" disabled={pending} onClick={() => run(() => retryAutoPost(id))} className={iconBtnClass}>
           <RotateCcw className="size-3.5" />
         </button>
       )}
-      <button type="button" title="Remove" disabled={pending} onClick={() => run(() => deleteAutoPost(id))} className="grid size-7 place-items-center rounded-md text-muted hover:bg-cream hover:text-brand">
+      <button type="button" title="Remove" disabled={pending} onClick={() => run(() => deleteAutoPost(id))} className={`${iconBtnClass} hover:!bg-red-50 hover:!text-red-600`}>
         {pending ? <Loader2 className="size-3.5 animate-spin" /> : <Trash2 className="size-3.5" />}
       </button>
     </span>

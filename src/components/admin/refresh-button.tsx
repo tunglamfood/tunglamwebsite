@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { Check, Loader2, RefreshCw } from "lucide-react";
 import { refreshWebsite } from "@/lib/admin/actions";
+import { btnClass } from "./ui";
 
 /** Expires the public website cache (saves already do this automatically). */
 export function RefreshButton() {
@@ -19,9 +20,9 @@ export function RefreshButton() {
           setTimeout(() => setDone(false), 2000);
         })
       }
-      className="inline-flex h-9 items-center gap-2 rounded-lg border border-line bg-white px-3 text-sm font-medium text-ink-soft hover:text-ink"
+      className={btnClass("secondary")}
     >
-      {pending ? <Loader2 className="size-4 animate-spin" /> : done ? <Check className="size-4 text-leaf" /> : <RefreshCw className="size-4" />}
+      {pending ? <Loader2 className="size-4 animate-spin" /> : done ? <Check className="size-4 text-emerald-600" /> : <RefreshCw className="size-4" />}
       Refresh website
     </button>
   );

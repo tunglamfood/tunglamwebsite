@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
 import { getPortalLang } from "@/lib/portal/context";
 
-const display = Outfit({ subsets: ["latin"], variable: "--font-display-face", display: "swap" });
+const display = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-display-face", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {

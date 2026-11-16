@@ -30,7 +30,7 @@ export function PageTitle({ title, sub, right }: { title: string; sub?: React.Re
   return (
     <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
       <div>
-        <h1 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{title}</h1>
+        <h1 className="font-display text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl">{title}</h1>
         {sub && <p className="mt-1 text-sm text-muted">{sub}</p>}
       </div>
       {right}

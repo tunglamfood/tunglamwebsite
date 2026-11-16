@@ -15,7 +15,7 @@ NEWPAGES site at tunglamfood.com. Goal: a modern design and **better SEO than th
 ```
 src/app/[lang]/...      pages (en at root via src/proxy.ts rewrite, /ms, /zh)
 src/app/sitemap.ts, robots.ts, llms.txt/, manifest.ts, api/revalidate/
-src/components/         layout/, product/, recipe/, forms/, ui/, seo/, brand/
+src/components/         layout/, product/, recipe/, forms/, ui/, seo/, brand/, admin/, reactbits/ (vendored React Bits, lint-ignored)
 src/lib/                data.ts (queries), seo.ts (metadata + JSON-LD), i18n.ts, site.ts (company facts), supabase/, actions/
 src/i18n/dictionaries/  en.ts (source of truth for keys), ms.ts, zh.ts
 src/data/               legacy-redirects.json (generated)
@@ -48,6 +48,12 @@ Prices, order numbers and order placement are ERP database functions (`sales_pri
 (`PORTAL_DEMO_OTP` for the demo; otherwise a real code by OneWay SMS, `src/lib/portal/otp.ts`). Session = signed cookie `tl_portal` (`src/lib/portal/session.ts`),
 re-checked against `portal_accounts` on every request. Cart lives in localStorage per login+dealer.
 Plan and phases: `docs/DEALER-PORTAL-PLAN.md`. Logins, catalogue grouping and reps are managed in the ERP → Sales → Dealer portal.
+
+## Design system
+Neutral canvas, near-black primary buttons, Tung Lam red as accent. Tokens in `src/app/globals.css` (`.admin-theme` overrides for /admin).
+Site buttons: `buttonClass()` (`src/components/ui/button.tsx`); admin buttons/cards/badges/tables: `src/components/admin/ui.tsx`.
+Phones get their own layouts (swipe rails via `ui/rail.tsx`, drawers, stacked rows), not shrunken desktop. Language links are plain
+`<a>` on purpose (prefetching /ms or /zh breaks Next's route prediction for /about etc.).
 
 ## Commands
 `npm run dev` · `npm run build` · `npm run typecheck` · `npm run lint` · `npm run qa` · `npm run db:seed` · `npm run image:generate`

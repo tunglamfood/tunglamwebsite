@@ -70,7 +70,7 @@ export async function CategoryView({ category, catalog, locale, dict: d }: { cat
       {(intro.length > 0 || heroImage) && (
         <section className="container-x grid items-start gap-10 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div className="reveal prose-tl text-lg" data-dir="left">
-            <h2 className="mb-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{name}</h2>
+            <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:text-4xl">{name}</h2>
             {intro.map((para, i) => (
               <p key={i}>{para}</p>
             ))}
@@ -87,7 +87,7 @@ export async function CategoryView({ category, catalog, locale, dict: d }: { cat
 
       {faqs.length > 0 && (
         <section className="container-x max-w-4xl py-12">
-          <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight">{d.products.faqTitle}</h2>
+          <h2 className="mb-5 font-display text-[1.625rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink sm:mb-8 sm:text-4xl">{d.products.faqTitle}</h2>
           <FaqList items={faqs} />
         </section>
       )}
