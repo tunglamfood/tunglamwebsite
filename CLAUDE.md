@@ -54,6 +54,8 @@ Neutral canvas, near-black primary buttons, Tung Lam red as accent. Tokens in `s
 Site buttons: `buttonClass()` (`src/components/ui/button.tsx`); admin buttons/cards/badges/tables: `src/components/admin/ui.tsx`.
 Phones get their own layouts (swipe rails via `ui/rail.tsx`, drawers, stacked rows), not shrunken desktop. Language links are plain
 `<a>` on purpose (prefetching /ms or /zh breaks Next's route prediction for /about etc.).
+On the server `usePathname()` returns the internal `/en/...` path for English pages: compare paths through `publicPath()`
+(`components/layout/nav.ts`) or React throws hydration error #418. Portal UI helpers: `components/portal/bits.tsx` (`pbtn`, `pcard`, `OrderList`).
 
 ## Commands
 `npm run dev` · `npm run build` · `npm run typecheck` · `npm run lint` · `npm run qa` · `npm run db:seed` · `npm run image:generate`

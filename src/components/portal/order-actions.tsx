@@ -2,9 +2,10 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, RotateCcw, X } from "lucide-react";
+import { ArrowUpRight, Loader2, RotateCcw, X } from "lucide-react";
 import { useCart } from "./cart";
 import { cancelOrder } from "@/lib/portal/actions";
+import { pbtn } from "./bits";
 
 /** "Order again" puts the order's items back in the cart; "Cancel" works until the office confirms. */
 export function OrderActions({
@@ -30,7 +31,7 @@ export function OrderActions({
       <button
         type="button"
         onClick={() => { addMany(lines); router.push("/portal/cart"); }}
-        className="inline-flex h-10 items-center gap-2 rounded-full bg-ink px-4 text-sm font-semibold text-white hover:bg-ink/90"
+        className={pbtn("primary")}
       >
         <RotateCcw className="size-4" /> {labels.reorder}
       </button>
@@ -46,12 +47,12 @@ export function OrderActions({
               router.refresh();
             });
           }}
-          className="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-4 text-sm font-semibold text-brand hover:bg-brand-50 disabled:opacity-60"
+          className={pbtn("danger")}
         >
           {pending ? <Loader2 className="size-4 animate-spin" /> : <X className="size-4" />} {labels.cancel}
         </button>
       )}
-      {error && <span className="self-center text-sm text-brand-700">{error}</span>}
+      {error && <span className="self-center text-sm text-red-700">{error}</span>}
     </div>
   );
 }
@@ -63,13 +64,14 @@ export function ReorderButton({ scope, lines, title, text }: { scope: string; li
     <button
       type="button"
       onClick={() => { addMany(lines); router.push("/portal/cart"); }}
-      className="flex w-full items-center gap-4 rounded-2xl border border-line bg-white p-4 text-left transition hover:border-ink/30"
+      className="group flex w-full items-center gap-4 rounded-2xl border border-line bg-white p-4 text-left shadow-[var(--shadow-xs)] transition duration-300 hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-[var(--shadow-lift)] sm:p-5"
     >
-      <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-sand text-ink"><RotateCcw className="size-5" /></span>
-      <span>
+      <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-sky-50 text-sky-600"><RotateCcw className="size-5" /></span>
+      <span className="min-w-0 flex-1">
         <span className="block font-semibold text-ink">{title}</span>
-        <span className="block text-sm text-muted">{text}</span>
+        <span className="block truncate text-sm text-muted">{text}</span>
       </span>
+      <ArrowUpRight className="size-5 shrink-0 text-muted transition duration-300 group-hover:rotate-45 group-hover:text-ink" aria-hidden />
     </button>
   );
 }

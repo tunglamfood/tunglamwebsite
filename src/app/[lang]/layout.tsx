@@ -14,6 +14,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { WhatsAppFab } from "@/components/layout/whatsapp-fab";
 import { getCatalog } from "@/lib/data";
 import { RevealInit } from "@/components/ui/reveal-init";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 const display = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-display-face", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
@@ -58,11 +59,12 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   const { series } = await getCatalog();
 
   return (
-    <html lang={LOCALE_META[lang].htmlLang} className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+    <html lang={LOCALE_META[lang].htmlLang} className={`${display.variable} ${body.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="flex min-h-dvh flex-col">
         {/* Enables scroll-reveal styles only when JS runs (content stays visible without it). */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <RevealInit />
+        <ScrollToTop />
         <a
           href="#main"
           className="sr-only z-[100] rounded-full bg-ink px-4 py-2 text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"

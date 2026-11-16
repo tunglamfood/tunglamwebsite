@@ -45,8 +45,19 @@ export function buildNav(locale: Locale, d: Dictionary, series: Category[]): Nav
   ];
 }
 
+/**
+ * The URL the visitor sees. English pages are rendered internally under /en (proxy rewrite), so on the
+ * server usePathname() returns "/en/products" while the browser has "/products"; normalise both to the
+ * public form so server and client render the same active state (otherwise: hydration error #418).
+ */
+export function publicPath(pathname: string) {
+  if (pathname === "/en") return "/";
+  return pathname.startsWith("/en/") ? pathname.slice(3) : pathname;
+}
+
 /** True when `pathname` is `href` or below it (the home link only matches itself). */
 export function isActive(pathname: string, href: string) {
-  if (href === "/" || /^\/(ms|zh)$/.test(href)) return pathname === href;
-  return pathname === href || pathname.startsWith(`${href}/`);
+  const p = publicPath(pathname);
+  if (href === "/" || /^\/(ms|zh)$/.test(href)) return p === href;
+  return p === href || p.startsWith(`${href}/`);
 }

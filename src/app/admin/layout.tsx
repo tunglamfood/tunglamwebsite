@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 /** Separate root layout for /admin (no public header/footer, never indexed). */
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={body.variable}>
+    <html lang="en" className={body.variable} data-scroll-behavior="smooth">
       <body className="admin-theme min-h-dvh antialiased">{children}</body>
     </html>
   );

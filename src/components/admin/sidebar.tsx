@@ -26,6 +26,7 @@ import {
   X,
 } from "lucide-react";
 import { logout, refreshWebsite } from "@/lib/admin/actions";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 const GROUPS = [
   { label: "Overview", items: [{ href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true }] },
@@ -234,6 +235,7 @@ export function AdminShell({ newInquiries, children }: { newInquiries: number; c
 
   return (
     <>
+      <ScrollToTop />
       {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 border-r border-line bg-white lg:block">
         <SidebarNav newInquiries={newInquiries} pathname={pathname} />

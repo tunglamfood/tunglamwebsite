@@ -7,6 +7,7 @@ import { submitInquiry, type InquiryState } from "@/lib/actions/inquiry";
 import { buttonClass } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import type { Locale } from "@/lib/i18n";
+import { publicPath } from "@/components/layout/nav";
 
 export type InquiryFormLabels = {
   name: string;
@@ -74,7 +75,7 @@ export function InquiryForm({
   return (
     <form ref={formRef} action={action} className="grid gap-4 sm:grid-cols-2" noValidate={false}>
       <input type="hidden" name="locale" value={locale} />
-      <input type="hidden" name="page_url" value={pathname ?? ""} />
+      <input type="hidden" name="page_url" value={publicPath(pathname ?? "")} />
       <input ref={startedRef} type="hidden" name="started_at" defaultValue="" />
       {productSlug && <input type="hidden" name="product_slug" value={productSlug} />}
       {/* Honeypot — hidden from humans. */}

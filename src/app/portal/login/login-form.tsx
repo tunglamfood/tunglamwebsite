@@ -7,11 +7,11 @@ import { requestCode, setPortalLang, verifyCode, type LoginState } from "@/lib/p
 import { LANG_LABEL, PORTAL_LANGS, pfmt, type PortalDict, type PortalLang } from "@/lib/portal/i18n";
 import { showPhone, normalisePhone } from "@/lib/portal/phone";
 import { PhoneField } from "@/components/portal/phone-field";
+import { pbtn } from "@/components/portal/bits";
 
 const field =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-lg text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-4 focus:ring-brand/10";
-const primary =
-  "inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand text-base font-semibold text-white transition hover:bg-brand-600 disabled:opacity-60";
+  "w-full rounded-xl border border-line bg-white px-4 py-3 text-lg text-ink shadow-[var(--shadow-xs)] outline-none transition placeholder:text-muted/60 hover:border-ink/20 focus:border-ink/40 focus:ring-4 focus:ring-ink/5";
+const primary = pbtn("primary", "lg", "w-full");
 
 export function LoginForm({ labels, lang }: { labels: PortalDict["login"]; lang: PortalLang }) {
   // Which number a code was sent to; null while still asking for the number.
@@ -26,7 +26,7 @@ export function LoginForm({ labels, lang }: { labels: PortalDict["login"]; lang:
   const [langPending, startLang] = useTransition();
   const codeError = codeState.step === "code" && codeState.phone === phone ? codeState.error : undefined;
 
-  const errorText = (e?: string) => (e ? (labels as Record<string, string>)[e] ?? labels.badCode : null);
+  const errorText = (e?: string) => (e ? (labels as unknown as Record<string, string>)[e] ?? labels.badCode : null);
 
   return (
     <div>
@@ -34,7 +34,7 @@ export function LoginForm({ labels, lang }: { labels: PortalDict["login"]; lang:
         <form action={sendAction} className="space-y-4">
           <PhoneField label={labels.phone} />
           {phoneState.step === "phone" && phoneState.error && (
-            <p role="alert" className="rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700">{errorText(phoneState.error)}</p>
+            <p role="alert" className="animate-fade-in rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">{errorText(phoneState.error)}</p>
           )}
           <button type="submit" disabled={sending} className={primary}>
             {sending && <Loader2 className="size-4 animate-spin" aria-hidden />}
@@ -43,7 +43,7 @@ export function LoginForm({ labels, lang }: { labels: PortalDict["login"]; lang:
         </form>
       ) : (
         <form action={verifyAction} className="space-y-4">
-          <p className="text-sm text-ink-soft">{pfmt(labels.codeSent, { phone: showPhone(normalisePhone(phone) ?? phone) })}</p>
+          <p className="animate-fade-in rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">{pfmt(labels.codeSent, { phone: showPhone(normalisePhone(phone) ?? phone) })}</p>
           <input type="hidden" name="phone" value={phone} />
           <label className="block">
             <span className="mb-1.5 block text-sm font-semibold text-ink">{labels.code}</span>
@@ -59,26 +59,26 @@ export function LoginForm({ labels, lang }: { labels: PortalDict["login"]; lang:
             />
           </label>
           {codeError && (
-            <p role="alert" className="rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700">{errorText(codeError)}</p>
+            <p role="alert" className="animate-fade-in rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">{errorText(codeError)}</p>
           )}
           <button type="submit" disabled={verifying} className={primary}>
             {verifying && <Loader2 className="size-4 animate-spin" aria-hidden />}
             {verifying ? labels.verifying : labels.verify}
           </button>
-          <button type="button" onClick={() => setPhone(null)} className="w-full text-sm font-medium text-ink-soft hover:text-ink">
+          <button type="button" onClick={() => setPhone(null)} className="w-full rounded-lg py-1.5 text-sm font-medium text-ink-soft transition-colors hover:bg-sand hover:text-ink">
             {labels.changePhone}
           </button>
         </form>
       )}
 
-      <div className="mt-8 flex justify-center gap-1">
+      <div className="mx-auto mt-8 grid w-fit grid-cols-3 gap-1 rounded-xl bg-sand p-1">
         {PORTAL_LANGS.map((l) => (
           <button
             key={l}
             type="button"
             disabled={langPending}
             onClick={() => startLang(async () => { await setPortalLang(l); router.refresh(); })}
-            className={`rounded-full px-3 py-1 text-xs font-semibold ${l === lang ? "bg-ink text-white" : "text-ink-soft hover:bg-sand"}`}
+            className={`rounded-lg px-4 py-1.5 text-xs font-semibold transition ${l === lang ? "bg-white text-ink shadow-[var(--shadow-card)]" : "text-ink-soft hover:text-ink"}`}
           >
             {LANG_LABEL[l]}
           </button>

@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { LogOut } from "lucide-react";
+import { ArrowLeftRight, ChevronRight, LogOut } from "lucide-react";
 import { requirePortal, getPortalDict } from "@/lib/portal/context";
 import { logout } from "@/lib/portal/actions";
 import { showPhone } from "@/lib/portal/phone";
 import { whatsappLink } from "@/lib/site";
-import { PageTitle } from "@/components/portal/bits";
+import { PageTitle, pcard } from "@/components/portal/bits";
 import { WhatsAppIcon } from "@/components/ui/icons";
 
 export const metadata = { title: "Account" };
@@ -21,37 +21,62 @@ export default async function PortalAccount() {
         [d.account.terms, c.paymentTerms],
       ]
     : [];
+  const who = ctx.account.name || showPhone(ctx.account.phone);
+  const initials = who.replace(/[^\p{L}\p{N} ]/gu, "").trim().split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase() || "TL";
+  const row = "flex h-14 w-full items-center gap-3 px-4 text-left font-medium transition-colors sm:px-5";
 
   return (
     <>
       <PageTitle title={d.account.title} />
-      <div className="space-y-4">
-        <dl className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">
-          {rows.filter(([, v]) => v).map(([k, v]) => (
-            <div key={k} className="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr]">
-              <dt className="text-sm text-muted">{k}</dt>
-              <dd className="whitespace-pre-wrap text-ink">{v}</dd>
+      <div className="grid gap-4 sm:gap-5 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
+        <div className={`${pcard} overflow-hidden`}>
+          <div className="flex items-center gap-4 border-b border-line p-4 sm:p-5">
+            <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-brand text-lg font-bold text-white">{initials}</span>
+            <div className="min-w-0">
+              <p className="truncate text-lg font-semibold text-ink">{who}</p>
+              <p className="text-sm text-muted">
+                {d.account.signedIn} {showPhone(ctx.account.phone)}
+              </p>
             </div>
-          ))}
-          <div className="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr]">
-            <dt className="text-sm text-muted">{d.account.signedIn}</dt>
-            <dd className="text-ink">{showPhone(ctx.account.phone)}{ctx.account.name ? ` · ${ctx.account.name}` : ""}</dd>
           </div>
-        </dl>
+          <dl className="divide-y divide-line">
+            {rows
+              .filter(([, v]) => v)
+              .map(([k, v]) => (
+                <div key={k} className="grid gap-0.5 px-4 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-4 sm:px-5">
+                  <dt className="text-sm text-muted">{k}</dt>
+                  <dd className="whitespace-pre-wrap font-medium text-ink">{v}</dd>
+                </div>
+              ))}
+          </dl>
+        </div>
 
-        {ctx.customers.length > 1 && (
-          <Link href="/portal/dealers" className="flex h-11 items-center justify-center rounded-full border border-line bg-white font-semibold text-ink hover:border-ink/30">
-            {d.account.switchDealer}
-          </Link>
-        )}
-        <a href={whatsappLink()} target="_blank" rel="noopener" className="flex h-11 items-center justify-center gap-2 rounded-full bg-[#25d366] font-semibold text-white">
-          <WhatsAppIcon /> {d.account.support}
-        </a>
-        <form action={logout}>
-          <button className="flex h-11 w-full items-center justify-center gap-2 rounded-full border border-line bg-white font-semibold text-brand hover:bg-brand-50">
-            <LogOut className="size-4" /> {d.account.logout}
-          </button>
-        </form>
+        <div className={`${pcard} divide-y divide-line overflow-hidden`}>
+          {ctx.customers.length > 1 && (
+            <Link href="/portal/dealers" className={`${row} text-ink hover:bg-cream`}>
+              <span className="grid size-9 place-items-center rounded-xl bg-sand text-ink-soft">
+                <ArrowLeftRight className="size-4" aria-hidden />
+              </span>
+              <span className="flex-1">{d.account.switchDealer}</span>
+              <ChevronRight className="size-4 text-muted" aria-hidden />
+            </Link>
+          )}
+          <a href={whatsappLink()} target="_blank" rel="noopener" className={`${row} text-ink hover:bg-cream`}>
+            <span className="grid size-9 place-items-center rounded-xl bg-[#1fa855]/10 text-[#1fa855]">
+              <WhatsAppIcon className="size-[1.125rem]" />
+            </span>
+            <span className="flex-1">{d.account.support}</span>
+            <ChevronRight className="size-4 text-muted" aria-hidden />
+          </a>
+          <form action={logout}>
+            <button className={`${row} text-red-600 hover:bg-red-50`}>
+              <span className="grid size-9 place-items-center rounded-xl bg-red-50">
+                <LogOut className="size-4" aria-hidden />
+              </span>
+              <span className="flex-1">{d.account.logout}</span>
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

@@ -30,6 +30,7 @@ const en = {
     badCode: "That code is not correct. Please try again.",
     smsUnavailable: "We can't send codes right now. Please contact Tung Lam.",
     apply: "Not a dealer yet? Apply for wholesale",
+    points: ["Your own dealer prices", "Order any time, from any phone", "Track every order until delivery"],
   },
   home: {
     hello: "Hello, {name}",
@@ -67,6 +68,7 @@ const en = {
     count: "{n} products",
     usual: "My usual",
     usually: "Usually {qty}",
+    viewCart: "View cart",
   },
   cart: {
     title: "Cart",
@@ -133,6 +135,7 @@ const en = {
     back: "All orders",
     pdf: "Download PDF",
     placedHold: "Our office will review your account and contact you before confirming this order.",
+    cols: { order: "Order", placed: "Placed", delivery: "Delivery", items: "Items", total: "Total", status: "Status" },
   },
   account: {
     title: "Account",
@@ -173,6 +176,7 @@ const ms: PortalDict = {
     badCode: "Kod itu tidak betul. Sila cuba lagi.",
     smsUnavailable: "Kami tidak dapat menghantar kod sekarang. Sila hubungi Tung Lam.",
     apply: "Belum menjadi pengedar? Mohon borong",
+    points: ["Harga pengedar anda sendiri", "Pesan bila-bila masa, dari mana-mana telefon", "Jejak setiap pesanan hingga dihantar"],
   },
   home: {
     hello: "Hai, {name}",
@@ -210,6 +214,7 @@ const ms: PortalDict = {
     count: "{n} produk",
     usual: "Biasa saya",
     usually: "Biasanya {qty}",
+    viewCart: "Lihat troli",
   },
   cart: {
     title: "Troli",
@@ -276,6 +281,7 @@ const ms: PortalDict = {
     back: "Semua pesanan",
     pdf: "Muat turun PDF",
     placedHold: "Pejabat kami akan menyemak akaun anda dan menghubungi anda sebelum mengesahkan pesanan ini.",
+    cols: { order: "Pesanan", placed: "Dibuat", delivery: "Penghantaran", items: "Item", total: "Jumlah", status: "Status" },
   },
   account: {
     title: "Akaun",
@@ -314,6 +320,7 @@ const zh: PortalDict = {
     badCode: "验证码不正确，请重试。",
     smsUnavailable: "目前无法发送验证码，请联系东临。",
     apply: "还不是经销商？申请批发",
+    points: ["您的专属经销价", "随时随地用手机下单", "全程跟踪每一张订单"],
   },
   home: {
     hello: "您好，{name}",
@@ -351,6 +358,7 @@ const zh: PortalDict = {
     count: "{n} 款产品",
     usual: "我的常订",
     usually: "通常 {qty}",
+    viewCart: "查看购物车",
   },
   cart: {
     title: "购物车",
@@ -417,6 +425,7 @@ const zh: PortalDict = {
     back: "全部订单",
     pdf: "下载 PDF",
     placedHold: "我们会审核您的账户，并在确认此订单前与您联系。",
+    cols: { order: "订单", placed: "下单日期", delivery: "送货日期", items: "品项", total: "总额", status: "状态" },
   },
   account: {
     title: "账户",

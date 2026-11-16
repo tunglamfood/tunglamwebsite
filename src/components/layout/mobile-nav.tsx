@@ -15,6 +15,9 @@ import { isActive, type NavItem } from "./nav";
 
 const subscribe = () => () => {};
 
+/** Short language names that fit the three-way switch on phones. */
+const SHORT_NAME: Record<Locale, string> = { en: "English", ms: "Malay", zh: "中文" };
+
 /** Phone/tablet menu: a full-height sheet that slides in from the right. */
 export function MobileNav({
   items,
@@ -138,7 +141,7 @@ export function MobileNav({
 
           <div className="mt-5 px-3">
             <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted">{languageLabel}</p>
-            <div className="grid grid-cols-3 gap-1 rounded-xl bg-sand p-1">
+            <div className="grid grid-cols-3 gap-1 rounded-2xl bg-sand p-1">
               {LOCALES.map((l) => (
                 // Plain <a>: a language switch is a full page load (see language-switcher.tsx).
                 <a
@@ -146,9 +149,9 @@ export function MobileNav({
                   href={localePath(l, base)}
                   hrefLang={LOCALE_META[l].hreflang}
                   aria-current={l === locale ? "true" : undefined}
-                  className="rounded-lg py-2 text-center text-sm font-semibold text-ink-soft transition aria-[current]:bg-white aria-[current]:text-ink aria-[current]:shadow-[var(--shadow-card)]"
+                  className="flex h-11 items-center justify-center rounded-xl text-[0.95rem] font-semibold text-ink-soft transition active:bg-white/60 aria-[current]:bg-white aria-[current]:text-ink aria-[current]:shadow-[var(--shadow-card)]"
                 >
-                  {LOCALE_META[l].label}
+                  {SHORT_NAME[l]}
                 </a>
               ))}
             </div>

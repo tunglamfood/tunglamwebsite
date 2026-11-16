@@ -1,5 +1,6 @@
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { pfmt } from "@/lib/portal/i18n";
+import { showPhone } from "@/lib/portal/phone";
 import { PortalShell } from "@/components/portal/shell";
 
 export default async function PortalAppLayout({ children }: { children: React.ReactNode }) {
@@ -9,11 +10,12 @@ export default async function PortalAppLayout({ children }: { children: React.Re
     <PortalShell
       scope={`${ctx.account.id}:${ctx.customer?.code ?? "none"}`}
       lang={lang}
-      labels={d.nav}
+      labels={{ nav: d.nav, orderingFor: d.home.orderingFor, switch: d.home.switch, search: d.products.search, support: d.account.support }}
       appName={d.appName}
-      dealer={ctx.customer ? ctx.customer.shortName || ctx.customer.name : null}
+      dealer={ctx.customer ? { name: ctx.customer.shortName || ctx.customer.name, code: ctx.customer.code } : null}
       canSwitch={ctx.customers.length > 1}
       demo={demo}
+      user={ctx.account.name || showPhone(ctx.account.phone)}
     >
       {children}
     </PortalShell>

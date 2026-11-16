@@ -1,53 +1,103 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import clsx from "clsx";
-import { Check, Minus, Plus, Search, Star } from "lucide-react";
+import { ArrowRight, Check, LayoutGrid, Minus, Plus, Search, ShoppingBasket, ShoppingCart, Star, X } from "lucide-react";
 import { useCart } from "./cart";
 import type { CatalogProduct, UsualItem } from "@/lib/portal/data";
 import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 
 const CATS = ["tofu", "steamboat", "dessert", "grocery"] as const;
+type Cat = (typeof CATS)[number];
+
+/** A photo for each category tab (grocery has no photo, it gets an icon). */
+const CAT_IMAGE: Partial<Record<Cat, string>> = {
+  tofu: "/images/series-tofu.webp",
+  steamboat: "/images/series-steamboat.webp",
+  dessert: "/images/series-dessert.webp",
+};
 
 /** How often a product was ordered: its most-ordered variant. */
 const usualScore = (p: CatalogProduct, usual: Record<string, UsualItem>) =>
   Math.max(0, ...p.variants.map((v) => usual[v.itemCode]?.times ?? 0));
 
+function CatThumb({ cat, active }: { cat: string; active: boolean }) {
+  const img = CAT_IMAGE[cat as Cat];
+  if (img) {
+    return (
+      <span className={clsx("relative size-7 shrink-0 overflow-hidden rounded-full ring-2", active ? "ring-white/30" : "ring-white")}>
+        <Image src={img} alt="" fill sizes="28px" className="object-cover" />
+      </span>
+    );
+  }
+  const Icon = cat === "usual" ? Star : cat === "all" ? LayoutGrid : ShoppingBasket;
+  return (
+    <span className={clsx("grid size-7 shrink-0 place-items-center rounded-full", active ? "bg-white/15" : cat === "usual" ? "bg-amber-50 text-amber-600" : "bg-sand text-ink-soft")}>
+      <Icon className={clsx("size-3.5", active && cat === "usual" && "fill-amber-400 text-amber-400")} aria-hidden />
+    </span>
+  );
+}
+
 export function Catalog({
   products,
   usual,
   startUsual,
+  startQuery = "",
   scope,
   currency,
   labels,
+  cartLabel,
 }: {
   products: CatalogProduct[];
   usual: Record<string, UsualItem>;
   startUsual: boolean;
+  startQuery?: string;
   scope: string;
   currency: string;
   labels: PortalDict["products"];
+  cartLabel: string;
 }) {
   const [cat, setCat] = useState<string>(startUsual ? "usual" : "all");
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(startQuery);
+  const { count } = useCart(scope);
   const present = CATS.filter((c) => products.some((p) => p.category === c));
-  const hasUsual = products.some((p) => usualScore(p, usual) > 0);
+  const usualCount = products.filter((p) => usualScore(p, usual) > 0).length;
+  const needle = q.trim().toLowerCase();
 
   const shown = useMemo(() => {
-    const needle = q.trim().toLowerCase();
     const list = products.filter(
       (p) =>
         (cat === "all" || (cat === "usual" ? usualScore(p, usual) > 0 : p.category === cat)) &&
         (!needle || `${p.name} ${p.brand} ${p.variants.map((v) => `${v.itemCode} ${v.label}`).join(" ")}`.toLowerCase().includes(needle)),
     );
     return cat === "usual" ? list.sort((a, b) => usualScore(b, usual) - usualScore(a, usual)) : list;
-  }, [products, usual, cat, q]);
+  }, [products, usual, cat, needle]);
+
+  const tabs = [
+    ...(usualCount ? [{ key: "usual", label: labels.usual, n: usualCount }] : []),
+    { key: "all", label: labels.all, n: products.length },
+    ...present.map((c) => ({ key: c, label: labels.categories[c], n: products.filter((p) => p.category === c).length })),
+  ];
+
+  // "All" without a search: one section per category, so the list reads like a catalogue.
+  const sections =
+    cat === "all" && !needle
+      ? present.map((c) => ({ key: c, title: labels.categories[c], items: shown.filter((p) => p.category === c) })).filter((s) => s.items.length)
+      : [{ key: cat, title: "", items: shown }];
+
+  const card = (p: CatalogProduct) => (
+    <li key={p.id}>
+      <ProductCard product={p} usual={usual} scope={scope} currency={currency} labels={labels} isUsual={usualScore(p, usual) > 0} />
+    </li>
+  );
 
   return (
     <div>
-      <div className="sticky top-14 z-20 -mx-4 mb-5 space-y-3 border-b border-line bg-cream/95 px-4 py-3 backdrop-blur sm:top-16">
-        <label className="relative block">
+      {/* Toolbar: search + categories (sticks under the top bar) */}
+      <div className="sticky top-14 z-10 -mx-4 mb-5 border-b border-line bg-cream/90 px-4 pb-3 pt-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:top-16 lg:-mx-8 lg:px-8">
+        <label className="relative block lg:max-w-md">
           <span className="sr-only">{labels.search}</span>
           <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted" aria-hidden />
           <input
@@ -55,156 +105,206 @@ export function Catalog({
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={labels.search}
-            className="h-11 w-full rounded-full border border-line bg-white pl-10 pr-4 text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/10"
+            className="h-11 w-full rounded-xl border border-line bg-white pl-10 pr-10 text-[0.95rem] shadow-[var(--shadow-xs)] outline-none transition placeholder:text-muted/80 focus:border-ink/30 focus:ring-4 focus:ring-ink/5 [&::-webkit-search-cancel-button]:hidden"
           />
-        </label>
-        <div className="flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {hasUsual && (
-            <button
-              type="button"
-              onClick={() => setCat("usual")}
-              className={clsx(
-                "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full px-4 text-sm font-medium transition",
-                cat === "usual" ? "bg-ink text-white" : "border border-line bg-white text-ink-soft hover:border-ink/30",
-              )}
-            >
-              <Star className="size-3.5" aria-hidden /> {labels.usual}
+          {q && (
+            <button type="button" onClick={() => setQ("")} aria-label="Clear" className="absolute right-2 top-1/2 grid size-7 -translate-y-1/2 place-items-center rounded-lg text-muted hover:bg-sand hover:text-ink">
+              <X className="size-4" />
             </button>
           )}
-          {["all", ...present].map((c) => (
-            <button
-              key={c}
-              type="button"
-              onClick={() => setCat(c)}
-              className={clsx(
-                "h-9 shrink-0 rounded-full px-4 text-sm font-medium transition",
-                cat === c ? "bg-ink text-white" : "border border-line bg-white text-ink-soft hover:border-ink/30",
-              )}
-            >
-              {c === "all" ? labels.all : labels.categories[c as (typeof CATS)[number]]}
-            </button>
-          ))}
+        </label>
+        <div className="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-0.5 [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 [&::-webkit-scrollbar]:hidden" role="tablist">
+          {tabs.map((t) => {
+            const on = cat === t.key;
+            return (
+              <button
+                key={t.key}
+                type="button"
+                role="tab"
+                aria-selected={on}
+                onClick={() => setCat(t.key)}
+                className={clsx(
+                  "flex h-11 shrink-0 items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm font-semibold transition-colors duration-150",
+                  on ? "border-ink bg-ink text-white shadow-[0_6px_16px_-8px_rgb(0_0_0/0.5)]" : "border-line bg-white text-ink-soft hover:border-ink/20 hover:text-ink",
+                )}
+              >
+                <CatThumb cat={t.key} active={on} />
+                {t.label}
+                <span className={clsx("rounded-full px-1.5 text-[0.7rem] font-semibold leading-5 tabular-nums", on ? "bg-white/15 text-white" : "bg-sand text-muted")}>{t.n}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <p className="mb-3 text-sm text-muted">{pfmt(labels.count, { n: shown.length })}</p>
       {shown.length === 0 ? (
-        <p className="rounded-2xl border border-line bg-white p-10 text-center text-muted">{labels.empty}</p>
+        <p className="rounded-2xl border border-dashed border-line bg-white p-10 text-center text-muted">{labels.empty}</p>
       ) : (
-        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {shown.map((p) => (
-            <li key={p.id}>
-              <ProductCard product={p} usual={usual} scope={scope} currency={currency} labels={labels} />
-            </li>
+        <div className="space-y-8">
+          {sections.map((s) => (
+            <section key={s.key}>
+              {s.title ? (
+                <h2 className="mb-3 flex items-center gap-2.5 font-display text-lg font-bold tracking-[-0.015em] text-ink">
+                  <CatThumb cat={s.key} active={false} />
+                  {s.title}
+                  <span className="rounded-full bg-sand px-2 text-xs font-semibold leading-6 text-muted tabular-nums">{s.items.length}</span>
+                </h2>
+              ) : (
+                <p className="mb-3 text-sm text-muted" aria-live="polite">
+                  {pfmt(labels.count, { n: s.items.length })}
+                </p>
+              )}
+              <ul className="grid grid-cols-2 gap-2.5 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">{s.items.map(card)}</ul>
+            </section>
           ))}
-        </ul>
+        </div>
+      )}
+
+      {/* Phones: floating shortcut to the cart */}
+      {count > 0 && (
+        <Link
+          href="/portal/cart"
+          className="fixed inset-x-4 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-20 flex animate-fade-up items-center gap-3 rounded-2xl bg-ink px-4 py-3 text-white shadow-[0_16px_40px_-12px_rgb(0_0_0/0.45)] lg:hidden"
+        >
+          <span className="relative grid size-9 place-items-center rounded-xl bg-white/10">
+            <ShoppingCart className="size-[1.125rem]" aria-hidden />
+            <span className="absolute -right-1.5 -top-1.5 min-w-5 rounded-full bg-brand px-1 text-center text-[0.68rem] font-semibold leading-5 ring-2 ring-ink">{count}</span>
+          </span>
+          <span className="flex-1 text-sm font-semibold">{cartLabel}</span>
+          <span className="inline-flex items-center gap-1 text-sm font-semibold">
+            {labels.viewCart} <ArrowRight className="size-4" aria-hidden />
+          </span>
+        </Link>
       )}
     </div>
   );
 }
 
+/** − qty + bound straight to the cart; the number can also be typed. */
+function Stepper({ qty, onChange }: { qty: number; onChange: (n: number) => void }) {
+  const [draft, setDraft] = useState<string | null>(null);
+  const commit = () => {
+    if (draft !== null) {
+      const n = Number(draft);
+      if (n > 0) onChange(Math.min(100000, n));
+      setDraft(null);
+    }
+  };
+  return (
+    <div className="flex h-9 w-full items-center rounded-xl border border-emerald-300 bg-emerald-50/60 sm:h-10">
+      <button type="button" aria-label="−" onClick={() => onChange(qty - 1)} className="grid h-full w-9 shrink-0 place-items-center rounded-l-xl text-emerald-800 transition-colors hover:bg-emerald-100 sm:w-10">
+        <Minus className="size-4" />
+      </button>
+      <input
+        inputMode="numeric"
+        value={draft ?? String(qty)}
+        onChange={(e) => setDraft(e.target.value.replace(/\D/g, "").slice(0, 6))}
+        onBlur={commit}
+        onKeyDown={(e) => e.key === "Enter" && (e.currentTarget as HTMLInputElement).blur()}
+        className="min-w-0 flex-1 bg-transparent text-center text-sm font-bold tabular-nums text-emerald-900 outline-none"
+        aria-label="Qty"
+      />
+      <button type="button" aria-label="+" onClick={() => onChange(qty + 1)} className="grid h-full w-9 shrink-0 place-items-center rounded-r-xl text-emerald-800 transition-colors hover:bg-emerald-100 sm:w-10">
+        <Plus className="size-4" />
+      </button>
+    </div>
+  );
+}
+
 function ProductCard({
-  product, usual, scope, currency, labels,
+  product, usual, scope, currency, labels, isUsual,
 }: {
-  product: CatalogProduct; usual: Record<string, UsualItem>; scope: string; currency: string; labels: PortalDict["products"];
+  product: CatalogProduct; usual: Record<string, UsualItem>; scope: string; currency: string; labels: PortalDict["products"]; isUsual: boolean;
 }) {
   const { setQty, qtyOf } = useCart(scope);
-  // Open on the pack size this dealer usually takes, at the quantity they took last time.
+  // Open on the pack size this dealer usually takes.
   const usualVariant = [...product.variants].sort((a, b) => (usual[b.itemCode]?.times ?? 0) - (usual[a.itemCode]?.times ?? 0))[0];
-  const startQty = (c: string) => Math.max(1, qtyOf(c) || usual[c]?.lastQty || 1);
   const [code, setCode] = useState(usualVariant?.itemCode ?? "");
   const variant = product.variants.find((v) => v.itemCode === code) ?? product.variants[0];
   const inCart = qtyOf(variant.itemCode);
-  const [qty, setLocalQty] = useState(() => startQty(code));
-  const [saved, setSaved] = useState(false);
   const image = variant.image ?? product.image;
   const usualHere = usual[variant.itemCode];
 
-  const pickVariant = (c: string) => {
-    setCode(c);
-    setLocalQty(startQty(c));
-    setSaved(false);
-  };
-
   return (
-    <div className="flex h-full gap-3 rounded-2xl border border-line bg-white p-3 sm:flex-col sm:p-4">
-      <div className="relative size-24 shrink-0 overflow-hidden rounded-xl bg-cream sm:aspect-[4/3] sm:size-auto sm:w-full">
+    <div
+      className={clsx(
+        "flex h-full flex-col rounded-2xl border bg-white p-1.5 shadow-[var(--shadow-xs)] transition duration-300 sm:p-2",
+        inCart > 0 ? "border-emerald-300 ring-1 ring-emerald-200/70" : "border-line hover:border-ink/15 hover:shadow-[var(--shadow-lift)]",
+      )}
+    >
+      <div className="relative aspect-square overflow-hidden rounded-xl bg-[#f4f3f1]">
         {image ? (
-          <Image src={image} alt={product.name} fill sizes="(min-width: 640px) 320px, 96px" className="object-contain p-2" />
+          <Image src={image} alt={product.name} fill sizes="(min-width: 1280px) 240px, (min-width: 768px) 30vw, 46vw" className="object-contain p-3 mix-blend-multiply sm:p-5" />
         ) : (
-          <div className="grid h-full place-items-center font-display text-2xl font-semibold text-muted/60">{(product.brand || product.name).slice(0, 2)}</div>
+          <div className="grid h-full place-items-center font-display text-3xl font-bold text-muted/40">{(product.brand || product.name).slice(0, 2)}</div>
+        )}
+        {inCart > 0 && (
+          <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-1 rounded-md bg-emerald-600 px-1.5 py-0.5 text-[0.68rem] font-bold text-white tabular-nums">
+            <Check className="size-3" aria-hidden /> {inCart}
+          </span>
+        )}
+        {isUsual && (
+          <span className="absolute right-1.5 top-1.5 grid size-6 place-items-center rounded-full bg-white/95 shadow-[var(--shadow-xs)]" title={labels.usual}>
+            <Star className="size-3.5 fill-amber-400 text-amber-400" aria-hidden />
+          </span>
         )}
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        {product.brand && <p className="text-[0.7rem] font-semibold uppercase tracking-wider text-muted">{product.brand}</p>}
-        <h3 className="font-semibold leading-snug text-ink">{product.name}</h3>
+      <div className="flex flex-1 flex-col px-1 pb-0.5 pt-2.5 sm:px-1.5 sm:pt-3">
+        {product.brand && <p className="text-[0.62rem] font-semibold uppercase tracking-wider text-muted sm:text-[0.68rem]">{product.brand}</p>}
+        <h3 className="line-clamp-2 text-[0.8125rem] font-semibold leading-snug text-ink sm:text-[0.95rem]">{product.name}</h3>
 
-        {product.variants.length > 1 && (
-          <div className="mt-2 flex flex-wrap gap-1.5" role="radiogroup" aria-label={product.name}>
+        {product.variants.length > 1 ? (
+          <div className="mt-2 flex flex-wrap gap-1" role="radiogroup" aria-label={product.name}>
             {product.variants.map((v) => (
               <button
                 key={v.itemCode}
                 type="button"
                 role="radio"
                 aria-checked={v.itemCode === variant.itemCode}
-                onClick={() => pickVariant(v.itemCode)}
+                onClick={() => setCode(v.itemCode)}
                 className={clsx(
-                  "rounded-lg border px-2.5 py-1 text-xs font-medium transition",
-                  v.itemCode === variant.itemCode ? "border-brand bg-brand-50 text-brand-700" : "border-line text-ink-soft hover:border-ink/30",
+                  "rounded-md border px-1.5 py-0.5 text-[0.68rem] font-semibold transition-colors sm:px-2 sm:text-xs",
+                  v.itemCode === variant.itemCode ? "border-ink bg-ink text-white" : "border-line text-ink-soft hover:border-ink/25 hover:text-ink",
                 )}
               >
                 {v.label}
               </button>
             ))}
           </div>
+        ) : (
+          <p className="mt-0.5 truncate text-xs text-ink-soft">{variant.label}</p>
         )}
-        {product.variants.length === 1 && <p className="mt-1 text-sm text-ink-soft">{variant.label}</p>}
 
-        <div className="mt-2 flex items-baseline gap-1.5">
-          {variant.price != null ? (
-            <>
-              <span className="text-lg font-semibold text-ink">{money(variant.price, currency)}</span>
-              {variant.uom && <span className="text-xs text-muted">{pfmt(labels.per, { uom: variant.uom.toLowerCase() })}</span>}
-            </>
-          ) : (
-            <span className="text-sm font-medium text-gold">{labels.priceTbc}</span>
-          )}
-        </div>
-        <p className="text-[0.7rem] text-muted">
-          {variant.itemCode}
-          {usualHere && <span className="ml-2 font-medium text-ink-soft">· {pfmt(labels.usually, { qty: usualHere.lastQty })}</span>}
-        </p>
-
-        <div className="mt-auto flex items-center gap-2 pt-3">
-          <div className="flex h-10 items-center rounded-full border border-line">
-            <button type="button" aria-label="−" onClick={() => { setLocalQty((n) => Math.max(1, n - 1)); setSaved(false); }} className="grid size-10 place-items-center text-ink-soft">
-              <Minus className="size-4" />
-            </button>
-            <input
-              inputMode="numeric"
-              value={qty}
-              onChange={(e) => { setLocalQty(Math.max(1, Math.min(100000, Number(e.target.value.replace(/\D/g, "")) || 1))); setSaved(false); }}
-              className="w-12 bg-transparent text-center text-sm font-semibold outline-none"
-              aria-label="Qty"
-            />
-            <button type="button" aria-label="+" onClick={() => { setLocalQty((n) => n + 1); setSaved(false); }} className="grid size-10 place-items-center text-ink-soft">
-              <Plus className="size-4" />
-            </button>
-          </div>
-          <button
-            type="button"
-            onClick={() => { setQty(variant.itemCode, qty); setSaved(true); }}
-            className={clsx(
-              "inline-flex h-10 flex-1 items-center justify-center gap-1.5 rounded-full text-sm font-semibold transition",
-              saved && inCart === qty ? "bg-leaf text-white" : "bg-brand text-white hover:bg-brand-600",
+        <div className="mt-auto pt-2.5">
+          <div className="flex flex-wrap items-baseline gap-x-1">
+            {variant.price != null ? (
+              <>
+                <span className="font-display text-base font-bold tabular-nums text-ink sm:text-lg">{money(variant.price, currency)}</span>
+                {variant.uom && <span className="text-[0.68rem] text-muted sm:text-xs">{pfmt(labels.per, { uom: variant.uom.toLowerCase() })}</span>}
+              </>
+            ) : (
+              <span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-[0.68rem] font-medium leading-tight text-amber-800">{labels.priceTbc}</span>
             )}
-          >
-            {saved && inCart === qty ? <Check className="size-4" /> : null}
-            {inCart > 0 ? labels.update : labels.add}
-          </button>
+          </div>
+          <p className="mt-0.5 truncate text-[0.65rem] text-muted sm:text-[0.7rem]">
+            <span className="tabular-nums">{variant.itemCode}</span>
+            {usualHere && <span className="font-medium text-ink-soft"> · {pfmt(labels.usually, { qty: usualHere.lastQty })}</span>}
+          </p>
+          <div className="mt-2.5">
+            {inCart > 0 ? (
+              <Stepper qty={inCart} onChange={(n) => setQty(variant.itemCode, n)} />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setQty(variant.itemCode, usualHere?.lastQty || 1)}
+                className="inline-flex h-9 w-full items-center justify-center gap-1.5 rounded-xl bg-ink text-sm font-semibold text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.14)] transition duration-150 hover:bg-[#2a2826] active:scale-[0.98] sm:h-10"
+              >
+                <Plus className="size-4" aria-hidden /> {labels.add}
+              </button>
+            )}
+          </div>
         </div>
-        {inCart > 0 && <p className="mt-1.5 text-xs font-medium text-leaf">{pfmt(labels.inCart, { n: inCart })}</p>}
       </div>
     </div>
   );

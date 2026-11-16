@@ -5,8 +5,8 @@ import { PageTitle } from "@/components/portal/bits";
 
 export const metadata = { title: "Products" };
 
-export default async function PortalProducts({ searchParams }: { searchParams: Promise<{ usual?: string }> }) {
-  const [ctx, d, lang, { usual: startUsual }] = await Promise.all([requireCustomer(), getPortalDict(), getPortalLang(), searchParams]);
+export default async function PortalProducts({ searchParams }: { searchParams: Promise<{ usual?: string; q?: string }> }) {
+  const [ctx, d, lang, { usual: startUsual, q }] = await Promise.all([requireCustomer(), getPortalDict(), getPortalLang(), searchParams]);
   const [products, usual] = await Promise.all([getCatalog(ctx.customer.code, lang), getUsualItems(ctx.customer.code)]);
   return (
     <>
@@ -15,9 +15,11 @@ export default async function PortalProducts({ searchParams }: { searchParams: P
         products={products}
         usual={usual}
         startUsual={startUsual === "1" && Object.keys(usual).length > 0}
+        startQuery={q?.slice(0, 80) ?? ""}
         scope={`${ctx.account.id}:${ctx.customer.code}`}
         currency={ctx.customer.currency}
         labels={d.products}
+        cartLabel={d.nav.cart}
       />
     </>
   );

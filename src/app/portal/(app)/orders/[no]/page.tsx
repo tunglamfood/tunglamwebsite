@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CheckCircle2, FileDown } from "lucide-react";
+import { ArrowLeft, CalendarDays, CheckCircle2, FileDown, Truck } from "lucide-react";
 import { requireCustomer, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { getOrder } from "@/lib/portal/data";
 import { money, pfmt } from "@/lib/portal/i18n";
 import { OrderActions } from "@/components/portal/order-actions";
-import { StatusPill, formatDate } from "@/components/portal/bits";
+import { StatusPill, formatDate, pbtn, pcard } from "@/components/portal/bits";
 
 export const metadata = { title: "Order" };
 
@@ -16,40 +16,51 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
   if (!order) notFound();
   const scope = `${ctx.account.id}:${order.customerCode}`;
   const eventLabel = (k: string) => (d.orders.events as Record<string, string>)[k] ?? k;
+  const details = [
+    order.theirRef ? { k: d.orders.poRef, v: order.theirRef } : null,
+    order.placedBy ? { k: d.orders.placedBy, v: order.placedBy } : null,
+    order.note ? { k: d.orders.note, v: order.note } : null,
+  ].filter(Boolean) as { k: string; v: string }[];
 
   return (
-    <div className="space-y-5">
-      <Link href="/portal/orders" className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink">
+    <div className="space-y-4 sm:space-y-5">
+      <Link href="/portal/orders" className="inline-flex items-center gap-1.5 rounded-lg py-1 pr-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink">
         <ArrowLeft className="size-4" /> {d.orders.back}
       </Link>
 
       {placed && (order.status === "submitted" || order.status === "on_hold") && (
-        <div className="flex gap-3 rounded-2xl bg-leaf-soft p-4 text-leaf">
-          <CheckCircle2 className="mt-0.5 size-5 shrink-0" />
+        <div className="flex animate-fade-up gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-white text-emerald-600 shadow-[var(--shadow-xs)]">
+            <CheckCircle2 className="size-5" />
+          </span>
           <div>
-            <p className="font-semibold">{pfmt(d.orders.placedThanks, { no: order.orderNo })}</p>
-            <p className="text-sm text-ink-soft">{order.status === "on_hold" ? d.orders.placedHold : d.orders.placedNext}</p>
+            <p className="font-semibold text-emerald-900">{pfmt(d.orders.placedThanks, { no: order.orderNo })}</p>
+            <p className="text-sm text-emerald-800/80">{order.status === "on_hold" ? d.orders.placedHold : d.orders.placedNext}</p>
           </div>
         </div>
       )}
 
-      <section className="rounded-2xl border border-line bg-white p-4 sm:p-6">
+      {/* Header */}
+      <section className={`${pcard} p-4 sm:p-6`}>
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <h1 className="font-display text-2xl font-semibold text-ink">{order.orderNo}</h1>
-            <p className="mt-1 text-sm text-muted">
-              {pfmt(d.orders.placedOn, { date: formatDate(order.orderDate, lang) })}
-              {order.deliverOn && ` · ${pfmt(d.orders.deliverOn, { date: formatDate(order.deliverOn, lang) })}`}
-            </p>
+          <div className="min-w-0">
+            <h1 className="font-display text-2xl font-bold tabular-nums tracking-[-0.02em] text-ink sm:text-3xl">{order.orderNo}</h1>
+            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-soft">
+              <span className="inline-flex items-center gap-1.5">
+                <CalendarDays className="size-4 text-muted" aria-hidden />
+                {pfmt(d.orders.placedOn, { date: formatDate(order.orderDate, lang) })}
+              </span>
+              {order.deliverOn && (
+                <span className="inline-flex items-center gap-1.5">
+                  <Truck className="size-4 text-muted" aria-hidden />
+                  {pfmt(d.orders.deliverOn, { date: formatDate(order.deliverOn, lang) })}
+                </span>
+              )}
+            </div>
           </div>
           <StatusPill status={order.status} label={d.orders.status[order.status]} />
         </div>
-        <dl className="mt-4 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-3">
-          {order.theirRef && (<div><dt className="text-muted">{d.orders.poRef}</dt><dd className="font-medium text-ink">{order.theirRef}</dd></div>)}
-          {order.placedBy && (<div><dt className="text-muted">{d.orders.placedBy}</dt><dd className="font-medium text-ink">{order.placedBy}</dd></div>)}
-          {order.note && (<div className="sm:col-span-3"><dt className="text-muted">{d.orders.note}</dt><dd className="whitespace-pre-wrap text-ink">{order.note}</dd></div>)}
-        </dl>
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-5 flex flex-wrap gap-2 border-t border-line pt-4">
           <OrderActions
             scope={scope}
             orderNo={order.orderNo}
@@ -58,52 +69,80 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
             labels={{ reorder: d.orders.reorder, cancel: d.orders.cancel, cancelConfirm: d.orders.cancelConfirm }}
           />
           {order.status !== "cancelled" && (
-            <a
-              href={`/portal/orders/${encodeURIComponent(order.orderNo)}/pdf`}
-              className="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-4 text-sm font-semibold text-ink hover:border-ink/30"
-            >
+            <a href={`/portal/orders/${encodeURIComponent(order.orderNo)}/pdf`} className={pbtn("secondary")}>
               <FileDown className="size-4" /> {d.orders.pdf}
             </a>
           )}
         </div>
       </section>
 
-      <section className="overflow-hidden rounded-2xl border border-line bg-white">
-        <h2 className="border-b border-line px-4 py-3 font-semibold text-ink sm:px-6">{d.orders.lines}</h2>
-        <ul className="divide-y divide-line">
-          {order.lines.map((l) => (
-            <li key={l.lineNo} className="flex items-start gap-3 px-4 py-3 sm:px-6">
-              <div className="min-w-0 flex-1">
-                <p className="font-medium text-ink">{l.description}</p>
-                <p className="text-xs text-muted">{l.itemCode}</p>
-              </div>
-              <div className="text-right text-sm">
-                <p className="text-ink-soft">{l.qty} {l.uom.toLowerCase()} × {l.price > 0 ? money(l.price, order.currency) : d.orders.tbc}</p>
-                <p className="font-semibold text-ink">{l.price > 0 ? money(l.qty * l.price, order.currency) : "—"}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="flex items-baseline justify-between border-t border-line bg-cream px-4 py-3 sm:px-6">
-          <span className="font-semibold text-ink">{d.orders.total}</span>
-          <span className="font-display text-xl font-semibold text-ink">{money(order.total, order.currency)}{order.hasTbc ? " +" : ""}</span>
-        </div>
-      </section>
-
-      {order.events.length > 0 && (
-        <section className="rounded-2xl border border-line bg-white p-4 sm:p-6">
-          <h2 className="mb-3 font-semibold text-ink">{d.orders.history}</h2>
-          <ol className="space-y-3 border-l-2 border-line pl-4">
-            {order.events.map((e, i) => (
-              <li key={i} className="relative">
-                <span className="absolute -left-[1.4rem] top-1.5 size-2.5 rounded-full bg-brand" />
-                <p className="text-sm font-medium text-ink">{eventLabel(e.kind)}</p>
-                <p className="text-xs text-muted">{formatDate(e.at, lang, true)} · {e.actor}</p>
+      <div className="grid gap-4 sm:gap-5 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
+        {/* Lines */}
+        <section className={`${pcard} overflow-hidden`}>
+          <h2 className="flex items-center gap-2 border-b border-line px-4 py-3 text-sm font-semibold text-ink sm:px-6">
+            {d.orders.lines}
+            <span className="rounded-full bg-sand px-2 text-xs leading-5 text-muted tabular-nums">{order.lines.length}</span>
+          </h2>
+          <ul className="divide-y divide-line">
+            {order.lines.map((l) => (
+              <li key={l.lineNo} className="flex items-start gap-3 px-4 py-3.5 sm:px-6">
+                <div className="min-w-0 flex-1">
+                  <p className="font-medium leading-snug text-ink">{l.description}</p>
+                  <p className="mt-0.5 text-xs tabular-nums text-muted">{l.itemCode}</p>
+                </div>
+                <div className="shrink-0 text-right text-sm">
+                  <p className="tabular-nums text-ink-soft">
+                    {l.qty} {l.uom.toLowerCase()} × {l.price > 0 ? money(l.price, order.currency) : d.orders.tbc}
+                  </p>
+                  <p className="font-semibold tabular-nums text-ink">{l.price > 0 ? money(l.qty * l.price, order.currency) : "—"}</p>
+                </div>
               </li>
             ))}
-          </ol>
+          </ul>
+          <div className="flex items-baseline justify-between border-t border-line bg-cream/70 px-4 py-4 sm:px-6">
+            <span className="font-semibold text-ink">{d.orders.total}</span>
+            <span className="font-display text-2xl font-bold tabular-nums tracking-[-0.02em] text-ink">
+              {money(order.total, order.currency)}
+              {order.hasTbc ? " +" : ""}
+            </span>
+          </div>
         </section>
-      )}
+
+        {/* Details + history */}
+        <div className="space-y-4 sm:space-y-5">
+          {details.length > 0 && (
+            <section className={`${pcard} p-4 sm:p-5`}>
+              <dl className="space-y-3 text-sm">
+                {details.map((x) => (
+                  <div key={x.k}>
+                    <dt className="text-xs font-medium uppercase tracking-wider text-muted">{x.k}</dt>
+                    <dd className="mt-0.5 whitespace-pre-wrap text-ink">{x.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
+          {order.events.length > 0 && (
+            <section className={`${pcard} p-4 sm:p-5`}>
+              <h2 className="mb-4 text-sm font-semibold text-ink">{d.orders.history}</h2>
+              <ol className="relative space-y-4 pl-6 before:absolute before:bottom-1.5 before:left-[0.4375rem] before:top-1.5 before:w-px before:bg-line">
+                {order.events.map((e, i) => (
+                  <li key={i} className="relative">
+                    <span
+                      className={`absolute -left-6 top-1 grid size-3.5 place-items-center rounded-full ring-4 ring-white ${i === order.events.length - 1 ? "bg-ink" : "bg-zinc-300"}`}
+                      aria-hidden
+                    />
+                    <p className="text-sm font-medium text-ink">{eventLabel(e.kind)}</p>
+                    <p className="text-xs text-muted">
+                      {formatDate(e.at, lang, true)} · {e.actor}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
