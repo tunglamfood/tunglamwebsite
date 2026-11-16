@@ -31,6 +31,15 @@ checked in `src/proxy.ts`, every admin page (`requireAdmin`) and every server ac
 Separate root layout `src/app/admin/layout.tsx` (neutral `.admin-theme`, noindex). Saves call `updateTag("content")`.
 **The admin is now the source of truth for content** — don't re-run `db:seed` (it refuses without `--force`).
 
+## Dealer portal (/portal)
+B2B ordering for dealers and sales reps. **All trading data lives in the ERP database** (project `ndmnbmctwebwscptvenu`,
+repo `tunglamfood/tunglamerp`); this app only reads/writes it server-side (`src/lib/portal/erp.ts`, key `ERP_SUPABASE_SECRET_KEY`).
+Prices, order numbers and order placement are ERP database functions (`sales_price_for`, `portal_catalog`,
+`portal_place_order`, `portal_cancel_order`) — never compute money in this app. Login = phone + OTP
+(`PORTAL_DEMO_OTP` for the demo; real SMS is Phase 4). Session = signed cookie `tl_portal` (`src/lib/portal/session.ts`),
+re-checked against `portal_accounts` on every request. Cart lives in localStorage per login+dealer.
+Plan and phases: `docs/DEALER-PORTAL-PLAN.md`. Logins, catalogue grouping and reps are managed in the ERP → Sales → Dealer portal.
+
 ## Commands
 `npm run dev` · `npm run build` · `npm run typecheck` · `npm run lint` · `npm run qa` · `npm run db:seed` · `npm run image:generate`
 

@@ -18,6 +18,10 @@ The repository already contains `vercel.json`, which sets `"regions": ["sin1"]`.
 | `REVALIDATE_SECRET` | A long random string |
 | `ADMIN_PASSWORD` | Password for `/admin` (currently `12341234` — **change before launch**) |
 | `ADMIN_SESSION_SECRET` | 64-char random hex (copy from `.env`); changing it signs everyone out |
+| `ERP_SUPABASE_URL` | The ERP database: `https://ndmnbmctwebwscptvenu.supabase.co` |
+| `ERP_SUPABASE_SECRET_KEY` | The ERP's `tunglamfood_portal` secret key (copy from `.env`) |
+| `PORTAL_SESSION_SECRET` | Copy from `.env` |
+| `PORTAL_DEMO_OTP` | `123123` **for the demo only.** Remove it before real dealers use the portal |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Optional |
 
 3. Check that **Settings → Functions → Region** shows Singapore (`sin1`).

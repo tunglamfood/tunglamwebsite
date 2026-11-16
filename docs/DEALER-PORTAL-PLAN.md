@@ -9,6 +9,39 @@ It is based on what already exists, as of 16 November 2026:
 
 ---
 
+## Progress (16 November 2026)
+
+**Decisions made:**
+- Item codes stay separate. Each one is shown as a variant of a product.
+- Pricing: the dealer's own price, then their group's price, then the default price. Where none exists, the item shows "price on confirmation".
+- Every dealer has a currency setting, defaulting to RM.
+- Order alerts are left for later.
+
+**Phase 0 – done:**
+- **ERP database changes:** applied in `tunglamerp/supabase/migrations/20261116_dealer_portal.sql`.
+- **Starting catalogue:** 57 products grouping 108 item codes.
+- **Demo logins:** in `tunglamerp/supabase/seed/`.
+- **Safer order saving:** new ERP orders are now only ever inserted, never overwritten, and order numbers come from the database.
+- **Group prices:** the ERP's price lookup now includes chain-group prices.
+- **New ERP screen:** Sales → Dealer portal, with Logins, Catalogue and Sales reps tabs.
+
+**Phase 1 – done (demo):** `tunglamfood.my/portal` has:
+- sign-in with phone and the demo OTP `123123`
+- a catalogue with variants and each dealer's own prices
+- a cart and checkout on credit terms
+- orders with status, history, cancel and order-again
+- a dealer picker for reps and chain groups
+- all three languages
+
+In the ERP, portal orders appear as "New from portal".
+
+**Next:**
+- Phase 2: order PDF, status messages to dealers, favourites.
+- Phase 3: AutoCount export and credit terms.
+- Phase 4: real SMS sign-in codes.
+
+---
+
 ## 1. Two systems, one place for trading data
 
 ```
