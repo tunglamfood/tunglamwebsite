@@ -13,7 +13,7 @@ export default async function PortalLogin() {
   const demo = process.env.PORTAL_DEMO_OTP ? pfmt(d.demoBanner, { code: process.env.PORTAL_DEMO_OTP }) : null;
 
   return (
-    <main className="relative grid min-h-dvh place-items-center overflow-hidden px-4 py-10">
+    <main className="relative flex min-h-dvh items-center justify-center overflow-hidden px-4 py-10">
       <div aria-hidden className="absolute -right-40 -top-40 -z-10 size-[34rem] rounded-full bg-sun-soft blur-3xl" />
       <div className="w-full max-w-sm">
         <Link href="/" className="mb-8 flex items-center gap-3">

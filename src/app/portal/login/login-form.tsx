@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { requestCode, setPortalLang, verifyCode, type LoginState } from "@/lib/portal/actions";
 import { LANG_LABEL, PORTAL_LANGS, pfmt, type PortalDict, type PortalLang } from "@/lib/portal/i18n";
 import { showPhone, normalisePhone } from "@/lib/portal/phone";
+import { PhoneField } from "@/components/portal/phone-field";
 
 const field =
   "w-full rounded-xl border border-line bg-white px-4 py-3 text-lg text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-4 focus:ring-brand/10";
@@ -31,19 +32,7 @@ export function LoginForm({ labels, lang }: { labels: PortalDict["login"]; lang:
     <div>
       {phone === null ? (
         <form action={sendAction} className="space-y-4">
-          <label className="block">
-            <span className="mb-1.5 block text-sm font-semibold text-ink">{labels.phone}</span>
-            <input
-              name="phone"
-              type="tel"
-              inputMode="tel"
-              autoComplete="tel"
-              required
-              defaultValue={phoneState.step === "phone" ? phoneState.phone ?? "" : ""}
-              placeholder={labels.phonePlaceholder}
-              className={field}
-            />
-          </label>
+          <PhoneField label={labels.phone} />
           {phoneState.step === "phone" && phoneState.error && (
             <p role="alert" className="rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700">{errorText(phoneState.error)}</p>
           )}
