@@ -75,6 +75,7 @@ const en = {
     usually: "Usually {qty}",
     viewCart: "View cart",
     inCartShort: "In cart",
+    promo: "Promo",
   },
   cart: {
     title: "Cart",
@@ -317,6 +318,7 @@ const ms: PortalDict = {
     usually: "Biasanya {qty}",
     viewCart: "Lihat troli",
     inCartShort: "Dalam troli",
+    promo: "Promosi",
   },
   cart: {
     title: "Troli",
@@ -557,6 +559,7 @@ const zh: PortalDict = {
     usually: "通常 {qty}",
     viewCart: "查看购物车",
     inCartShort: "购物车中",
+    promo: "促销",
   },
   cart: {
     title: "购物车",

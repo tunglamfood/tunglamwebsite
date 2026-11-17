@@ -7,11 +7,12 @@ import { useRouter } from "next/navigation";
 import { AlertTriangle, ArrowRight, Info, Loader2, Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import { useCart } from "./cart";
 import { placeOrder } from "@/lib/portal/actions";
+import { unitPrice, type Promo } from "@/lib/portal/pricing";
 import { toast } from "./toast";
 import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 import { pbtn, pcard, pfield } from "./bits";
 
-export type CartItemInfo = { name: string; label: string; uom: string; price: number | null; image: string | null };
+export type CartItemInfo = { name: string; label: string; uom: string; price: number | null; promo: Promo | null; image: string | null };
 
 export function CartView({
   scope,
@@ -22,6 +23,7 @@ export function CartView({
   labels,
   priceTbc,
   placedLabel,
+  promoLabel,
   minDate,
   maxDate,
   defaultDate,
@@ -35,6 +37,7 @@ export function CartView({
   priceTbc: string;
   /** "Thank you! Order {no} has been sent to Tung Lam." */
   placedLabel: string;
+  promoLabel: string;
   minDate: string;
   maxDate: string;
   defaultDate: string;
@@ -48,8 +51,9 @@ export function CartView({
   const [note, setNote] = useState("");
 
   const available = lines.filter((l) => items[l.itemCode]);
-  const total = available.reduce((s, l) => s + (items[l.itemCode].price ?? 0) * l.qty, 0);
-  const hasTbc = available.some((l) => items[l.itemCode].price == null);
+  // An estimate for the dealer: the database prices the order when it is placed.
+  const total = available.reduce((s, l) => s + (unitPrice(items[l.itemCode], l.qty).price ?? 0) * l.qty, 0);
+  const hasTbc = available.some((l) => unitPrice(items[l.itemCode], l.qty).price == null);
 
   if (lines.length === 0) {
     return (
@@ -113,7 +117,16 @@ export function CartView({
                       <button type="button" aria-label="+" onClick={() => setQty(l.itemCode, l.qty + 1)} className="grid size-9 place-items-center rounded-r-xl text-ink-soft transition-colors hover:bg-sand hover:text-ink"><Plus className="size-4" /></button>
                     </div>
                     <p className="text-sm font-semibold tabular-nums text-ink">
-                      {it.price != null ? money(it.price * l.qty, currency) : <span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-xs font-medium text-amber-800">{priceTbc}</span>}
+                      {(() => {
+                        const u = unitPrice(it, l.qty);
+                        if (u.price == null) return <span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-xs font-medium text-amber-800">{priceTbc}</span>;
+                        return (
+                          <>
+                            {u.promo && <span className="mr-1.5 rounded-md bg-brand px-1.5 py-0.5 text-[0.65rem] font-semibold uppercase text-white">{promoLabel}</span>}
+                            {money(u.price * l.qty, currency)}
+                          </>
+                        );
+                      })()}
                     </p>
                   </div>
                 )}

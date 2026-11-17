@@ -13,7 +13,7 @@ export default async function PortalCart() {
   const items: Record<string, CartItemInfo> = {};
   for (const p of catalog) {
     for (const v of p.variants) {
-      items[v.itemCode] = { name: p.name, label: v.label, uom: v.uom, price: v.price, image: v.image ?? p.image };
+      items[v.itemCode] = { name: p.name, label: v.label, uom: v.uom, price: v.price, promo: v.promo, image: v.image ?? p.image };
     }
   }
 
@@ -29,6 +29,7 @@ export default async function PortalCart() {
         labels={d.cart}
         priceTbc={d.products.priceTbc}
         placedLabel={d.orders.placedThanks}
+        promoLabel={d.products.promo}
         minDate={myDate(0)}
         maxDate={myDate(60)}
         defaultDate={myDate(1)}

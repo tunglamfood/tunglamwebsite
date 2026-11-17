@@ -3,6 +3,7 @@ import { erp } from "./erp";
 import type { PortalLang } from "./i18n";
 import { getProducts } from "@/lib/data";
 import { mediaUrl } from "@/lib/media";
+import type { Promo } from "./pricing";
 
 /* ── Catalogue ─────────────────────────────────────────────────────────────── */
 
@@ -14,7 +15,11 @@ export type CatalogVariant = {
   price: number | null;
   priceSource: "dealer" | "group" | "list" | "none";
   image: string | null;
+  /** A promotion the database will apply when the quantity reaches minQty. */
+  promo: Promo | null;
 };
+
+export type { Promo } from "./pricing";
 
 export type CatalogProduct = {
   id: number;
@@ -53,10 +58,18 @@ async function websiteImages(): Promise<Map<string, string>> {
 
 /** Everything one dealer can order, grouped into products, at that dealer's prices. */
 export async function getCatalog(customerCode: string, lang: PortalLang): Promise<CatalogProduct[]> {
-  const [{ data, error }, images] = await Promise.all([
+  const [{ data, error }, images, promos] = await Promise.all([
     erp().rpc("portal_catalog", { p_customer: customerCode }),
     websiteImages(),
+    erp().rpc("portal_promotions", { p_customer: customerCode }),
   ]);
+  type PromoRow = { item_code: string; price: number; min_qty: number; title_en: string; title_ms: string | null; title_zh: string | null; ends_on: string | null };
+  const promoOf = new Map<string, Promo>(
+    ((promos.data ?? []) as PromoRow[]).map((r) => [
+      r.item_code,
+      { price: Number(r.price), minQty: r.min_qty, title: pick(lang, r.title_en, r.title_ms, r.title_zh), endsOn: r.ends_on },
+    ]),
+  );
   if (error) throw new Error(`Could not load the catalogue: ${error.message}`);
 
   const byId = new Map<number, CatalogProduct>();
@@ -81,6 +94,7 @@ export async function getCatalog(customerCode: string, lang: PortalLang): Promis
       price: price && price > 0 ? price : null,
       priceSource: r.price_source,
       image: (r.variant_slug && images.get(r.variant_slug)) || null,
+      promo: promoOf.get(r.item_code) ?? null,
     });
   }
   // A product without its own photo borrows the first variant photo it has.

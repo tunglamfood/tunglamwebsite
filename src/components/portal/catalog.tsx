@@ -310,7 +310,13 @@ function ProductCard({
 
         <div className="mt-auto pt-2.5">
           <div className="flex flex-wrap items-baseline gap-x-1">
-            {variant.price != null ? (
+            {variant.promo && variant.promo.minQty <= 1 ? (
+              <>
+                <span className="font-display text-base font-bold tabular-nums text-brand sm:text-lg">{money(variant.promo.price, currency)}</span>
+                {variant.price != null && <span className="text-[0.68rem] tabular-nums text-muted line-through sm:text-xs">{money(variant.price, currency)}</span>}
+                {variant.uom && <span className="text-[0.68rem] text-muted sm:text-xs">{pfmt(labels.per, { uom: variant.uom.toLowerCase() })}</span>}
+              </>
+            ) : variant.price != null ? (
               <>
                 <span className="font-display text-base font-bold tabular-nums text-ink sm:text-lg">{money(variant.price, currency)}</span>
                 {variant.uom && <span className="text-[0.68rem] text-muted sm:text-xs">{pfmt(labels.per, { uom: variant.uom.toLowerCase() })}</span>}
@@ -319,6 +325,15 @@ function ProductCard({
               <span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-[0.68rem] font-medium leading-tight text-amber-800">{labels.priceTbc}</span>
             )}
           </div>
+          {variant.promo && (
+            <p className="mt-1 inline-flex max-w-full items-center gap-1 rounded-md bg-brand-50 px-1.5 py-0.5 text-[0.65rem] font-semibold text-brand sm:text-[0.7rem]">
+              <span className="rounded bg-brand px-1 text-[0.6rem] uppercase text-white">{labels.promo}</span>
+              <span className="truncate">
+                {variant.promo.title}
+                {variant.promo.minQty > 1 ? ` · ${money(variant.promo.price, currency)} × ${variant.promo.minQty}+` : ""}
+              </span>
+            </p>
+          )}
           <p className="mt-0.5 truncate text-[0.65rem] text-muted sm:text-[0.7rem]">
             <span className="tabular-nums">{variant.itemCode}</span>
             {usualHere && <span className="font-medium text-ink-soft"> · {pfmt(labels.usually, { qty: usualHere.lastQty })}</span>}
