@@ -9,7 +9,10 @@ import { adminClient } from "@/lib/supabase/admin";
 import { CONTENT_TAG } from "@/lib/supabase/server";
 import { requireAdmin } from "./auth";
 import { allLanguageUrls, submitToIndexNow } from "@/lib/indexnow";
-import { ADMIN_COOKIE, SESSION_TTL_SECONDS, checkPassword, createSessionToken } from "./session";
+import { ADMIN_COOKIE, SESSION_TTL_SECONDS, createSessionToken } from "./session";
+import { DUMMY_HASH, verifyPassword } from "./password";
+import { erp } from "@/lib/portal/erp";
+import { OFFICE_URL } from "@/lib/office";
 
 export type ActionResult = { ok: true; id?: string; message?: string } | { ok: false; error: string };
 
@@ -18,21 +21,75 @@ export type ActionResult = { ok: true; id?: string; message?: string } | { ok: f
 // ---------------------------------------------------------------------------
 const attempts = new Map<string, { n: number; until: number }>();
 
-export async function login(_prev: { error?: string } | null, formData: FormData): Promise<{ error?: string }> {
+type LoginState = { error?: string; username?: string; link?: { href: string; label: string } };
+
+type StaffRow = {
+  id: number; areas: string[]; active: boolean; password_hash: string; must_change_password: boolean;
+  session_version: number; failed_count: number; locked_until: string | null;
+};
+
+/**
+ * Staff sign in with their own ERP login (username + password), which must include
+ * "Website content". Wrong passwords count against the same login lock as the ERP.
+ */
+export async function login(_prev: LoginState | null, formData: FormData): Promise<LoginState> {
+  const username = String(formData.get("username") ?? "").trim().toLowerCase();
   const ip = (await headers()).get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   const a = attempts.get(ip);
-  if (a && a.until > Date.now()) return { error: "Too many attempts. Please wait a few minutes and try again." };
+  if (a && a.until > Date.now()) return { username, error: "Too many attempts. Please wait a few minutes and try again." };
 
-  const ok = await checkPassword(String(formData.get("password") ?? ""));
-  if (!ok) {
+  const password = String(formData.get("password") ?? "");
+  const wrong = async (row?: StaffRow) => {
     const n = (a?.n ?? 0) + 1;
-    attempts.set(ip, { n, until: n >= 5 ? Date.now() + 5 * 60_000 : 0 });
-    await new Promise((r) => setTimeout(r, 600)); // slow down guessing
-    return { error: "Incorrect password." };
-  }
-  attempts.delete(ip);
+    attempts.set(ip, { n, until: n >= 10 ? Date.now() + 5 * 60_000 : 0 });
+    if (row) {
+      const fails = row.failed_count + 1;
+      await erp().from("erp_users").update(
+        fails >= 5
+          ? { failed_count: 0, locked_until: new Date(Date.now() + 15 * 60_000).toISOString() }
+          : { failed_count: fails },
+      ).eq("id", row.id);
+    }
+    await new Promise((r) => setTimeout(r, 400)); // slow down guessing
+    return { username, error: "Wrong username or password." };
+  };
 
-  (await cookies()).set(ADMIN_COOKIE, await createSessionToken(), {
+  let row: StaffRow | null = null;
+  try {
+    const res = await erp()
+      .from("erp_users")
+      .select("id, areas, active, password_hash, must_change_password, session_version, failed_count, locked_until")
+      .eq("username", username)
+      .maybeSingle();
+    if (res.error) throw new Error(res.error.message);
+    row = res.data as StaffRow | null;
+  } catch {
+    return { username, error: "Could not reach the office system to check your login. Please try again in a moment." };
+  }
+
+  if (!row) {
+    await verifyPassword(password, DUMMY_HASH);
+    return wrong();
+  }
+  if (row.locked_until && new Date(row.locked_until).getTime() > Date.now()) {
+    return { username, error: "Too many wrong tries. Wait 15 minutes, or ask whoever manages staff logins to reset your password." };
+  }
+  if (!(await verifyPassword(password, row.password_hash))) return wrong(row);
+  attempts.delete(ip);
+  if (!row.active) return { username, error: "This login has been switched off." };
+  if (!row.areas.includes("website")) {
+    return { username, error: "Your login does not include the website admin. Ask whoever manages staff logins to tick \"Website content\"." };
+  }
+  if (row.must_change_password) {
+    return {
+      username,
+      error: "You're still on a one-time password. Sign in to the office system once to choose your own, then come back here.",
+      link: { href: `${OFFICE_URL}/login`, label: "Open the office system" },
+    };
+  }
+  await erp().from("erp_users").update({ failed_count: 0, locked_until: null, last_login_at: new Date().toISOString() }).eq("id", row.id);
+
+  (await cookies()).set(ADMIN_COOKIE, await createSessionToken(row.id, row.session_version), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",

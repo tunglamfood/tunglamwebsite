@@ -1,6 +1,7 @@
 import { adminInquiries } from "@/lib/admin/queries";
 import { AdminHeader, Card, EmptyState, FilterTabs } from "@/components/admin/ui";
 import { InquiryRow } from "./inquiry-row";
+import { OFFICE_URL } from "@/lib/office";
 
 export const metadata = { title: "Enquiries" };
 
@@ -20,6 +21,13 @@ export default async function InquiriesAdmin({ searchParams }: { searchParams: P
   return (
     <>
       <AdminHeader title="Enquiries" description="Messages sent from the website's enquiry forms." />
+      <p className="mb-5 rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink-soft">
+        Dealer, product and general enquiries also go straight to the sales team in the office system, under{" "}
+        <a href={`${OFFICE_URL}/sales/enquiries`} target="_blank" rel="noopener" className="font-semibold text-ink underline underline-offset-2">
+          Sales → Enquiries
+        </a>
+        , where they are followed up. Job applications stay only here.
+      </p>
       <FilterTabs active={status} tabs={STATUSES.map((s) => ({ key: s.key, label: s.label, count: count(s.key), href: `/admin/inquiries?status=${s.key}` }))} />
       <Card className="overflow-hidden">
         {rows.length === 0 ? (

@@ -13,9 +13,11 @@ import {
   FolderTree,
   HelpCircle,
   Inbox,
+  KeyRound,
   LayoutDashboard,
   Loader2,
   LogOut,
+  Building2,
   Menu,
   Newspaper,
   Package,
@@ -26,6 +28,7 @@ import {
   X,
 } from "lucide-react";
 import { logout, refreshWebsite } from "@/lib/admin/actions";
+import { OFFICE_URL } from "@/lib/office";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 const GROUPS = [
@@ -92,6 +95,9 @@ function SidebarNav({ newInquiries, pathname, onNavigate }: { newInquiries: numb
         <a href="/" target="_blank" rel="noopener" className="flex h-10 items-center gap-3 rounded-xl px-3 text-[0.9rem] font-medium text-ink-soft transition-colors hover:bg-sand hover:text-ink">
           <ExternalLink className="size-[1.125rem] text-muted" /> View website
         </a>
+        <a href={OFFICE_URL} target="_blank" rel="noopener" className="flex h-10 items-center gap-3 rounded-xl px-3 text-[0.9rem] font-medium text-ink-soft transition-colors hover:bg-sand hover:text-ink">
+          <Building2 className="size-[1.125rem] text-muted" /> Office system (ERP)
+        </a>
         <form action={logout}>
           <button className="flex h-10 w-full items-center gap-3 rounded-xl px-3 text-[0.9rem] font-medium text-red-600 transition-colors hover:bg-red-50">
             <LogOut className="size-[1.125rem]" /> Log out
@@ -103,7 +109,7 @@ function SidebarNav({ newInquiries, pathname, onNavigate }: { newInquiries: numb
 }
 
 /** Dropdown menu under the account button. */
-function AccountMenu() {
+function AccountMenu({ user }: { user: { name: string; username: string } }) {
   const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
   const [done, setDone] = useState(false);
@@ -131,10 +137,10 @@ function AccountMenu() {
         aria-haspopup="menu"
         className={clsx("flex h-10 items-center gap-2 rounded-xl border bg-white py-1 pl-1 pr-2 transition-colors hover:border-zinc-300", open ? "border-zinc-300" : "border-line")}
       >
-        <span className="grid size-8 place-items-center rounded-lg bg-brand text-xs font-bold text-white">TL</span>
-        <span className="hidden text-left leading-tight sm:block">
-          <span className="block text-[0.8125rem] font-semibold text-ink">Admin</span>
-          <span className="block text-[0.7rem] text-muted">tunglamfood.my</span>
+        <span className="grid size-8 place-items-center rounded-lg bg-brand text-xs font-bold text-white">{user.name.slice(0, 1).toUpperCase()}</span>
+        <span className="hidden max-w-[10rem] text-left leading-tight sm:block">
+          <span className="block truncate text-[0.8125rem] font-semibold text-ink">{user.name}</span>
+          <span className="block text-[0.7rem] text-muted">Website admin</span>
         </span>
         <ChevronDown className={clsx("size-4 text-muted transition-transform duration-200", open && "rotate-180")} />
       </button>
@@ -146,11 +152,17 @@ function AccountMenu() {
         )}
       >
         <div className="mb-1 border-b border-line px-2.5 pb-2.5 pt-1.5">
-          <p className="text-sm font-semibold text-ink">Tung Lam Admin</p>
-          <p className="text-xs text-muted">Website content</p>
+          <p className="truncate text-sm font-semibold text-ink">{user.name}</p>
+          <p className="truncate text-xs text-muted">{user.username} · website content</p>
         </div>
         <a href="/" target="_blank" rel="noopener" role="menuitem" className={item}>
           <ExternalLink className="size-4 text-muted" /> View website
+        </a>
+        <a href={OFFICE_URL} target="_blank" rel="noopener" role="menuitem" className={item}>
+          <Building2 className="size-4 text-muted" /> Office system (ERP)
+        </a>
+        <a href={`${OFFICE_URL}/account`} target="_blank" rel="noopener" role="menuitem" className={item}>
+          <KeyRound className="size-4 text-muted" /> Change password
         </a>
         <button
           type="button"
@@ -216,7 +228,15 @@ function TopSearch() {
 }
 
 /** Admin frame: fixed sidebar on desktop, slide-in drawer on phones, sticky top bar. */
-export function AdminShell({ newInquiries, children }: { newInquiries: number; children: ReactNode }) {
+export function AdminShell({
+  newInquiries,
+  user,
+  children,
+}: {
+  newInquiries: number;
+  user: { name: string; username: string };
+  children: ReactNode;
+}) {
   const pathname = usePathname() ?? "/admin";
   // Drawer state is tied to the path it was opened on, so navigating closes it.
   const [openOn, setOpenOn] = useState<string | null>(null);
@@ -265,7 +285,7 @@ export function AdminShell({ newInquiries, children }: { newInquiries: number; c
             <Link href="/admin/search" className={clsx(iconBtn, "border border-line md:hidden")} aria-label="Search">
               <Search className="size-4" />
             </Link>
-            <AccountMenu />
+            <AccountMenu user={user} />
           </div>
         </header>
         <main className="mx-auto max-w-6xl px-4 pb-20 pt-6 sm:px-8 sm:pt-8">{children}</main>

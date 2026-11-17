@@ -3,7 +3,11 @@ import { adminCounts } from "@/lib/admin/queries";
 import { AdminShell } from "@/components/admin/sidebar";
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
-  await requireAdmin();
+  const me = await requireAdmin();
   const counts = await adminCounts();
-  return <AdminShell newInquiries={counts.newInquiries}>{children}</AdminShell>;
+  return (
+    <AdminShell newInquiries={counts.newInquiries} user={{ name: me.name, username: me.username }}>
+      {children}
+    </AdminShell>
+  );
 }

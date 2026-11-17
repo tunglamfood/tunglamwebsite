@@ -17,9 +17,12 @@ export default async function LoginPage() {
             <Image src="/brand/logo.webp" alt="Tung Lam" width={299} height={171} priority className="h-auto w-full" />
           </span>
           <h1 className="mt-5 text-xl font-semibold tracking-[-0.02em] text-ink">Sign in to Tung Lam Admin</h1>
-          <p className="mt-1 text-sm text-muted">Manage the content of tunglamfood.my</p>
+          <p className="mt-1 text-sm text-muted">Use your own staff login — the same as the office system.</p>
         </div>
         <LoginForm />
+        <p className="mt-4 text-center text-xs text-muted">
+          No login yet, or forgot your password? Ask whoever manages staff logins.
+        </p>
       </div>
     </main>
   );

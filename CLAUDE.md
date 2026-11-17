@@ -26,8 +26,13 @@ docs/                   SEO strategy, deployment, content review
 ```
 
 ## Admin panel
-`/admin` — password-only (`ADMIN_PASSWORD`), HMAC-signed httpOnly session cookie (`src/lib/admin/session.ts`),
-checked in `src/proxy.ts`, every admin page (`requireAdmin`) and every server action (`src/lib/admin/actions.ts`).
+`/admin` — personal staff logins shared with the ERP: username + password checked against the ERP's `erp_users`
+(scrypt hashes, `src/lib/admin/password.ts`; login needs the "website" area; must-change/locked rules shared with the ERP).
+HMAC-signed httpOnly cookie carries user id + session version (`src/lib/admin/session.ts`), checked in `src/proxy.ts`,
+and re-checked against `erp_users` by every admin page (`requireAdmin`) and every server action (`src/lib/admin/actions.ts`).
+Staff logins are managed in the ERP → Admin → Staff logins. ERP address: `src/lib/office.ts`.
+Website enquiries (except job applications) are also copied to the ERP's `sales_leads` (ERP → Sales → Enquiries).
+`/api/catalog` = published products + photos for the ERP's portal-catalogue photo picker.
 Separate root layout `src/app/admin/layout.tsx` (neutral `.admin-theme`, noindex). Saves call `updateTag("content")`.
 **The admin is now the source of truth for content** — don't re-run `db:seed` (it refuses without `--force`).
 Guides (`/guides`, table `guides`, Markdown subset rendered by `src/components/guide/guide-body.tsx`) are edited in /admin/guides.

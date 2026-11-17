@@ -1,5 +1,7 @@
 /**
- * Admin session token: "<expiry-unix-seconds>.<hmac-sha256-hex>".
+ * Admin session token: "<expiry-unix-seconds>.<user-id>.<session-version>.<hmac-sha256-hex>".
+ * The user is a staff login from the ERP (`erp_users`); the version must still match
+ * theirs, so a login that is switched off, reset or loses "Website content" stops working.
  * Uses Web Crypto only, so it works in both src/proxy.ts and server actions.
  */
 export const ADMIN_COOKIE = "tl_admin";
@@ -27,27 +29,22 @@ export function safeEqual(a: string, b: string) {
   return diff === 0;
 }
 
-export async function createSessionToken() {
+export async function createSessionToken(userId: number, version: number) {
   const exp = Math.floor(Date.now() / 1000) + SESSION_TTL_SECONDS;
-  return `${exp}.${await hmacHex(`admin.${exp}`)}`;
+  return `${exp}.${userId}.${version}.${await hmacHex(`admin.${exp}.${userId}.${version}`)}`;
 }
 
-export async function verifySessionToken(token: string | undefined | null) {
-  if (!token) return false;
-  const [expStr, sig] = token.split(".");
-  const exp = Number(expStr);
-  if (!exp || !sig || exp < Math.floor(Date.now() / 1000)) return false;
+/** The signed-in staff login's id and session version, or null. */
+export async function verifySessionToken(token: string | undefined | null): Promise<{ userId: number; version: number } | null> {
+  if (!token) return null;
+  const parts = token.split(".");
+  if (parts.length !== 4) return null;
+  const [exp, userId, version] = parts.slice(0, 3).map(Number);
+  const sig = parts[3];
+  if (!exp || !userId || !version || !sig || exp < Math.floor(Date.now() / 1000)) return null;
   try {
-    return safeEqual(sig, await hmacHex(`admin.${exp}`));
+    return safeEqual(sig, await hmacHex(`admin.${exp}.${userId}.${version}`)) ? { userId, version } : null;
   } catch {
-    return false;
+    return null;
   }
-}
-
-/** Compare a submitted password to ADMIN_PASSWORD without leaking timing. */
-export async function checkPassword(input: string) {
-  const expected = process.env.ADMIN_PASSWORD;
-  if (!expected) return false;
-  const [a, b] = await Promise.all([hmacHex(`pw.${input}`), hmacHex(`pw.${expected}`)]);
-  return safeEqual(a, b);
 }

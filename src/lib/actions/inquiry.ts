@@ -1,8 +1,10 @@
 "use server";
 
 import { headers } from "next/headers";
+import { after } from "next/server";
 import { z } from "zod";
 import { adminClient } from "@/lib/supabase/admin";
+import { erp } from "@/lib/portal/erp";
 
 export type InquiryState = { status: "idle" | "success" | "error" | "invalid" };
 
@@ -47,7 +49,7 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
   if (v.started_at && Date.now() - v.started_at < 2000) return { status: "success" };
 
   const h = await headers();
-  const { error } = await adminClient()
+  const { data, error } = await adminClient()
     .from("inquiries")
     .insert({
       kind: v.kind,
@@ -60,11 +62,38 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
       locale: v.locale ?? null,
       page_url: v.page_url ?? null,
       user_agent: h.get("user-agent")?.slice(0, 300) ?? null,
-    });
+    })
+    .select("id")
+    .single();
 
   if (error) {
     console.error("inquiry insert failed", error.message);
     return { status: "error" };
+  }
+
+  // Sales follows enquiries up in the office system (ERP → Sales → Enquiries).
+  // Copied after the reply, so a slow or unreachable ERP never fails the form.
+  // Job applications are not sales leads; they stay in /admin only.
+  if (v.kind !== "career") {
+    after(async () => {
+      try {
+        const { error: copyError } = await erp().from("sales_leads").insert({
+          website_id: data.id,
+          kind: v.kind,
+          name: v.name,
+          company: v.company ?? null,
+          email: v.email || null,
+          phone: v.phone ?? null,
+          message: v.message ?? null,
+          product_slug: v.product_slug ?? null,
+          locale: v.locale ?? null,
+          page_url: v.page_url ?? null,
+        });
+        if (copyError) console.error("enquiry copy to ERP failed", copyError.message);
+      } catch (e) {
+        console.error("enquiry copy to ERP failed", (e as Error).message);
+      }
+    });
   }
   return { status: "success" };
 }

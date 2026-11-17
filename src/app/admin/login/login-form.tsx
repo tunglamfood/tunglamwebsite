@@ -10,15 +10,37 @@ export function LoginForm() {
   return (
     <form action={action} className="space-y-4 rounded-2xl border border-line bg-white p-6 shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-20px_rgb(0_0_0/0.2)]">
       <div>
+        <label htmlFor="username" className="mb-1.5 block text-[0.8125rem] font-medium text-ink">
+          Username
+        </label>
+        <input
+          id="username"
+          name="username"
+          defaultValue={state?.username ?? ""}
+          required
+          autoFocus
+          autoComplete="username"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
+          className={`${inputClass} h-10`}
+        />
+      </div>
+      <div>
         <label htmlFor="password" className="mb-1.5 block text-[0.8125rem] font-medium text-ink">
           Password
         </label>
-        <input id="password" name="password" type="password" required autoFocus autoComplete="current-password" className={`${inputClass} h-10`} />
+        <input id="password" name="password" type="password" required autoComplete="current-password" className={`${inputClass} h-10`} />
       </div>
       {state?.error && (
-        <p role="alert" className="animate-fade-in rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-700">
-          {state.error}
-        </p>
+        <div role="alert" className="animate-fade-in rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-700">
+          <p>{state.error}</p>
+          {state.link && (
+            <a href={state.link.href} target="_blank" rel="noopener" className="mt-1.5 inline-block font-semibold underline underline-offset-2">
+              {state.link.label} &rarr;
+            </a>
+          )}
+        </div>
       )}
       <button
         type="submit"
