@@ -1,5 +1,6 @@
 import "server-only";
 import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage } from "pdf-lib";
+import fontkit from "@pdf-lib/fontkit";
 import { SITE, fullAddress } from "@/lib/site";
 import { LOGO_PNG_BASE64 } from "./pdf-logo";
 import type { PortalOrder } from "./data";
@@ -41,23 +42,60 @@ const safe = (s: string) =>
     })
     .join("");
 
-function wrap(text: string, font: PDFFont, size: number, width: number): string[] {
+/** Characters Helvetica can draw; anything else (Chinese, emoji…) needs the extra font. */
+const ansiOk = (ch: string) => {
+  const c = ch.codePointAt(0)!;
+  return c < 0x20 || c === 0x7f || (c >= 0x20 && c <= 0x7e) || (c >= 0xa0 && c <= 0xff) || WIN_ANSI_EXTRA.includes(ch);
+};
+const needsCjk = (s: string) => [...s].some((ch) => !ansiOk(ch));
+const plain = (s: string) => s.replace(/[\u0000-\u001f\u007f]/g, " ");
+const BASIC = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?-/()[]#&@'\"+*%=_~";
+
+/**
+ * Chinese in a dealer's note, address or name: a tiny Noto Sans SC font holding only
+ * the characters this PDF needs, from Google Fonts. Only the sorted set of characters is
+ * sent — never the text itself. Without it (offline), those characters print as "?".
+ */
+async function cjkFontFor(text: string): Promise<Uint8Array | null> {
+  const chars = [...new Set([...text].filter((ch) => !ansiOk(ch)))];
+  if (chars.length === 0) return null;
+  try {
+    const set = [...new Set([...chars, ...BASIC])].sort().join("");
+    const css = await (
+      await fetch(`https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&text=${encodeURIComponent(set)}`, {
+        headers: { "User-Agent": "Mozilla/4.0 (compatible)" },
+        signal: AbortSignal.timeout(6000),
+      })
+    ).text();
+    const url = css.match(/url\((https:[^)]+)\)\s*format\(['"]truetype/)?.[1];
+    if (!url) return null;
+    const res = await fetch(url, { signal: AbortSignal.timeout(6000) });
+    return res.ok ? new Uint8Array(await res.arrayBuffer()) : null;
+  } catch {
+    return null;
+  }
+}
+
+function wrap(text: string, font: PDFFont, size: number, width: number, cjk: PDFFont | null = null): string[] {
   const out: string[] = [];
   // Split into lines before cleaning: addresses from the old system use \r, \r\n or \n.
-  for (const para of text.split(/\r\n|[\r\n\v\u2028\u2029]/).map(safe)) {
+  for (const raw of text.split(/\r\n|[\r\n\v\u2028\u2029]/)) {
+    const useCjk = !!cjk && needsCjk(raw);
+    const para = useCjk ? plain(raw) : safe(raw);
+    const f = useCjk ? cjk! : font;
     let line = "";
     for (const word of para.split(/\s+/).filter(Boolean)) {
       const next = line ? `${line} ${word}` : word;
-      if (font.widthOfTextAtSize(next, size) <= width) {
+      if (f.widthOfTextAtSize(next, size) <= width) {
         line = next;
         continue;
       }
       if (line) out.push(line);
       // A single word wider than the column is cut, not allowed to overflow.
       let w = word;
-      while (font.widthOfTextAtSize(w, size) > width && w.length > 1) {
+      while (f.widthOfTextAtSize(w, size) > width && w.length > 1) {
         let cut = w.length - 1;
-        while (cut > 1 && font.widthOfTextAtSize(w.slice(0, cut), size) > width) cut--;
+        while (cut > 1 && f.widthOfTextAtSize(w.slice(0, cut), size) > width) cut--;
         out.push(w.slice(0, cut));
         w = w.slice(cut);
       }
@@ -85,11 +123,23 @@ export async function orderPdf(order: PortalOrder, customer: PortalCustomer | un
   const font = await doc.embedFont(StandardFonts.Helvetica);
   const bold = await doc.embedFont(StandardFonts.HelveticaBold);
   const logo = await doc.embedPng(Buffer.from(LOGO_PNG_BASE64, "base64"));
+  doc.registerFontkit(fontkit);
+  const everything = [order.note, order.theirRef, order.placedBy, customer?.name, customer?.address, ...order.lines.map((l) => l.description)]
+    .filter(Boolean)
+    .join(" ");
+  const cjkBytes = await cjkFontFor(everything);
+  const cjk = cjkBytes ? await doc.embedFont(cjkBytes, { subset: true }).catch(() => null) : null;
 
-  const text = (page: PDFPage, s: string, x: number, y: number, size = 9, f: PDFFont = font, color = INK) =>
-    page.drawText(safe(s), { x, y, size, font: f, color });
-  const right = (page: PDFPage, s: string, xRight: number, y: number, size = 9, f: PDFFont = font, color = INK) =>
-    text(page, s, xRight - f.widthOfTextAtSize(safe(s), size), y, size, f, color);
+  /** Helvetica for plain text; the Chinese font for a string that needs it. */
+  const pick = (s: string, f: PDFFont) => (cjk && needsCjk(s) ? { str: plain(s), f: cjk } : { str: safe(s), f });
+  const text = (page: PDFPage, s: string, x: number, y: number, size = 9, f: PDFFont = font, color = INK) => {
+    const p = pick(s, f);
+    page.drawText(p.str, { x, y, size, font: p.f, color });
+  };
+  const right = (page: PDFPage, s: string, xRight: number, y: number, size = 9, f: PDFFont = font, color = INK) => {
+    const p = pick(s, f);
+    text(page, s, xRight - p.f.widthOfTextAtSize(p.str, size), y, size, f, color);
+  };
 
   // Columns: code | description | qty | uom | unit price | amount
   const cols = { code: M, desc: M + 70, qty: 388, uom: 396, price: 492, amount: A4.w - M };
@@ -147,13 +197,13 @@ export async function orderPdf(order: PortalOrder, customer: PortalCustomer | un
   const topY = y;
   text(page, "ORDERED FOR", M, y, 7.5, bold, MUTED);
   y -= 13;
-  for (const l of wrap(customer?.name ?? order.customerCode, bold, 10, 270)) {
+  for (const l of wrap(customer?.name ?? order.customerCode, bold, 10, 270, cjk)) {
     text(page, l, M, y, 10, bold);
     y -= 13;
   }
   text(page, `Dealer code ${order.customerCode}`, M, y, 8.5, font, MUTED);
   y -= 11;
-  for (const l of wrap(customer?.address ?? "", font, 8.5, 270).filter(Boolean)) {
+  for (const l of wrap(customer?.address ?? "", font, 8.5, 270, cjk).filter(Boolean)) {
     text(page, l, M, y, 8.5, font, MUTED);
     y -= 11;
   }
@@ -178,7 +228,7 @@ export async function orderPdf(order: PortalOrder, customer: PortalCustomer | un
   /* ── Lines ── */
   tableHead();
   for (const l of order.lines) {
-    const desc = wrap(l.description, font, 9, descWidth);
+    const desc = wrap(l.description, font, 9, descWidth, cjk);
     const h = Math.max(1, desc.length) * 11 + 7;
     if (y - h < M + 70) newPage(false);
     text(page, l.itemCode, cols.code + 4, y, 8.5, bold);
@@ -207,7 +257,7 @@ export async function orderPdf(order: PortalOrder, customer: PortalCustomer | un
     if (y < M + 80) newPage(false);
     text(page, "NOTE", M, y, 7.5, bold, MUTED);
     y -= 12;
-    for (const l of wrap(order.note, font, 9, A4.w - 2 * M).slice(0, 20)) {
+    for (const l of wrap(order.note, font, 9, A4.w - 2 * M, cjk).slice(0, 20)) {
       if (y < M + 30) newPage(false);
       text(page, l, M, y, 9);
       y -= 11;
