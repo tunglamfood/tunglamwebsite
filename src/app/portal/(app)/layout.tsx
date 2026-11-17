@@ -15,6 +15,7 @@ export default async function PortalAppLayout({ children }: { children: React.Re
       dealer={ctx.customer ? { name: ctx.customer.name } : null}
       canSwitch={ctx.customers.length > 1}
       updates={updates.map((u) => ({ orderNo: u.orderNo, at: u.at }))}
+      isRep={ctx.account.role === "rep"}
     >
       {children}
     </PortalShell>

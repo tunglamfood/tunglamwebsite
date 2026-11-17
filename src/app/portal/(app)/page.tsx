@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeftRight, ArrowRight, ArrowUpRight, BellDot, Megaphone, Package, Star } from "lucide-react";
+import { ArrowLeftRight, ArrowRight, ArrowUpRight, BellDot, MapPin, Megaphone, Package, Star } from "lucide-react";
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { getAnnouncements, getOrderUpdates, getOrders, getUsualItems } from "@/lib/portal/data";
 import { pfmt } from "@/lib/portal/i18n";
@@ -118,6 +118,19 @@ export default async function PortalHome() {
           />
         )}
       </section>
+
+      {ctx.account.role === "rep" && (
+        <Link href="/portal/visits" className="glass group flex items-center gap-4 rounded-2xl p-4 transition hover:bg-white/80 sm:p-5">
+          <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600">
+            <MapPin className="size-5" aria-hidden />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-ink">{d.visits.cta}</span>
+            <span className="block text-sm text-muted">{d.visits.intro}</span>
+          </span>
+          <ArrowRight className="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5" aria-hidden />
+        </Link>
+      )}
 
       {/* What Tung Lam did with the dealer's orders lately */}
       {updates.length > 0 && (

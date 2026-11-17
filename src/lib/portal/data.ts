@@ -299,6 +299,47 @@ function toOrder(o: OrderRow, lines: OrderLine[]): PortalOrder {
   };
 }
 
+/* ── Rep visits ────────────────────────────────────────────────────────────── */
+
+export type RepVisit = {
+  id: number;
+  dealer: string;
+  checkedInAt: string;
+  checkedOutAt: string | null;
+  minutes: number | null;
+  outcome: string | null;
+  note: string | null;
+  photos: number;
+  located: boolean;
+};
+
+/** A rep's own visits, newest first (the open one, if any, comes first). */
+export async function getVisits(repCode: string, limit = 30): Promise<RepVisit[]> {
+  const { data, error } = await erp()
+    .from("sales_visits")
+    .select("id, checked_in_at, checked_out_at, outcome, note, photo_paths, in_lat, sales_customers(name, short_name)")
+    .eq("rep_code", repCode)
+    .order("checked_in_at", { ascending: false })
+    .limit(limit);
+  if (error) throw new Error(`Could not load your visits: ${error.message}`);
+  return ((data ?? []) as Record<string, unknown>[]).map((r) => {
+    const c = (Array.isArray(r.sales_customers) ? r.sales_customers[0] : r.sales_customers) as { name?: string; short_name?: string } | null;
+    const inAt = r.checked_in_at as string;
+    const outAt = (r.checked_out_at as string) ?? null;
+    return {
+      id: r.id as number,
+      dealer: c?.short_name || c?.name || "—",
+      checkedInAt: inAt,
+      checkedOutAt: outAt,
+      minutes: outAt ? Math.max(0, Math.round((new Date(outAt).getTime() - new Date(inAt).getTime()) / 60000)) : null,
+      outcome: (r.outcome as string) ?? null,
+      note: (r.note as string) ?? null,
+      photos: ((r.photo_paths as string[]) ?? []).length,
+      located: r.in_lat != null,
+    };
+  });
+}
+
 /* ── Payment slips ─────────────────────────────────────────────────────────── */
 
 export type PortalPayment = {
