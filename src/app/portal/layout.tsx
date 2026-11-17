@@ -12,7 +12,15 @@ export const metadata: Metadata = {
   icons: { icon: "/icon.png", apple: "/apple-icon.png" },
 };
 
-export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
+/** App-like: no pinch/auto zoom (iOS zooms into small inputs otherwise); the keyboard resizes the layout on Android. */
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  interactiveWidget: "resizes-content",
+};
 
 /** Separate root layout for the dealer portal: app-style, never indexed. */
 export default async function PortalRootLayout({ children }: { children: React.ReactNode }) {

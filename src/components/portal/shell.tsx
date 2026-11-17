@@ -273,7 +273,7 @@ export function PortalShell({
       </div>
 
       {/* ------------------------------------------------ Phone tab bar */}
-      <nav className="glass-bar fixed inset-x-0 bottom-0 z-30 border-t pb-[env(safe-area-inset-bottom)] lg:hidden" aria-label="Portal">
+      <nav className="portal-tabbar glass-bar fixed inset-x-0 bottom-0 z-30 border-t pb-[env(safe-area-inset-bottom)] lg:hidden" aria-label="Portal">
         <ul className="grid grid-cols-5">
           {tabs.map((n) => {
             const on = isActive(n.href, n.exact);
