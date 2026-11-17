@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { ArrowLeftRight, ChevronRight, LogOut, UserRound, Wallet } from "lucide-react";
-import { requirePortal, getPortalDict } from "@/lib/portal/context";
+import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
+import { getStatement } from "@/lib/portal/data";
+import { money, pfmt } from "@/lib/portal/i18n";
+import { formatDate } from "@/components/portal/bits";
 import { logout } from "@/lib/portal/actions";
 import { showPhone } from "@/lib/portal/phone";
 import { whatsappLink } from "@/lib/site";
@@ -10,8 +13,10 @@ import { WhatsAppIcon } from "@/components/ui/icons";
 export const metadata = { title: "Account" };
 
 export default async function PortalAccount() {
-  const [ctx, d] = await Promise.all([requirePortal(), getPortalDict()]);
+  const [ctx, d, lang] = await Promise.all([requirePortal(), getPortalDict(), getPortalLang()]);
   const c = ctx.customer;
+  const statement = c ? await getStatement(c.code) : null;
+  const s = d.account;
   const rows: [string, string | null | undefined][] = c
     ? [
         [d.account.dealer, c.name],
@@ -27,6 +32,45 @@ export default async function PortalAccount() {
   return (
     <>
       <PageTitle title={d.account.title} />
+      {c && statement?.asOf && (
+        <section className={`${pcard} mb-5 overflow-hidden sm:mb-6`}>
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-line p-4 sm:p-5">
+            <div>
+              <h2 className="font-display text-lg font-bold tracking-[-0.015em] text-ink">{s.statement}</h2>
+              <p className="text-sm text-muted">{pfmt(s.asOf, { date: formatDate(statement.asOf, lang) })}</p>
+            </div>
+            <div className="text-right">
+              <p className="font-display text-2xl font-bold tabular-nums tracking-[-0.02em] text-ink">{money(statement.total, c.currency)}</p>
+              {statement.overdue > 0 && <p className="text-sm font-semibold text-red-600">{pfmt(s.overdueAmount, { amount: money(statement.overdue, c.currency) })}</p>}
+            </div>
+          </div>
+          {statement.lines.length === 0 ? (
+            <p className="p-5 text-sm text-muted">{s.nothingOwed}</p>
+          ) : (
+            <ul className="divide-y divide-line">
+              {statement.lines.map((l) => (
+                <li key={l.docNo} className="flex items-center gap-3 px-4 py-3 sm:px-5">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-medium tabular-nums text-ink">{l.docNo}</p>
+                    <p className="text-xs text-muted">
+                      {formatDate(l.docDate, lang)}
+                      {l.dueDate ? ` · ${pfmt(s.due, { date: formatDate(l.dueDate, lang) })}` : ""}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-semibold tabular-nums text-ink">{money(l.outstanding, c.currency)}</p>
+                    {l.daysOverdue > 0 && <p className="text-xs font-semibold text-red-600">{pfmt(s.daysLate, { n: l.daysOverdue })}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="border-t border-line bg-white/40 px-4 py-3 text-xs text-muted sm:px-5">
+            {s.statementNote}{" "}
+            <Link href="/portal/payments" className="font-semibold text-ink underline underline-offset-2">{d.payments.cta}</Link>
+          </div>
+        </section>
+      )}
       <div className="grid gap-4 sm:gap-5 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
         <div className={`${pcard} overflow-hidden`}>
           <div className="flex items-center gap-4 border-b border-line p-4 sm:p-5">

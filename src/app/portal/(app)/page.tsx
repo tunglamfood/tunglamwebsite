@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeftRight, ArrowRight, ArrowUpRight, BellDot, MapPin, Megaphone, Package, Star } from "lucide-react";
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
-import { getAnnouncements, getOrderUpdates, getOrders, getRepProgress, getUsualItems } from "@/lib/portal/data";
+import { getAnnouncements, getOrderUpdates, getOrders, getRepProgress, getStatement, getUsualItems } from "@/lib/portal/data";
 import { money, pfmt } from "@/lib/portal/i18n";
 import { ReorderButton } from "@/components/portal/order-actions";
 import { EmptyCard, OrderList, StatusPill, formatDate, pcard } from "@/components/portal/bits";
@@ -20,7 +20,10 @@ export default async function PortalHome() {
     getUsualItems(ctx.customer.code),
     getOrderUpdates([ctx.customer.code], 14),
   ]);
-  const progress = ctx.account.role === "rep" && ctx.account.repCode ? await getRepProgress(ctx.account.repCode) : null;
+  const isRep = ctx.account.role === "rep" && !!ctx.account.repCode;
+  const [progress, owes] = isRep
+    ? await Promise.all([getRepProgress(ctx.account.repCode!), getStatement(ctx.customer.code)])
+    : [null, null];
   const updateAt = Object.fromEntries(updates.map((u) => [u.orderNo, u.at]));
   const eventLabel = (k: string) => (d.orders.events as Record<string, string>)[k] ?? k;
   const statusLabel = (k: string) => (d.orders.status as Record<string, string>)[k] ?? k;
@@ -139,6 +142,19 @@ export default async function PortalHome() {
           )}
           {progress.unpricedLines > 0 && <p className="mt-2 text-xs text-muted">{pfmt(d.home.unpriced, { n: progress.unpricedLines })}</p>}
         </section>
+      )}
+
+      {owes?.asOf && owes.total !== 0 && (
+        <Link href="/portal/account" className={`glass flex items-center gap-4 rounded-2xl p-4 transition hover:bg-white/80 sm:p-5 ${owes.overdue > 0 ? "ring-1 ring-red-200" : ""}`}>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-ink">{pfmt(d.home.owes, { name: ctx.customer.shortName || ctx.customer.name })}</span>
+            <span className="block text-sm text-muted">{pfmt(d.account.asOf, { date: owes.asOf })}</span>
+          </span>
+          <span className="text-right">
+            <span className="block font-display text-lg font-bold tabular-nums text-ink">{money(owes.total, ctx.customer.currency)}</span>
+            {owes.overdue > 0 && <span className="block text-xs font-semibold text-red-600">{pfmt(d.account.overdueAmount, { amount: money(owes.overdue, ctx.customer.currency) })}</span>}
+          </span>
+        </Link>
       )}
 
       {ctx.account.role === "rep" && (

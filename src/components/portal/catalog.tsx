@@ -325,6 +325,9 @@ function ProductCard({
               <span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-[0.68rem] font-medium leading-tight text-amber-800">{labels.priceTbc}</span>
             )}
           </div>
+          {variant.outOfStock && (
+            <p className="mt-1 inline-flex rounded-md bg-zinc-100 px-1.5 py-0.5 text-[0.65rem] font-semibold text-zinc-600 sm:text-[0.7rem]">{labels.outOfStock}</p>
+          )}
           {variant.promo && (
             <p className="mt-1 inline-flex max-w-full items-start gap-1 rounded-md bg-brand-50 px-1.5 py-0.5 text-[0.65rem] font-semibold leading-snug text-brand sm:text-[0.7rem]">
               <span className="mt-px shrink-0 rounded bg-brand px-1 text-[0.6rem] uppercase text-white">{labels.promo}</span>

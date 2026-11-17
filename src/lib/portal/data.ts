@@ -17,6 +17,8 @@ export type CatalogVariant = {
   image: string | null;
   /** A promotion the database will apply when the quantity reaches minQty. */
   promo: Promo | null;
+  /** AutoCount's last stock balance says none is left (the quantity itself is never shown). */
+  outOfStock: boolean;
 };
 
 export type { Promo } from "./pricing";
@@ -63,6 +65,8 @@ export async function getCatalog(customerCode: string, lang: PortalLang): Promis
     websiteImages(),
     erp().rpc("portal_promotions", { p_customer: customerCode }),
   ]);
+  const { data: stock } = await erp().from("stock_levels").select("item_code").lte("qty", 0).limit(5000);
+  const outOf = new Set(((stock ?? []) as { item_code: string }[]).map((r) => r.item_code));
   type PromoRow = { item_code: string; price: number; min_qty: number; title_en: string; title_ms: string | null; title_zh: string | null; ends_on: string | null };
   const promoOf = new Map<string, Promo>(
     ((promos.data ?? []) as PromoRow[]).map((r) => [
@@ -95,6 +99,7 @@ export async function getCatalog(customerCode: string, lang: PortalLang): Promis
       priceSource: r.price_source,
       image: (r.variant_slug && images.get(r.variant_slug)) || null,
       promo: promoOf.get(r.item_code) ?? null,
+      outOfStock: outOf.has(r.item_code),
     });
   }
   // A product without its own photo borrows the first variant photo it has.
@@ -352,6 +357,26 @@ export async function getVisits(repCode: string, limit = 30): Promise<RepVisit[]
       located: r.in_lat != null,
     };
   });
+}
+
+/** A dealer's open invoices from AutoCount, with the totals worked out by the ERP database. */
+export type StatementLine = { docNo: string; docType: string; docDate: string; dueDate: string | null; amount: number; outstanding: number; daysOverdue: number };
+export type Statement = { lines: StatementLine[]; total: number; overdue: number; asOf: string | null };
+
+export async function getStatement(customerCode: string): Promise<Statement | null> {
+  const { data, error } = await erp().rpc("portal_statement", { p_customer: customerCode });
+  if (error) return null;
+  const rows = (data ?? []) as Record<string, unknown>[];
+  const { data: imp } = rows.length ? { data: null } : await erp().from("data_imports").select("as_of").eq("kind", "ar").order("at", { ascending: false }).limit(1);
+  return {
+    lines: rows.map((r) => ({
+      docNo: r.doc_no as string, docType: r.doc_type as string, docDate: r.doc_date as string, dueDate: (r.due_date as string) ?? null,
+      amount: Number(r.amount), outstanding: Number(r.outstanding), daysOverdue: Number(r.days_overdue),
+    })),
+    total: rows.length ? Number(rows[0].total_outstanding) : 0,
+    overdue: rows.length ? Number(rows[0].total_overdue) : 0,
+    asOf: rows.length ? ((rows[0].as_of as string) ?? null) : (((imp ?? []) as { as_of: string }[])[0]?.as_of ?? null),
+  };
 }
 
 /** A rep's month so far against their target — worked out by the ERP database. */
