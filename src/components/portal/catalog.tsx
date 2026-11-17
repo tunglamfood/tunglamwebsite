@@ -326,9 +326,9 @@ function ProductCard({
             )}
           </div>
           {variant.promo && (
-            <p className="mt-1 inline-flex max-w-full items-center gap-1 rounded-md bg-brand-50 px-1.5 py-0.5 text-[0.65rem] font-semibold text-brand sm:text-[0.7rem]">
-              <span className="rounded bg-brand px-1 text-[0.6rem] uppercase text-white">{labels.promo}</span>
-              <span className="truncate">
+            <p className="mt-1 inline-flex max-w-full items-start gap-1 rounded-md bg-brand-50 px-1.5 py-0.5 text-[0.65rem] font-semibold leading-snug text-brand sm:text-[0.7rem]">
+              <span className="mt-px shrink-0 rounded bg-brand px-1 text-[0.6rem] uppercase text-white">{labels.promo}</span>
+              <span className="line-clamp-2">
                 {variant.promo.title}
                 {variant.promo.minQty > 1 ? ` · ${money(variant.promo.price, currency)} × ${variant.promo.minQty}+` : ""}
               </span>
