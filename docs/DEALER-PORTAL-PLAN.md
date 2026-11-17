@@ -86,10 +86,24 @@ In the ERP, portal orders appear as "New from portal".
   - A monthly sales target per rep, set in Dealer portal → Sales reps.
   - Progress = orders from the rep's dealers, worked out by `portal_rep_progress`. Reps see it on their portal home.
 
+**Done 18 November 2026 (round 2):**
+- **AutoCount data (ERP → Sales → Accounts & stock):**
+  - Import the outstanding-invoice listing and the stock balance (Excel or CSV). The column headings are found automatically. Each import replaces the previous snapshot.
+  - Aging by dealer in the ERP; each dealer's statement on the portal Account page (outstanding, overdue, days late).
+  - Reps see what a dealer owes; "Out of stock" tags in the catalogue (quantities are never shown).
+- **Commission:** a % of delivered sales per rep, set in Dealer portal → Sales reps. Shown on the Sales report and the rep's portal home (`portal_rep_commission`).
+- **Promotions on office orders:** the ERP order screen applies promotions with the same rule as the portal (`promoFor` in `src/lib/pricing.ts`).
+- **Order SMS:** confirm, deliver, cancel or change → SMS to the dealer's portal phones. Off unless `ORDER_SMS=on` and OneWay SMS are set in the ERP's Vercel.
+- **Smaller items:**
+  - Chinese prints properly in order PDFs.
+  - Photo upload for portal products with no website page.
+  - A "Dealer? Order this" link on website product pages.
+  - The assistant asks before guessing 豆干 / tau pok / egg tofu.
+
 **Still parked:**
-- Needs AutoCount data: aging, statements and stock levels.
-- Needs your rules: commission, and the ERP's own order screen applying promotions (today only portal orders get promo prices automatically).
-- SMS, WhatsApp or email messages to dealers when an order changes. For now, updates show in the portal only. SMS can reuse the OneWay SMS sender once that account exists.
+- WhatsApp or email messages, and push notifications.
+- Online payment (FPX).
+- Two-way AutoCount sync. For now the office exports and imports files. For now, updates show in the portal only. SMS can reuse the OneWay SMS sender once that account exists.
 - Push or WhatsApp alerts to the office. For now there are red counts in the ERP sidebar.
 
 ---
