@@ -67,7 +67,28 @@ In the ERP, portal orders appear as "New from portal".
   - The office checks it in ERP → Sales → Payments and marks it Received, or Not accepted with a reason the dealer reads.
   - The amount is what the dealer typed; nothing is calculated.
 
+**Phase 5 — done 18 November 2026** (picked after comparing with SalesHero, salesheroapp.com):
+- **Sales report (ERP → Sales report):**
+  - Orders and value by day or week; the share placed by dealers, reps and the office.
+  - Top dealers and products; portal use.
+  - Dealers who have "gone quiet" (much longer than their usual gap since the last order).
+  - Each rep's month against their target.
+- **Rep visits:**
+  - Reps check in at a dealer on the portal, with the phone's location if allowed, then add photos (private `visit-photos` bucket), an outcome and a note, and check out.
+  - The office sees each visit in ERP → Sales → Visits, with a map link and the photos.
+  - `next.config.ts` now allows location (`geolocation=(self)`).
+- **Promotions (ERP → Sales → Promotions):**
+  - A promo price or % off for one item: for all dealers, a group or one dealer, between two dates, optionally from a minimum quantity.
+  - The database applies it in `portal_place_order` via `sales_promo_for`, and the line is saved with `price_source = 'promo'`.
+  - The portal shows a Promo tag, and the cart shows the promo price once the quantity qualifies.
+- **Order from a photo:** the order assistant reads a photo of an order (handwriting, a PO or a screenshot) into lines the dealer checks before adding them to the cart.
+- **Rep targets:**
+  - A monthly sales target per rep, set in Dealer portal → Sales reps.
+  - Progress = orders from the rep's dealers, worked out by `portal_rep_progress`. Reps see it on their portal home.
+
 **Still parked:**
+- Needs AutoCount data: aging, statements and stock levels.
+- Needs your rules: commission, and the ERP's own order screen applying promotions (today only portal orders get promo prices automatically).
 - SMS, WhatsApp or email messages to dealers when an order changes. For now, updates show in the portal only. SMS can reuse the OneWay SMS sender once that account exists.
 - Push or WhatsApp alerts to the office. For now there are red counts in the ERP sidebar.
 

@@ -354,6 +354,16 @@ export async function getVisits(repCode: string, limit = 30): Promise<RepVisit[]
   });
 }
 
+/** A rep's month so far against their target — worked out by the ERP database. */
+export type RepProgress = { target: number | null; value: number; orders: number; unpricedLines: number };
+
+export async function getRepProgress(repCode: string): Promise<RepProgress | null> {
+  const { data, error } = await erp().rpc("portal_rep_progress", { p_rep: repCode });
+  const r = (Array.isArray(data) ? data[0] : data) as { target: number | null; value: number; orders: number; unpriced_lines: number } | null;
+  if (error || !r) return null;
+  return { target: r.target == null ? null : Number(r.target), value: Number(r.value), orders: r.orders, unpricedLines: r.unpriced_lines };
+}
+
 /* ── Payment slips ─────────────────────────────────────────────────────────── */
 
 export type PortalPayment = {

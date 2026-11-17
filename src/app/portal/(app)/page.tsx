@@ -2,8 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeftRight, ArrowRight, ArrowUpRight, BellDot, MapPin, Megaphone, Package, Star } from "lucide-react";
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
-import { getAnnouncements, getOrderUpdates, getOrders, getUsualItems } from "@/lib/portal/data";
-import { pfmt } from "@/lib/portal/i18n";
+import { getAnnouncements, getOrderUpdates, getOrders, getRepProgress, getUsualItems } from "@/lib/portal/data";
+import { money, pfmt } from "@/lib/portal/i18n";
 import { ReorderButton } from "@/components/portal/order-actions";
 import { EmptyCard, OrderList, StatusPill, formatDate, pcard } from "@/components/portal/bits";
 import { UpdatedMark } from "@/components/portal/updates";
@@ -20,6 +20,7 @@ export default async function PortalHome() {
     getUsualItems(ctx.customer.code),
     getOrderUpdates([ctx.customer.code], 14),
   ]);
+  const progress = ctx.account.role === "rep" && ctx.account.repCode ? await getRepProgress(ctx.account.repCode) : null;
   const updateAt = Object.fromEntries(updates.map((u) => [u.orderNo, u.at]));
   const eventLabel = (k: string) => (d.orders.events as Record<string, string>)[k] ?? k;
   const statusLabel = (k: string) => (d.orders.status as Record<string, string>)[k] ?? k;
@@ -118,6 +119,27 @@ export default async function PortalHome() {
           />
         )}
       </section>
+
+      {progress && (
+        <section className="glass rounded-2xl p-4 sm:p-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="font-semibold text-ink">{d.home.myMonth}</h2>
+            <span className="text-sm text-muted">{pfmt(d.home.monthOrders, { n: progress.orders })}</span>
+          </div>
+          <p className="mt-1 font-display text-2xl font-bold tabular-nums tracking-[-0.02em] text-ink">
+            {money(progress.value, ctx.customer.currency)}
+            {progress.target ? <span className="text-base font-medium text-muted"> / {money(progress.target, ctx.customer.currency)}</span> : null}
+          </p>
+          {progress.target ? (
+            <div className="mt-2.5 h-2 overflow-hidden rounded-full bg-white/80 ring-1 ring-line">
+              <div className="h-full rounded-full bg-brand" style={{ width: `${Math.min(100, Math.round((progress.value / progress.target) * 100))}%` }} />
+            </div>
+          ) : (
+            <p className="mt-1 text-xs text-muted">{d.home.noTarget}</p>
+          )}
+          {progress.unpricedLines > 0 && <p className="mt-2 text-xs text-muted">{pfmt(d.home.unpriced, { n: progress.unpricedLines })}</p>}
+        </section>
+      )}
 
       {ctx.account.role === "rep" && (
         <Link href="/portal/visits" className="glass group flex items-center gap-4 rounded-2xl p-4 transition hover:bg-white/80 sm:p-5">

@@ -51,6 +51,10 @@ const en = {
     aiText: "Type or paste your order — we match the products for you",
     updatesTitle: "Latest from Tung Lam",
     updatesEmpty: "Nothing new on your orders.",
+    myMonth: "My month (my dealers)",
+    monthOrders: "{n} orders",
+    noTarget: "No target set yet — ask the office.",
+    unpriced: "+ {n} lines with no price yet",
   },
   dealers: {
     title: "Choose a dealer",
@@ -298,6 +302,10 @@ const ms: PortalDict = {
     aiText: "Taip atau tampal pesanan — kami padankan produk untuk anda",
     updatesTitle: "Terkini daripada Tung Lam",
     updatesEmpty: "Tiada berita baharu tentang pesanan anda.",
+    myMonth: "Bulan saya (pengedar saya)",
+    monthOrders: "{n} pesanan",
+    noTarget: "Tiada sasaran lagi — tanya pejabat.",
+    unpriced: "+ {n} baris tanpa harga lagi",
   },
   dealers: {
     title: "Pilih pengedar",
@@ -543,6 +551,10 @@ const zh: PortalDict = {
     aiText: "输入或粘贴订单，我们为您匹配产品",
     updatesTitle: "Tung Lam 最新动态",
     updatesEmpty: "您的订单暂无新动态。",
+    myMonth: "本月业绩（我的经销商）",
+    monthOrders: "{n} 张订单",
+    noTarget: "尚未设定目标——请询问办公室。",
+    unpriced: "另有 {n} 行尚无价格",
   },
   dealers: {
     title: "选择经销商",
