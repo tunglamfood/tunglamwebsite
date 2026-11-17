@@ -171,6 +171,10 @@ const en = {
     limit: "You have sent a lot of messages. Please wait a few minutes and try again.",
     disclaimer: "AI can make mistakes. Check the items before you place the order.",
     newChat: "New chat",
+    attach: "Photo of an order",
+    photoAsk: "Read the order in this photo, please.",
+    photoAttached: "Photo attached — add a note or just send.",
+    removePhoto: "Remove photo",
   },
   payments: {
     title: "Payments",
@@ -414,6 +418,10 @@ const ms: PortalDict = {
     limit: "Anda telah menghantar banyak mesej. Sila tunggu beberapa minit dan cuba lagi.",
     disclaimer: "AI boleh tersilap. Semak barang sebelum membuat pesanan.",
     newChat: "Sembang baharu",
+    attach: "Foto pesanan",
+    photoAsk: "Tolong baca pesanan dalam foto ini.",
+    photoAttached: "Foto dilampirkan — tambah catatan atau terus hantar.",
+    removePhoto: "Buang foto",
   },
   payments: {
     title: "Pembayaran",
@@ -655,6 +663,10 @@ const zh: PortalDict = {
     limit: "您发送的消息较多，请稍等几分钟再试。",
     disclaimer: "AI 可能会出错，下单前请核对产品。",
     newChat: "新对话",
+    attach: "订单照片",
+    photoAsk: "请读取这张照片里的订单。",
+    photoAttached: "已附上照片——可加备注或直接发送。",
+    removePhoto: "移除照片",
   },
   payments: {
     title: "付款",

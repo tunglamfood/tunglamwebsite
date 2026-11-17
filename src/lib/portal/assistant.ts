@@ -64,7 +64,12 @@ function limited(accountId: number) {
   return false;
 }
 
-export async function askAssistant(history: ChatTurn[]): Promise<AssistantResult> {
+/** A photo is accepted only as a small JPEG/PNG/WebP data URL (the browser shrinks it first). */
+function photoOk(v: unknown): v is string {
+  return typeof v === "string" && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(v) && v.length <= 3_500_000;
+}
+
+export async function askAssistant(history: ChatTurn[], photo?: string | null): Promise<AssistantResult> {
   const ctx = await getPortal();
   if (!ctx) return { ok: false, reason: "signed_out" };
   if (!ctx.customer) return { ok: false, reason: "no_dealer" };
@@ -76,6 +81,8 @@ export async function askAssistant(history: ChatTurn[]): Promise<AssistantResult
     .slice(-12)
     .map((t) => ({ role: t.role, text: t.text.slice(0, 2500) }));
   if (!turns.length || turns[turns.length - 1].role !== "user") return { ok: false, reason: "error" };
+  const image = photoOk(photo) ? photo : null;
+  if (photo && !image) return { ok: false, reason: "error" };
 
   const c = ctx.customer;
   const [lang, d] = await Promise.all([getPortalLang(), getPortalDict()]);
@@ -118,6 +125,7 @@ YOUR JOB
    - "sure" = true only when the dealer's words point to exactly this item (code, exact name and size, or USUAL). If you picked between similar products or pack sizes, set sure = false (the app asks the dealer to check it) and mention it in one short sentence.
    - Anything you cannot match goes in "unmatched" (the dealer's words), and you say so briefly.
 2. Answer questions about their orders (from ORDERS) and account (ACCOUNT). The order list shows the status names the dealer sees.
+3. Photos: the dealer may attach a photo of an order — handwriting, a printed purchase order, a WhatsApp screenshot, a shelf. Read every order line in it and treat them exactly like a typed order (same matching rules; "from" = the words as written on the photo). If it is not an order or cannot be read, say so in one sentence and ask them to type it.
 
 RULES
 - Never mention prices, totals, discounts, stock, delivery times or credit decisions; the app shows prices and the office confirms orders. Never invent products or order numbers.
@@ -140,7 +148,9 @@ ${usualText}
 ORDERS (newest first)
 ${ordersText}`;
 
-    const transcript = turns.map((t) => `${t.role === "user" ? "DEALER" : "ASSISTANT"}: ${t.text}`).join("\n\n");
+    const transcript = turns
+      .map((t, i) => `${t.role === "user" ? "DEALER" : "ASSISTANT"}: ${t.text}${image && i === turns.length - 1 ? "\n[The dealer attached the photo below with this message.]" : ""}`)
+      .join("\n\n");
     const out = await structured<ModelOut>({
       model: REVIEW_MODEL,
       system,
@@ -149,6 +159,7 @@ ${ordersText}`;
       schema: SCHEMA,
       effort: "low",
       timeoutMs: 60_000,
+      images: image ? [image] : undefined,
     });
 
     // Check every line against this dealer's catalogue; merge duplicates.

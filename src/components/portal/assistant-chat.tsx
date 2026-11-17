@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-import { AlertTriangle, ArrowRight, ArrowUp, Check, Minus, Plus, RotateCcw, ShoppingCart, X } from "lucide-react";
+import { AlertTriangle, ArrowRight, ArrowUp, Camera, Check, Minus, Plus, RotateCcw, ShoppingCart, X } from "lucide-react";
 import { askAssistant, type ProposedLine } from "@/lib/portal/assistant";
 import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 import { useCart } from "./cart";
@@ -13,8 +13,23 @@ import { PRIMARY } from "./bits";
 import { AssistantIcon } from "./assistant-icon";
 import { toast } from "./toast";
 
+/** A photo of an order, shrunk to a clear 1600-pixel JPEG and kept as a data URL for this chat only. */
+async function toDataUrl(file: File): Promise<string | null> {
+  try {
+    const bmp = await createImageBitmap(file);
+    const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.round(bmp.width * scale);
+    canvas.height = Math.round(bmp.height * scale);
+    canvas.getContext("2d")!.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL("image/jpeg", 0.85);
+  } catch {
+    return null;
+  }
+}
+
 type Msg =
-  | { id: number; role: "user"; text: string }
+  | { id: number; role: "user"; text: string; photo?: string }
   | { id: number; role: "assistant"; text: string; lines: ProposedLine[]; unmatched: string[]; added?: boolean }
   | { id: number; role: "error"; text: string };
 
@@ -43,6 +58,7 @@ export function AssistantChat({
 }) {
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [text, setText] = useState("");
+  const [photo, setPhoto] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const { addMany } = useCart(scope);
   const router = useRouter();
@@ -102,17 +118,19 @@ export function AssistantChat({
   }, []);
 
   const send = (raw: string) => {
-    const t = raw.trim();
+    const t = raw.trim() || (photo ? labels.photoAsk : "");
     if (!t || pending) return;
-    const userMsg: Msg = { id: newId(), role: "user", text: t };
+    const sentPhoto = photo;
+    const userMsg: Msg = { id: newId(), role: "user", text: t, ...(sentPhoto ? { photo: sentPhoto } : {}) };
     const next = [...msgs, userMsg];
     setMsgs(next);
     setText("");
+    setPhoto(null);
     start(async () => {
       const history = next
         .filter((m): m is Extract<Msg, { role: "user" | "assistant" }> => m.role === "user" || m.role === "assistant")
         .map((m) => ({ role: m.role, text: m.role === "assistant" && m.lines.length ? `${m.text}\n[proposed: ${m.lines.map((l) => `${l.itemCode} x${l.qty}`).join(", ")}]` : m.text }));
-      const res = await askAssistant(history);
+      const res = await askAssistant(history, sentPhoto);
       if (!res.ok) {
         if (res.reason === "signed_out") return router.push("/portal/login");
         if (res.reason === "no_dealer") return router.push("/portal/dealers");
@@ -175,7 +193,13 @@ export function AssistantChat({
           {msgs.map((m) =>
             m.role === "user" ? (
               <div key={m.id} className="flex justify-end pl-10">
-                <p className="max-w-full animate-fade-in whitespace-pre-wrap break-words rounded-2xl rounded-br-md bg-brand px-3 py-2 text-sm leading-snug text-white">{m.text}</p>
+                <div className="flex max-w-full animate-fade-in flex-col items-end gap-1">
+                  {m.photo && (
+                    // eslint-disable-next-line @next/next/no-img-element -- the dealer's own photo, kept only in this chat
+                    <img src={m.photo} alt={labels.attach} className="max-h-56 max-w-[14rem] rounded-2xl rounded-br-md border border-white/80 object-cover shadow-sm" />
+                  )}
+                  <p className="max-w-full whitespace-pre-wrap break-words rounded-2xl rounded-br-md bg-brand px-3 py-2 text-sm leading-snug text-white">{m.text}</p>
+                </div>
               </div>
             ) : m.role === "error" ? (
               <p key={m.id} className="mr-10 flex animate-fade-in gap-2 rounded-2xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
@@ -279,6 +303,16 @@ export function AssistantChat({
 
       {/* Message box, docked */}
       <div className="shrink-0 border-t border-white/60 bg-white/75 px-3 pb-2 pt-2 backdrop-blur-xl sm:px-6 lg:border-0 lg:bg-transparent lg:px-0 lg:pb-0 lg:pt-3 lg:backdrop-blur-none">
+        {photo && (
+          <div className="mb-2 flex items-center gap-2.5 rounded-2xl border border-line bg-white p-1.5 pr-3">
+            {/* eslint-disable-next-line @next/next/no-img-element -- local preview */}
+            <img src={photo} alt="" className="size-12 rounded-xl object-cover" />
+            <span className="min-w-0 flex-1 truncate text-sm font-medium text-ink">{labels.photoAttached}</span>
+            <button type="button" onClick={() => setPhoto(null)} aria-label={labels.removePhoto} className="grid size-8 place-items-center rounded-full text-muted hover:bg-sand hover:text-ink">
+              <X className="size-4" />
+            </button>
+          </div>
+        )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -287,6 +321,15 @@ export function AssistantChat({
           }}
           className="flex items-end gap-2"
         >
+          <label
+            aria-label={labels.attach}
+            title={labels.attach}
+            className={clsx("relative grid size-10 shrink-0 cursor-pointer place-items-center rounded-full border border-line bg-white text-ink-soft transition hover:text-ink", pending && "pointer-events-none opacity-50")}
+          >
+            <Camera className="size-5" />
+            <input type="file" accept="image/*" className="sr-only" disabled={pending}
+              onChange={async (e) => { const f = e.target.files?.[0]; e.target.value = ""; if (f) setPhoto(await toDataUrl(f)); }} />
+          </label>
           <textarea
             ref={boxRef}
             value={text}
@@ -304,9 +347,9 @@ export function AssistantChat({
           />
           <button
             type="submit"
-            disabled={pending || !text.trim()}
+            disabled={pending || (!text.trim() && !photo)}
             aria-label={labels.send}
-            className={clsx("grid size-10 shrink-0 place-items-center rounded-full transition", pending || !text.trim() ? "bg-ink/10 text-ink/35" : PRIMARY)}
+            className={clsx("grid size-10 shrink-0 place-items-center rounded-full transition", pending || (!text.trim() && !photo) ? "bg-ink/10 text-ink/35" : PRIMARY)}
           >
             <ArrowUp className="size-5" />
           </button>

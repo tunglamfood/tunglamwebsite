@@ -18,6 +18,8 @@ export async function structured<T>(opts: {
   schema: Record<string, unknown>;
   effort?: Effort;
   timeoutMs?: number;
+  /** Pictures sent with the user message, as data: URLs (e.g. a photo of an order). */
+  images?: string[];
 }): Promise<T> {
   const key = process.env.OPENAI_API_KEY;
   if (!key) throw new Error("OPENAI_API_KEY is not set");
@@ -28,7 +30,15 @@ export async function structured<T>(opts: {
       model: opts.model,
       input: [
         { role: "system", content: opts.system },
-        { role: "user", content: opts.user },
+        {
+          role: "user",
+          content: opts.images?.length
+            ? [
+                { type: "input_text", text: opts.user },
+                ...opts.images.map((url) => ({ type: "input_image", image_url: url, detail: "high" })),
+              ]
+            : opts.user,
+        },
       ],
       text: { format: { type: "json_schema", name: opts.name, schema: opts.schema, strict: true } },
       reasoning: { effort: opts.effort ?? "low" },
