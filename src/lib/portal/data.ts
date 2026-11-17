@@ -382,6 +382,14 @@ export async function getStatement(customerCode: string): Promise<Statement | nu
 /** A rep's month so far against their target — worked out by the ERP database. */
 export type RepProgress = { target: number | null; value: number; orders: number; unpricedLines: number };
 
+/** Commission so far this month on delivered orders — worked out by the ERP database. */
+export async function getRepCommission(repCode: string): Promise<{ rate: number; amount: number } | null> {
+  const { data, error } = await erp().rpc("portal_rep_commission", { p_rep: repCode });
+  const r = (Array.isArray(data) ? data[0] : data) as { commission_rate: number | null; commission: number | null } | null;
+  if (error || !r || r.commission_rate == null || r.commission == null) return null;
+  return { rate: Number(r.commission_rate), amount: Number(r.commission) };
+}
+
 export async function getRepProgress(repCode: string): Promise<RepProgress | null> {
   const { data, error } = await erp().rpc("portal_rep_progress", { p_rep: repCode });
   const r = (Array.isArray(data) ? data[0] : data) as { target: number | null; value: number; orders: number; unpriced_lines: number } | null;

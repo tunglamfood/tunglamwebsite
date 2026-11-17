@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeftRight, ArrowRight, ArrowUpRight, BellDot, MapPin, Megaphone, Package, Star } from "lucide-react";
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
-import { getAnnouncements, getOrderUpdates, getOrders, getRepProgress, getStatement, getUsualItems } from "@/lib/portal/data";
+import { getAnnouncements, getOrderUpdates, getOrders, getRepCommission, getRepProgress, getStatement, getUsualItems } from "@/lib/portal/data";
 import { money, pfmt } from "@/lib/portal/i18n";
 import { ReorderButton } from "@/components/portal/order-actions";
 import { EmptyCard, OrderList, StatusPill, formatDate, pcard } from "@/components/portal/bits";
@@ -21,9 +21,9 @@ export default async function PortalHome() {
     getOrderUpdates([ctx.customer.code], 14),
   ]);
   const isRep = ctx.account.role === "rep" && !!ctx.account.repCode;
-  const [progress, owes] = isRep
-    ? await Promise.all([getRepProgress(ctx.account.repCode!), getStatement(ctx.customer.code)])
-    : [null, null];
+  const [progress, owes, commission] = isRep
+    ? await Promise.all([getRepProgress(ctx.account.repCode!), getStatement(ctx.customer.code), getRepCommission(ctx.account.repCode!)])
+    : [null, null, null];
   const updateAt = Object.fromEntries(updates.map((u) => [u.orderNo, u.at]));
   const eventLabel = (k: string) => (d.orders.events as Record<string, string>)[k] ?? k;
   const statusLabel = (k: string) => (d.orders.status as Record<string, string>)[k] ?? k;
@@ -141,6 +141,11 @@ export default async function PortalHome() {
             <p className="mt-1 text-xs text-muted">{d.home.noTarget}</p>
           )}
           {progress.unpricedLines > 0 && <p className="mt-2 text-xs text-muted">{pfmt(d.home.unpriced, { n: progress.unpricedLines })}</p>}
+          {commission && (
+            <p className="mt-2 text-sm text-ink-soft">
+              {pfmt(d.home.commission, { amount: money(commission.amount, ctx.customer.currency), rate: commission.rate })}
+            </p>
+          )}
         </section>
       )}
 
