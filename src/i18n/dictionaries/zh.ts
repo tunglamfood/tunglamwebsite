@@ -28,6 +28,7 @@ const zh: Dictionary = {
     skip: "跳至内容",
   },
   cta: {
+    dealerOrder: "经销商？在经销商入口订购此产品",
     explore: "浏览产品",
     wholesale: "批发询价",
     whatsapp: "WhatsApp 联系",

@@ -26,6 +26,7 @@ const en = {
     skip: "Skip to content",
   },
   cta: {
+    dealerOrder: "Dealer? Order this on the dealer portal",
     explore: "Explore products",
     wholesale: "Wholesale enquiry",
     whatsapp: "WhatsApp us",

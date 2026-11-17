@@ -29,6 +29,8 @@ export type CatalogProduct = {
   category: "tofu" | "steamboat" | "dessert" | "grocery";
   brand: string;
   image: string | null;
+  /** The product's page on tunglamfood.my, when it has one. */
+  slug: string | null;
   variants: CatalogVariant[];
 };
 
@@ -88,6 +90,7 @@ export async function getCatalog(customerCode: string, lang: PortalLang): Promis
         category: r.category,
         brand: r.brand,
         image: (r.website_slug && images.get(r.website_slug)) || ownPhoto.get(r.product_id) || null,
+        slug: r.website_slug,
         variants: [],
       };
       byId.set(r.product_id, p);

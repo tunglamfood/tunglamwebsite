@@ -28,6 +28,7 @@ const ms: Dictionary = {
     skip: "Langkau ke kandungan",
   },
   cta: {
+    dealerOrder: "Pengedar? Pesan produk ini di portal pengedar",
     explore: "Lihat produk",
     wholesale: "Pertanyaan borong",
     whatsapp: "WhatsApp kami",

@@ -141,6 +141,10 @@ export async function ProductView({ product, catalog, locale, dict: d }: { produ
             </a>
             <a href="#enquire" className={buttonClass("secondary", "lg", "px-5")}>{d.cta.enquire}</a>
           </div>
+          {/* Dealers go straight to this product in their portal (plain link: no prefetch of /portal). */}
+          <a href={`/portal/products?slug=${encodeURIComponent(product.slug)}`} className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-ink-soft underline decoration-line underline-offset-4 transition-colors hover:text-ink hover:decoration-ink">
+            {d.cta.dealerOrder} &rarr;
+          </a>
 
           <ul className="mt-5 flex flex-wrap gap-2 text-[0.8125rem] font-medium text-ink-soft sm:mt-6">
             <li className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5"><ShieldCheck className="size-4 text-leaf" aria-hidden />{d.products.halal}</li>
