@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import legacyRedirects from "./src/data/legacy-redirects.json";
 
 const supabaseHost = new URL(process.env.SUPABASE_URL ?? "https://example.supabase.co").hostname;
+const erpHost = new URL(process.env.ERP_SUPABASE_URL ?? "https://example.supabase.co").hostname;
 
 const nextConfig: NextConfig = {
   // Classic static generation + ISR (see src/lib/data.ts for revalidation tags).
@@ -24,6 +25,8 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       { protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/public/media/**" },
+      // Photos uploaded in the ERP for portal products that have no page on this site.
+      { protocol: "https", hostname: erpHost, pathname: "/storage/v1/object/public/portal-photos/**" },
     ],
   },
   async redirects() {

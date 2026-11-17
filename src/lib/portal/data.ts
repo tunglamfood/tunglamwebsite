@@ -66,6 +66,8 @@ export async function getCatalog(customerCode: string, lang: PortalLang): Promis
     erp().rpc("portal_promotions", { p_customer: customerCode }),
   ]);
   const { data: stock } = await erp().from("stock_levels").select("item_code").lte("qty", 0).limit(5000);
+  const { data: own } = await erp().from("portal_products").select("id, photo_path").not("photo_path", "is", null);
+  const ownPhoto = new Map(((own ?? []) as { id: number; photo_path: string }[]).map((r) => [r.id, erp().storage.from("portal-photos").getPublicUrl(r.photo_path).data.publicUrl]));
   const outOf = new Set(((stock ?? []) as { item_code: string }[]).map((r) => r.item_code));
   type PromoRow = { item_code: string; price: number; min_qty: number; title_en: string; title_ms: string | null; title_zh: string | null; ends_on: string | null };
   const promoOf = new Map<string, Promo>(
@@ -85,7 +87,7 @@ export async function getCatalog(customerCode: string, lang: PortalLang): Promis
         name: pick(lang, r.name_en, r.name_ms, r.name_zh),
         category: r.category,
         brand: r.brand,
-        image: (r.website_slug && images.get(r.website_slug)) || null,
+        image: (r.website_slug && images.get(r.website_slug)) || ownPhoto.get(r.product_id) || null,
         variants: [],
       };
       byId.set(r.product_id, p);
