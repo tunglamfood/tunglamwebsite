@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { UpdatedMark } from "./updates";
 import clsx from "clsx";
 import { ChevronRight } from "lucide-react";
 import type { PortalDict, PortalLang } from "@/lib/portal/i18n";
@@ -104,7 +105,20 @@ type OrderRow = {
 const ORDER_GRID = "md:grid-cols-[minmax(0,1fr)_8rem_8rem_5rem_8rem_11rem_1rem]";
 
 /** Orders as a table on desktop and compact rows on phones. Totals come from the ERP as-is. */
-export function OrderList({ orders, d, lang }: { orders: OrderRow[]; d: PortalDict; lang: PortalLang }) {
+export function OrderList({
+  orders,
+  d,
+  lang,
+  scope,
+  updates,
+}: {
+  orders: OrderRow[];
+  d: PortalDict;
+  lang: PortalLang;
+  /** With these, orders Tung Lam changed since the dealer last opened them are marked "Updated". */
+  scope?: string;
+  updates?: Record<string, string>;
+}) {
   const c = d.orders.cols;
   return (
     <div className={clsx(pcard, "overflow-hidden")}>
@@ -125,7 +139,10 @@ export function OrderList({ orders, d, lang }: { orders: OrderRow[]; d: PortalDi
               className={clsx("group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 px-4 py-3.5 transition-colors hover:bg-white/60 md:gap-4 md:px-5", ORDER_GRID)}
             >
               <span className="min-w-0">
-                <span className="block font-semibold tabular-nums text-ink">{o.orderNo}</span>
+                <span className="block font-semibold tabular-nums text-ink">
+                  {o.orderNo}
+                  {scope && <UpdatedMark scope={scope} orderNo={o.orderNo} at={updates?.[o.orderNo]} label={d.orders.updated} />}
+                </span>
                 <span className="block truncate text-sm text-muted md:hidden">
                   {formatDate(o.orderDate, lang)} · {pfmt(d.orders.items, { n: o.lines.length })}
                 </span>

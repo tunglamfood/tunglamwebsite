@@ -126,7 +126,48 @@ export type OrderLine = {
   priceSource: string | null;
 };
 
-export type OrderEvent = { at: string; actor: string; kind: string };
+export type OrderChange = { item: string; description: string; from: number; to: number; uom: string };
+
+export type OrderEvent = {
+  at: string;
+  actor: string;
+  kind: string;
+  /** Done by Tung Lam's office (not by the dealer). */
+  office: boolean;
+  /** What the office changed, and its message to the dealer. */
+  changes: OrderChange[];
+  message: string | null;
+};
+
+/** The ERP writes office events as "Tung Lam" ("Office" on older ones); the portal writes the dealer's name. */
+const OFFICE_ACTORS = ["Tung Lam", "Office"];
+
+/** The latest thing the office did on each of the dealer's orders, newest first (for the "Updated" marks). */
+export type OrderUpdate = { orderNo: string; at: string; kind: string; deliverOn: string | null };
+
+export async function getOrderUpdates(customerCodes: string[], days = 30): Promise<OrderUpdate[]> {
+  if (customerCodes.length === 0) return [];
+  const since = new Date(Date.now() - days * 86400_000).toISOString();
+  const { data, error } = await erp()
+    .from("sales_order_events")
+    .select("at, kind, sales_orders!inner(order_no, customer_code, status, deliver_on)")
+    .in("sales_orders.customer_code", customerCodes)
+    .neq("sales_orders.status", "draft")
+    .in("actor", OFFICE_ACTORS)
+    .gte("at", since)
+    .order("at", { ascending: false })
+    .limit(100);
+  if (error) return [];
+  const seen = new Set<string>();
+  const out: OrderUpdate[] = [];
+  for (const r of (data ?? []) as unknown as { at: string; kind: string; sales_orders: unknown }[]) {
+    const o = (Array.isArray(r.sales_orders) ? r.sales_orders[0] : r.sales_orders) as { order_no: string; deliver_on: string | null } | undefined;
+    if (!o || seen.has(o.order_no)) continue;
+    seen.add(o.order_no);
+    out.push({ orderNo: o.order_no, at: r.at, kind: r.kind, deliverOn: o.deliver_on });
+  }
+  return out;
+}
 
 export type PortalOrder = {
   id: number;
@@ -181,9 +222,30 @@ export async function getOrder(orderNo: string, customerCodes: string[]): Promis
   if (!o || !customerCodes.includes(o.customer_code) || o.status === "draft") return null;
   const [lines, { data: ev }] = await Promise.all([
     linesFor([o.id]),
-    db.from("sales_order_events").select("at, actor, kind").eq("order_id", o.id).order("at"),
+    db.from("sales_order_events").select("at, actor, kind, detail").eq("order_id", o.id).order("at"),
   ]);
-  return { ...toOrder(o, lines.get(o.id) ?? []), events: (ev ?? []) as OrderEvent[] };
+  type Raw = { at: string; actor: string; kind: string; detail: { changes?: { item: string; from: number; to: number; uom?: string }[]; message?: string } | null };
+  const raw = (ev ?? []) as Raw[];
+  const codes = [...new Set(raw.flatMap((e) => e.detail?.changes?.map((c) => c.item) ?? []))];
+  const { data: items } = codes.length
+    ? await db.from("sales_products").select("item_code, description").in("item_code", codes)
+    : { data: [] };
+  const desc = new Map(((items ?? []) as { item_code: string; description: string }[]).map((i) => [i.item_code, i.description]));
+  const events: OrderEvent[] = raw.map((e) => {
+    const office = OFFICE_ACTORS.includes(e.actor);
+    return {
+      at: e.at,
+      // The dealer sees the company, not which person in the office did it.
+      actor: office ? "Tung Lam" : e.actor,
+      kind: e.kind,
+      office,
+      changes: (e.detail?.changes ?? []).map((c) => ({
+        item: c.item, description: desc.get(c.item) ?? c.item, from: Number(c.from), to: Number(c.to), uom: c.uom ?? "",
+      })),
+      message: office ? (e.detail?.message ?? null) : null,
+    };
+  });
+  return { ...toOrder(o, lines.get(o.id) ?? []), events };
 }
 
 async function linesFor(orderIds: number[]): Promise<Map<number, OrderLine[]>> {

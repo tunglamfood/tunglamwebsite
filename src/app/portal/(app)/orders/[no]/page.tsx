@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CalendarDays, CheckCircle2, FileDown, Truck } from "lucide-react";
+import { ArrowLeft, CalendarDays, CheckCircle2, FileDown, MessageSquareText, Truck } from "lucide-react";
 import { requireCustomer, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { getOrder } from "@/lib/portal/data";
 import { money, pfmt } from "@/lib/portal/i18n";
 import { OrderActions } from "@/components/portal/order-actions";
 import { StatusPill, formatDate, pbtn, pcard } from "@/components/portal/bits";
+import { MarkSeen } from "@/components/portal/updates";
 
 export const metadata = { title: "Order" };
 
@@ -16,6 +17,8 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
   if (!order) notFound();
   const scope = `${ctx.account.id}:${order.customerCode}`;
   const eventLabel = (k: string) => (d.orders.events as Record<string, string>)[k] ?? k;
+  const lastOffice = [...order.events].reverse().find((e) => e.office)?.at ?? null;
+  const latestMessage = [...order.events].reverse().find((e) => e.message);
   const details = [
     order.theirRef ? { k: d.orders.poRef, v: order.theirRef } : null,
     order.placedBy ? { k: d.orders.placedBy, v: order.placedBy } : null,
@@ -24,6 +27,7 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
 
   return (
     <div className="space-y-4 sm:space-y-5">
+      <MarkSeen scope={scope} orderNo={order.orderNo} at={lastOffice} />
       <Link href="/portal/orders" className="inline-flex items-center gap-1.5 rounded-lg py-1 pr-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink">
         <ArrowLeft className="size-4" /> {d.orders.back}
       </Link>
@@ -36,6 +40,20 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
           <div>
             <p className="font-semibold text-emerald-900">{pfmt(d.orders.placedThanks, { no: order.orderNo })}</p>
             <p className="text-sm text-emerald-800/80">{order.status === "on_hold" ? d.orders.placedHold : d.orders.placedNext}</p>
+          </div>
+        </div>
+      )}
+
+      {latestMessage?.message && (
+        <div className="flex gap-3 rounded-2xl border border-brand/20 bg-brand-50/70 p-4">
+          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-white text-brand shadow-[var(--shadow-xs)]">
+            <MessageSquareText className="size-5" />
+          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-ink">
+              {d.orders.messageFrom} · <span className="font-normal text-muted">{formatDate(latestMessage.at, lang, true)}</span>
+            </p>
+            <p className="mt-0.5 whitespace-pre-wrap text-sm text-ink-soft">{latestMessage.message}</p>
           </div>
         </div>
       )}
@@ -136,6 +154,21 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
                     <p className="text-xs text-muted">
                       {formatDate(e.at, lang, true)} · {e.actor}
                     </p>
+                    {e.changes.length > 0 && (
+                      <ul className="mt-1.5 space-y-0.5 text-xs text-ink-soft">
+                        {e.changes.map((c) => (
+                          <li key={c.item} className="tabular-nums">
+                            <span className="font-medium text-ink">{c.description}</span>{" "}
+                            {c.from === 0
+                              ? `· ${d.orders.added} ${c.to} ${c.uom.toLowerCase()}`
+                              : c.to === 0
+                                ? `· ${d.orders.removed}`
+                                : `· ${c.from} → ${c.to} ${c.uom.toLowerCase()}`}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {e.message && <p className="mt-1.5 rounded-lg bg-white/70 px-2.5 py-1.5 text-xs text-ink-soft">“{e.message}”</p>}
                   </li>
                 ))}
               </ol>

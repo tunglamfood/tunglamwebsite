@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeftRight, ArrowRight, ArrowUpRight, Megaphone, Package, Star } from "lucide-react";
+import { ArrowLeftRight, ArrowRight, ArrowUpRight, BellDot, Megaphone, Package, Star } from "lucide-react";
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
-import { getAnnouncements, getOrders, getUsualItems } from "@/lib/portal/data";
+import { getAnnouncements, getOrderUpdates, getOrders, getUsualItems } from "@/lib/portal/data";
 import { pfmt } from "@/lib/portal/i18n";
 import { ReorderButton } from "@/components/portal/order-actions";
-import { EmptyCard, OrderList } from "@/components/portal/bits";
+import { EmptyCard, OrderList, StatusPill, formatDate, pcard } from "@/components/portal/bits";
+import { UpdatedMark } from "@/components/portal/updates";
 import { AssistantIcon } from "@/components/portal/assistant-icon";
 
 export const metadata = { title: "Home" };
@@ -13,11 +14,15 @@ export const metadata = { title: "Home" };
 export default async function PortalHome() {
   const [ctx, d, lang] = await Promise.all([requirePortal(), getPortalDict(), getPortalLang()]);
   if (!ctx.customer) redirect("/portal/dealers");
-  const [orders, notices, usual] = await Promise.all([
+  const [orders, notices, usual, updates] = await Promise.all([
     getOrders([ctx.customer.code], 5),
     getAnnouncements(lang),
     getUsualItems(ctx.customer.code),
+    getOrderUpdates([ctx.customer.code], 14),
   ]);
+  const updateAt = Object.fromEntries(updates.map((u) => [u.orderNo, u.at]));
+  const eventLabel = (k: string) => (d.orders.events as Record<string, string>)[k] ?? k;
+  const statusLabel = (k: string) => (d.orders.status as Record<string, string>)[k] ?? k;
   const usualCount = Object.keys(usual).length;
   const last = orders.find((o) => o.status !== "cancelled");
   const scope = `${ctx.account.id}:${ctx.customer.code}`;
@@ -114,6 +119,37 @@ export default async function PortalHome() {
         )}
       </section>
 
+      {/* What Tung Lam did with the dealer's orders lately */}
+      {updates.length > 0 && (
+        <section>
+          <h2 className="mb-3 flex items-center gap-2 font-display text-lg font-bold tracking-[-0.015em] text-ink sm:text-xl">
+            <BellDot className="size-5 text-brand" aria-hidden /> {d.home.updatesTitle}
+          </h2>
+          <ul className={`${pcard} divide-y divide-line overflow-hidden`}>
+            {updates.slice(0, 3).map((u) => (
+              <li key={u.orderNo}>
+                <Link href={`/portal/orders/${encodeURIComponent(u.orderNo)}`} className="flex items-center gap-3 px-4 py-3.5 transition-colors hover:bg-white/60 sm:px-5">
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-semibold tabular-nums text-ink">
+                      {u.orderNo}
+                      <UpdatedMark scope={scope} orderNo={u.orderNo} at={u.at} label={d.orders.updated} />
+                    </span>
+                    <span className="block text-sm text-muted">
+                      {eventLabel(u.kind)} · {formatDate(u.at, lang, true)}
+                      {u.deliverOn && u.kind === "confirmed" ? ` · ${pfmt(d.orders.deliverOn, { date: formatDate(u.deliverOn, lang) })}` : ""}
+                    </span>
+                  </span>
+                  {["confirmed", "delivered", "cancelled", "on_hold"].includes(u.kind) && (
+                    <StatusPill status={u.kind} label={statusLabel(u.kind)} />
+                  )}
+                  <ArrowRight className="size-4 shrink-0 text-muted" aria-hidden />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* Recent orders */}
       <section>
         <div className="mb-3 flex items-center justify-between">
@@ -124,7 +160,7 @@ export default async function PortalHome() {
             </Link>
           )}
         </div>
-        {orders.length === 0 ? <EmptyCard>{d.home.none}</EmptyCard> : <OrderList orders={orders} d={d} lang={lang} />}
+        {orders.length === 0 ? <EmptyCard>{d.home.none}</EmptyCard> : <OrderList orders={orders} d={d} lang={lang} scope={scope} updates={updateAt} />}
       </section>
     </div>
   );

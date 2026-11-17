@@ -14,6 +14,7 @@ import { WhatsAppIcon } from "@/components/ui/icons";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { AssistantIcon } from "./assistant-icon";
 import { Toaster } from "./toast";
+import { useUnseenUpdates } from "./updates";
 
 const LANG_NAME: Record<PortalLang, string> = { en: "English", ms: "Melayu", zh: "中文" };
 
@@ -95,9 +96,12 @@ export function PortalShell({
   appName,
   dealer,
   canSwitch,
+  updates = [],
 }: {
   children: React.ReactNode;
   scope: string;
+  /** The office's latest change on each recent order — the Orders tab counts the unseen ones. */
+  updates?: { orderNo: string; at: string }[];
   lang: PortalLang;
   labels: ShellLabels;
   appName: string;
@@ -107,6 +111,7 @@ export function PortalShell({
   const pathname = usePathname();
   const router = useRouter();
   const { count } = useCart(scope);
+  const unseen = useUnseenUpdates(scope, updates);
   const [pending, start] = useTransition();
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -115,7 +120,7 @@ export function PortalShell({
     { href: "/portal/products", label: labels.nav.products, icon: Package },
     { href: "/portal/assistant", label: labels.nav.assistant, icon: Sparkles, ai: true },
     { href: "/portal/cart", label: labels.nav.cart, icon: ShoppingCart, badge: count },
-    { href: "/portal/orders", label: labels.nav.orders, icon: ReceiptText },
+    { href: "/portal/orders", label: labels.nav.orders, icon: ReceiptText, badge: unseen },
     { href: "/portal/account", label: labels.nav.account, icon: UserRound },
   ];
   // Phones: five tabs with the assistant in the middle; Account sits in the header.
