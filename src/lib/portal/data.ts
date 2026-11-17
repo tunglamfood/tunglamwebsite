@@ -299,6 +299,45 @@ function toOrder(o: OrderRow, lines: OrderLine[]): PortalOrder {
   };
 }
 
+/* ── Payment slips ─────────────────────────────────────────────────────────── */
+
+export type PortalPayment = {
+  id: number;
+  orderNo: string | null;
+  amount: number;
+  currency: string;
+  paidOn: string;
+  reference: string | null;
+  fileType: string;
+  status: "submitted" | "checked" | "rejected";
+  officeNote: string | null;
+  createdAt: string;
+};
+
+/** Slips this dealer sent, newest first. The amounts are as the dealer typed them. */
+export async function getPayments(customerCode: string): Promise<PortalPayment[]> {
+  const { data, error } = await erp()
+    .from("portal_payments")
+    .select("id, order_no, amount, currency, paid_on, reference, file_type, status, office_note, created_at")
+    .eq("customer_code", customerCode)
+    .order("created_at", { ascending: false })
+    .limit(50);
+  if (error) throw new Error(`Could not load your payment slips: ${error.message}`);
+  return ((data ?? []) as Record<string, unknown>[]).map((r) => ({
+    id: r.id as number,
+    orderNo: (r.order_no as string) ?? null,
+    amount: Number(r.amount),
+    currency: (r.currency as string) ?? "MYR",
+    paidOn: r.paid_on as string,
+    reference: (r.reference as string) ?? null,
+    fileType: r.file_type as string,
+    status: r.status as PortalPayment["status"],
+    // A note is only for the dealer when the slip was turned down.
+    officeNote: r.status === "rejected" ? ((r.office_note as string) ?? null) : null,
+    createdAt: r.created_at as string,
+  }));
+}
+
 /* ── Usual items ───────────────────────────────────────────────────────────── */
 
 export type UsualItem = { times: number; lastQty: number; lastOrdered: string };

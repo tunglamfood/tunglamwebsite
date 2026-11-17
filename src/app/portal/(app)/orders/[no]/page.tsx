@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CalendarDays, CheckCircle2, FileDown, MessageSquareText, Truck } from "lucide-react";
+import { ArrowLeft, CalendarDays, CheckCircle2, FileDown, MessageSquareText, Truck, Wallet } from "lucide-react";
 import { requireCustomer, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { getOrder } from "@/lib/portal/data";
 import { money, pfmt } from "@/lib/portal/i18n";
@@ -90,6 +90,11 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
             <a href={`/portal/orders/${encodeURIComponent(order.orderNo)}/pdf`} className={pbtn("secondary")}>
               <FileDown className="size-4" /> {d.orders.pdf}
             </a>
+          )}
+          {order.status !== "cancelled" && (
+            <Link href={`/portal/payments?order=${encodeURIComponent(order.orderNo)}`} className={pbtn("secondary")}>
+              <Wallet className="size-4" /> {d.payments.cta}
+            </Link>
           )}
         </div>
       </section>

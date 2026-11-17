@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeftRight, ChevronRight, LogOut, UserRound } from "lucide-react";
+import { ArrowLeftRight, ChevronRight, LogOut, UserRound, Wallet } from "lucide-react";
 import { requirePortal, getPortalDict } from "@/lib/portal/context";
 import { logout } from "@/lib/portal/actions";
 import { showPhone } from "@/lib/portal/phone";
@@ -53,6 +53,12 @@ export default async function PortalAccount() {
         </div>
 
         <div className={`${pcard} divide-y divide-line overflow-hidden`}>
+          <Link href="/portal/payments" className={`${row} text-ink hover:bg-cream`}>
+            <span className="grid size-9 place-items-center rounded-xl bg-sand text-ink-soft">
+              <Wallet className="size-4" aria-hidden />
+            </span>
+            {d.payments.cta}
+          </Link>
           {ctx.customers.length > 1 && (
             <Link href="/portal/dealers" className={`${row} text-ink hover:bg-cream`}>
               <span className="grid size-9 place-items-center rounded-xl bg-sand text-ink-soft">

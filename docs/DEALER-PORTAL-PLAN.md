@@ -55,9 +55,21 @@ In the ERP, portal orders appear as "New from portal".
 - To switch it on, set `ONEWAYSMS_API_USERNAME` and `ONEWAYSMS_API_PASSWORD` (optionally `ONEWAYSMS_SENDER_ID`) in Vercel, then **remove `PORTAL_DEMO_OTP`**. While the demo code is set, it takes priority.
 - This was tested end to end against a stand-in SMS gateway. The first real SMS should still be checked on a staff phone.
 
+**Done 17–18 November 2026:**
+- **Staff logins:** every ERP user has their own login, with access set per area (HR & payroll, Sales & dealers, Website content, Staff logins). The same logins sign in to tunglamfood.my/admin.
+- **Office alerts in the ERP:** red counts in the sidebar for new portal orders, website enquiries and payment slips.
+- **Website enquiries in the ERP:** Sales → Enquiries. "Make them a dealer" creates the customer and the portal login in one step.
+- **Order updates for dealers, on the portal:**
+  - When the office confirms, changes or delivers an order, the dealer sees what changed (for example 10 → 6), with the office's optional message.
+  - Changed orders are marked "Updated", the Orders tab shows a count, and the home page has a "Latest from Tung Lam" card.
+- **Payment slips (Phase 3):**
+  - Dealers upload a bank slip (photo or PDF, up to 4 MB) under Payments or from an order. It goes to the private `payment-slips` bucket and the `portal_payments` table.
+  - The office checks it in ERP → Sales → Payments and marks it Received, or Not accepted with a reason the dealer reads.
+  - The amount is what the dealer typed; nothing is calculated.
+
 **Still parked:**
-- WhatsApp and email updates to dealers when an order is confirmed or delivered.
-- New-order alerts for the office.
+- SMS, WhatsApp or email messages to dealers when an order changes. For now, updates show in the portal only. SMS can reuse the OneWay SMS sender once that account exists.
+- Push or WhatsApp alerts to the office. For now there are red counts in the ERP sidebar.
 
 ---
 
