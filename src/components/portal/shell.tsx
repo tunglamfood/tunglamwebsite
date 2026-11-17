@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
 import clsx from "clsx";
-import { ArrowLeftRight, Check, ChevronDown, Globe, Home, Loader2, Package, ReceiptText, Search, MapPin, ShoppingCart, Sparkles, UserRound, Wallet } from "lucide-react";
+import { ArrowLeftRight, Check, ChevronDown, Globe, Home, Loader2, Package, ReceiptText, Search, Building2, MapPin, ShoppingCart, Sparkles, UserRound, Wallet } from "lucide-react";
 import { useCart } from "./cart";
 import { setPortalLang } from "@/lib/portal/actions";
 import { LANG_LABEL, PORTAL_LANGS, type PortalLang } from "@/lib/portal/i18n";
@@ -80,7 +80,7 @@ function LangMenu({ lang, pending, onChange }: { lang: PortalLang; pending: bool
 }
 
 type ShellLabels = {
-  nav: { home: string; products: string; cart: string; orders: string; payments: string; visits: string; account: string; assistant: string };
+  nav: { home: string; products: string; cart: string; orders: string; payments: string; visits: string; branches: string; account: string; assistant: string };
   orderingFor: string;
   switch: string;
   search: string;
@@ -125,12 +125,13 @@ export function PortalShell({
     { href: "/portal/cart", label: labels.nav.cart, icon: ShoppingCart, badge: count },
     { href: "/portal/orders", label: labels.nav.orders, icon: ReceiptText, badge: unseen },
     { href: "/portal/payments", label: labels.nav.payments, icon: Wallet },
+    ...(canSwitch ? [{ href: "/portal/branches", label: labels.nav.branches, icon: Building2 }] : []),
     ...(isRep ? [{ href: "/portal/visits", label: labels.nav.visits, icon: MapPin }] : []),
     { href: "/portal/account", label: labels.nav.account, icon: UserRound },
   ];
   // Phones: five tabs with the assistant in the middle; Account sits in the header.
   // Payments is reached from Account and from each order on phones.
-  const tabs = nav.filter((n) => !["/portal/account", "/portal/payments", "/portal/visits"].includes(n.href));
+  const tabs = nav.filter((n) => !["/portal/account", "/portal/payments", "/portal/visits", "/portal/branches"].includes(n.href));
   const isActive = (href: string, exact?: boolean) => (exact ? pathname === href : pathname.startsWith(href));
   const changeLang = (l: string) => start(async () => { await setPortalLang(l); router.refresh(); });
 

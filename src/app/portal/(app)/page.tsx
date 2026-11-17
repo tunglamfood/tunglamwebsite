@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeftRight, ArrowRight, ArrowUpRight, BellDot, MapPin, Megaphone, Package, Star } from "lucide-react";
+import { ArrowLeftRight, ArrowRight, ArrowUpRight, BellDot, Building2, MapPin, Megaphone, Package, Star } from "lucide-react";
 import { requirePortal, getPortalDict, getPortalLang } from "@/lib/portal/context";
 import { getAnnouncements, getOrderUpdates, getOrders, getRepCommission, getRepProgress, getStatement, getUsualItems } from "@/lib/portal/data";
 import { money, pfmt } from "@/lib/portal/i18n";
@@ -147,6 +147,19 @@ export default async function PortalHome() {
             </p>
           )}
         </section>
+      )}
+
+      {ctx.customers.length > 1 && (
+        <Link href="/portal/branches" className="glass group flex items-center gap-4 rounded-2xl p-4 transition hover:bg-white/80 sm:p-5">
+          <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand">
+            <Building2 className="size-5" aria-hidden />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-ink">{d.branches.cta}</span>
+            <span className="block text-sm text-muted">{d.branches.ctaText}</span>
+          </span>
+          <ArrowRight className="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5" aria-hidden />
+        </Link>
       )}
 
       {owes?.asOf && owes.total !== 0 && (

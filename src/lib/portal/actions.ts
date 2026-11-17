@@ -176,6 +176,51 @@ export async function placeOrder(input: PlaceOrderInput): Promise<PlaceOrderResu
   return { ok: true, orderNo: String(data) };
 }
 
+export type BranchOrderInput = {
+  deliverOn: string | null;
+  note: string;
+  branches: { customerCode: string; theirRef: string; lines: { itemCode: string; qty: number }[] }[];
+};
+export type BranchOrderResult =
+  | { ok: true; placed: { customerCode: string; orderNo: string }[]; failed: { customerCode: string; reason: string }[] }
+  | { ok: false; reason: string };
+
+/**
+ * A chain's head office (or a rep) ordering for many branches at once: one order per
+ * branch, each priced and checked by the ERP database exactly like a single order.
+ */
+export async function placeBranchOrders(input: BranchOrderInput): Promise<BranchOrderResult> {
+  const ctx = await getPortal();
+  if (!ctx) return { ok: false, reason: "signed_out" };
+  const allowed = new Set(ctx.customers.map((c) => c.code));
+  const deliverOn = input?.deliverOn && /^\d{4}-\d{2}-\d{2}$/.test(input.deliverOn) ? input.deliverOn : null;
+  const branches = (Array.isArray(input?.branches) ? input.branches : []).slice(0, 200);
+  const placed: { customerCode: string; orderNo: string }[] = [];
+  const failed: { customerCode: string; reason: string }[] = [];
+  for (const b of branches) {
+    const lines = (Array.isArray(b.lines) ? b.lines : [])
+      .map((l) => ({ item_code: String(l.itemCode ?? "").trim(), qty: Math.floor(Number(l.qty)) }))
+      .filter((l) => l.item_code && l.qty > 0);
+    if (!lines.length) continue;
+    if (!allowed.has(b.customerCode)) {
+      failed.push({ customerCode: b.customerCode, reason: "not_allowed" });
+      continue;
+    }
+    const { data, error } = await erp().rpc("portal_place_order", {
+      p_account: ctx.account.id,
+      p_customer: b.customerCode,
+      p_lines: lines,
+      p_deliver_on: deliverOn,
+      p_their_ref: String(b.theirRef ?? "").slice(0, 60),
+      p_note: String(input.note ?? "").slice(0, 1000),
+    });
+    if (error) failed.push({ customerCode: b.customerCode, reason: portalReason(error.message) });
+    else placed.push({ customerCode: b.customerCode, orderNo: String(data) });
+  }
+  if (!placed.length && !failed.length) return { ok: false, reason: "no_lines" };
+  return { ok: true, placed, failed };
+}
+
 export async function cancelOrder(orderNo: string): Promise<{ ok: boolean; reason?: string }> {
   const ctx = await getPortal();
   if (!ctx) return { ok: false, reason: "signed_out" };

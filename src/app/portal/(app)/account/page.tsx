@@ -16,6 +16,11 @@ export default async function PortalAccount() {
   const [ctx, d, lang] = await Promise.all([requirePortal(), getPortalDict(), getPortalLang()]);
   const c = ctx.customer;
   const statement = c ? await getStatement(c.code) : null;
+  // A chain's head office: what each branch owes, side by side.
+  const branchBalances = ctx.customers.length > 1
+    ? (await Promise.all(ctx.customers.slice(0, 80).map(async (b) => ({ b, st: await getStatement(b.code) }))))
+        .filter((x) => x.st && x.st.total !== 0)
+    : [];
   const s = d.account;
   const rows: [string, string | null | undefined][] = c
     ? [
@@ -32,6 +37,27 @@ export default async function PortalAccount() {
   return (
     <>
       <PageTitle title={d.account.title} />
+      {branchBalances.length > 0 && (
+        <section className={`${pcard} mb-5 overflow-hidden sm:mb-6`}>
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-line p-4 sm:p-5">
+            <h2 className="font-display text-lg font-bold tracking-[-0.015em] text-ink">{s.statement} · {d.orders.allBranches}</h2>
+            <p className="font-display text-xl font-bold tabular-nums text-ink">
+              {money(branchBalances.reduce((t, x) => t + (x.st?.total ?? 0), 0), ctx.customers[0].currency)}
+            </p>
+          </div>
+          <ul className="divide-y divide-line">
+            {branchBalances.map(({ b, st }) => (
+              <li key={b.code} className="flex items-center gap-3 px-4 py-3 sm:px-5">
+                <span className="min-w-0 flex-1 truncate font-medium text-ink">{b.shortName || b.name}</span>
+                <span className="text-right">
+                  <span className="block font-semibold tabular-nums text-ink">{money(st!.total, b.currency)}</span>
+                  {st!.overdue > 0 && <span className="block text-xs font-semibold text-red-600">{pfmt(s.overdueAmount, { amount: money(st!.overdue, b.currency) })}</span>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {c && statement?.asOf && (
         <section className={`${pcard} mb-5 overflow-hidden sm:mb-6`}>
           <div className="flex flex-wrap items-end justify-between gap-3 border-b border-line p-4 sm:p-5">

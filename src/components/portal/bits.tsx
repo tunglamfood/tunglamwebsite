@@ -100,6 +100,8 @@ type OrderRow = {
   total: number;
   currency: string;
   hasTbc?: boolean;
+  /** Shown under the order number when several branches are listed together. */
+  branch?: string;
 };
 
 const ORDER_GRID = "md:grid-cols-[minmax(0,1fr)_8rem_8rem_5rem_8rem_11rem_1rem]";
@@ -143,6 +145,7 @@ export function OrderList({
                   {o.orderNo}
                   {scope && <UpdatedMark scope={scope} orderNo={o.orderNo} at={updates?.[o.orderNo]} label={d.orders.updated} />}
                 </span>
+                {o.branch && <span className="block truncate text-xs font-medium text-brand-700">{o.branch}</span>}
                 <span className="block truncate text-sm text-muted md:hidden">
                   {formatDate(o.orderDate, lang)} · {pfmt(d.orders.items, { n: o.lines.length })}
                 </span>

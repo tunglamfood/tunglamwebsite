@@ -441,6 +441,30 @@ export async function getPayments(customerCode: string): Promise<PortalPayment[]
   }));
 }
 
+/** Each branch's most recent order that was not cancelled — "repeat last orders". */
+export async function getLastOrderLines(customerCodes: string[]): Promise<Record<string, { itemCode: string; qty: number }[]>> {
+  if (!customerCodes.length) return {};
+  const { data } = await erp()
+    .from("sales_orders")
+    .select("id, customer_code, created_at")
+    .in("customer_code", customerCodes)
+    .neq("status", "cancelled")
+    .neq("status", "draft")
+    .order("created_at", { ascending: false })
+    .limit(500);
+  const latest = new Map<string, number>();
+  for (const o of (data ?? []) as { id: number; customer_code: string }[]) if (!latest.has(o.customer_code)) latest.set(o.customer_code, o.id);
+  if (!latest.size) return {};
+  const { data: lines } = await erp().from("sales_order_lines").select("order_id, item_code, qty").in("order_id", [...latest.values()]);
+  const codeOf = new Map([...latest.entries()].map(([c, id]) => [id, c]));
+  const out: Record<string, { itemCode: string; qty: number }[]> = {};
+  for (const l of (lines ?? []) as { order_id: number; item_code: string; qty: number }[]) {
+    const c = codeOf.get(l.order_id)!;
+    (out[c] ??= []).push({ itemCode: l.item_code, qty: Number(l.qty) });
+  }
+  return out;
+}
+
 /* ── Usual items ───────────────────────────────────────────────────────────── */
 
 export type UsualItem = { times: number; lastQty: number; lastOrdered: string };
