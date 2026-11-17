@@ -28,6 +28,7 @@ export default async function PortalCart() {
         onHold={ctx.customer.onHold}
         labels={d.cart}
         priceTbc={d.products.priceTbc}
+        placedLabel={d.orders.placedThanks}
         minDate={myDate(0)}
         maxDate={myDate(60)}
         defaultDate={myDate(1)}

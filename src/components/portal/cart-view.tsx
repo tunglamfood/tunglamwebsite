@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { AlertTriangle, ArrowRight, Info, Loader2, Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import { useCart } from "./cart";
 import { placeOrder } from "@/lib/portal/actions";
+import { toast } from "./toast";
 import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 import { pbtn, pcard, pfield } from "./bits";
 
@@ -20,6 +21,7 @@ export function CartView({
   onHold,
   labels,
   priceTbc,
+  placedLabel,
   minDate,
   maxDate,
   defaultDate,
@@ -31,6 +33,8 @@ export function CartView({
   onHold: boolean;
   labels: PortalDict["cart"];
   priceTbc: string;
+  /** "Thank you! Order {no} has been sent to Tung Lam." */
+  placedLabel: string;
   minDate: string;
   maxDate: string;
   defaultDate: string;
@@ -67,9 +71,12 @@ export function CartView({
       const res = await placeOrder({ lines: available.map((l) => ({ itemCode: l.itemCode, qty: l.qty })), deliverOn, theirRef, note });
       if (!res.ok) {
         if (res.reason === "signed_out") return router.push("/portal/login");
-        return setError((labels.errors as Record<string, string>)[res.reason] ?? labels.errors.generic);
+        const msg = (labels.errors as Record<string, string>)[res.reason] ?? labels.errors.generic;
+        toast({ tone: "error", title: msg });
+        return setError(msg);
       }
       clear();
+      toast({ title: pfmt(placedLabel, { no: res.orderNo }) });
       router.push(`/portal/orders/${encodeURIComponent(res.orderNo)}?placed=1`);
     });
 

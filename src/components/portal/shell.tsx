@@ -13,6 +13,7 @@ import { whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { AssistantIcon } from "./assistant-icon";
+import { Toaster } from "./toast";
 
 const LANG_NAME: Record<PortalLang, string> = { en: "English", ms: "Melayu", zh: "中文" };
 
@@ -142,6 +143,7 @@ export function PortalShell({
   return (
     <div className="min-h-dvh">
       <ScrollToTop />
+      <Toaster />
       
       {/* ------------------------------------------------ Desktop sidebar */}
       <aside className="glass-bar fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r lg:flex">

@@ -11,6 +11,7 @@ import { money, pfmt, type PortalDict } from "@/lib/portal/i18n";
 import { useCart } from "./cart";
 import { PRIMARY } from "./bits";
 import { AssistantIcon } from "./assistant-icon";
+import { toast } from "./toast";
 
 type Msg =
   | { id: number; role: "user"; text: string }
@@ -242,6 +243,7 @@ export function AssistantChat({
                             type="button"
                             onClick={() => {
                               addMany(m.lines.map((l) => ({ itemCode: l.itemCode, qty: l.qty })));
+                              toast({ title: labels.added });
                               setMsgs((all) => all.map((x) => (x.id === m.id && x.role === "assistant" ? { ...x, added: true } : x)));
                             }}
                             className={clsx("flex h-10 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold", PRIMARY)}

@@ -109,6 +109,7 @@ export default async function PortalHome() {
             lines={last.lines.map((l) => ({ itemCode: l.itemCode, qty: l.qty }))}
             title={d.home.reorder}
             text={pfmt(d.home.reorderText, { no: last.orderNo })}
+            done={d.orders.reordered}
           />
         )}
       </section>

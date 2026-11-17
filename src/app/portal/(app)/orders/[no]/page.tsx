@@ -66,7 +66,7 @@ export default async function PortalOrder({ params, searchParams }: { params: Pr
             orderNo={order.orderNo}
             canCancel={order.status === "submitted" || order.status === "on_hold"}
             lines={order.lines.map((l) => ({ itemCode: l.itemCode, qty: l.qty }))}
-            labels={{ reorder: d.orders.reorder, cancel: d.orders.cancel, cancelConfirm: d.orders.cancelConfirm }}
+            labels={{ reorder: d.orders.reorder, cancel: d.orders.cancel, cancelConfirm: d.orders.cancelConfirm, reordered: d.orders.reordered, cancelled: d.orders.cancelledToast }}
           />
           {order.status !== "cancelled" && (
             <a href={`/portal/orders/${encodeURIComponent(order.orderNo)}/pdf`} className={pbtn("secondary")}>

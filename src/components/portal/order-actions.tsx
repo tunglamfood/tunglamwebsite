@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { ArrowUpRight, Loader2, RotateCcw, X } from "lucide-react";
 import { useCart } from "./cart";
 import { cancelOrder } from "@/lib/portal/actions";
+import { pfmt } from "@/lib/portal/i18n";
+import { toast } from "./toast";
 import { pbtn } from "./bits";
 
 /** "Order again" puts the order's items back in the cart; "Cancel" works until the office confirms. */
@@ -19,7 +21,7 @@ export function OrderActions({
   orderNo: string;
   canCancel: boolean;
   lines: { itemCode: string; qty: number }[];
-  labels: { reorder: string; cancel: string; cancelConfirm: string };
+  labels: { reorder: string; cancel: string; cancelConfirm: string; reordered: string; cancelled: string };
 }) {
   const { addMany } = useCart(scope);
   const router = useRouter();
@@ -30,7 +32,7 @@ export function OrderActions({
     <div className="flex flex-wrap gap-2">
       <button
         type="button"
-        onClick={() => { addMany(lines); router.push("/portal/cart"); }}
+        onClick={() => { addMany(lines); toast({ title: labels.reordered }); router.push("/portal/cart"); }}
         className={pbtn("primary")}
       >
         <RotateCcw className="size-4" /> {labels.reorder}
@@ -43,7 +45,12 @@ export function OrderActions({
             if (!confirm(labels.cancelConfirm)) return;
             start(async () => {
               const res = await cancelOrder(orderNo);
-              if (!res.ok) setError(res.reason ?? "error");
+              if (!res.ok) {
+                setError(res.reason ?? "error");
+                toast({ tone: "error", title: res.reason ?? "error" });
+              } else {
+                toast({ title: pfmt(labels.cancelled, { no: orderNo }) });
+              }
               router.refresh();
             });
           }}
@@ -57,13 +64,13 @@ export function OrderActions({
   );
 }
 
-export function ReorderButton({ scope, lines, title, text }: { scope: string; lines: { itemCode: string; qty: number }[]; title: string; text: string }) {
+export function ReorderButton({ scope, lines, title, text, done }: { scope: string; lines: { itemCode: string; qty: number }[]; title: string; text: string; done: string }) {
   const { addMany } = useCart(scope);
   const router = useRouter();
   return (
     <button
       type="button"
-      onClick={() => { addMany(lines); router.push("/portal/cart"); }}
+      onClick={() => { addMany(lines); toast({ title: done }); router.push("/portal/cart"); }}
       className="glass group flex w-full items-center gap-4 rounded-2xl p-4 text-left transition duration-300 hover:bg-white/80 sm:p-5"
     >
       <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-sky-50 text-sky-600"><RotateCcw className="size-5" /></span>
